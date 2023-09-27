@@ -1,0 +1,372 @@
+
+
+  /* .square-box {
+    display: none;
+  } */
+
+  /* .square-box {
+    width: 70%;
+    background-color: #ff7600;
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    display: flex;
+    position: absolute;
+    top: auto;
+    bottom: 24px;
+    left: 0%;
+    right: 0%;
+  } */
+
+
+
+@media (max-width: 576px) {
+    /* CSS rules for extra small devices */
+  }
+
+
+@media (min-width: 577px) and (max-width: 768px) {
+    /* CSS rules for small devices */
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    /* CSS rules for medium devices */
+  }
+
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
+    /* CSS rules for large devices */
+    .square-box {
+        width: 100%;
+        background-color: #ff7600;
+        border-radius: 18px;
+        flex-direction: column;
+        align-items: center;
+        margin-left: auto;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        display: flex;
+        position: absolute;
+        top: auto;
+        bottom: -90%;
+        left: 0%;
+        right: 0%;
+      }
+  }
+
+@media (min-width: 1201px) {
+/* CSS rules for extra large devices */
+.square-box {
+    width: 100%;
+    background-color: #ff7600;
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    display: flex;
+    position: absolute;
+    top: auto;
+    bottom: -100%;
+    left: 0%;
+    right: 0%;
+  }
+
+}
+
+@media (min-width: 1351px) {
+    /* CSS rules for extra large devices */
+    .square-box {
+      width: 100%;
+      background-color: #ff7600;
+      border-radius: 18px;
+      flex-direction: column;
+      align-items: center;
+      margin-left: auto;
+      padding-top: 35px;
+      padding-bottom: 35px;
+      display: flex;
+      position: absolute;
+      top: auto;
+      bottom: -80%;
+      left: 0%;
+      right: 0%;
+      }
+    
+    }
+
+
+
+
+
+@media screen and (max-width: 479px) {
+.main-section {
+    top: 18%;
+    }    
+}
+
+
+@media screen and (max-width: 767px) {
+.main-section {
+    top: 12%;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 992px)
+{
+    .main-section {
+    top: 20%;
+    }
+}
+
+
+@media (min-width: 993px) and (max-width: 1200px)
+{
+    .main-section {
+    top: 20%;
+    }
+}
+
+.main-section {
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 10%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    overflow: visible;
+  }
+
+
+
+/*! CSS Used from: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css */
+.fa {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.fa-search:before {
+	content: "\f002";
+}
+
+.fa-bell:before {
+	content: "\f0f3";
+}
+
+.fa-envelope:before {
+	content: "\f0e0";
+}
+
+/*! CSS Used from: file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.css */
+/* * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins';
+} */
+
+.logo {
+	margin-left: 47px;
+	margin-right: 50px;
+}
+
+
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 30px;
+	height: 60px;
+}
+
+
+.profile {
+	display: flex;
+	align-items: center;
+}
+
+
+.profile-emails {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-left: 10px;
+}
+
+
+.profile-emails span {
+	display: block;
+	padding: 1px;
+}
+
+
+.profile img {
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+
+span.profile-name {
+	font-weight: bold;
+}
+
+
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #fff;
+	padding: 40px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+}
+
+
+@media (min-width: 768px) {
+	.sidebar-toggle {
+		display: none;
+	}
+}
+
+
+@media screen and (max-width: 1039px),
+screen and (max-height: 767px) {
+
+	div.search-container,
+	.notification,
+	.profile {
+		display: none;
+	}
+}
+
+
+.search-container {
+	display: flex;
+	justify-content: center;
+}
+
+
+.search-container input[type=text] {
+	padding: 10px;
+	margin-right: 100px;
+	border: none;
+}
+
+
+.search-container input[type=text]:focus {
+	outline: none;
+}
+
+
+.search-container button {
+	border: none;
+	background-color: transparent;
+	padding: 10px;
+	cursor: pointer;
+}
+
+
+.search-container button:hover {
+	background-color: #ddd;
+	border-radius: 50%;
+}
+
+
+.fa-search {
+	font-size: 17px;
+	color: #33333382;
+}
+
+
+span.search-container-border {
+	border: 1px solid #80808038;
+	border-radius: 20px;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+span.profile-email {
+	color: #8E8B8A;
+}
+
+
+span.navbar-item-notification {
+	margin: 5px;
+}
+
+
+.cart-icon {
+	position: relative;
+	display: inline-block;
+	color: #000;
+	/* background-color: #FCEDE6; */
+	padding: 6px;
+	border-radius: 50%;
+}
+
+
+.cart-count {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    display: inline-block;
+    padding: 0px 3px 0px 3px;
+    border-radius: 60%;
+    background-color: #FF0000;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/*! CSS Used from: Embedded */
+/* * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins';
+} */
+
+@media (max-width: 767px) {
+	.logo {
+		margin-left: -30px;
+	}
+}
+
+/* ! CSS Used from: Embedded
+a {
+	background-color: transparent;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+img {
+	border: 0;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	vertical-align: middle;
+	display: inline-block;
+} */
+

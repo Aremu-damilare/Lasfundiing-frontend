@@ -1,3 +1,9 @@
+<?php
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+?>
+
 <!DOCTYPE html>
 <!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->

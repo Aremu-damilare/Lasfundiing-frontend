@@ -598,7 +598,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   
 <script>                            
     // Define the URL to make the request to
-  const endpointUrl = `${LOCALHOST_BACKEND_URL}/admin/store/list/`;
+  const endpointUrl = `${baseUrl}/admin/store/list/`;
 
   // Create headers object with authorization
   const headers = new Headers({

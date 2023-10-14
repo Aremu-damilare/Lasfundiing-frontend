@@ -3,7 +3,7 @@
 <html >
 <head>
   <meta charset="utf-8">
-  <title>Orders - Lasfunding</title>
+  <title>Order an account - Lasfunding</title>
   <meta content="Orders" property="og:title">
   <meta content="Orders" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -150,7 +150,22 @@
   
   </style>
 
-
+  <style>
+    .toggle-block {
+        display: "";
+    }
+    .toggle-none {
+        display: none;
+    }
+  </style>
+  
+  <style>
+    a#BuyAccount {
+      background: #17b517;
+      padding: 1px;
+      display: block;
+  }
+  </style>
 
 </head>
 <body class="dashboard-body">
@@ -307,80 +322,228 @@
       <div class="gradient-header" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: baseline;">
         <!-- <div class="text-block-56">Dashboard</div> -->       
         <div>
-          <button id="creatTicketBtn" type="submit">
-            <a href="./create-order.php"><span style="color: #E04800;float: right;"><img src="../images/Copy.svg" alt=""> Order an account</span></a>
+          <button id="creatTicketBtn">
+            <span style="color: #E04800;float: right;"><img src="../images/Copy.svg" alt=""> Order an account</span>
           </button>
         </div>
       </div>
         
       <div class="analyzer-section dashboard wf-section" style="overflow-x: auto;">              
-          <table class="slds-table slds-table--bordered">
-              <thead>
-                <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options">
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select All</span>
-                      </label>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Account type
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
+        <style>
+
+            .account-type-container{                
+            margin: 0 auto;                                           
+            }
+            
+            
+            table{
+            margin: 0 auto;
+            border-collapse: collapse;        
+            width: 100%;        
+            }
+            
+            td, th {
+            padding-left: 20px;
+            padding-right: 95px;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            border: 1px solid #0000002e;
+            border-right: none;
+            border-left: none;                
+            }
+    
+            
+            thead {
+            background-color: black;
+            color: white;
+            } 
+    
+            
+    
+        
+            tr th:nth-child(2),
+            tr th:nth-child(4),
+            tr td:nth-child(2),
+            tr td:nth-child(4),
+            tr:first-child td {
+                background-color: #80808059;
+            }
+    
+            
+            tr th:not(:nth-child(2)):not(:nth-child(4)),
+            tr td:not(:nth-child(2)):not(:nth-child(4)),
+            tr:first-child th {
+                background-color: transparent;
+            }
+    
+                /* Make the first account-type-column in the tbody red */
+    
+        tbody tr td:first-child {
+            color: red;
+            
+        }
+        </style>
+        <style>           
+            .table-switcher {
+            
+            }       
+            .row {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .account-type-column {
+                display: flex;
+                flex-direction: account-type-column;
+                flex-basis: 100%;
+                flex: 1
+            }
+            
+            .account-type-column-account-type-column {            
+                height: 100px;
+                padding: 10px;
+            }                              
+            
+        </style>
+        <style>
+            .a-btn.transparent {
+                color: rgba(224, 72, 0, .88);
+                place-self: center;
+                background-color: rgba(0, 0, 0, 0);
+                border: 1px solid rgba(224, 72, 0, .88);
+                padding-left: 10px;
+                margin: 4px;
+                padding-right: 13px;
+                /* font-size: 16px; */
+                font-weight: 600;
+            }
+            
+            .a-btn {
+                color: #fff;
+                text-align: center;
+                /* letter-spacing: 2px; */
+                /* text-transform: none; */
+                background-color: rgba(224, 72, 0, .88);
+                border-radius: 20px;
+                /* margin-top: 30px; */
+                /* margin-right: 0; */
+                padding: 5px 24px;
+                font-size: 12px;
+                line-height: 20px;
+                text-decoration: none;
+                transition: all .2s;
+            }
+            .mb-2 {
+                margin-bottom: 20px;
+            }
+        </style>
+        <div class="account-type-container">      
+            <div class='table-switcher'>
+                <div class='row'>
+                  <div class='account-type-column'>
+                    <div class='account-type-column-account-type-column'>
+                      <div class="mb-2">Course Format:</div> 
+                      <div><a href="#" class="a-btn hero-btn">Online</a></div>                
                     </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Starting fee
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Payment method
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>             
-                  <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Date
-                        <button class="slds-button slds-button--icon-bare">
-                            <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                            </svg> -->
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
+                  </div>
+                  <div class='account-type-column'>
+                    <div class='account-type-column-account-type-column'>                
+                        <div class="mb-2">Starting balance:</div>
+                        <style>
+                          .start-balance {
+                            display: flex;
+                            align-content: stretch;
+                            flex-wrap: wrap;
+                            flex-direction: row;
+                            height: 80%;
+                            overflow-y: scroll;
+                        }
+                        </style>
+                        <div class="start-balance">                                                                                  
+                    </div>                        
                       </div>
-                    </th>
-                  <th class="slds-cell-shrink"></th>
-                </tr>
-              </thead>
-              <tbody>                 
-              </tbody>
-          </table>        
+                  </div>
+                  <div class='account-type-column'>
+                    <div class='account-type-column-account-type-column'>                  
+    
+                        <div class="">Set-Up Fee </div>
+                        <span class="link"><span class="set-up-fee" ></span> <span>(+VAT)</span>
+                        </span>                
+    
+                        <div>Starting Monthly Fee</div>
+                        <span class="link "><span class="starting-monthly-fee" ></span> <span>(+VAT)</span>
+                        </span>
+    
+                                  
+                  </div>
+                  
+                  <div class='account-type-column'>
+                    <div class='account-type-column-account-type-column'>
+                        <div class="mb-2">Get Funded: <span class="link get-funded-for"></span></div>
+                        <div><a href="#" id="BuyAccount" class="a-btn hero-btn ">Buy Now</a></div>
+                    </div>
+                  </div>
+                </div>
+            </div>  
+            <div style="overflow-x: auto;margin: 15px;">
+              <table>
+                  <thead>
+                  <tr>
+                      <th></th>
+                      <th>Step 1</th>
+                      <th>Step 2</th>
+                      <th>Step 3</th>
+                      <th>Step 4</th>            
+                      <th>Step 5</th>    
+                  <tr>  
+                  </thead>
+                  <tbody id="table-body">
+                  <!-- <tr>
+                      <td>Balance</td>
+                      <td>$25,000</td>
+                      <td>$50,000</td>
+                      <td>$75,000</td>
+                      <td>$100,000</td>
+                  </tr>
+    
+                  <tr>
+                      <td>Profit Target</td>
+                      <td>8% ($1600)</td>
+                      <td>8% ($4000)</td>
+                      <td>8% ($6000)</td>
+                      <td>8% ($8000)</td>            
+                  </tr>
+    
+                  <tr>
+                      <td>Profit share</td>
+                      <td>70:30</td>
+                      <td>70:30</td>
+                      <td>70:30</td>
+                      <td>70:30</td>            
+                  </tr>
+    
+                  <tr>
+                      <td>Next Step Target</td>
+                      <td>1 Withdrawal</td>
+                      <td>2 Withdrawal</td>
+                      <td>2 Withdrawal</td>
+                      <td>2 Withdrawal</td>            
+                  </tr>
+    
+                  <tr>
+                      <td>Account Fee</td>
+                      <td>$209.99, <br> if target not met</td>
+                      <td>$209.99, <br> if target not met</td>
+                      <td>$209.99, <br> if target not met</td>
+                      <td>$209.99, <br> if target not met</td>
+                  </tr>               -->
+                  </tbody>               
+              </table>
+            </div>               
+            
+        </div>           
       </div>
       
   </div>
@@ -410,75 +573,10 @@
         console.error("An error occurred:", error);
       }
     }
+     
+      fetchUserData();      
 
-      async function fetchUserOrder() {
-        try {
-          const userOdersList = await userOrders(accessToken);
-          console.log("userOdersList", userOdersList);      
-          appendRowToTable(userOdersList);
-        } catch (error) {      
-          console.error("An error occurred:", error);
-        }
-      }
-
-      fetchUserData();
-      fetchUserOrder();
-
-    function appendRowToTable(orders) {
-        const tableBody = document.querySelector("tbody");
-
-          for (const order of orders) {
-            
-            const row = document.createElement("tr");
-
-          // Create table cells and populate them with order data
-          const checkboxCell = document.createElement("td");
-          checkboxCell.className = "slds-cell-shrink";
-          checkboxCell.dataset.label = "Select Row";
-          checkboxCell.innerHTML = `
-          <label class="slds-checkbox">
-            <input type="checkbox" name="options">
-            <span class="slds-checkbox--faux"></span>
-            <span class="slds-assistive-text">Select Row</span>
-          </label>`      
-
-          accountTypeCol = document.createElement("td");
-          accountTypeCol.setAttribute("data-order-id", order.id);      
-          accountTypeCol.innerHTML = `$${order.account_type.amount}`
-
-          startingFeeCol = document.createElement("td");
-          startingFeeCol.innerHTML = `$${order.account_type.setup_fee}`
-
-
-          statusCol = document.createElement("td");
-          statusCol.innerHTML = order.status
-
-
-          paymentMethodCol = document.createElement("td");
-          paymentMethodCol.innerHTML = order.payment_method.name
-
-
-          dateCol = document.createElement("td");
-          dateCol.innerHTML = formatDate(order.created_at)
-
-
-          // Append cells to the row
-          row.appendChild(checkboxCell);
-          row.appendChild(accountTypeCol);
-          row.appendChild(startingFeeCol);
-          row.appendChild(statusCol);
-          row.appendChild(paymentMethodCol);
-          row.appendChild(dateCol);
-          // ... Append other cells to the row ...
-
-          // Append the row to the table body
-          tableBody.appendChild(row);
-            
-          }
-
-          gotoOrderDetail()
-    }
-
+    
     function formatDate(dateString) {
       const createdAt = new Date(dateString);
       const formattedDate = createdAt.toLocaleDateString('en-US', {
@@ -489,26 +587,208 @@
       return formattedDate;
     }
 
-    function gotoOrderDetail(){
-    // Get all elements with class 'td' and 'data-order-id' attribute
-    const elements = document.querySelectorAll('td[data-order-id]');
+  </script>
 
-    // Add a click event listener to each element
-    elements.forEach(element => {
-      element.addEventListener('click', function() {
-        // Get the value of the 'data-order-id' attribute
-        const orderId = this.getAttribute('data-order-id');
+  
+<script>                            
+    // Define the URL to make the request to
+  const endpointUrl = `${LOCALHOST_BACKEND_URL}/admin/store/list/`;
+
+  // Create headers object with authorization
+  const headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + accessToken
+  });
+
+  // Create a request object with the headers
+  const request = new Request(endpointUrl, {
+      method: 'GET', // You can adjust the HTTP method as needed (e.g., GET, POST)
+      headers: headers
+  });
+
+  // Fetch data from the API
+  fetch(request)
+      .then(response => response.json())
+      .then(data => {
+          // Function to populate a table row
+          function populateRow(index, setup_fee, starting_monthly_fee, balance, profitTarget, profitShare, nextStepTarget, accountFee) {
+            console.log(balance[0])
+              const tbody = document.querySelector("#table-body");
+              const row = document.createElement("tr");                    
+              row.setAttribute("data-account-type-row", balance[0])
+              row.innerHTML = `     
+              <td>Balance</td><td>$${balance[0]}</td><td>$${balance[1]}</td><td>$${balance[2]}</td><td>$${balance[3]}</td><td>$${balance[4]}</td>`;                                       
+              tbody.appendChild(row);
+
+              const row2 = document.createElement("tr");                    
+              row2.setAttribute("data-account-type-row", balance[0])
+              row2.innerHTML += `
+              <td>Profit target</td><td>${profitTarget[0]}</td><td>${profitTarget[1]}</td><td>${profitTarget[2]}</td><td>${profitTarget[3]}</td><td>${profitTarget[4]}</td>`;
+              tbody.appendChild(row2);
+
+
+              const row3 = document.createElement("tr");                    
+              row3.setAttribute("data-account-type-row", balance[0])
+              row3.innerHTML += `
+              <td>Profit Share</td><td>${profitShare[0]}</td><td>${profitShare[1]}</td><td>${profitShare[2]}</td><td>${profitShare[3]}</td><td>${profitShare[4]}</td>`;
+              tbody.appendChild(row3);
+
+              const row4 = document.createElement("tr");                    
+              row4.setAttribute("data-account-type-row", balance[0])
+              row4.innerHTML += `
+              <td>Next Step Target</td><td>${nextStepTarget[0]}</td><td>${nextStepTarget[1]}</td><td>${nextStepTarget[2]}</td><td>${nextStepTarget[3]}</td><td>${nextStepTarget[4]}</td>`;
+              tbody.appendChild(row4);
+
+              
+              const row5 = document.createElement("tr");                    
+              row5.setAttribute("data-account-type-row", balance[0])
+              row5.innerHTML += `
+              <td>Account Fee</td><td>${accountFee[0]}</td><td>${accountFee[1]}</td><td>${accountFee[2]}</td><td>${accountFee[3]}</td><td>${accountFee[4]}</td>`;
+              tbody.appendChild(row5);
+
+              const startBalance = document.querySelector(".start-balance");
+              startBalance.innerHTML += `<a href="#" data-account-type="${balance[0]}" class="change-account-type a-btn transparent  ">$${balance[0]}</a>`;
+
+              const setUpFee = document.querySelector(".set-up-fee");
+              setUpFee.innerHTML += `<span data-set-up-fee="${balance[0]}"> ${setup_fee} </span>`;
+
+              const startingMonthlyFee = document.querySelector(".starting-monthly-fee");
+              startingMonthlyFee.innerHTML += `<span data-set-up-fee="${balance[0]}"> ${starting_monthly_fee} </span>`;
+
+
+              const getFundedFor = document.querySelector(".get-funded-for");
+              getFundedFor.innerHTML += `<span data-get-funded-for="${balance[0]}"> $${balance[0]} </span>`;
+
+          }
+  
+
+          // Loop through the API data and populate the table
+          var index = 0;
+          data.forEach(item => {                  
+              populateRow(index,   
+                  item.setup_fee,                        
+                  item.starting_monthly_fee,
+                  item.balance,
+                  item.profit_target,
+                  item.profit_share,
+                  item.next_step_target,
+                  item.account_fee
+              );
+              index++;
+          });
+
+          changeAccountType()
+      })
+      .catch(error => console.error("Error fetching data: ", error));
+</script>
+
+<script>
+function changeAccountType(){          
+
+const changeAccountTypeLinks = document.querySelectorAll(".change-account-type");
+
+// Add click event listeners to each link
+changeAccountTypeLinks.forEach(link => {
+  link.addEventListener("click", function (event) {
+
+
+      event.preventDefault();
+
+      // Get the value of the data-account-type attribute
+      const accountType = this.getAttribute("data-account-type");
         
-        // Construct the URL with the orderId as a query parameter
-        const url = `orderDetail.php?orderId=${orderId}`;
-        
-        // Redirect to the orderDetail.php page with the query parameter
-        window.location.href = url;
+      const tableRows = document.querySelectorAll("[data-account-type-row]");
+      const tableSetupFee = document.querySelectorAll("[data-set-up-fee]");
+      const tableStartingMonthlyFee = document.querySelectorAll("[data-starting-monthly-fee]");
+      const tableGetFundedFor = document.querySelectorAll("[data-get-funded-for]");
+
+      const buyNow = document.querySelector("#BuyAccount");
+      buyNow.setAttribute("data-account-type", accountType)
+
+      tableRows.forEach(tableRow => {
+          if (tableRow.getAttribute("data-account-type-row") === accountType) {
+            tableRow.classList.add("toggle-block");
+            tableRow.classList.remove("toggle-none");
+          } else {
+            tableRow.classList.remove("toggle-block");
+            tableRow.classList.add("toggle-none");
+          }
       });
+
+      tableSetupFee.forEach(tableRow => {
+        if (tableRow.getAttribute("data-set-up-fee") === accountType) {
+          tableRow.classList.add("toggle-block");
+          tableRow.classList.remove("toggle-none");
+        } else {
+          tableRow.classList.remove("toggle-block");
+          tableRow.classList.add("toggle-none");
+        }
     });
 
-  }
-  </script>
+    tableStartingMonthlyFee.forEach(tableRow => {
+      if (tableRow.getAttribute("data-starting-balance") === accountType) {
+        tableRow.classList.add("toggle-block");
+        tableRow.classList.remove("toggle-none");
+      } else {
+        tableRow.classList.remove("toggle-block");
+        tableRow.classList.add("toggle-none");
+      }
+  });
+
+  tableGetFundedFor.forEach(tableRow => {
+    if (tableRow.getAttribute("data-get-funded-for") === accountType) {
+      tableRow.classList.add("toggle-block");
+      tableRow.classList.remove("toggle-none");
+    } else {
+      tableRow.classList.remove("toggle-block");
+      tableRow.classList.add("toggle-none");
+    }
+});
+  });
+});
+}
+
+</script>
+
+<script>
+// Function to check for the element and click it when found
+function checkAndClickElement() {
+const elementToClick = document.querySelector('a[data-account-type="5000"]');
+if (elementToClick) {
+  elementToClick.click();
+  clearInterval(intervalId); // Stop checking once the element is found and clicked
+}
+}
+
+// Set an interval to check for the element every 100 milliseconds (adjust as needed)
+const intervalId = setInterval(checkAndClickElement, 100);
+
+</script>
+
+<script>
+// Get the button element by its id
+var buyButton = document.getElementById('BuyAccount');
+
+// Add a click event listener to the button
+buyButton.addEventListener('click', function(event) {
+// Prevent the default behavior of the anchor tag (preventing the page from reloading)
+event.preventDefault();
+
+// Get the value of the "data-account-type" attribute
+var accountTypeValue = buyButton.getAttribute('data-account-type');
+
+// Check if the "data-account-type" attribute exists and has a value
+if (accountTypeValue !== null) {
+    // Redirect the user to the register.php page with the account_type parameter
+    window.location.href = 'checkout.php?account_type=' + encodeURIComponent(accountTypeValue);
+} else {
+    // Handle the case where the attribute doesn't exist or has no value
+    // You can display an error message or take other appropriate action
+}
+});
+
+</script>
+
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
-  <title>Tickets - lasfunding</title>
+  <title>Orders - lasfunding</title>
   <meta content="Dashboard" property="og:title">
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -104,7 +104,7 @@
 
 </head>
 <body class="dashboard-body">
-  <div class="loader-container">
+<div class="loader-container">
     <svg id="loader" class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <g>
           <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
@@ -169,7 +169,7 @@
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
-	</div>
+    </div>
 
 
   <div data-animation="default" class="rl_navbar1_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400">
@@ -189,15 +189,15 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8.91507 13.8682L15.0865 8.26823M9.42938 8.7349H9.43967M14.5722 13.4016H14.5825M19.2008 20.4016V5.46823C19.2008 4.4373 18.2798 3.60156 17.1436 3.60156H6.85792C5.72179 3.60156 4.80078 4.4373 4.80078 5.46823V20.4016L8.40078 18.5349L12.0008 20.4016L15.6008 18.5349L19.2008 20.4016ZM9.94364 8.7349C9.94364 8.99263 9.71338 9.20156 9.42935 9.20156C9.14532 9.20156 8.91507 8.99263 8.91507 8.7349C8.91507 8.47716 9.14532 8.26823 9.42935 8.26823C9.71338 8.26823 9.94364 8.47716 9.94364 8.7349ZM15.0865 13.4016C15.0865 13.6593 14.8562 13.8682 14.5722 13.8682C14.2882 13.8682 14.0579 13.6593 14.0579 13.4016C14.0579 13.1439 14.2882 12.9349 14.5722 12.9349C14.8562 12.9349 15.0865 13.1439 15.0865 13.4016Z" stroke="#CC4200" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>              
-            <a href="./tickets.php" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Ticket <img src="../images/icons/CaretRight.svg" alt="" srcset=""></a>
+            <a href="./tickets.php" class="rl_navbar1_link w-nav-link">Ticket </a>
           </div>
-
+          
           <div class="right-navbar-link">
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="#e04839" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="#e04839" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>           
-            <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
+            <a href="./orders.php" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Orders <img src="../images/icons/CaretRight.svg" alt="" srcset=""></a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
@@ -242,87 +242,25 @@
     <div class="gradient-header">
       <!-- <div class="text-block-56">Dashboard</div> -->
       <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Tickets</span>        
+        <span>Orders</span>        
       </div>
       <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div>
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
-      
-        
+            
         <div style="overflow-x: auto;">
-          <table class="slds-table slds-table--bordered">
-              <thead>
-                <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select All</span>
-                      </label>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Activity
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">User
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Subject
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <!-- <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Amount
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Contact
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th> -->
-                  <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Date
+            <table class="slds-table slds-table--bordered">
+                <thead>
+                  <tr class="slds-text-heading--label">
+                    <th class="slds-cell-shrink">
+                      <label class="slds-checkbox">
+                          <input type="checkbox" name="options">
+                          <span class="slds-checkbox--faux"></span>
+                          <span class="slds-assistive-text">Select All</span>
+                        </label>
+                    </th>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Account type
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
                               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
@@ -331,60 +269,121 @@
                           </button>
                       </div>
                     </th>
-                  <th class="slds-cell-shrink"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="slds-hint-parent">
-                  <td class="slds-cell-shrink" data-label="Select Row">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select Row</span>
-                      </label>
-                  </td>
-                  <th class="slds-truncate" scope="row" data-label="Opportunity Name"><img src="./images/icons/ticket-table/Featured Icon.svg" alt="" srcset=""> About Withdrawal</th>
-                  <td class="slds-truncate" data-label="Account Name"><img src="./images/icons/ticket-table/Female09.svg" alt="" srcset="">Kate marrison</td>        
-                  <td class="slds-truncate" data-label="Prospecting"><img src="./images/icons/ticket-table/Dot2.svg" alt="" srcset="">In progress</td>
-                  <td class="" data-label="Confidence">I want to withdrawal please</td>
-                  <td class="" data-label="Close Date"><img src="./images/icons/ticket-table/CalendarBlank-r.svg" alt="" srcset="">Just now</td>
-                  <!-- <td class="" data-label="Amount">$25k</td> -->
-                  <!-- <td class="slds-truncate" data-label="Contact"><a href="#void">jrogers@cloudhub.com</a></td>
-                  <td class="slds-cell-shrink" data-label="Actions">
-                    <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
-                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Show More</span>
-                      </button>
-                  </td> -->
-                </tr>
-                <tr class="slds-hint-parent">
-                  <td class="slds-cell-shrink" data-label="Select Row">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select Row</span>
-                      </label>
-                  </td>
-                  <th class="slds-truncate" scope="row" data-label="Opportunity Name"><img src="./images/icons/ticket-table/Featured Icon.svg" alt="" srcset="">Making Project Enquiries</th>
-                  <td class="slds-truncate" data-label="Account Name"><img src="./images/icons/ticket-table/Female09.svg" alt="" srcset="">Aliah Lane</td>        
-                  <td class="" data-label="Confidence"><img src="./images/icons/ticket-table/Dot3.svg" alt="" srcset="">Pending</td>         
-                  <td class="" data-label="Confidence">I want to enquire</td>
-                  <td class="" data-label="Close Date"><img src="./images/icons/ticket-table/CalendarBlank-r.svg" alt="" srcset="">2 minutes ago</td>
-                  <!-- <td class="" data-label="Amount">$25k</td> -->
-                  <!-- <td class="slds-truncate" data-label="Contact"><a href="#void">jrogers@cloudhub.com</a></td>
-                  <td class="slds-cell-shrink" data-label="Actions">
-                    <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
-                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Show More</span>
-                      </button>
-                  </td> -->
-                </tr>
-              </tbody>
-          </table>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Amount
+                        <button class="slds-button slds-button--icon-bare">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+                  
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Status
+                        <button class="slds-button slds-button--icon-bare">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Payment details
+                        <button class="slds-button slds-button--icon-bare">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+                    <!-- <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Amount
+                        <button class="slds-button slds-button--icon-bare">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Contact
+                        <button class="slds-button slds-button--icon-bare">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th> -->
+                    <th class="slds-is-sortable" scope="col">
+                        <div class="slds-truncate">Date
+                          <button class="slds-button slds-button--icon-bare">
+                              <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Sort</span>
+                            </button>
+                        </div>
+                      </th>
+                    <th class="slds-cell-shrink"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="slds-hint-parent">
+                    <td class="slds-cell-shrink" data-label="Select Row">
+                      <label class="slds-checkbox">
+                          <input type="checkbox" name="options">
+                          <span class="slds-checkbox--faux"></span>
+                          <span class="slds-assistive-text">Select Row</span>
+                        </label>
+                    </td>
+                    <th class="slds-truncate" scope="row" data-label="Opportunity Name"><img src="../images/icons/ticket-table/Featured Icon.svg" alt="" srcset=""> $5,000</th>
+                    <td class="slds-truncate" data-label="Account Name">$109.99</td>        
+                    <td class="slds-truncate" data-label="Prospecting"><img src="../images/icons/ticket-table/Dot2.svg" alt="" srcset="">Pending</td>
+                    <td class="" data-label="Confidence">payment proof</td>
+                    <td class="" data-label="Close Date"><img src="../images/icons/ticket-table/CalendarBlank-r.svg" alt="" srcset="">Just now</td>
+                    <!-- <td class="" data-label="Amount">$25k</td> -->
+                    <!-- <td class="slds-truncate" data-label="Contact"><a href="#void">jrogers@cloudhub.com</a></td>
+                    <td class="slds-cell-shrink" data-label="Actions">
+                      <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Show More</span>
+                        </button>
+                    </td> -->
+                  </tr>
+                  <tr class="slds-hint-parent">
+                    <td class="slds-cell-shrink" data-label="Select Row">
+                      <label class="slds-checkbox">
+                          <input type="checkbox" name="options">
+                          <span class="slds-checkbox--faux"></span>
+                          <span class="slds-assistive-text">Select Row</span>
+                        </label>
+                    </td>
+                    <th class="slds-truncate" scope="row" data-label="Opportunity Name"><img src="../images/icons/ticket-table/Featured Icon.svg" alt="" srcset="">$10,000</th>
+                    <td class="slds-truncate" data-label="Account Name">$209.99</td>        
+                    <td class="" data-label="Confidence"><img src="../images/icons/ticket-table/Dot3.svg" alt="" srcset="">Success</td>         
+                    <td class="" data-label="Confidence">paystack reference</td>
+                    <td class="" data-label="Close Date"><img src="../images/icons/ticket-table/CalendarBlank-r.svg" alt="" srcset="">2 minutes ago</td>
+                    <!-- <td class="" data-label="Amount">$25k</td> -->
+                    <!-- <td class="slds-truncate" data-label="Contact"><a href="#void">jrogers@cloudhub.com</a></td>
+                    <td class="slds-cell-shrink" data-label="Actions">
+                      <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Show More</span>
+                        </button>
+                    </td> -->
+                  </tr>
+                </tbody>
+            </table>
         </div>
         
     </div>

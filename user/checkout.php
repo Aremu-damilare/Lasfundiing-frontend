@@ -3,22 +3,22 @@
 <html data-wf-page="63b7df9ae5e96f625fc2bd49" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
-  <title>Register - Lasfunding</title>
+  <title>Checkout - Lasfunding</title>
   <meta content="dashboard" property="og:title">
   <meta content="dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="./css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="./css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="./css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+  <link href="http://localhost/lasfunding_front/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="http://localhost/lasfunding_front/css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="http://localhost/lasfunding_front/css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic","Exo:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Poppins:100,200,300,regular,500,600,700,800,900,900italic"]  }});</script>
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="./images/favicon.png" rel="shortcut icon" type="image/x-icon">
-  <link href="./images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
+  <link href="http://localhost/lasfunding_front/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="http://localhost/lasfunding_front/images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
   
   <style>
     /*! CSS Used from: http://127.0.0.1:5500/css/normalize.css */
@@ -180,7 +180,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-<link rel="stylesheet" href="./css/scrollbar.css">
+<link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
 
 
 </head>
@@ -189,24 +189,21 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
     <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-no-shadow-container w-nav">
       <div class="container-regular">
         <div class="navbar-wrapper">
-          <a href="#" class="navbar-brand w-nav-brand"><img src="images/Lasfund-Logo.svg" loading="lazy" alt="" class="lasfunding-logo"></a><nav role="navigation" class="nav-menu-wrapper w-nav-menu" style="transform: translateY(0px) translateX(0px);">
-            <ul role="list" class="nav-menu w-list-unstyled">
+          <a href="#" class="navbar-brand w-nav-brand"><img src="http://localhost/lasfunding_front/images/Lasfund-Logo.svg" loading="lazy" alt="" class="lasfunding-logo"></a><nav role="navigation" class="nav-menu-wrapper w-nav-menu" style="transform: translateY(0px) translateX(0px);">
+            <ul role="list" class="nav-menu w-list-unstyled">            
               <li>
-                <a href="#How-It-Works" class="nav-link-2 how-it-works">How it works</a>
-              </li>
-              <li>
-                <a href="#Programs" class="nav-link-2">Programs</a>
+                <a href="./dashboard.php" class="nav-link-2">Dashboard</a>
               </li>
               <li>
                 <a href="#FAQ" class="nav-link-2">FAQ</a>
               </li>
-              <li>
-                <a href="contact.php" class="nav-link-2">Contact</a>
-              </li>
+             
               <li class="mobile-margin-top-10">
                 <div class="nav-button-wrapper">                  
-                  <a href="./index.php" class="button-primary nav-bar w-button">Sign in</a>
-                  <a href="#" class="w-inline-block"><img src="./images/cart.svg" loading="lazy" alt="" class="image"></a>
+                  <a href="./index.php" class="button-primary nav-bar w-button">Sign out</a>
+                  <!-- <a href="#" class="w-inline-block">
+                    <img src="http://localhost/lasfunding_front/images/cart.svg" loading="lazy" alt="" class="image">
+                  </a> -->
                 </div>
               </li>
             </ul>
@@ -219,26 +216,15 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
       </div>
     <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0" style="display: none;"></div></div>
   </div>
-  <form id="SignUpForm"  method="POST" >
+  <form id="CreateOrderForm"  method="POST" >
     <div class="columns-3 w-row">
-      <div class="column-3 w-col w-col-6">
+      <!-- <div class="column-3 w-col w-col-6">
         <div class="signup-form">
         <div class="text-block-19 link">User details</div>
-          <div class="billing-form w-form">          
-              <input type="text" class="billing-input w-input" maxlength="256" name="First-Name" data-name="First Name" placeholder="Enter First Name" id="First-Name" data-ms-member="first-name" required="">
-              <input type="text" class="billing-input w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Enter Last Name" id="Last-Name" data-ms-member="last-name" required="">
-              <input type="email" class="billing-input w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email Address" id="Email" data-ms-member="email" required="">
-              <input type="password" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Enter Password" id="Password" data-ms-member="password" required="">
-              <input type="text" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Confirm Password" id="Password-2" data-ms-member="password" required="">
-              <input type="tel" class="billing-input w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Phone Number" id="Phone" data-ms-member="phone-number" required="">
-              <input type="text" class="billing-input w-input" maxlength="256" name="Home-Address" data-name="Home Address" placeholder="Enter Home Address" id="Home-Address" data-ms-member="address" required="">
-              <div class="text-block-12">Additional Information</div>
-              <input type="text" class="billing-input w-input" maxlength="256" name="Notes" data-name="Notes" placeholder="Additional Notes (Note about your order)" id="Notes">
-                      
-          </div>
+          user detail
         </div>
-      </div>
-      <div class="column-3 w-col w-col-6">
+      </div> -->
+      <div class="">
         <div class="order-summary">
           <div class="text-block-19 link">Order Summary</div>
           <div class="product-section wf-section">
@@ -278,6 +264,8 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
             </div>
           </div>
         
+          <div class="text-block-12">Additional Information</div>
+              <input type="text" class="billing-input w-input" maxlength="256" name="Notes" data-name="Notes" placeholder="Additional Notes (Note about your order)" id="Notes">
           <div class="text-block-20" style="overflow: scroll;height: 85px;">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.<br><br>
             By clicking "Place Order" to register with My Forex Funds, you are agreeing that you understand terms and conditions, including the Risk Management, Consistency and other guidelines on 
             <a href="./index.php" class="link-4">Lasfunding.<br>‍</a><br>You accept that Lasfunding will not issue refund once service (i.e. trading) has started on your account.</div>
@@ -290,7 +278,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
               <input type="checkbox" id="Order-verify" name="Order-verify" data-name="Order verify" required="" class="w-checkbox-input">
               <span class="w-form-label" for="Order-verify">I have verified my order</span></label>
             
-              <input type="submit" id="submitBtn" value="Sign Up" data-wait="Please wait..." class="submit-button-2 w-button">
+              <input type="submit" id="submitBtn" value="Place Order..." data-wait="Please wait..." class="submit-button-2 w-button">
                        
           </div>
         </div>
@@ -351,13 +339,13 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
     </div>
   </div> -->
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="./js/webflow.js" type="text/javascript"></script>
+  <script src="http://localhost/lasfunding_front/js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   
-  <script src="./backend/config/_service-worker.js"></script>
-  <script src="./backend/config/toast.js"></script>
+  <script src="http://localhost/lasfunding_front/backend/config/_service-worker.js"></script>
+  <script src="http://localhost/lasfunding_front/backend/config/toast.js"></script>
+  <script src="../backend/user/getUserDetails.js"></script>
   
-
   
   <script>        
     function getQueryParam(name) {
@@ -391,8 +379,8 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
           .then(data => {
               // Handle the response data here
               console.log(data);
-              register(accountType, baseUrl)
-              setupFeeElement.innerHTML = data.setup_fee;
+              fetchUserData(accountType, baseUrl)
+              setupFeeElement.innerHTML = `$${data.setup_fee}`;
               startingBalanceElement.innerHTML = data.starting_balance
               totalFeeElement.innerHTML = data.setup_fee;
           })
@@ -408,76 +396,85 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
   </script>
 
 <script>
- function register(accountType, baseUrl){
-  var signUpForm = document.getElementById('SignUpForm');
+
+  async function fetchUserData(accountType, baseUrl) {
+    try {
+      const userDetailsObj = await userDetails(accessToken, baseUrl);      
+      console.log("userDetailsObj", userDetailsObj);      
+      createOrder(accountType, baseUrl, userDetailsObj.id)
+    } catch (error) {      
+      console.error("An error occurred:", error);
+    }
+  }
+
+  
+
+
+
+ 
+
+ function createOrder(accountType, baseUrl, user_id){
+  var createOrderForm = document.getElementById('CreateOrderForm');
   const miniLoaderContainer = document.querySelector('.mini-loader-container')
   const successSignup = document.querySelector("#success-signup");
 
   const submitBtn = document.querySelector("#submitBtn");
   
-  signUpForm.addEventListener('submit', function (event) {
+  createOrderForm.addEventListener('submit', function (event) {
     var paymentMethod = document.querySelector('input[name="payment-method"]:checked');
     miniLoaderContainer.style.display = 'flex';
     submitBtn.disabled = true;
-    signUpForm.style.display = "none";
+    createOrderForm.style.display = "none";
 
       event.preventDefault(); 
 
       // Collect data from form fields
       var formData = {
-          "firstname": document.getElementById('First-Name').value,
-          "lastname": document.getElementById('Last-Name').value,
-          "email": document.getElementById('Email').value,
-          "password1": document.getElementById('Password').value,
-          "password2": document.getElementById('Password').value,
-          "phone": document.getElementById('Phone').value,
-          "address": document.getElementById('Home-Address').value,
-          "Notes": document.getElementById('Notes').value,
+          "user": user_id,
+          "notes": document.getElementById('Notes').value,
 
-          "accountType": accountType,
-          "paymentMethod":  paymentMethod.value,
-          // Add more fields as needed
+          "amount": accountType,
+          "paymentMethod":  paymentMethod.value,  
+          "currency" :  "NGN"
       };          
     
     var jsonData = JSON.stringify(formData);
     console.log(jsonData)
     
-    fetch(`${baseUrl}/register/`, {
+    fetch(`${baseUrl}/create_order/`, {
         method: 'POST',
         body: jsonData,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + accessToken
         }
     })
     .then(function (response) {
         if (response.ok) {
             // Handle success
             console.log('Data sent successfully', response);
-            var notice = toastSuccessNotif(`Account ${response.statusText}`)
+            var notice = toastSuccessNotif(`Order ${response.statusText}`)
             miniLoaderContainer.style.display = 'none'
             submitBtn.disabled = true;
-            signUpForm.style.display = "none";
+            createOrderForm.style.display = "none";
             if (notice){
-              window.location.href = './email-verification.php?email='+document.getElementById('Email').value;
+              window.location.href = './orders.php';
             }
                         
-
-            //successSignup.style.display = "block";
-            //successSignup.innerHTML = `<h4>Check your email to confirm your email and continue with order.</h4>`
         } else {
             // Handle errors
             toastErrorNotif(`${response.statusText}`)
             console.log('Data could not be sent', response);
             miniLoaderContainer.style.display = 'none'
             submitBtn.disabled = false;
-            signUpForm.style.display = "block";
+            createOrderForm.style.display = "block";
             //successSignup.style.display = "none";
         }
     })
     .catch(function (error) {
         // Handle network or other errors
         console.error('Error:', error);
-        signUpForm.style.display = "block";
+        createOrderForm.style.display = "block";
         //successSignup.style.display = "none";
     });
 });
@@ -485,48 +482,5 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
  }
 </script>
 
-<!-- <script>
-  function createOrder(user, account_type, amount) {
-    // Define the endpoint URL
-    const endpointUrl = '/api/create_order/'; // Replace with the actual URL of your endpoint
-  
-    // Create the request body data
-    const requestData = {
-      user: user,
-      account_type: account_type,
-      amount: amount,
-    };
-  
-    // Create the fetch request
-    fetch(endpointUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status === 201) {
-          // Order creation was successful (status code 201)
-          return response.json();
-        } else if (response.status === 400 || response.status === 500) {
-          // Bad request or server error (status code 400 or 500)
-          throw new Error('Error in creating the order');
-        } else {
-          // Handle other status codes as needed
-          throw new Error('Unexpected response from the server');
-        }
-      })
-      .then((data) => {
-        // Handle the successful response data (data contains the order details)
-        console.log('Order created successfully:', data);
-      })
-      .catch((error) => {
-        // Handle errors, including bad request and server errors
-        console.error('Error:', error.message);
-      });
-  }
-  
-</script> -->
 </body>
 </html>

@@ -19,7 +19,15 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
-  
+  <style>
+    .countdown {
+    background: #e04800;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 19px;
+}
+  </style>
 </head>
 <body>
   <div class="w-users-userformpagewrap page-wrapper">
@@ -37,17 +45,17 @@
       <div class="signup-nav-bar w-container">
         <div class="signup-menu-block">
           <div class="menu-text">
-            <a href="index.html" class="sign-up-nav-bar-link">Home</a>
+            <a href="./index.php" class="sign-up-nav-bar-link">Home</a>
           </div>
         </div>
-        <div class="signup-menu-block">
+        <!-- <div class="signup-menu-block">
           <div class="menu-text">
             <a href="index.html" class="sign-up-nav-bar-link">Programs</a>
           </div>
-        </div>
+        </div> -->
         <div class="signup-menu-block">
           <div class="menu-text account">
-            <a href="index.html" class="sign-up-nav-bar-link">Account type</a>
+            <a href="./index.php#BuyAccount" class="sign-up-nav-bar-link">Account type</a>
           </div>
         </div>
       </div>

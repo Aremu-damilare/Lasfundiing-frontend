@@ -70,6 +70,25 @@
       }               
 </style>
 
+<style>
+  .toggle-block {
+      display: "";
+  }
+  .toggle-none {
+      display: none;
+  }
+</style>
+
+<style>
+  a#BuyAccount {
+    background: #17b517;
+    padding: 1px;
+    display: block;
+}
+</style>
+
+<link rel="stylesheet" href="./css/scrollbar.css">
+
 </head>
 <body class="body-7">
   <div style="display:none;opacity:0" class="modal-wrapper">
@@ -95,17 +114,18 @@
               <a href="forgot-password.php" class="forgot-pw-wrapper">Forgot Password?</a>
             </div>
           </div><input type="submit" value="Login" data-wait="Please wait..." class="submit-button w-button">
-          <div class="text-block-15">Do not have an account? <a href="./register.php" data-w-id="ba5ec799-8a3d-8ac9-2bc8-5b0ed9ba9c57" class="link">Sign Up</a>
-          </div>
-        </form>
-
-        <div class="mini-loader-container">
+          <div class="mini-loader-container">
           <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
               <g>
                 <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
               </g>        
           </svg>        
-        </div>   
+        </div> 
+          <div class="text-block-15">Do not have an account? <a href="#BuyAccount" data-w-id="ba5ec799-8a3d-8ac9-2bc8-5b0ed9ba9c57" class="link">Sign Up</a>
+          </div>
+        </form>
+
+        
 
         <div class="w-form-done">
           <div>Thank you! Your submission has been received!</div>
@@ -164,7 +184,7 @@
               <li class="mobile-margin-top-10">
                 <div class="nav-button-wrapper">
                   <a data-w-id="39763524-28b0-34c5-f0e4-c2a338dcd4f5" href="#" class="nav-link-2 sign-in login">Sign In</a>
-                  <a href="register.php" class="button-primary nav-bar w-button">Join Now</a>
+                  <a href="#BuyAccount" class="button-primary nav-bar w-button">Join Now</a>
                   <a href="#" class="w-inline-block"><img src="images/cart.svg" loading="lazy" alt="" class="image"></a>
                 </div>
               </li>
@@ -183,8 +203,8 @@
         <h1 class="heading">Your <span>strategy</span>, <br>Your way and we <br>take the risks</h1>
         <p class="margin-bottom-24px">Trade up to $50,000 of our company&#x27;s capital and get paid up to 80% of <br>the profit weekly or monthly. No challenges. No risk for you, we take the losses. <br>Join the team of our successful Traders now.</p>
         <div class="hero-buttons">
-          <a href="register.php" class="button-primary hero-btn w-button">Start Trading</a>
-          <a data-w-id="c17572d0-cd7a-bcef-110c-67d508e0fe86" href="#" class="button-primary transparent login w-button">Log In</a>
+          <a href="#BuyAccount" class="button-primary hero-btn w-button">Start Trading</a>
+          <a id="signin" data-w-id="c17572d0-cd7a-bcef-110c-67d508e0fe86" href="#" class="button-primary transparent login w-button">Log In</a>
         </div>
       </div>
       <div class="hero-wrapper mobile">
@@ -309,6 +329,8 @@
         color: white;
         } 
 
+        
+
     
         tr th:nth-child(2),
         tr th:nth-child(4),
@@ -358,13 +380,15 @@
     </style>
     <style>
         .a-btn.transparent {
-            color: rgba(224, 72, 0, .88);
-            background-color: rgba(0, 0, 0, 0);
-            border: 1px solid rgba(224, 72, 0, .88);
-            /* padding-left: 45px; */
-            /* padding-right: 45px; */
-            /* font-size: 16px; */
-            font-weight: 600;
+          color: rgba(224, 72, 0, .88);
+    place-self: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(224, 72, 0, .88);
+    padding-left: 10px;
+    margin: 4px;
+    padding-right: 13px;
+    /* font-size: 16px; */
+    font-weight: 600;
         }
         
         .a-btn {
@@ -404,31 +428,32 @@
                         align-content: stretch;
                         flex-wrap: wrap;
                         flex-direction: row;
+                        height: 80%;
+                        overflow-y: scroll;
                     }
                     </style>
-                    <div class="start-balance">
-                      <a href="#" class="a-btn transparent  ">$5,000</a>                                            
-                      <a href="#" class="a-btn transparent  ">$10,000</a>
-                      <a href="#" class="a-btn transparent  ">$25,000</a>
+                    <div class="start-balance">                                                                                  
                 </div>                        
                   </div>
               </div>
               <div class='account-type-column'>
-                <div class='account-type-column-account-type-column'>
-                    <div class="mb-2">Set-Up Fee </div>
+                <div class='account-type-column-account-type-column'>                  
+
+                    <div class="">Set-Up Fee </div>
+                    <span class="link"><span class="set-up-fee" ></span> <span>(+VAT)</span>
+                    </span>                
+
                     <div>Starting Monthly Fee</div>
-                  </div>
+                    <span class="link "><span class="starting-monthly-fee" ></span> <span>(+VAT)</span>
+                    </span>
+
+                              
               </div>
-              <div class='account-type-column'>
-                <div class='account-type-column-account-type-column'>                
-                    <div class="link mb-2">$100.99 (+VAT)</div>                
-                    <div class="link">$100.99 (+VAT)</div>
-                  </div>
-              </div>
+              
               <div class='account-type-column'>
                 <div class='account-type-column-account-type-column'>
-                    <div class="mb-2">Get Funded for <span class="link">$25,000</span></div>
-                    <div><a href="#" class="a-btn hero-btn ">Buy Now</a></div>
+                    <div class="mb-2">Get Funded: <span class="link get-funded-for"></span></div>
+                    <div><a href="#" id="BuyAccount" class="a-btn hero-btn ">Buy Now</a></div>
                 </div>
               </div>
             </div>
@@ -442,10 +467,11 @@
                   <th>Step 2</th>
                   <th>Step 3</th>
                   <th>Step 4</th>            
+                  <th>Step 5</th>    
               <tr>  
               </thead>
-              <tbody>
-              <tr>
+              <tbody id="table-body">
+              <!-- <tr>
                   <td>Balance</td>
                   <td>$25,000</td>
                   <td>$50,000</td>
@@ -483,11 +509,11 @@
                   <td>$209.99, <br> if target not met</td>
                   <td>$209.99, <br> if target not met</td>
                   <td>$209.99, <br> if target not met</td>
-              </tr>
-              
+              </tr>               -->
               </tbody>               
           </table>
-        </div>                
+        </div>               
+        
     </div>   
     <div style="text-align: center;">
     <a href="#" class="button-primary hero-btn w-button">Find out about online program</a>
@@ -505,7 +531,7 @@
             <h3 class="heading-8">Verification</h3>
             <p class="pricing-card-text-2">We provide three account sizes for Traders to start with: $5,000, $10,000, $25,000, $50,000 and $100,000.  Choose your account size, select a broker, and you’ll receive login details within 24 hours of purchase! This is the account you’ll begin trading.</p>
           </div>
-          <a href="register.php" class="text-link-arrow-2 first w-inline-block">
+          <a href="#BuyAccount" class="text-link-arrow-2 first w-inline-block">
             <div class="text-block-29">Learn more</div>
             <div class="arrow-embed-2 w-embed"><svg width="12" height="12" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.72 15L16.3472 10.357C16.7732 9.92932 16.7732 9.23603 16.3472 8.80962L11.72 4.16667L10.1776 5.71508L12.9425 8.4889H4.16669V10.6774H12.9425L10.1776 13.4522L11.72 15Z" fill="currentColor"></path>
@@ -518,7 +544,7 @@
             <h3 class="heading-6">Start trading</h3>
             <p class="pricing-card-text-2">Start your trading journey with us today and take advantage of the many opportunites we offer for the forex market. Open an account now and begin your path to financial success.</p>
           </div>
-          <a href="register.php" class="text-link-arrow-2 middle w-inline-block">
+          <a href="#BuyAccount" class="text-link-arrow-2 middle w-inline-block">
             <div class="text-block-30">Learn more</div>
             <div class="arrow-embed-2 w-embed"><svg width="12" height="12" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.72 15L16.3472 10.357C16.7732 9.92932 16.7732 9.23603 16.3472 8.80962L11.72 4.16667L10.1776 5.71508L12.9425 8.4889H4.16669V10.6774H12.9425L10.1776 13.4522L11.72 15Z" fill="currentColor"></path>
@@ -531,7 +557,7 @@
             <h3 class="heading-7">Get Paid</h3>
             <p class="pricing-card-text-2">Our website offers a range of resources to help you get started, including educational, materials, market analysis and a trading platform. <br>Don&#x27;t wait any longer to take control of your financial future. Sign up and start earning the income you deserve</p>
           </div>
-          <a href="register.php" class="text-link-arrow-2 third w-inline-block">
+          <a href="#BuyAccount" class="text-link-arrow-2 third w-inline-block">
             <div class="text-block-31">Learn more</div>
             <div class="arrow-embed-2 w-embed"><svg width="12" height="12" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.72 15L16.3472 10.357C16.7732 9.92932 16.7732 9.23603 16.3472 8.80962L11.72 4.16667L10.1776 5.71508L12.9425 8.4889H4.16669V10.6774H12.9425L10.1776 13.4522L11.72 15Z" fill="currentColor"></path>
@@ -935,7 +961,7 @@
               <div class="rl_footer1_link-list">
                 <div class="rl_footer_column-text">Apply Online</div>
                 <div class="rl_footer1_spacing-block-4"></div>
-                <a data-w-id="a8454ba9-aaca-eaca-df8f-a1abb34ceced" href="register.php" class="button-2 w-button">Trade Now</a>
+                <a data-w-id="a8454ba9-aaca-eaca-df8f-a1abb34ceced" href="#BuyAccount" class="button-2 w-button">Trade Now</a>
               </div>
             </div>
           </div>
@@ -956,34 +982,248 @@
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-
-  <script src="./backend/login.js"></script>
+  
   <script>
-    const accessToken = localStorage.getItem('access_token');
+    // const accessToken = localStorage.getItem('access_token');
+    
 
-    fetch(`${baseUrl}/orders/`, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + accessToken
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log("data", data);
+    // fetch(`${baseUrl}/orders/`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Authorization': 'Bearer ' + accessToken
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log("data", data);
       
-      if (data.code === 'token_not_valid') {
-        console.log("token_not_valid");
+    //   if (data.code === 'token_not_valid') {
+    //     console.log("token_not_valid");
         
-      } else {
-        console.log("Valid");    
-        window.location.href = 'user/dashboard.php';
-      }
+    //   } else {
+    //     console.log("Valid");    
+    //     window.location.href = 'user/dashboard.php';
+    //   }
 
-    })
-    .catch(error => {
-      console.error(error);
-    });
+    // })
+    // .catch(error => {
+    //   console.error(error);
+    // });
   </script>
+
+<script src="./backend/config/_service-worker.js"></script>
+
+<script>                            
+          // Define the URL to make the request to
+        const endpointUrl = `${LOCALHOST_BACKEND_URL}/admin/store/list/`;
+
+        // Create headers object with authorization
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            //'Authorization': 'Bearer ' + accessToken
+        });
+
+        // Create a request object with the headers
+        const request = new Request(endpointUrl, {
+            method: 'GET', // You can adjust the HTTP method as needed (e.g., GET, POST)
+            headers: headers
+        });
+    
+        // Fetch data from the API
+        fetch(request)
+            .then(response => response.json())
+            .then(data => {
+                // Function to populate a table row
+                function populateRow(index, setup_fee, starting_monthly_fee, balance, profitTarget, profitShare, nextStepTarget, accountFee) {
+                  console.log(balance[0])
+                    const tbody = document.querySelector("#table-body");
+                    const row = document.createElement("tr");                    
+                    row.setAttribute("data-account-type-row", balance[0])
+                    row.innerHTML = `     
+                    <td>Balance</td><td>$${balance[0]}</td><td>$${balance[1]}</td><td>$${balance[2]}</td><td>$${balance[3]}</td><td>$${balance[4]}</td>`;                                       
+                    tbody.appendChild(row);
+
+                    const row2 = document.createElement("tr");                    
+                    row2.setAttribute("data-account-type-row", balance[0])
+                    row2.innerHTML += `
+                    <td>Profit target</td><td>${profitTarget[0]}</td><td>${profitTarget[1]}</td><td>${profitTarget[2]}</td><td>${profitTarget[3]}</td><td>${profitTarget[4]}</td>`;
+                    tbody.appendChild(row2);
+
+
+                    const row3 = document.createElement("tr");                    
+                    row3.setAttribute("data-account-type-row", balance[0])
+                    row3.innerHTML += `
+                    <td>Profit Share</td><td>${profitShare[0]}</td><td>${profitShare[1]}</td><td>${profitShare[2]}</td><td>${profitShare[3]}</td><td>${profitShare[4]}</td>`;
+                    tbody.appendChild(row3);
+
+                    const row4 = document.createElement("tr");                    
+                    row4.setAttribute("data-account-type-row", balance[0])
+                    row4.innerHTML += `
+                    <td>Next Step Target</td><td>${nextStepTarget[0]}</td><td>${nextStepTarget[1]}</td><td>${nextStepTarget[2]}</td><td>${nextStepTarget[3]}</td><td>${nextStepTarget[4]}</td>`;
+                    tbody.appendChild(row4);
+
+                    
+                    const row5 = document.createElement("tr");                    
+                    row5.setAttribute("data-account-type-row", balance[0])
+                    row5.innerHTML += `
+                    <td>Account Fee</td><td>${accountFee[0]}</td><td>${accountFee[1]}</td><td>${accountFee[2]}</td><td>${accountFee[3]}</td><td>${accountFee[4]}</td>`;
+                    tbody.appendChild(row5);
+
+                    const startBalance = document.querySelector(".start-balance");
+                    startBalance.innerHTML += `<a href="#" data-account-type="${balance[0]}" class="change-account-type a-btn transparent  ">$${balance[0]}</a>`;
+
+                    const setUpFee = document.querySelector(".set-up-fee");
+                    setUpFee.innerHTML += `<span data-set-up-fee="${balance[0]}"> ${setup_fee} </span>`;
+
+                    const startingMonthlyFee = document.querySelector(".starting-monthly-fee");
+                    startingMonthlyFee.innerHTML += `<span data-set-up-fee="${balance[0]}"> ${starting_monthly_fee} </span>`;
+
+
+                    const getFundedFor = document.querySelector(".get-funded-for");
+                    getFundedFor.innerHTML += `<span data-get-funded-for="${balance[0]}"> $${balance[0]} </span>`;
+
+                }
+        
+
+                // Loop through the API data and populate the table
+                var index = 0;
+                data.forEach(item => {                  
+                    populateRow(index,   
+                        item.setup_fee,                        
+                        item.starting_monthly_fee,
+                        item.balance,
+                        item.profit_target,
+                        item.profit_share,
+                        item.next_step_target,
+                        item.account_fee
+                    );
+                    index++;
+                });
+
+                changeAccountType()
+            })
+            .catch(error => console.error("Error fetching data: ", error));
+</script>
+
+  <script>
+    function changeAccountType(){          
+
+    const changeAccountTypeLinks = document.querySelectorAll(".change-account-type");
+
+    // Add click event listeners to each link
+    changeAccountTypeLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+      
+
+            event.preventDefault();
+
+            // Get the value of the data-account-type attribute
+            const accountType = this.getAttribute("data-account-type");
+              
+            const tableRows = document.querySelectorAll("[data-account-type-row]");
+            const tableSetupFee = document.querySelectorAll("[data-set-up-fee]");
+            const tableStartingMonthlyFee = document.querySelectorAll("[data-starting-monthly-fee]");
+            const tableGetFundedFor = document.querySelectorAll("[data-get-funded-for]");
+
+            const buyNow = document.querySelector("#BuyAccount");
+            buyNow.setAttribute("data-account-type", accountType)
+
+            tableRows.forEach(tableRow => {
+                if (tableRow.getAttribute("data-account-type-row") === accountType) {
+                  tableRow.classList.add("toggle-block");
+                  tableRow.classList.remove("toggle-none");
+                } else {
+                  tableRow.classList.remove("toggle-block");
+                  tableRow.classList.add("toggle-none");
+                }
+            });
+
+            tableSetupFee.forEach(tableRow => {
+              if (tableRow.getAttribute("data-set-up-fee") === accountType) {
+                tableRow.classList.add("toggle-block");
+                tableRow.classList.remove("toggle-none");
+              } else {
+                tableRow.classList.remove("toggle-block");
+                tableRow.classList.add("toggle-none");
+              }
+          });
+
+          tableStartingMonthlyFee.forEach(tableRow => {
+            if (tableRow.getAttribute("data-starting-balance") === accountType) {
+              tableRow.classList.add("toggle-block");
+              tableRow.classList.remove("toggle-none");
+            } else {
+              tableRow.classList.remove("toggle-block");
+              tableRow.classList.add("toggle-none");
+            }
+        });
+
+        tableGetFundedFor.forEach(tableRow => {
+          if (tableRow.getAttribute("data-get-funded-for") === accountType) {
+            tableRow.classList.add("toggle-block");
+            tableRow.classList.remove("toggle-none");
+          } else {
+            tableRow.classList.remove("toggle-block");
+            tableRow.classList.add("toggle-none");
+          }
+      });
+        });
+    });
+  }
+  
+</script>
+
+<script>
+  // Function to check for the element and click it when found
+  function checkAndClickElement() {
+    const elementToClick = document.querySelector('a[data-account-type="5000"]');
+    if (elementToClick) {
+        elementToClick.click();
+        clearInterval(intervalId); // Stop checking once the element is found and clicked
+    }
+  }
+
+  // Set an interval to check for the element every 100 milliseconds (adjust as needed)
+  const intervalId = setInterval(checkAndClickElement, 100);
+
+</script>
+
+<script>
+  // Get the button element by its id
+  var buyButton = document.getElementById('BuyAccount');
+
+  // Add a click event listener to the button
+  buyButton.addEventListener('click', function(event) {
+      // Prevent the default behavior of the anchor tag (preventing the page from reloading)
+      event.preventDefault();
+
+      // Get the value of the "data-account-type" attribute
+      var accountTypeValue = buyButton.getAttribute('data-account-type');
+
+      // Check if the "data-account-type" attribute exists and has a value
+      if (accountTypeValue !== null) {
+          // Redirect the user to the register.php page with the account_type parameter
+          window.location.href = 'register.php?account_type=' + encodeURIComponent(accountTypeValue);
+      } else {
+          // Handle the case where the attribute doesn't exist or has no value
+          // You can display an error message or take other appropriate action
+      }
+  });
+
+</script>
+
+
+<script src="./backend/SignInIfURLId.js"></script>
+<script>   
+   const result = SignInIfURLId("signin");
+  if (result) {
+    console.log("Clicked on signin");
+  } else {
+    console.log("No '#signin' in the URL or element not found.");
+  }
+</script>
+
+<script src="./backend/login.js"></script>
 
 </body>
 </html>

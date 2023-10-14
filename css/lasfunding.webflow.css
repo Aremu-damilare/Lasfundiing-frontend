@@ -2795,8 +2795,10 @@ label {
 }
 
 .link-3.grey.w--current {
-  color: #384853;
+  color: white;
+  font-weight: bolder;
 }
+
 
 .fake-token-input {
   width: 50px;
@@ -2915,7 +2917,8 @@ label {
 }
 
 .rl_navbar2_dropdown-link.w--current {
-  color: #000;
+  color: white;
+  font-weight: bolder;
 }
 
 .rl_navbar2_dropdown-list.w--open {
@@ -2960,7 +2963,8 @@ label {
 }
 
 .rl_navbar2_link.w--current {
-  color: #000;
+  color: white;
+  font-weight: bolder;
 }
 
 .rl_navbar2_menu {
@@ -3448,7 +3452,8 @@ label {
 }
 
 .rl_navbar1_dropdown-link.w--current {
-  color: #000;
+  color: white;
+  font-weight: bolder;
 }
 
 .rl_navbar1_dropdown-list.w--open {
@@ -3500,7 +3505,8 @@ label {
 }
 
 .rl_navbar1_link.w--current {
-  color: #000;
+  color: white;
+  font-weight: bolder;
 }
 
 .rl_navbar1_link.dashboard {
@@ -3635,7 +3641,8 @@ label {
 }
 
 .rl_navbar1_link-2.w--current {
-  color: #000;
+  color: white;
+  font-weight: bolder;
 }
 
 .rl_navbar1_container-2 {
@@ -5041,8 +5048,7 @@ label {
   font-weight: 600;
 }
 
-.profile-section {
-  height: 150vh;
+.profile-section {  
   margin-left: 272px;
   margin-right: 20px;
   padding-left: 10px;
@@ -10219,4 +10225,12 @@ label {
   }
 }
 
+.current-page{
+  color: white;
+  background-color: #e04800;
+  padding-bottom: 10px;
+}
 
+.payment-type {
+  place-self: center;
+}

@@ -1,8 +1,5 @@
-// const submit = document.querySelector('#email-form > input.submit-button.w-button');
 const loginForm = document.querySelector('#email-form > input.submit-button.w-button');
 const miniLoaderContainer = document.querySelector('.mini-loader-container')
-const baseUrl = "https://lasfunding.com:8080"
-
 
 loginForm.addEventListener('click', (event) => {
   miniLoaderContainer.style.display = 'flex'
@@ -24,42 +21,42 @@ loginForm.addEventListener('click', (event) => {
     body: JSON.stringify({ email: email, password: password })
   })
   .then(response => {
-    if (response.ok) {
-      // Redirect to a new page or do something else
-      
-      response.json().then(data => {
-        console.log("response.ok data",data)
+      if (response.ok) {
+        // Redirect to a new page or do something else
+        
+        response.json().then(data => {
+          console.log("response.ok data",data)
           localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('refresh_token', data.refresh_token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-      })
-      errorMessage.style.display = 'none';
-      successMessage.style.display = 'block';
-       
-      
-      setTimeout(function() {
-        window.location.href = 'user/dashboard.html';
-      }, 2000);
-    } else {
-      miniLoaderContainer.style.display = 'none'
-      response.json().then(data => {
-        console.log("response", data)         
-        
-        errorMessage.style.display = 'block';
-        successMessage.style.display = 'none';
+          localStorage.setItem('refresh_token', data.refresh_token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+        })
+        errorMessage.style.display = 'none';
+        successMessage.style.display = 'block';
         
         
-        let errorHtml = '';
-        for (const key in data) {
-          const errorMessages = data[key];
-          for (const errorMessage of errorMessages) {
-            errorHtml += `${key}: ${errorMessage}<br>`;
+        setTimeout(function() {
+          window.location.href = 'user/dashboard.php';
+        }, 2000);
+      } else {
+        miniLoaderContainer.style.display = 'none'
+        response.json().then(data => {
+          console.log("response", data)         
+          
+          errorMessage.style.display = 'block';
+          successMessage.style.display = 'none';
+          
+          
+          let errorHtml = '';
+          for (const key in data) {
+            const errorMessages = data[key];
+            for (const errorMessage of errorMessages) {
+              errorHtml += `${key}: ${errorMessage}<br>`;
+            }
           }
-        }
-        errorMessage.innerHTML = errorHtml;
-        throw new Error('Error signing in');
-      })
-    }
+          errorMessage.innerHTML = errorHtml;
+          throw new Error('Error signing in');
+        })
+      }
   })
   .catch(error => {
     miniLoaderContainer.style.display = 'none'

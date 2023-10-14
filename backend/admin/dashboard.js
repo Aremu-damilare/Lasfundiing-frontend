@@ -49,8 +49,7 @@ function getAllUserData(){
     console.log("user", data);
     
     if(data.user){
-      console.log("data.user", data.user);    
-      firstNameElement.textContent = data.user ? `${data.user.first_name}!` : 'first name';
+      console.log("data.user", data.user);          
       profileName.textContent = data.user ? `${data.user.first_name} ${data.user.last_name}` : 'first name last name';
       profileEmail.textContent = data.user ? `${data.user.email}` : 'email@email';
       userData = data.user
@@ -63,7 +62,7 @@ function getAllUserData(){
 
 
 
-  fetch(`${baseUrl}/orders/`, {
+  fetch(`${baseUrl}/admin/store/transactions/`, {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + accessToken
@@ -71,78 +70,49 @@ function getAllUserData(){
   })
   .then(response => response.json())
   .then(data => {
-    console.log("orders", data);
-      
+    
+    if(data.length === 0){
+      console.log("No transactions", data);
+      transactionsTable.style.display = 'none'
+      noTransactionsTable.style.display = 'block'
+    } else {
+      console.log("Transactions", data);
+      transactionsTable.style.display = 'grid'
+      noTransactionsTable.style.display = 'none'
+
+      data.forEach(element => {
+        console.log(element)
+        transactionsTable.innerHTML += `
+      <div id="" class="status">
+        <div id="" class="${element.status}"><img src="../images/transactions-status/${element.status}.svg" loading="lazy" alt="" class="status-icon">
+          <div class="text-block-63">${element.status}</div>
+        </div>
+      </div>
+      <div id="" class="payment-type">
+        <div class="text-block-62">${element.card_type}  **** ${element.card_last_4_digits}</div>
+        <div class="text-block-61">${element.payment_method}</div>
+      </div>
+      <div id="" class="amount">
+        <div class="text-block-64">$${element.amount}</div>
+      </div>
+      <div id="" class="date">
+        <div class="text-block-65">${formatDate(element.created_at)}</div>
+      </div>`
+
+      });
+    }
+    
   })
   .catch(error => {
     console.error(error);
   });
 
+
+  console.log("xxxxxxxxxxxxxxxxxxxxx")
   setDisplay(true)
 
 }
 
-function orderData(data){
-  if (data === null || data === undefined || data.length === 0) {
-    console.log("The data variable is empty.");
-    // Remove all existing elements inside analyzerSection
-    while (analyzerSection.firstChild) {
-      analyzerSection.removeChild(analyzerSection.firstChild);
-    }
-
-    // Create and append new elements
-    const span1 = document.createElement("span");
-    if (userData) {
-      span1.textContent = `Hello ${userData.first_name} ${userData.last_name}`;
-    } else {
-      span1.textContent = "Hello, User";
-    }
-    analyzerSection.appendChild(span1);
-
-    const span2 = document.createElement("span");
-    span2.innerHTML = `From your account dashboard, you can view your 
-    <a href="../user/orders.html">recent orders</a>, 
-    manage your <a href="#">billing address</a>, and <a href="#">
-    edit your password and account details.</a>`;
-    analyzerSection.appendChild(span2);
-  } else {
-    console.log("The data variable is not empty.");    
-
-  }
-}
-
-function transactionData(data){
-  if(data.length === 0){
-    console.log("No transactions", data);
-    transactionsTable.style.display = 'none'
-    noTransactionsTable.style.display = 'block'
-  } else {
-    console.log("Transactions", data);
-    transactionsTable.style.display = 'grid'
-    noTransactionsTable.style.display = 'none'
-
-    data.forEach(element => {
-      console.log(element)
-      transactionsTable.innerHTML += `
-    <div id="" class="status">
-      <div id="" class="${element.status}"><img src="../images/transactions-status/${element.status}.svg" loading="lazy" alt="" class="status-icon">
-        <div class="text-block-63">${element.status}</div>
-      </div>
-    </div>
-    <div id="" class="payment-type">
-      <div class="text-block-62">${element.card_type}  **** ${element.card_last_4_digits}</div>
-      <div class="text-block-61">${element.payment_method}</div>
-    </div>
-    <div id="" class="amount">
-      <div class="text-block-64">$${element.amount}</div>
-    </div>
-    <div id="" class="date">
-      <div class="text-block-65">${formatDate(element.created_at)}</div>
-    </div>`
-
-    });
-  }
-}
 
 function setDisplay(state){
   if(state == true){

@@ -127,25 +127,26 @@
   <div class="topbar">
 	  <div class="logo">
 		<a href="#"><img src="../images/Lasfund-Logo.svg" alt="Logo"></a>
+    Admin
 	  </div>
     
     <!-- navbar search form -->
-	  <div class="search-container">
+	  <!-- <div class="search-container">
       <form action="#">
         <span class="search-container-border">
         <input type="text" placeholder="Search...">
         <button type="submit"><i class="fa fa-search"></i></button>
       </span>
       </form>
-    </div>
+    </div> -->
     <!-- navbar search form end-->
 
     
     <!-- notification icons -->
-    <div class="notification">
+    <!-- <div class="notification">
       <span class="navbar-item-notification"><i class="fa fa-envelope"></i>  </span>
       <span class="navbar-item-notification"> <i class="fa fa-bell"></i>  </span>
-    </div>
+    </div> -->
     <!-- notification icons end-->
 
 
@@ -159,14 +160,6 @@
 	  </div>
     <!-- profile end -->
 
-    <!-- cart icon -->
-    <div class="cart-icon">
-      <!-- <i class="fa fa-shopping-cart"></i> -->
-      <span class="cart-count">0</span>
-      <a href="./account-type.html" class="w-inline-block">
-        <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-    </div>
-    <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
 	</div>
@@ -192,31 +185,40 @@
             <a href="#" style="color: #E04800;font-style: oblique;"  class="rl_navbar1_link w-nav-link"> Dashboard <img src="../images/icons/CaretRight.svg" alt="" srcset=""></a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Ticket </a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="">
+            <a href="./tickets.php" class="rl_navbar1_link w-nav-link">Ticket </a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
+          
+          <div class="right-navbar-link">
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>           
+            <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
+          </div>
+
+          <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="">
             <a href="#" class="rl_navbar1_link w-nav-link">Users</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/CurrencyCircleDollar.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Manage plan</a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/CurrencyCircleDollar.svg" loading="lazy" alt="" class="">
+            <a href="./manage-plans.php" class="rl_navbar1_link w-nav-link">Manage plan</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/ArrowBendUpLeft.svg" loading="lazy" alt="" class="sign-out-icon">
+          <div class="right-navbar-link"><img src="../images/icons/admin/ArrowBendUpLeft.svg" loading="lazy" alt="" class="">
             <a href="#" class="rl_navbar1_link w-nav-link">Withdrawal</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="sign-out-icon">
+          <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="">
             <a href="#" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
           
-          <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="sign-out-icon">
+          <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="">
             <a href="#" class="rl_navbar1_link w-nav-link">Settings</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
+          <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="">
             <a href="#" class="rl_navbar1_link w-nav-link">Sign up</a>
           </div>
 
@@ -287,13 +289,13 @@
           <div class="table-header-wrapper">
             <div class="table-header">Transactions</div>
             <a href="#" class="link-block w-inline-block">
-              <div class="text-block-58">See All Transactions</div><img src="http://127.0.0.1:5500/images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13">
+              <div class="text-block-58">See All Transactions</div><img src="../images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13">
             </a>
           </div>
           <div class="transaction-table">
 
             <div id="" class="status">
-              <div id="" class="completed"><img src="http://127.0.0.1:5500/images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
+              <div id="" class="completed"><img src="../images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
                 <div class="text-block-63">Completed</div>
               </div>
             </div>
@@ -309,7 +311,7 @@
             </div>
 
             <div class="status">
-              <div id="" class="pending"><img src="http://127.0.0.1:5500/images/Ellipse-8-1.svg" loading="lazy" alt="" class="status-icon">
+              <div id="" class="pending"><img src="../images/Ellipse-8-1.svg" loading="lazy" alt="" class="status-icon">
                 <div class="text-block-60">Pending</div>
               </div>
             </div>            
@@ -325,7 +327,7 @@
             </div>
 
             <div class="status">
-              <div id="" class="pending"><img src="http://127.0.0.1:5500/images/Ellipse-8-1.svg" loading="lazy" alt="" class="status-icon">
+              <div id="" class="pending"><img src="../images/Ellipse-8-1.svg" loading="lazy" alt="" class="status-icon">
                 <div class="text-block-60">Pending</div>
               </div>
             </div>            
@@ -341,7 +343,7 @@
             </div>
 
             <div id="" class="status">
-              <div id="" class="canceled"><img src="http://127.0.0.1:5500/images/Ellipse-8-2.svg" loading="lazy" alt="" class="status-icon">
+              <div id="" class="canceled"><img src="../images/Ellipse-8-2.svg" loading="lazy" alt="" class="status-icon">
                 <div class="text-block-59">Canceled</div>
               </div>
             </div>
@@ -357,9 +359,9 @@
             </div>
 
           </div>
-          <!-- <div class="no-transaction-table" style="text-align: center;">
+          <div class="no-transaction-table" style="text-align: center;">
             <div>No Transactions!</div>
-          </div> -->
+          </div>
 
         </div>
     </div>
@@ -368,7 +370,7 @@
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  <script src="../backend/dashboard.js"></script>
+  <!-- <script src="../backend/admin/dashboard.js"></script> -->
   
   <script>
     const ctx = document.getElementById('myChart');

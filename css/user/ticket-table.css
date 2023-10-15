@@ -5587,7 +5587,7 @@
           
           .slds-table--bordered td,
           .slds-table--bordered th {
-           /*  border-top: 1px solid #d8dde6; */
+             border-top: 1px solid #d8dde6; 
          }
           
           .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover > td,

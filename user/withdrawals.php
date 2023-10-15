@@ -437,11 +437,11 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.91507 13.8682L15.0865 8.26823M9.42938 8.7349H9.43967M14.5722 13.4016H14.5825M19.2008 20.4016V5.46823C19.2008 4.4373 18.2798 3.60156 17.1436 3.60156H6.85792C5.72179 3.60156 4.80078 4.4373 4.80078 5.46823V20.4016L8.40078 18.5349L12.0008 20.4016L15.6008 18.5349L19.2008 20.4016ZM9.94364 8.7349C9.94364 8.99263 9.71338 9.20156 9.42935 9.20156C9.14532 9.20156 8.91507 8.99263 8.91507 8.7349C8.91507 8.47716 9.14532 8.26823 9.42935 8.26823C9.71338 8.26823 9.94364 8.47716 9.94364 8.7349ZM15.0865 13.4016C15.0865 13.6593 14.8562 13.8682 14.5722 13.8682C14.2882 13.8682 14.0579 13.6593 14.0579 13.4016C14.0579 13.1439 14.2882 12.9349 14.5722 12.9349C14.8562 12.9349 15.0865 13.1439 15.0865 13.4016Z" stroke="#8e8b8a" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>                  
-                <a href="./Withdrawals.php" class="rl_navbar1_link w-nav-link" >Withdrawals </a>
+                <a href="./tickets.php" class="rl_navbar1_link w-nav-link" >Tickets </a>
               </div>
-              <div class="right-navbar-link"><img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon">
+              <!-- <div class="right-navbar-link"><img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon">
                 <a href="./payment-methods.php" class="rl_navbar1_link w-nav-link">Payment Method</a>
-              </div>
+              </div> -->
             </div>
             <div class="right-navbar-wrapper">
               <div class="text-block-36">PERSONAL</div>
@@ -552,7 +552,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                         </label>
                     </th>
                     <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Priority
+                      <div class="slds-truncate">Amount
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
                               <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
@@ -561,16 +561,16 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                           </button>
                       </div>
                     </th>
-                    <th class="slds-is-sortable" scope="col">
+                    <!-- <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Department
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
                             </svg>
                             <span class="slds-assistive-text">Sort</span>
                           </button>
                       </div>
-                    </th>
+                    </th> -->
                   
                     <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Status
@@ -582,16 +582,16 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                           </button>
                       </div>
                     </th>
-                    <th class="slds-is-sortable" scope="col">
+                    <!-- <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Subject
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
                             </svg>
                             <span class="slds-assistive-text">Sort</span>
                           </button>
                       </div>
-                    </th>
+                    </th> -->
                     <!-- <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Amount
                         <button class="slds-button slds-button--icon-bare">
@@ -819,20 +819,20 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             <span class="slds-assistive-text">Select Row</span>
         </label>`      
 
-        priority = document.createElement("td");
-        priority.setAttribute("data-withdrawal-id", withdrawal.id);      
-        priority.innerHTML = `${withdrawal.priority}`
+        amount = document.createElement("td");
+        amount.setAttribute("data-withdrawal-id", withdrawal.id);      
+        amount.innerHTML = `$${withdrawal.amount}`
 
-        department = document.createElement("td");
-        department.innerHTML = `${withdrawal.department}`
+        // department = document.createElement("td");
+        // department.innerHTML = `${withdrawal.department}`
 
 
         statusCol = document.createElement("td");
         statusCol.innerHTML = withdrawal.status
 
 
-        subject = document.createElement("td");
-        subject.innerHTML = withdrawal.subject
+        // subject = document.createElement("td");
+        // subject.innerHTML = withdrawal.subject
 
 
         dateCol = document.createElement("td");
@@ -841,10 +841,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
         // Append cells to the row
         row.appendChild(checkboxCell);
-        row.appendChild(priority);
-        row.appendChild(department);
+        row.appendChild(amount);
+        // row.appendChild(department);
         row.appendChild(statusCol);
-        row.appendChild(subject);
+        // row.appendChild(subject);
         row.appendChild(dateCol);
         // ... Append other cells to the row ...
 

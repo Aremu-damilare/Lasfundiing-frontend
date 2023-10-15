@@ -449,9 +449,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           </svg>                  
         <a href="./tickets.php" class="rl_navbar1_link w-nav-link" >Tickets </a>
       </div>
-      <div class="right-navbar-link"><img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon">
+      <!-- <div class="right-navbar-link"><img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon">
         <a href="./payment-methods.php" class="rl_navbar1_link w-nav-link">Payment Method</a>
-      </div>
+      </div> -->
     </div>
     <div class="right-navbar-wrapper">
       <div class="text-block-36">PERSONAL</div>

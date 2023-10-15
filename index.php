@@ -126,7 +126,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               </g>        
           </svg>        
         </div> 
-          <div class="text-block-15">Do not have an account? <a href="#BuyAccount" data-w-id="ba5ec799-8a3d-8ac9-2bc8-5b0ed9ba9c57" class="link">Sign Up</a>
+          <div class="text-block-15">Do not have an account? <a href="#BuyAccount"  class="link">Sign Up</a>
           </div>
         </form>
 
@@ -141,7 +141,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       </div>
     </div>
 
-    <div style="display:none" class="form-container sign-up w-container">
+    <!-- <div style="display:none" class="form-container sign-up w-container">
       <div class="form-block w-form">
         <div class="modal-header">
           <div class="form-header">Sign Up</div>
@@ -165,7 +165,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           <div>Oops! Something went wrong while submitting the form.</div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="navbar-no-shadow wf-section">
     <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-no-shadow-container w-nav">

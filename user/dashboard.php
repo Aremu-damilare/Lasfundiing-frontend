@@ -331,10 +331,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               </svg>
               <a href="./tickets.php" class="rl_navbar1_link w-nav-link"> Tickets </a>
             </div>
-            <div class="right-navbar-link">
+            <!-- <div class="right-navbar-link">
               <img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon" />
               <a href="./payment-methods.php" class="rl_navbar1_link w-nav-link"> Payment Method</a>
-            </div>
+            </div> -->
           </div>
           <div class="right-navbar-wrapper">
             <div class="text-block-36">PERSONAL</div>
@@ -385,15 +385,15 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         <div class="left-block">
           <!-- <img src="../images/Stock-chart.svg" loading="lazy" alt="" class="image-12"> -->
           <div class="four-box-container">
-            <div class="box" id="box-a">A</div>
-            <div class="box" id="box-b">B</div>
-            <div class="box" id="box-c">C</div>
-            <div class="box" id="box-d">D</div>
+            <div class="box" id="box-a">N/A</div>
+            <div class="box" id="box-b">N/A</div>
+            <div class="box" id="box-c">N/A</div>
+            <div class="box" id="box-d">N/A</div>
           </div>
           <div class="transaction-card">
             <div class="table-header-wrapper">
               <div class="table-header">Transactions</div>
-              <a href="#" class="link-block w-inline-block">
+              <a href="./orders.php" class="link-block w-inline-block">
                 <div class="text-block-58">See All Transactions</div>
                 <img src="../images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13" />
               </a>

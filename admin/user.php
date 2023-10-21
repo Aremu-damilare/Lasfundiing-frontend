@@ -3,7 +3,7 @@
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
-  <title>Tickets - lasfunding</title>
+  <title>User detail - lasfunding</title>
   <meta content="Dashboard" property="og:title">
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -99,7 +99,12 @@
         width: 90px;
         height: 90px;
     }
-  </style>  
+  </style> 
+  
+ 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="../backend/config/toast.js"></script>
   <link rel="stylesheet" href="./css/ticket-table.css">
 
 </head>
@@ -187,7 +192,7 @@
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Tickets </a>
+            <a href="./tickets.php"  class="rl_navbar1_link w-nav-link">Tickets </a>
           </div>
           
           <div class="right-navbar-link">
@@ -195,11 +200,11 @@
                 <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>           
-            <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
+            <a href="./orders.php"   class="rl_navbar1_link w-nav-link">Orders </a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./users.php" class="rl_navbar1_link w-nav-link">Users</a>
+            <a href="./users.php"  style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Users</a>
           </div>
 
           <div class="right-navbar-link">
@@ -219,10 +224,7 @@
           <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="./kycs.php" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
-          
-          <!-- <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./settings.php class="rl_navbar1_link w-nav-link">Settings</a>
-          </div> -->
+                  
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
@@ -244,152 +246,203 @@
   </div>
 
   <div class="main-section" style="display: none">
-    <div class="gradient-header">      
-      <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Tickets</span>        
+    <div class="main-section-real">
+      <div class="gradient-header">      
+        <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
+          <span>User detail #<span id="id"></span> </span>        
+        </div>        
       </div>
-      <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
-    </div>
-    <div class="analyzer-section dashboard wf-section" style="display: block;">
+
+      <div class="analyzer-section dashboard wf-section" style="display: block;">      
+        <div class="info-container">                    
+          
+        <p class="info-block"><span class="info-label">Address</span><span id="address"></span></p>
+        <p class="info-block"><span class="info-label">City</span><span id="city"></span></p>
+        <p class="info-block"><span class="info-label">Country</span><span id="country"></span></p>
+        <p class "info-block"><span class="info-label">Currency</span><span id="currency"></span></p>
+        <p class="info-block"><span class="info-label">Date Joined</span><span id="date_joined"></span></p>
+        <p class="info-block"><span class="info-label">Email</span><span id="email"></span></p>
+        <p class="info-block"><span class="info-label">First Name</span><span id="first_name"></span></p>
+        <p class="info-block"><span class="info-label">ID</span><span id="id"></span></p>
+        <p class="info-block"><span class="info-label">Is Active</span><span id="is_active"></span></p>
+        <!-- <p class="info-block"><span class="info-label">Is Staff</span><span id="is_staff"></span></p>
+        <p class="info-block"><span class="info-label">Is Superuser</span><span id="is_superuser"></span></p> -->
+        <p class="info-block"><span class="info-label">Last Login</span><span id="last_login"></span></p>
+        <p class="info-block"><span class="info-label">Last Name</span><span id="last_name"></span></p>
+        <!-- <p class="info-block"><span class="info-label">Password</span><span id="password"></span></p> -->
+        <p class="info-block"><span class="info-label">Phone</span><span id="phone"></span></p>
+        <p class="info-block"><span class="info-label">State</span><span id="state"></span></p>
+        <!-- <p class="info-block"><span class="info-label">User Permissions</span><span id="user_permissions"></span></p> -->
+        <!-- <p class="info-block"><span class="info-label">Username</span><span id="username"></span></p> -->
+        <p class="info-block"><span class="info-label">Zip Code</span><span id="zip_code"></span></p>
+        
+        <form method="post" id="adminModelForm" >
+
+
+        <label for="active" style="place-self: center;">Active</label>
+        <input type="checkbox" name="active" id="active" class=" w-input" value="true">
+
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" id="first_name" maxlength="100" placeholder="First Name" class=" w-input">
+
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" id="last_name" maxlength="100" placeholder="Last Name" class=" w-input">
+<!-- 
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address" maxlength="100" placeholder="Address" class=" w-input">         
+
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" maxlength="50" placeholder="City" class=" w-input">
       
+        <label for="state">State</label>
+        <input type="text" name="state" id="state" maxlength="50" placeholder="State" class=" w-input">
         
-        <div style="overflow-x: auto;">
-          <table class="slds-table slds-table--bordered">
-              <thead>
-                <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select All</span>
-                      </label>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Activity
-                      <button class="slds-button slds-button--icon-bare">                        
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">User
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">                         
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Subject
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                 
-                  <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Date
-                        <button class="slds-button slds-button--icon-bare">                         
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
-                      </div>
-                    </th>
-                  <th class="slds-cell-shrink"></th>
-                </tr>
-              </thead>
-              <tbody>                
-                
-              </tbody>
-          </table>
-        </div>
-        
+        <label for="zip_code">Zip Code</label>
+        <input type="text" name="zip_code" id="zip_code" maxlength="10" placeholder="Zip Code" class=" w-input">         
+
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" maxlength="30" placeholder="Phone" class=" w-input">
+
+        <label for="country">Country</label>
+        <input type="text" name="country" id="country" maxlength="30" placeholder="Country" class=" w-input"> -->
+
+    
+        <!-- <label for="currency">Currency</label>
+        <select name="currency" id="currency" class=" w-input">
+            <option value="NGN">NGN</option>
+            <option value="USD">USD</option>
+        </select> -->
+
+        <br>
+
+        <input type="submit" value="Submit" class="submit-button w-button">
+    </form>
+      </div>        
+
+      </div>  
     </div>
-  
   </div>
 
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script src="../backend/admin/config.js"></script>
-  <script src="../backend/admin/getTickets.js"></script>
+  <script src="../backend/admin/getUsers.js"></script>
 
   <script>
-    async function main() {    
+    const idElement = document.querySelector("#id");
+    const address = document.querySelector("#address");
+    const city = document.querySelector("#city");
+    const country = document.querySelector("#country");
+    const currency = document.querySelector("#currency");
+    const date_joined = document.querySelector("#date_joined");
+    const email = document.querySelector("#email");
+    const first_name = document.querySelector("#first_name");
+    const id = document.querySelector("#id");
+    const is_active = document.querySelector("#is_active");
+    // const is_staff = document.querySelector("#is_staff");
+    // const is_superuser = document.querySelector("#is_superuser");
+    const last_login = document.querySelector("#last_login");
+    const last_name = document.querySelector("#last_name");
+    const password = document.querySelector("#password");
+    const phone = document.querySelector("#phone");
+    const state = document.querySelector("#state");
+    // const user_permissions = document.querySelector("#user_permissions");
+    // const username = document.querySelector("#username");
+    const zip_code = document.querySelector("#zip_code");
 
-    const tickets = await getTickets(baseUrl, accessToken);
+    async function main() {
+      // Get the user ID from the query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get("id");
+    
+      // Check if userId exists and is an integer
+      if (userId && !isNaN(userId) && Number.isInteger(Number(userId))) {
+        const user = await getUser(baseUrl, accessToken, parseInt(userId));
+    
+        if (user) {
+          userUpdateForm(user.id)
+          console.log("user...", user)
+          idElement.innerHTML = `${user.id}`;
 
-    if (tickets) {
-      console.log('Tickets:', tickets);
+          
+          address.innerHTML = `${user.address}`;
+          city.innerHTML = `${user.city}`;
+          country.innerHTML = `${user.country}`;
+          currency.innerHTML = `${user.currency}`;
+          date_joined.innerHTML = `${formatDate(user.date_joined)}`;
+          email.innerHTML = `${user.email}`;
+          first_name.innerHTML = `${user.first_name}`;
+          id.innerHTML = `${user.id}`;
+          is_active.innerHTML = `${user.is_active}`;
+          // is_staff.innerHTML = `${user.is_staff}`;
+          // is_superuser.innerHTML = `${user.is_superuser}`;
+          last_login.innerHTML = `${formatDate(user.last_login)}`;
+          last_name.innerHTML = `${user.last_name}`;
+          // password.innerHTML = `${user.password}`;
+          phone.innerHTML = `${user.phone}`;
+          state.innerHTML = `${user.state}`;
+          // user_permissions.innerHTML = `${user.user_permissions}`;
+          // username.innerHTML = `${user.username}`;
+          zip_code.innerHTML = `${user.zip_code}`;
 
-
-
-    var tbody = document.querySelector('tbody'); 
-
-
-    tickets.forEach(function(ticket) {
-      var row = document.createElement('tr');
-      
-      // Create and append the "Select Row" cell
-      var selectCell = document.createElement('td');
-      selectCell.className = 'slds-cell-shrink';
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = 'options';
-      var checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'slds-checkbox';
-      checkboxLabel.appendChild(checkbox);
-      checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
-      selectCell.appendChild(checkboxLabel);
-      row.appendChild(selectCell);
-
-      
-      var opportunityCell = document.createElement('th');
-      opportunityCell.className = 'slds-truncate';
-      opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./ticket.php?id=${ticket.id}"> ${ticket.id}<br> ${ticket.priority} </a>`;
-      row.appendChild(opportunityCell);
-
-      var accountCell = document.createElement('td');
-      accountCell.className = 'slds-truncate';
-      accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${ticket.user.email}`;
-      row.appendChild(accountCell);
-
-      var statusCell = document.createElement('td');
-      statusCell.className = '';
-      statusCell.setAttribute('data-label', 'Confidence');
-      statusCell.innerHTML = ticket.status;
-      row.appendChild(statusCell);
-
-      var descriptionCell = document.createElement('td');
-      descriptionCell.className = '';
-      descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = ticket.subject;
-      row.appendChild(descriptionCell);
-
-      var dateCell = document.createElement('td');
-      dateCell.className = '';
-      dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(ticket.updated_at);
-      row.appendChild(dateCell);
-      
-      tbody.appendChild(row);
-    });
-
-    } else {
-      console.log('Failed to retrieve tickets.');
+        } else {
+          console.log('Failed to retrieve the user.');
+        }
+      } else {
+        console.log('Invalid or missing user ID in the query parameter.');
+      }
     }
-  }
 
-  main();
+main();
+  </script>
 
+  <script>
+      function formatDate(inputDate) {
+        // Parse the input date string into a Date object
+        const date = new Date(inputDate);
+      
+        // Define options for formatting the date and time
+        const options = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          timeZoneName: 'short'
+        };
+      
+        // Format the date using the options
+        const formattedDate = date.toLocaleString('en-US', options);
+      
+        return formattedDate;
+      }
+  </script>
+
+  <script>
+    async function userUpdateForm(userId) {
+      const form = document.getElementById('adminModelForm');
+      form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          // Extract data from the form fields
+          const formData = new FormData(form);
+          console.log("formData", formData);
+
+          // Call the updateUser function and wait for the response
+          const userUpdate = await updateUser(baseUrl, accessToken, parseInt(userId), formData);
+          console.log("userUpdate", userUpdate);
+
+          if (userUpdate !== false) {
+            console.log("userUpdate not false", userUpdate);
+            toastSuccessNotif("Success")
+          } else {
+            console.log("userUpdate false", userUpdate);
+            toastErrorNotif("Success")
+          }
+      });
+    }
   </script>
 
 </body>

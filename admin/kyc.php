@@ -3,7 +3,7 @@
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
-  <title>Tickets - lasfunding</title>
+  <title>KYCs detail - lasfunding</title>
   <meta content="Dashboard" property="og:title">
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -99,9 +99,13 @@
         width: 90px;
         height: 90px;
     }
-  </style>  
+  </style> 
+     
   <link rel="stylesheet" href="./css/ticket-table.css">
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="../backend/config/toast.js"></script>
 </head>
 <body class="dashboard-body">
   
@@ -187,7 +191,7 @@
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Tickets </a>
+            <a href="./tickets.php"  class="rl_navbar1_link w-nav-link">Tickets </a>
           </div>
           
           <div class="right-navbar-link">
@@ -195,11 +199,11 @@
                 <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>           
-            <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
+            <a href="./orders.php"   class="rl_navbar1_link w-nav-link">Orders </a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./users.php" class="rl_navbar1_link w-nav-link">Users</a>
+            <a href="./user.php"  class="rl_navbar1_link w-nav-link">Users</a>
           </div>
 
           <div class="right-navbar-link">
@@ -213,16 +217,13 @@
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/ArrowBendUpLeft.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
+            <a href="./withdrawals.php"   class="rl_navbar1_link w-nav-link">Withdrawals</a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./kycs.php" class="rl_navbar1_link w-nav-link">KYC</a>
+            <a href="./kycs.php" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
-          
-          <!-- <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./settings.php class="rl_navbar1_link w-nav-link">Settings</a>
-          </div> -->
+                  
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
@@ -244,153 +245,118 @@
   </div>
 
   <div class="main-section" style="display: none">
-    <div class="gradient-header">      
-      <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Tickets</span>        
+    <div class="main-section-real">
+      <div class="gradient-header">      
+        <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
+          <span>KYCs detail #<span id="id"></span> </span>        
+        </div>        
       </div>
-      <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
+
+      <div class="analyzer-section dashboard wf-section" style="display: block;">      
+        <div class="info-container">                    
+          
+        <p class="info-block"><span class="info-label">File 1(front)</span><span id="file1"></span></p>
+        <p class="info-block"><span class="info-label">File 2(back)</span><span id="file2"></span></p>
+        <p class="info-block"><span class="info-label">Document</span><span id="type"></span></p>
+        <p class="info-block"><span class="info-label">Status</span><span id="status"></span></p>
+        <p class="info-block"><span class="info-label">Last updated</span><span id="lastUpdated"></span></p>
+        <p class="info-block"><span class="info-label">Date created</span><span id="dateCreated"></span></p>        
+
+        <form method="post" id="adminModelForm">                  
+            <label for="status">KYC status</label>
+            <select name="status" id="status" class=" w-input">
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>                
+            </select>
+            <br>
+
+        <input type="submit" value="Submit" class="submit-button w-button">
+        </form>
+
+      </div>        
+      </div>  
     </div>
-    <div class="analyzer-section dashboard wf-section" style="display: block;">
-      
-        
-        <div style="overflow-x: auto;">
-          <table class="slds-table slds-table--bordered">
-              <thead>
-                <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select All</span>
-                      </label>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Activity
-                      <button class="slds-button slds-button--icon-bare">                        
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">User
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">                         
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Subject
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                 
-                  <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Date
-                        <button class="slds-button slds-button--icon-bare">                         
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
-                      </div>
-                    </th>
-                  <th class="slds-cell-shrink"></th>
-                </tr>
-              </thead>
-              <tbody>                
-                
-              </tbody>
-          </table>
-        </div>
-        
-    </div>
-  
   </div>
 
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script src="../backend/admin/config.js"></script>
-  <script src="../backend/admin/getTickets.js"></script>
+  <script src="../backend/admin/getKYCs.js"></script>
 
   <script>
-    async function main() {    
 
-    const tickets = await getTickets(baseUrl, accessToken);
+    const idElement = document.querySelector("#id");
 
-    if (tickets) {
-      console.log('Tickets:', tickets);
+    const file1 = document.querySelector("#file1");
+    const file2 = document.querySelector("#file2");
+    const type = document.querySelector("#type");
+    const status = document.querySelector("#status");    
+    const lastUpdated = document.querySelector("#lastUpdated");
+    const dateCreated = document.querySelector("#dateCreated");
+    
 
+  async function main() {
+      // Get the kyc ID from the query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const kycId = urlParams.get("id");
+    
+      // Check if kycId exists and is an integer
+      if (kycId && !isNaN(kycId) && Number.isInteger(Number(kycId))) {
+        const kyc = await getKYC(baseUrl, accessToken, parseInt(kycId));
+    
+        if (kyc) {
+          kycUpdateForm(kyc.id)
+          console.log("kyc...", kyc)
+          idElement.innerHTML = `${kyc.id}`;
 
+          
+          file1.innerHTML = `<img style="height: 40px" src="${baseUrl}${kyc.file1}" />`;
+          file2.innerHTML = `<img  style="height: 40px"  src="${baseUrl}${kyc.file2}" />`;
+          type.innerHTML = `${kyc.type}`;
+          status.innerHTML = `${kyc.status}`;
+          lastUpdated.innerHTML = `${formatDate(kyc.updated_at)}`;
+          dateCreated.innerHTML = `${formatDate(kyc.created_at)}`;
+          
 
-    var tbody = document.querySelector('tbody'); 
-
-
-    tickets.forEach(function(ticket) {
-      var row = document.createElement('tr');
-      
-      // Create and append the "Select Row" cell
-      var selectCell = document.createElement('td');
-      selectCell.className = 'slds-cell-shrink';
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = 'options';
-      var checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'slds-checkbox';
-      checkboxLabel.appendChild(checkbox);
-      checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
-      selectCell.appendChild(checkboxLabel);
-      row.appendChild(selectCell);
-
-      
-      var opportunityCell = document.createElement('th');
-      opportunityCell.className = 'slds-truncate';
-      opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./ticket.php?id=${ticket.id}"> ${ticket.id}<br> ${ticket.priority} </a>`;
-      row.appendChild(opportunityCell);
-
-      var accountCell = document.createElement('td');
-      accountCell.className = 'slds-truncate';
-      accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${ticket.user.email}`;
-      row.appendChild(accountCell);
-
-      var statusCell = document.createElement('td');
-      statusCell.className = '';
-      statusCell.setAttribute('data-label', 'Confidence');
-      statusCell.innerHTML = ticket.status;
-      row.appendChild(statusCell);
-
-      var descriptionCell = document.createElement('td');
-      descriptionCell.className = '';
-      descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = ticket.subject;
-      row.appendChild(descriptionCell);
-
-      var dateCell = document.createElement('td');
-      dateCell.className = '';
-      dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(ticket.updated_at);
-      row.appendChild(dateCell);
-      
-      tbody.appendChild(row);
-    });
-
-    } else {
-      console.log('Failed to retrieve tickets.');
+        } else {
+          console.log('Failed to retrieve the kyc.');
+        }
+      } else {
+        console.log('Invalid or missing kyc ID in the query parameter.');
+      }
     }
-  }
 
   main();
-
   </script>
+
+<script>
+    async function kycUpdateForm(kycId) {
+      const form = document.getElementById('adminModelForm');
+      form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          // Extract data from the form fields
+          const formData = new FormData(form);
+          console.log("formData", formData);
+
+          // Call the updateKyc function and wait for the response
+          const kycUpdate = await updateKyc(baseUrl, accessToken, parseInt(kycId), formData);
+          console.log("kycUpdate", kycUpdate);
+
+          if (kycUpdate !== false) {
+            console.log("kycUpdate not false", kycUpdate);
+            toastSuccessNotif("Success")
+          } else {
+            console.log("kycUpdate false", kycUpdate);
+            toastErrorNotif("Error")
+          }
+      });
+    }
+  </script>
+
+
 
 </body>
 </html>

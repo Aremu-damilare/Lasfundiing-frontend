@@ -8,9 +8,9 @@
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="../css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+  <link href="./css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="./css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="./css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -124,10 +124,9 @@
     }, 500);
 </script>
 
-  <div class="topbar">
+<div class="topbar">
 	  <div class="logo">
 		<a href="#"><img src="../images/Lasfund-Logo.svg" alt="Logo"></a>
-    Admin
 	  </div>
     
     <!-- navbar search form -->
@@ -160,9 +159,17 @@
 	  </div>
     <!-- profile end -->
 
+    <!-- cart icon -->
+    <div class="cart-icon">
+      <!-- <i class="fa fa-shopping-cart"></i> -->
+      <span class="cart-count">0</span>
+      <a href="./account-type.html" class="w-inline-block">
+        <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
+    </div>
+    <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
-	</div>
+	  </div>
 
 
   <div data-animation="default" class="rl_navbar1_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400">
@@ -174,21 +181,13 @@
           <!-- <div class="right-navbar-link"><img src="../images/ChartLineUp-1.svg" loading="lazy" alt="" class="image-9">
             <a href="./analyzer.html" class="rl_navbar1_link w-nav-link">Analyzer</a>
           </div> -->
-          <div class="right-navbar-link">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11.4639 2.78215L8.77252 5.47358C8.47962 5.76647 8.47962 6.24134 8.77252 6.53424L11.462 9.22367C11.7548 9.51657 12.2297 9.51657 12.5226 9.22367L15.214 6.53225C15.5069 6.23935 15.5069 5.76448 15.214 5.47159L12.5246 2.78215C12.2317 2.48926 11.7568 2.48926 11.4639 2.78215Z" stroke="#CC4200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M17.4678 8.78215L14.7764 11.4736C14.4835 11.7665 14.4835 12.2413 14.7764 12.5342L17.4659 15.2237C17.7588 15.5166 18.2336 15.5166 18.5265 15.2237L21.2179 12.5322C21.5108 12.2394 21.5108 11.7645 21.2179 11.4716L18.5285 8.78215C18.2356 8.48926 17.7607 8.48926 17.4678 8.78215Z" stroke="#CC4200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M5.46785 8.77434L2.77642 11.4658C2.48353 11.7587 2.48353 12.2335 2.77642 12.5264L5.46586 15.2159C5.75875 15.5088 6.23363 15.5088 6.52652 15.2159L9.21795 12.5244C9.51084 12.2315 9.51084 11.7567 9.21795 11.4638L6.52851 8.77434C6.23562 8.48145 5.76074 8.48145 5.46785 8.77434Z" stroke="#CC4200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M11.4678 14.7743L8.77642 17.4658C8.48353 17.7587 8.48353 18.2335 8.77642 18.5264L11.4659 21.2159C11.7588 21.5088 12.2336 21.5088 12.5265 21.2159L15.2179 18.5244C15.5108 18.2315 15.5108 17.7567 15.2179 17.4638L12.5285 14.7743C12.2356 14.4814 11.7607 14.4814 11.4678 14.7743Z" stroke="#CC4200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-              
-            <a href="#" style="color: #E04800;font-style: oblique;"  class="rl_navbar1_link w-nav-link"> Dashboard <img src="../images/icons/CaretRight.svg" alt="" srcset=""></a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/DiamondsFour.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="#" style="color: #E04800;font-style: oblique;"  class="rl_navbar1_link w-nav-link">Dashboard </a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="">
-            <a href="./tickets.php" class="rl_navbar1_link w-nav-link">Ticket </a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./tickets.php"  class="rl_navbar1_link w-nav-link">Tickets </a>
           </div>
-
           
           <div class="right-navbar-link">
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,28 +197,34 @@
             <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="">
-            <a href="#" class="rl_navbar1_link w-nav-link">Users</a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./users.php" class="rl_navbar1_link w-nav-link">Users</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/CurrencyCircleDollar.svg" loading="lazy" alt="" class="">
-            <a href="./manage-plans.php" class="rl_navbar1_link w-nav-link">Manage plan</a>
+          <div class="right-navbar-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 6.75V8.25" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 15.75V17.25" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.75 15.75H13.125C13.6223 15.75 14.0992 15.5525 14.4508 15.2008C14.8025 14.8492 15 14.3723 15 13.875C15 13.3777 14.8025 12.9008 14.4508 12.5492C14.0992 12.1975 13.6223 12 13.125 12H10.875C10.3777 12 9.90081 11.8025 9.54917 11.4508C9.19754 11.0992 9 10.6223 9 10.125C9 9.62772 9.19754 9.15081 9.54917 8.79917C9.90081 8.44754 10.3777 8.25 10.875 8.25H14.25" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <a href="./manage-plans.php"  class="rl_navbar1_link w-nav-link"> Manage plans</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/ArrowBendUpLeft.svg" loading="lazy" alt="" class="">
-            <a href="#" class="rl_navbar1_link w-nav-link">Withdrawal</a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/ArrowBendUpLeft.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
           </div>
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="">
-            <a href="#" class="rl_navbar1_link w-nav-link">KYC</a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./kycs.php" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
           
-          <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="">
-            <a href="#" class="rl_navbar1_link w-nav-link">Settings</a>
-          </div>
+          <!-- <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./settings.php class="rl_navbar1_link w-nav-link">Settings</a>
+          </div> -->
 
-          <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign up</a>
+          <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -236,6 +241,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="main-section" style="display: none">
     <div class="gradient-header">
       <!-- <div class="text-block-56">Dashboard</div> -->
@@ -273,92 +280,29 @@
           }
         </style>
 
-        <div style="display: flex;justify-content: space-evenly;margin: 25px 35px;">
+        <div style="display: flex;justify-content: space-evenly;margin: 25px 10px;">
             <div class="card">              
-                <h4>Total deposit</h4>
-                <p><strong>$501,247</strong> <span>&#94;5%</span></p>
+                <h4>Total Orders</h4>
+                <div><strong id="totalOrders">501,247</strong> <span>(+5%)</span></div>
             </div>
             
             <div class="card">              
-                <h4>Total withdrawal</h4>
-                <p><strong>$901,247</strong> <span>&#94;20%</span></p>
+                <h4>All Withdrawal</h4>
+                <div><strong id="totalWithdrawals">901,247</strong> <span>(+20%)</span></div>
             </div>    
         </div>
         
         <div class="transaction-card">
           <div class="table-header-wrapper">
             <div class="table-header">Transactions</div>
-            <a href="#" class="link-block w-inline-block">
-              <div class="text-block-58">See All Transactions</div><img src="../images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13">
+            <a href="./orders.php" class="link-block w-inline-block">
+              <div class="text-block-58">See Transactions</div><img src="../images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13">
             </a>
           </div>
           <div class="transaction-table">
-
-            <div id="" class="status">
-              <div id="" class="completed"><img src="../images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
-                <div class="text-block-63">Completed</div>
-              </div>
-            </div>
-            <div id="" class="payment-type">
-              <div class="text-block-62">Mastercard &nbsp;**** 6442</div>
-              <div class="text-block-61">Card payment</div>
-            </div>
-            <div id="" class="amount">
-              <div class="text-block-64">$99.00</div>
-            </div>
-            <div id="" class="date">
-              <div class="text-block-65">Jan 27, 2022</div>
-            </div>
-
-            <div class="status">
-              <div id="" class="pending"><img src="../images/Ellipse-8-1.svg" loading="lazy" alt="" class="status-icon">
-                <div class="text-block-60">Pending</div>
-              </div>
-            </div>            
-            <div id="" class="payment-type">
-              <div class="text-block-62">Account &nbsp;**** 5665</div>
-              <div class="text-block-61">Bank payment</div>
-            </div>
-            <div id="" class="amount">
-              <div class="text-block-64">$99.00</div>
-            </div>
-            <div id="" class="date">
-              <div class="text-block-65">Jan 27, 2022</div>
-            </div>
-
-            <div class="status">
-              <div id="" class="pending"><img src="../images/Ellipse-8-1.svg" loading="lazy" alt="" class="status-icon">
-                <div class="text-block-60">Pending</div>
-              </div>
-            </div>            
-            <div id="" class="payment-type">
-              <div class="text-block-62">Account &nbsp;**** 5665</div>
-              <div class="text-block-61">Bank payment</div>
-            </div>
-            <div id="" class="amount">
-              <div class="text-block-64">$99.00</div>
-            </div>
-            <div id="" class="date">
-              <div class="text-block-65">Jan 27, 2022</div>
-            </div>
-
-            <div id="" class="status">
-              <div id="" class="canceled"><img src="../images/Ellipse-8-2.svg" loading="lazy" alt="" class="status-icon">
-                <div class="text-block-59">Canceled</div>
-              </div>
-            </div>
-            <div id="" class="payment-type">
-              <div class="text-block-62">Mastercard &nbsp;**** 6442</div>
-              <div class="text-block-61">Card payment</div>
-            </div>
-            <div id="" class="amount">
-              <div class="text-block-64">$500.00</div>
-            </div>
-            <div id="" class="date">
-              <div class="text-block-65">Jan 27, 2022</div>
-            </div>
-
+        
           </div>
+          
           <div class="no-transaction-table" style="text-align: center;">
             <div>No Transactions!</div>
           </div>
@@ -370,7 +314,7 @@
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  <!-- <script src="../backend/admin/dashboard.js"></script> -->
+  <script src="../backend/admin/dashboard.js"></script>
   
   <script>
     const ctx = document.getElementById('myChart');
@@ -395,6 +339,21 @@
       }
     });
   </script>
+
+  <script>
+        
+      fetch(`${baseUrl}/custom/admin/total_count`)  // Replace with your actual API endpoint
+          .then(response => response.json())
+          .then(data => {
+              console.log("total_count", data)
+              document.querySelector("#totalOrders").innerHTML = `${data.order_count}`
+              document.querySelector("#totalWithdrawals").innerHTML = `${data.withdrawal_count}`
+          })
+          .catch(error => {
+              console.error("Error:", error);
+          });
+        
+    </script>
 
 </body>
 </html>

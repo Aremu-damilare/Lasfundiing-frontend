@@ -8,6 +8,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Order detail - Lasfunding</title>
+
       <style type="text/css">
         @-webkit-keyframes spinner {
         }
@@ -791,6 +792,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         }
         }
      </style>
+
      <style>
         .mini-loader-container {
             display: none;
@@ -843,6 +845,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               }
             }  
      </style>
+     
      <style>
         div#proof {
             float: left;
@@ -859,9 +862,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         }
      </style>
      
-     <link href="../css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="../css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../css/webflow.css" rel="stylesheet" type="text/css">
+    <link href="../css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="../backend/config/toast.js"></script>
    </head>
    <body>
           
@@ -870,23 +877,20 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             <td id="leftcolumn"></td>
             <td class="middle-column" style="padding: 40px 0 0; width: 562px">
                <img class="top-stripes" src="https://static-1.gumroad.com/res/gumroad/assets/email/email_body_top-b0ae0208dbe8c73566ef2da5fd7a76af.png"
-                  style="display: block; height: 12px; margin: 0 auto; max-width: 100%; width: 562px">
-                  
-       
-
+                  style="display: block; height: 12px; margin: 0 auto; max-width: 100%; width: 562px">                        
                <table style="border-collapse: separate; border-spacing: 0; width: 100%">
                   <tr>
                      <td class="content-container" style="background: url(https://static-1.gumroad.com/res/gumroad/assets/email/email_body_middle-d6eb6cdbc0581e921c733be0d6ce8a1b.png); padding: 20px 30px; width: 562px">
                         <div class="title" style="text-align: center" align="center">
                            <img alt="Gumroad" id="logo" src="https://lasfunding.com/images/Lasfund-Logo.svg"
                               style="display: block; margin: 5px auto 0; max-width: 100%; text-align: center">
-                <div class="mini-loader-container">
-                    <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <g>
-                            <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
-                        </g>        
-                    </svg>        
-                </div> 
+                              <div class="mini-loader-container">
+                                  <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                      <g>
+                                          <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+                                      </g>        
+                                  </svg>        
+                              </div> 
                         
                         <h4 style="color: #252a2e; font-weight: bold; margin: 10px 0">
                             Order receipt: <span id="orderId">13hdn1-113c-13cv</span>
@@ -898,9 +902,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                         <p  class="mobilecenter money" style="color: #252a2e; font-size: 42px; font-weight: bold !important; line-height: 50px; margin: 26px 0 4px; word-wrap: break-word">
                             $ <span id="accountType"></span>
                         </p>
-                        <div id="proof">
-
-                        </div>
+                        <p id="proof"></p>
                         <!-- <img align="left" alt="proof" class="proof" src="https://public.bnbstatic.com/image/cms/article/body/202302/d385e707ca7bf0292741880243ee26ff.jpeg" 
                         style="display: block; height: 246px; margin: 11px 30px 0; max-width: 100%; vertical-align: top; width: 226px"> -->
                         </span>
@@ -946,8 +948,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       </table>
       <div class="centered footer" style="margin: 20px 0; text-align: center" align="center">
          <p style="color: #797874; font-size: 14px; line-height: 27px; margin: 15px 0; padding: 0 15px; word-wrap: break-word">
-            <a href="#" style="color: #666; text-decoration: underline; word-wrap: break-word">Lasfunding</a>, Submit a ticket with this receipt
-            <a href="#"
+            <a href="#" style="color: #666; text-decoration: underline; word-wrap: break-word">Lasfunding</a>, Submit a ticket 
+            <!-- with this receipt -->
+            <a href="./tickets.php"
                style="color: #666; text-decoration: underline; word-wrap: break-word">Here</a>
          </p>
          <p style="color: #797874; font-size: 14px; line-height: 27px; margin: 15px 0 0; padding: 0 15px; word-wrap: break-word"></p>
@@ -1058,9 +1061,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                   console.log("orderPaymentProof", orderPaymentProof);
                   PaymentProofBase64Converter(orderPaymentProof.transaction.payment_details.payment_proof);
                   setElementDisplayByClassName('mini-loader-container', 'none');
+                  toastSuccessNotif("Success")
                 } catch (error) {
                   console.error("Error:", error);
-                  // Handle errors here
+                  toastErrorNotif("Error")                  
                 }
               }
             }
@@ -1127,8 +1131,6 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                 // Handle other file types or show an error message
                 proofElement.innerHTML = "Unsupported file type.";
             }
-
-
     }
 
   </script>

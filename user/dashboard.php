@@ -179,8 +179,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 40px;
-        font-family: sans-serif;
+        font-size: 20px;        
       }
     </style>
   </head>
@@ -346,7 +345,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               <a href="#" class="rl_navbar1_link  w-nav-link"> Notification</a>
               </div> -->
             <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-              <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
+              <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
               </div> -->
           </div>
           <div class="right-navbar-wrapper last-wrapper">
@@ -385,16 +384,16 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         <div class="left-block">
           <!-- <img src="../images/Stock-chart.svg" loading="lazy" alt="" class="image-12"> -->
           <div class="four-box-container">
-            <div class="box" id="box-a">N/A</div>
-            <div class="box" id="box-b">N/A</div>
-            <div class="box" id="box-c">N/A</div>
-            <div class="box" id="box-d">N/A</div>
+            <div class="box" id="box-a">You have <br>No Active order account, <br> complete your order and transactions <br>or contact support</div>
+            <div class="box" id="box-b">Stage: N/A <br> Active: N/A</div>
+            <div class="box" id="box-c">Transaction status: N/A</div>
+            <div class="box" id="box-d">Profit: N/A</div>
           </div>
           <div class="transaction-card">
             <div class="table-header-wrapper">
               <div class="table-header">Transactions</div>
               <a href="./orders.php" class="link-block w-inline-block">
-                <div class="text-block-58">See All Transactions</div>
+                <div class="text-block-58">See All Order with transactions</div>
                 <img src="../images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13" />
               </a>
             </div>
@@ -631,10 +630,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           ) {
               console.log("Matching Object:" , order);
               
-                boxA.innerHTML = order.status;
-                boxB.innerHTML = order.stage;
-                boxC.innerHTML = order.active;
-                boxD.innerHTML = order.profit;
+                boxA.innerHTML = `Status:<br> ${order.status} <br><br> Transaction:<br> ${order.transaction.status}`;
+                boxB.innerHTML = `Stage:<br> ${order.stage}`;
+                boxC.innerHTML = `Active:<br> ${order.active}`;
+                boxD.innerHTML = `Profit:<br> ${order.profit}`;
              
           } else{
             console.log("No active account")

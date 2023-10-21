@@ -105,7 +105,7 @@
             <a href="#" class="rl_navbar1_link notification w-nav-link">Notification</a>
           </div>
           <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
+            <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
         </div>
         <div class="right-navbar-wrapper last-wrapper">

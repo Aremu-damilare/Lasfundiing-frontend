@@ -338,7 +338,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         }  
  </style>
 
- 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="../backend/config/toast.js"></script>
 
 </head>
 
@@ -461,9 +463,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
         <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
       </div> -->
-      <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-        <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
-      </div> -->
+      <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+        <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
+      </div>
     </div>
     <div class="right-navbar-wrapper last-wrapper">
       <!-- <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
@@ -632,6 +634,7 @@ form.addEventListener('submit', async (event) => {
       failElement.style.display = 'none';
       doneElement.style.display = 'flex';
       doneElement.innerHTML = data.detail
+      toastSuccessNotif("Success")
       setElementDisplayByClassName('mini-loader-container', 'none');
     } else {
       // Request failed
@@ -640,8 +643,10 @@ form.addEventListener('submit', async (event) => {
       failElement.innerHTML = response.statusText
       doneElement.style.display = 'none';
       setElementDisplayByClassName('mini-loader-container', 'none');
+      toastErrorNotif("Error")
     }
   } catch (error) {
+    toastErrorNotif("Error")
     console.error('An error occurred:', error);
     failElement.style.display = 'flex';
     doneElement.style.display = 'none';

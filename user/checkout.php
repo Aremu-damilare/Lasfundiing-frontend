@@ -25,16 +25,19 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   <link href="http://localhost/lasfunding_front/images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="http://localhost/lasfunding_front/images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
   
-  <style>
-    /*! CSS Used from: http://127.0.0.1:5500/css/normalize.css */
+  <style>    
 a{background-color:transparent;}
 a:active,a:hover{outline:0;}
 input{color:inherit;font:inherit;margin:0;}
 input{line-height:normal;}
 input[type='checkbox'],input[type='radio']{box-sizing:border-box;padding:0;}
-/*! CSS Used from: http://127.0.0.1:5500/css/webflow.css */
+
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-input.w-button{-webkit-appearance:button;}
+input.w-button {
+  -webkit-appearance:button;
+  display: flex;
+  justify-content: center;
+}
 .w-form{margin:0 0 15px;}
 .w-form-done{display:none;padding:20px;text-align:center;background-color:#dddddd;}
 .w-form-fail{display:none;margin-top:10px;padding:10px;background-color:#ffdede;}
@@ -53,7 +56,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
 @media screen and (max-width: 479px){
 .w-col{width:100%;}
 }
-/*! CSS Used from: http://127.0.0.1:5500/css/lasfunding.webflow.css */
+
 .w-checkbox{display:block;margin-bottom:5px;padding-left:20px;}
 .w-checkbox::before{content:' ';display:table;-ms-grid-column-span:1;grid-column-end:2;-ms-grid-column:1;grid-column-start:1;-ms-grid-row-span:1;grid-row-end:2;-ms-grid-row:1;grid-row-start:1;}
 .w-checkbox::after{content:' ';display:table;-ms-grid-column-span:1;grid-column-end:2;-ms-grid-column:1;grid-column-start:1;-ms-grid-row-span:1;grid-row-end:2;-ms-grid-row:1;grid-row-start:1;clear:both;}

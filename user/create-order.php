@@ -293,9 +293,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
           </div> -->
-          <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
-          </div> -->
+          <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
+          </div>
         </div>
         <div class="right-navbar-wrapper last-wrapper">
           <!-- <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
@@ -598,7 +598,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   
 <script>                            
     // Define the URL to make the request to
-  const endpointUrl = `${baseUrl}/admin/store/list/`;
+  const endpointUrl = `${baseUrl}/custom/admin/store/list/`;
 
   // Create headers object with authorization
   const headers = new Headers({

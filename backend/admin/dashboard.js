@@ -62,7 +62,7 @@ function getAllUserData(){
 
 
 
-  fetch(`${baseUrl}/admin/store/transactions/`, {
+  fetch(`${baseUrl}/custom/admin/store/transactions/`, {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + accessToken
@@ -77,7 +77,7 @@ function getAllUserData(){
       noTransactionsTable.style.display = 'block'
     } else {
       console.log("Transactions", data);
-      transactionsTable.style.display = 'grid'
+      transactionsTable.style.display = 'flex'
       noTransactionsTable.style.display = 'none'
 
       data.forEach(element => {
@@ -88,9 +88,8 @@ function getAllUserData(){
           <div class="text-block-63">${element.status}</div>
         </div>
       </div>
-      <div id="" class="payment-type">
-        <div class="text-block-62">${element.card_type}  **** ${element.card_last_4_digits}</div>
-        <div class="text-block-61">${element.payment_method}</div>
+      <div id="" class="payment-type">        
+        <div class="text-block-61">${formatDate(element.updated_at)}</div>
       </div>
       <div id="" class="amount">
         <div class="text-block-64">$${element.amount}</div>

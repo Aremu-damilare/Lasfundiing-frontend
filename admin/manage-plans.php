@@ -8,9 +8,9 @@
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="../css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+  <link href="./css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="./css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="./css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -242,22 +242,22 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 	  </div>
     
     <!-- navbar search form -->
-	  <div class="search-container">
+	  <!-- <div class="search-container">
       <form action="#">
         <span class="search-container-border">
         <input type="text" placeholder="Search...">
         <button type="submit"><i class="fa fa-search"></i></button>
       </span>
       </form>
-    </div>
+    </div> -->
     <!-- navbar search form end-->
 
     
     <!-- notification icons -->
-    <div class="notification">
+    <!-- <div class="notification">
       <span class="navbar-item-notification"><i class="fa fa-envelope"></i>  </span>
       <span class="navbar-item-notification"> <i class="fa fa-bell"></i>  </span>
-    </div>
+    </div> -->
     <!-- notification icons end-->
 
 
@@ -294,49 +294,49 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
             <a href="./analyzer.html" class="rl_navbar1_link w-nav-link">Analyzer</a>
           </div> -->
           <div class="right-navbar-link"><img src="../images/icons/admin/DiamondsFour.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Dashboard </a>
+            <a href="./dashboard.php" class="rl_navbar1_link w-nav-link">Dashboard </a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Ticket </a>
+            <a href="./tickets.php" class="rl_navbar1_link w-nav-link">Tickets </a>
           </div>
           
           <div class="right-navbar-link">
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="#e04839" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="#e04839" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>           
             <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Users</a>
+            <a href="./users.php" class="rl_navbar1_link w-nav-link">Users</a>
           </div>
 
           <div class="right-navbar-link">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 6.75V8.25" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 6.75V8.25" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M12 15.75V17.25" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#CC4200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9.75 15.75H13.125C13.6223 15.75 14.0992 15.5525 14.4508 15.2008C14.8025 14.8492 15 14.3723 15 13.875C15 13.3777 14.8025 12.9008 14.4508 12.5492C14.0992 12.1975 13.6223 12 13.125 12H10.875C10.3777 12 9.90081 11.8025 9.54917 11.4508C9.19754 11.0992 9 10.6223 9 10.125C9 9.62772 9.19754 9.15081 9.54917 8.79917C9.90081 8.44754 10.3777 8.25 10.875 8.25H14.25" stroke="#CC4200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.75 15.75H13.125C13.6223 15.75 14.0992 15.5525 14.4508 15.2008C14.8025 14.8492 15 14.3723 15 13.875C15 13.3777 14.8025 12.9008 14.4508 12.5492C14.0992 12.1975 13.6223 12 13.125 12H10.875C10.3777 12 9.90081 11.8025 9.54917 11.4508C9.19754 11.0992 9 10.6223 9 10.125C9 9.62772 9.19754 9.15081 9.54917 8.79917C9.90081 8.44754 10.3777 8.25 10.875 8.25H14.25" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <a href="#" style="color: #E04800;font-style: oblique;"  class="rl_navbar1_link w-nav-link"> Manage plans<img src="../images/icons/CaretRight.svg" width="15" alt="" srcset=""></a>
+            <a href="./manage-plans.php" style="color: #E04800;font-style: oblique;"  class="rl_navbar1_link w-nav-link"> Manage plans</a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/ArrowBendUpLeft.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Withdrawal</a>
+            <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">KYC</a>
+            <a href="./kycs.php" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
           
           <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Settings</a>
+            <a href="./settings.php" class="rl_navbar1_link w-nav-link">Settings</a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign up</a>
+            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -563,8 +563,6 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
   </script>
 
 
-
-
 <script>
   let BalanceList = [];
 
@@ -762,7 +760,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 <script src="../backend/admin/manage-plans.js"></script>
 <script>
   // Define the URL to make the request to
-const endpointUrl = 'http://127.0.0.1:8000/admin/store/list/';
+const endpointUrl = 'http://127.0.0.1:8000/custom/admin/store/list/';
 
 // Create headers object with authorization
 const headers = new Headers({
@@ -792,7 +790,7 @@ fetch(request)
                 <p>Account type</p>
                 <br>
                 <p>Starting Fee</p>
-                <p>${item.balance[0]}</p>
+                <p>$${item.balance[0]}</p>
                 <br>
                 <p>Setup Fee</p>
                 <p>$${item.amount.toFixed(2)}</p>
@@ -825,7 +823,7 @@ fetch(request)
                 
                 if (confirmation) {
                     // Send the DELETE request to the delete endpoint
-                    fetch(`http://127.0.0.1:8000/admin/store/delete/${accountId}/`, {
+                    fetch(`http://127.0.0.1:8000/custom/admin/store/delete/${accountId}/`, {
                         method: "DELETE",
                         headers: {
                           'Authorization': 'Bearer ' + accessToken,

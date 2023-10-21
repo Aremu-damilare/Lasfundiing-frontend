@@ -90,6 +90,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     padding: 1px;
     display: block;
 }
+
+@media (max-width: 900px) {
+    .row {        
+      display: flex !important;
+    flex-direction: column !important;
+    }
+}
 </style>
 
 <link rel="stylesheet" href="./css/scrollbar.css">
@@ -1020,7 +1027,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
 <script>                            
           // Define the URL to make the request to
-        const endpointUrl = `${baseUrl}/admin/store/list/`;
+        const endpointUrl = `${baseUrl}/custom/admin/store/list/`;
 
         // Create headers object with authorization
         const headers = new Headers({

@@ -205,7 +205,7 @@
 
   <link rel="stylesheet" href="http://localhost/lasfunding_front/css/user/ticket-table.css">
   <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
-
+ 
   <style>
     /* Extra Small Screens (phones, less than 576px) */
     @media (max-width: 575.98px) {
@@ -266,7 +266,7 @@
         /* Your CSS rules for large screens here */
         .rl_navbar1_component {
             z-index: 100;
-            width: 98% !important;
+            width: 18% !important;
             /* height: 100vw; */
             margin-top: -135px !important;
             min-height: 0;
@@ -284,7 +284,7 @@
         /* Your CSS rules for extra large screens here */
         .rl_navbar1_component {
             z-index: 100;
-            width: 98% !important;
+            width: 18% !important;
             /* height: 100vw; */
             margin-top: -140px !important;
             min-height: 0;
@@ -302,7 +302,7 @@
         /* Your CSS rules for extra large screens here */
         .rl_navbar1_component {
             z-index: 100;
-            width: 98% !important;
+            width: 18% !important;
             /* height: 100vw; */
             margin-top: -25px !important;
             min-height: 0;
@@ -317,44 +317,9 @@
   
   </style>
 
-  <style>
-    @media screen and (max-width: 900px) {
-         
-    }
-
-    @media screen and (min-width: 900px) {
-         
-    }
-
-  
-  .rl_navbar1_component {
-    z-index: 1;
-    width: 18%;
-    /* height: 100vw; */
-    min-height: 0;
-    background-color: rgba(0, 0, 0, 0);
-    border-bottom: 1px #000;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -145px;
-    margin-right: 5px;
-    padding-left: 0%;
-    padding-right: 0%;
-    display: flex;
-    position: relative;
-    /* top: 100px; */
-    bottom: auto;
-    overflow: visible;
-    }  
-  </style>
-
-  <style>
-    .current-page{
-      color: white;
-      background-color: #e04800;
-      padding: 20px;
-    }
-  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="../backend/config/toast.js"></script>
 </head>
 
 
@@ -380,7 +345,8 @@
         }, 500);
     </script>
 
-    <div class="topbar" style="display: none;">
+    
+<div class="topbar" style="display: none;">
       <div class="logo">
       <a href="#"><img src="../images/Lasfund-Logo.svg" alt="Logo"></a>
       </div>
@@ -429,73 +395,73 @@
       
       <div style="display: none;" data-animation="default" class="rl_navbar1_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400">
       <div class="rl_navbar1_container">
-          <nav role="navigation" class="rl_navbar1_menu is-page-height-tablet w-nav-menu">
-              <div class="text-block-36"></div>           
-              <div class="right-navbar-wrapper">
+        <nav role="navigation" class="rl_navbar1_menu is-page-height-tablet w-nav-menu">
+            <div class="text-block-36"></div>           
+            <div class="right-navbar-wrapper">
+            <div class="right-navbar-link">
+              <svg width="34" height="34" viewBox="0 0 34 34" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0742 10.8307V14.637C10.0742 15.0512 10.41 15.387 10.8242 15.387H14.6277C15.0419 15.387 15.3777 15.0512 15.3777 14.637V10.8307C15.3777 10.4165 15.0419 10.0807 14.6277 10.0807H10.8242C10.41 10.0807 10.0742 10.4165 10.0742 10.8307Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18.5625 10.8292V14.6355C18.5625 15.0497 18.8983 15.3855 19.3125 15.3855H23.1159C23.5302 15.3855 23.8659 15.0497 23.8659 14.6355V10.8292C23.8659 10.415 23.5302 10.0792 23.1159 10.0792H19.3125C18.8983 10.0792 18.5625 10.415 18.5625 10.8292Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.0703 19.3092V23.1155C10.0703 23.5297 10.4061 23.8655 10.8203 23.8655H14.6238C15.038 23.8655 15.3738 23.5297 15.3738 23.1155V19.3092C15.3738 18.895 15.038 18.5592 14.6238 18.5592H10.8203C10.4061 18.5592 10.0703 18.895 10.0703 19.3092Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18.5586 19.3092V23.1155C18.5586 23.5297 18.8944 23.8655 19.3086 23.8655H23.112C23.5262 23.8655 23.862 23.5297 23.862 23.1155V19.3092C23.862 18.895 23.5262 18.5592 23.112 18.5592H19.3086C18.8944 18.5592 18.5586 18.895 18.5586 19.3092Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+                
+              <a href="./dashboard.php" class="rl_navbar1_link w-nav-link">Dashboard</a>                 
+            </div>
+            </div>
+            <div class="right-navbar-wrapper">
+              <div class="text-block-36">TRANSACTION</div>         
+              <div class="right-navbar-link "><img src="../images/CurrencyCircleDollar-1.svg" loading="lazy" alt="" class="sign-out-icon">
+                <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
+              </div>
+            </div>
+            <div class="right-navbar-wrapper">
+              <div class="text-block-36">MENU</div>
               <div class="right-navbar-link">
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.0742 10.8307V14.637C10.0742 15.0512 10.41 15.387 10.8242 15.387H14.6277C15.0419 15.387 15.3777 15.0512 15.3777 14.637V10.8307C15.3777 10.4165 15.0419 10.0807 14.6277 10.0807H10.8242C10.41 10.0807 10.0742 10.4165 10.0742 10.8307Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M18.5625 10.8292V14.6355C18.5625 15.0497 18.8983 15.3855 19.3125 15.3855H23.1159C23.5302 15.3855 23.8659 15.0497 23.8659 14.6355V10.8292C23.8659 10.415 23.5302 10.0792 23.1159 10.0792H19.3125C18.8983 10.0792 18.5625 10.415 18.5625 10.8292Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M10.0703 19.3092V23.1155C10.0703 23.5297 10.4061 23.8655 10.8203 23.8655H14.6238C15.038 23.8655 15.3738 23.5297 15.3738 23.1155V19.3092C15.3738 18.895 15.038 18.5592 14.6238 18.5592H10.8203C10.4061 18.5592 10.0703 18.895 10.0703 19.3092Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M18.5586 19.3092V23.1155C18.5586 23.5297 18.8944 23.8655 19.3086 23.8655H23.112C23.5262 23.8655 23.862 23.5297 23.862 23.1155V19.3092C23.862 18.895 23.5262 18.5592 23.112 18.5592H19.3086C18.8944 18.5592 18.5586 18.895 18.5586 19.3092Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  
-                <a href="./dashboard.php" class="rl_navbar1_link w-nav-link ">Dashboard  </a> <span class="rl_navbar1_link w-nav-link notification" style="font-size: 20px;">  </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="white">
+                    <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                  
+                <a href="./orders.php" class="rl_navbar1_link w-nav-link">Orders</a>
               </div>
-              </div>
-              <div class="right-navbar-wrapper">
-                <div class="text-block-36">ANALYTICS</div>         
-                <div class="right-navbar-link"><img src="../images/CurrencyCircleDollar-1.svg" loading="lazy" alt="" class="sign-out-icon">
-                  <a href="#" class="rl_navbar1_link w-nav-link">Bonus Requests</a>
-                </div>
-              </div>
-              <div class="right-navbar-wrapper">
-                <div class="text-block-36">MENU</div>
-                <div class="right-navbar-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                      <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    
+               <div class="right-navbar-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.91507 13.8682L15.0865 8.26823M9.42938 8.7349H9.43967M14.5722 13.4016H14.5825M19.2008 20.4016V5.46823C19.2008 4.4373 18.2798 3.60156 17.1436 3.60156H6.85792C5.72179 3.60156 4.80078 4.4373 4.80078 5.46823V20.4016L8.40078 18.5349L12.0008 20.4016L15.6008 18.5349L19.2008 20.4016ZM9.94364 8.7349C9.94364 8.99263 9.71338 9.20156 9.42935 9.20156C9.14532 9.20156 8.91507 8.99263 8.91507 8.7349C8.91507 8.47716 9.14532 8.26823 9.42935 8.26823C9.71338 8.26823 9.94364 8.47716 9.94364 8.7349ZM15.0865 13.4016C15.0865 13.6593 14.8562 13.8682 14.5722 13.8682C14.2882 13.8682 14.0579 13.6593 14.0579 13.4016C14.0579 13.1439 14.2882 12.9349 14.5722 12.9349C14.8562 12.9349 15.0865 13.1439 15.0865 13.4016Z" stroke="#8e8b8a" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>                  
-                  <a href="./orders.php" class="rl_navbar1_link w-nav-link">Orders</a>
-                </div>
-      
-                 <div class="right-navbar-link">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8.91507 13.8682L15.0865 8.26823M9.42938 8.7349H9.43967M14.5722 13.4016H14.5825M19.2008 20.4016V5.46823C19.2008 4.4373 18.2798 3.60156 17.1436 3.60156H6.85792C5.72179 3.60156 4.80078 4.4373 4.80078 5.46823V20.4016L8.40078 18.5349L12.0008 20.4016L15.6008 18.5349L19.2008 20.4016ZM9.94364 8.7349C9.94364 8.99263 9.71338 9.20156 9.42935 9.20156C9.14532 9.20156 8.91507 8.99263 8.91507 8.7349C8.91507 8.47716 9.14532 8.26823 9.42935 8.26823C9.71338 8.26823 9.94364 8.47716 9.94364 8.7349ZM15.0865 13.4016C15.0865 13.6593 14.8562 13.8682 14.5722 13.8682C14.2882 13.8682 14.0579 13.6593 14.0579 13.4016C14.0579 13.1439 14.2882 12.9349 14.5722 12.9349C14.8562 12.9349 15.0865 13.1439 15.0865 13.4016Z" stroke="#CC4200" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>                  
-                  <a href="./tickets.php" class="rl_navbar1_link w-nav-link" >Tickets </a>
-                </div>
-                <div class="right-navbar-link"><img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon">
-                  <a href="./payment-methods.html" class="rl_navbar1_link w-nav-link">Payment Method</a>
-                </div>
+                <a href="./tickets.php" class="rl_navbar1_link w-nav-link" >Tickets </a>
               </div>
-              <div class="right-navbar-wrapper">
-                <div class="text-block-36">PERSONAL</div>
-                <div class="right-navbar-link"><img src="../images/UserCircle-1.svg" loading="lazy" alt="" class="image-9">
-                  <a href="./profile.php" class="rl_navbar1_link w-nav-link" style="color: #e04800;">Profile <img src="../images/icons/CaretRight.svg" alt="" srcset=""></a>
-                </div>
-                <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
-                  <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
-                </div>
-                <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-                  <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
-                </div> -->
+              <!-- <div class="right-navbar-link"><img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon">
+                <a href="./payment-methods.php" class="rl_navbar1_link w-nav-link">Payment Method</a>
+              </div> -->
+            </div>
+            <div class="right-navbar-wrapper">
+              <div class="text-block-36">PERSONAL</div>
+              <div class="right-navbar-link"><img src="../images/UserCircle-1.svg" loading="lazy" alt="" class="image-9">
+                <a href="./profile.php" class="rl_navbar1_link w-nav-link">Profile</a>
               </div>
-              <div class="right-navbar-wrapper last-wrapper">
-                <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
-                  <a href="#" class="rl_navbar1_link w-nav-link">Settings</a>
-                </div>
-                <div class="right-navbar-link"><img src="../images/SignOut-1.svg" loading="lazy" alt="" class="sign-out-icon">
-                  <a href="#" class="rl_navbar1_link w-nav-link">Sign Out</a>
-                </div>
+              <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
+                <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
+              </div> -->
+              <div class="right-navbar-link current-page"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+                <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
               </div>
-              <div class="">
-                <div class="text-block-37"></div>
-                <div class="rect-box">
-                  <div class="text-block-38">Go to Help Centre</div>
-                </div>
+            </div>
+            <div class="right-navbar-wrapper last-wrapper">
+              <!-- <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
+                <a href="#" class="rl_navbar1_link w-nav-link">Settings</a>
+              </div> -->
+              <div class="right-navbar-link"><img src="../images/SignOut-1.svg" loading="lazy" alt="" class="sign-out-icon">
+                <a href="#" class="rl_navbar1_link w-nav-link">Sign Out</a>
               </div>
-            </nav>
+            </div>
+            <div class="">
+              <div class="text-block-37"></div>
+              <div class="rect-box">
+                <div class="text-block-38">Go to Help Centre</div>
+              </div>
+            </div>
+          </nav>
         <div data-w-id="dfef91ae-55b8-ac9f-51eb-883e879e4cf4" class="rl_navbar1_menu-button w-nav-button">
           <div class="rl_menu-icon">
             <div class="rl_menu-icon_line-top"></div>
@@ -508,20 +474,57 @@
       </div>
       </div>  
   
-  <div class="main-section" style="display: none; z-index: 9999">
-    <div class="gradient-header" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: baseline;">
-      <!-- <div class="text-block-56">Dashboard</div> -->
-      <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>KYC</span>        
-      </div>
+  <div class="main-section" style="display: none; z-index: 99">
+    <div class="gradient-header" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: baseline;">     
         <div>
-            <button id="creatTicketBtn" >
+            <button id="createKYCBtn" >
                 <span  style="color: #E04800;float: right;"><img src="../images/icons/Copy.svg" alt=""> Initiate KYC</span>
             </button>
         </div>
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
-                    
+    <div>
+            <style>                
+            .col-md-6,.col-xl-4{position:relative;width:100%;padding-right:15px;padding-left:15px;}
+            @media (min-width:768px){
+            .col-md-6{flex:0 0 50%;max-width:50%;}
+            }
+            @media (min-width:1200px){
+            .col-xl-4{flex:0 0 33.33333%;max-width:33.33333%;}
+            }
+            .card{position:relative;display:flex;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(26,54,126,.125);border-radius:.25rem;}
+            .mb-3{margin-bottom:1rem!important;}
+            .text-white{color:#fff!important;}
+            .bg-midnight-bloom{background-image:linear-gradient(-20deg,#2b5876 0%,#4e4376 100%)!important;}
+            .card{width: 100%; box-shadow:0 .46875rem 2.1875rem rgba(4,9,20,.03),0 .9375rem 1.40625rem rgba(4,9,20,.03),0 .25rem .53125rem rgba(4,9,20,.05),0 .125rem .1875rem rgba(4,9,20,.03);border-width:0;transition:all .2s;}
+            .widget-content{padding:1rem;flex-direction:row;align-items:center;}
+            .widget-content .widget-content-wrapper{display:flex;flex:1;position:relative;align-items:center;}
+            .widget-content .widget-content-left .widget-heading{opacity:.8;font-weight:700;}
+            .widget-content .widget-content-left .widget-subheading{opacity:.5;}
+            .widget-content .widget-content-right{margin-left:auto;}
+            .widget-content .widget-numbers{font-weight:700;font-size:1.8rem;display:block;}
+            @media (max-width:991.98px){
+            .widget-content .widget-numbers{font-size:1.6rem;line-height:1;}
+            }
+            @media (max-width:767.98px){
+            body .card.mb-3{margin-bottom:15px!important;}
+            }
+            .card.mb-3{margin-bottom:30px!important;}
+            </style>
+            <div class="col-md-6 col-xl-4">
+                <div class="card mb-3 widget-content bg-midnight-bloom">
+                    <div class="widget-content-wrapper text-white">
+                        <div class="widget-content-left">
+                            <div class="widget-heading">KYC status</div>
+                            <div class="widget-subheading" id="kycStatus">Pending</div>
+                        </div>
+                        <div class="widget-content-right">
+                            <div class="widget-numbers text-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>     
     </div>
   
   </div>
@@ -529,16 +532,77 @@
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   
+  <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
+    <div style="opacity: 1; display: flex;" class="form-container  w-container">
+      <div class="form-block w-form" style="overflow-y: auto;height: auto;">
+        <div class="mini-loader-container">
+            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <g>
+                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                </g>        
+            </svg>        
+          </div>  
+        <div class="">
+        <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
+            <div>KYC request  successful!</div>
+        </div>
+        <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
+            <div>KYC request  failed!</div>
+        </div>        
+          <div class="">Send KYC documents</div>
+          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+        </div>
+
+        <form id="createKYC" name="create-kyc-form" data-name="create-kyc Form" method="POST" data-ms-form="" class="form" aria-label="create-kyc Form">
+            <div class="w-form">
+                <label for="type">Select Type</label>
+                <select id="type" name="type" class="w-input">
+                    <option value="voters_card">Voters Card</option>
+                    <option value="NIN">NIN (National Identification Number)</option>
+                </select>
+            </div>
+
+            <div class="w-form">
+                <label for="file1">File 1 (front) *</label>
+                <input type="file" id="file1" name="file1" accept=".pdf, .jpg, .png" class="w-input">
+            </div>
+
+            <div class="w-form">
+                <label for="file2">File 2 (back)</label>
+                <input type="file" id="file2" name="file2" accept=".pdf, .jpg, .png" class="w-input">
+            </div>
+
+            <small>At least a file (front) is required</small>
+
+            <input type="submit" value="Send.." data-wait="Please wait..." class="submit-button w-button">
+        </form>
+              
+    </div>
+  </div>
 
     
+  <script>                
+      const closeModalButton = document.querySelector(".close-modal-button");
+      const modalWrapper = document.querySelector(".modal-wrapper");
+      const createKYCBtn = document.querySelector("#createKYCBtn");
 
+      closeModalButton.addEventListener("click", function () {
+          modalWrapper.style.display = "none";
+      });        
+
+      createKYCBtn.addEventListener("click", function () {
+          console.log("xxxxxxxxx")
+                modalWrapper.style.display = "flex";
+                modalWrapper.style.opacity = 1;
+            });    
+          
+  </script>
 
   <script src="../backend/user/getUserDetails.js"></script>
   <script src="../backend/user/topBarPlaceholders.js"></script>
   <script src="../backend/user/pageLoader.js"></script>
   <script src="../backend/config/_service-worker.js"></script>
   <script src="../backend/user/logOut.js"></script>  
-  <script src="../backend/user/getUserTickets.js"></script>
 
   <script>
       async function fetchData() {
@@ -564,7 +628,74 @@
         });
         return formattedDate;
       }
-    </script>
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('#createKYC');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        console.log("formData", formData)
+
+        fetch(`${baseUrl}/kyc/create/`, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Authorization': 'Bearer ' + accessToken
+          },
+        })
+        .then(response => {
+          if (response.status === 201 || response.status === 200) {
+            return response.json().then(data => {
+              console.log('KYC Data Submitted:', data);
+              toastSuccessNotif("Success")
+              // Handle successful submission here
+            });
+          } else if (response.status === 400 || response.status === 500) {
+            return response.json().then(data => {
+              toastErrorNotif("Error")
+              console.error('Error:', data);
+              // Handle errors or display error messages to the user
+            });
+          } else {
+            console.error('Unexpected Status:', response.status);
+            toastInfoNotif("Error")
+            // Handle other unexpected status codes
+          }
+        })
+        .catch(error => {
+          console.error('Network Error:', error);
+          toastErrorNotif("Error")
+          // Handle network errors
+        });
+      });
+    });
+  </script>
+
+  <script>          
+     fetch(`${baseUrl}/kyc/create/`, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Request failed');
+      }
+    })
+    .then(data => {      
+      console.log(data);
+      document.querySelector("#kycStatus").innerHTML = `${data.status}`
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  </script>
 
 </body>
 </html>

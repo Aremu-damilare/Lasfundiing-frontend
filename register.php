@@ -29,7 +29,11 @@ input{line-height:normal;}
 input[type='checkbox'],input[type='radio']{box-sizing:border-box;padding:0;}
 /*! CSS Used from: http://127.0.0.1:5500/css/webflow.css */
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-input.w-button{-webkit-appearance:button;}
+input.w-button{
+  -webkit-appearance:button;
+  display: flex;
+  justify-content: center;
+  }
 .w-form{margin:0 0 15px;}
 .w-form-done{display:none;padding:20px;text-align:center;background-color:#dddddd;}
 .w-form-fail{display:none;margin-top:10px;padding:10px;background-color:#ffdede;}
@@ -229,7 +233,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
               <input type="text" class="billing-input w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Enter Last Name" id="Last-Name" data-ms-member="last-name" required="">
               <input type="email" class="billing-input w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email Address" id="Email" data-ms-member="email" required="">
               <input type="password" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Enter Password" id="Password" data-ms-member="password" required="">
-              <input type="text" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Confirm Password" id="Password-2" data-ms-member="password" required="">
+              <input type="password" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Confirm Password" id="Password-2" data-ms-member="password" required="">
               <input type="tel" class="billing-input w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Phone Number" id="Phone" data-ms-member="phone-number" required="">
               <input type="text" class="billing-input w-input" maxlength="256" name="Home-Address" data-name="Home Address" placeholder="Enter Home Address" id="Home-Address" data-ms-member="address" required="">
               <div class="text-block-12">Additional Information</div>

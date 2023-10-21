@@ -1,7 +1,7 @@
 
 function userTicketComments(access_token, ticket_id) {
     return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/ticket/${ticket_id}/comments/`, {
+      fetch(`${baseUrl}/custom/admin/ticket/ticket/${ticket_id}/comments/`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + access_token
@@ -28,7 +28,7 @@ function userTicketComments(access_token, ticket_id) {
 
 function userTicketCreateComment(access_token, ticket_id, content) {
   return new Promise((resolve, reject) => {
-    fetch(`${baseUrl}/ticket/${ticket_id}/comments/`, {
+    fetch(`${baseUrl}/custom/admin/ticket/ticket/${ticket_id}/comments/`, {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + access_token,

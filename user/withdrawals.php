@@ -149,7 +149,12 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     .form-container.login{flex-direction:row;display:block;}
     .form-container.sign-up{max-width:600px;min-height:500px;grid-column-gap:16px;grid-row-gap:16px;flex-direction:row;grid-template-rows:auto auto;grid-template-columns:1fr 1fr;grid-auto-columns:1fr;justify-content:center;align-items:center;margin-top:40px;margin-bottom:40px;display:none;}
     .form-header{text-align:center;margin:0;font-size:20px;font-weight:600;line-height:24px;}
-    .modal-header{border:1px rgba(73, 73, 73, .28);border-bottom-style:solid;border-radius:0;margin-bottom:32px;padding:24px 180px;position:relative;}
+    .modal-header{
+      border:1px rgba(73, 73, 73, .28);
+      border-bottom-style:solid;
+      border-radius:0;margin-bottom:32px;
+      padding:24px 180px;position:relative;
+    }
     .form-block{border-radius:24px;flex-direction:column;align-items:center;margin-right:0;padding-left:0;display:flex;}
     .password-field{border-radius:8px;margin-bottom:20px;margin-left:auto;margin-right:auto;}
     .submit-button{width:75%;text-align:center;background-color:rgba(224, 72, 0, .88);border-radius:20px;margin-top:25px;margin-left:0;margin-right:0;padding:7px;font-size:14px;font-weight:600;line-height:21px;}
@@ -175,7 +180,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     .form-container.login{min-height:auto;display:flex;}
     .form-container.sign-up{display:none;}
     .form-header{line-height:32px;}
-    .modal-header{padding-top:40px;padding-bottom:40px;}
+    .modal-header {
+      padding-top:40px;
+      padding-bottom:40px
+      ;}
     .form-block{align-items:center;margin-bottom:0;}
     .password-field{margin-bottom:32px;}
     .remember-me-section{grid-column-gap:0px;grid-row-gap:0px;}
@@ -192,7 +200,11 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     .email-field{height:auto;margin-bottom:20px;}
     .form-container{max-width:none;}
     .form-header{font-size:18px;}
-    .modal-header{width:100%;margin-bottom:20px;padding:25px 20px;}
+    .modal-header{ 
+      width:100%;
+      margin-bottom:20px;
+      padding:25px 20px
+      ;}
     .password-field{height:auto;}
     .submit-button{width:auto;margin:13px 24px 12px;padding:9px 50px;font-size:14px;line-height:16px;}
     .remember-me-section{grid-column-gap:10px;grid-row-gap:10px;font-size:12px;}
@@ -329,6 +341,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     }
   </style>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="../backend/config/toast.js"></script>
+
 </head>
 
 
@@ -451,9 +467,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
                 <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
               </div> -->
-              <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-                <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
-              </div> -->
+              <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+                <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
+              </div>
             </div>
             <div class="right-navbar-wrapper last-wrapper">
               <!-- <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
@@ -537,7 +553,6 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                 </div>
             </div>        
         </div>
-
         <div>
                    
         <div style="overflow-x: auto;">
@@ -560,17 +575,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                             <span class="slds-assistive-text">Sort</span>
                           </button>
                       </div>
-                    </th>
-                    <!-- <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Department
-                        <button class="slds-button slds-button--icon-bare">
-                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                            </svg>
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
-                      </div>
-                    </th> -->
+                    </th>                 
                   
                     <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Status
@@ -582,38 +587,20 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                           </button>
                       </div>
                     </th>
-                    <!-- <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Subject
+
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Updated
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                            </svg>
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
-                      </div>
-                    </th> -->
-                    <!-- <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Amount
-                        <button class="slds-button slds-button--icon-bare">
-                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                              <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
                             </svg>
                             <span class="slds-assistive-text">Sort</span>
                           </button>
                       </div>
                     </th>
+                    
                     <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Contact
-                        <button class="slds-button slds-button--icon-bare">
-                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                            </svg>
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
-                      </div>
-                    </th> -->
-                    <th class="slds-is-sortable" scope="col">
-                        <div class="slds-truncate">Date
+                        <div class="slds-truncate">Created
                           <button class="slds-button slds-button--icon-bare">
                               <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
                                 <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
@@ -735,39 +722,39 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     </div>
   </div>
   
-<script>                
-    const closeModalButton = document.querySelector(".close-modal-button");
-    const modalWrapper = document.querySelector(".modal-wrapper");
-    const creatWithdrawalBtn = document.querySelector("#creatWithdrawalBtn");
+  <script>                
+      const closeModalButton = document.querySelector(".close-modal-button");
+      const modalWrapper = document.querySelector(".modal-wrapper");
+      const creatWithdrawalBtn = document.querySelector("#creatWithdrawalBtn");
 
-    closeModalButton.addEventListener("click", function () {
-        modalWrapper.style.display = "none";
-    });        
+      closeModalButton.addEventListener("click", function () {
+          modalWrapper.style.display = "none";
+      });        
 
-    creatWithdrawalBtn.addEventListener("click", function () {
-        console.log("xxxxxxxxx")
-              modalWrapper.style.display = "flex";
-              modalWrapper.style.opacity = 1;
-          });    
-        
-</script>
+      creatWithdrawalBtn.addEventListener("click", function () {
+          console.log("xxxxxxxxx")
+                modalWrapper.style.display = "flex";
+                modalWrapper.style.opacity = 1;
+            });    
+          
+  </script>
 
-<script>                
-    const closeModalButtoWithdrawalMethodn = document.querySelector(".close-modal-button.withdrawal-method");
-    const modalWrapperWithdrawalMethod = document.querySelector(".modal-wrapper.withdrawal-method");
-    const updateWithdrawalBtn = document.querySelector("#updateWithdrawalBtn");
+  <script>                
+      const closeModalButtoWithdrawalMethodn = document.querySelector(".close-modal-button.withdrawal-method");
+      const modalWrapperWithdrawalMethod = document.querySelector(".modal-wrapper.withdrawal-method");
+      const updateWithdrawalBtn = document.querySelector("#updateWithdrawalBtn");
 
-    closeModalButtoWithdrawalMethodn.addEventListener("click", function () {
-        modalWrapperWithdrawalMethod.style.display = "none";
-    });        
+      closeModalButtoWithdrawalMethodn.addEventListener("click", function () {
+          modalWrapperWithdrawalMethod.style.display = "none";
+      });        
 
-    updateWithdrawalBtn.addEventListener("click", function () {
-        console.log("xxxxxxxxx")
-            modalWrapperWithdrawalMethod.style.display = "flex";
-              modalWrapperWithdrawalMethod.style.opacity = 1;
-          });    
-        
-</script>
+      updateWithdrawalBtn.addEventListener("click", function () {
+          console.log("xxxxxxxxx")
+              modalWrapperWithdrawalMethod.style.display = "flex";
+                modalWrapperWithdrawalMethod.style.opacity = 1;
+            });    
+          
+  </script>
 
   <script src="../backend/user/getUserDetails.js"></script>
   <script src="../backend/user/topBarPlaceholders.js"></script>
@@ -777,255 +764,259 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   <script src="../backend/user/getUserWithdrawals.js"></script>
 
   <script>
-   async function fetchUserData() {
-    try {
-      const userDetailsObj = await userDetails(accessToken, baseUrl);
-      console.log("userDetailsObj", userDetailsObj);
-      topBarPlaceholders(userDetailsObj);
-      pageLoader(false);
-    } catch (error) {      
-      console.error("An error occurred:", error);
+    async function fetchUserData() {
+      try {
+        const userDetailsObj = await userDetails(accessToken, baseUrl);
+        console.log("userDetailsObj", userDetailsObj);
+        topBarPlaceholders(userDetailsObj);
+        pageLoader(false);
+      } catch (error) {      
+        console.error("An error occurred:", error);
+      }
     }
+
+    async function fetchUserWithdrawal() {
+      try {
+        const userWithdrawalsList = await userWithdrawals(accessToken);
+        console.log("userWithdrawalsList", userWithdrawalsList);      
+        appendRowToTable(userWithdrawalsList);
+      } catch (error) {      
+        console.error("An error occurred:", error);
+      }
+    }
+
+    fetchUserData();
+    fetchUserWithdrawal();
+
+      function appendRowToTable(Withdrawals) {
+          const tableBody = document.querySelector("tbody");
+
+          for (const withdrawal of Withdrawals) {
+              
+              const row = document.createElement("tr");
+
+          // Create table cells and populate them with withdrawal data
+          const checkboxCell = document.createElement("td");
+          checkboxCell.className = "slds-cell-shrink";
+          checkboxCell.dataset.label = "Select Row";
+          checkboxCell.innerHTML = `
+          <label class="slds-checkbox">
+              <input type="checkbox" name="options">
+              <span class="slds-checkbox--faux"></span>
+              <span class="slds-assistive-text">Select Row</span>
+          </label>`      
+
+          amount = document.createElement("td");
+          amount.setAttribute("data-withdrawal-id", withdrawal.id);      
+          amount.innerHTML = `$${withdrawal.amount}`
+
+          // department = document.createElement("td");
+          // department.innerHTML = `${withdrawal.department}`
+
+
+          statusCol = document.createElement("td");
+          statusCol.innerHTML = withdrawal.status
+
+
+          // subject = document.createElement("td");
+          // subject.innerHTML = withdrawal.subject
+
+          updatedDateCol = document.createElement("td");
+          updatedDateCol.innerHTML = formatDate(withdrawal.updated_at)
+
+          dateCol = document.createElement("td");
+          dateCol.innerHTML = formatDate(withdrawal.created_at)
+
+
+          // Append cells to the row
+          row.appendChild(checkboxCell);
+          row.appendChild(amount);
+          // row.appendChild(department);
+          row.appendChild(statusCol);
+          row.appendChild(updatedDateCol);
+          // row.appendChild(subject);
+          row.appendChild(dateCol);
+          // ... Append other cells to the row ...
+
+          // Append the row to the table body
+          tableBody.appendChild(row);
+              
+          }
+
+          gotoWithdrawalDetail()
+      }
+
+
+      function formatDate(dateString) {
+      const createdAt = new Date(dateString);
+      const formattedDate = createdAt.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+      });
+      return formattedDate;
+      }
+
+
+      function gotoWithdrawalDetail(){
+      // Get all elements with class 'td' and 'data-withdrawal-id' attribute
+      const elements = document.querySelectorAll('td[data-withdrawal-id]');
+
+      // Add a click event listener to each element
+      elements.forEach(element => {
+          element.addEventListener('click', function() {        
+          const withdrawalId = this.getAttribute('data-withdrawal-id');                
+          // const url = `withdrawal-detail.php?withdrawalId=${withdrawalId}`;                
+          // window.location.href = url;
+          });
+      });
   }
 
-  async function fetchUserWithdrawal() {
-    try {
-      const userWithdrawalsList = await userWithdrawals(accessToken);
-      console.log("userWithdrawalsList", userWithdrawalsList);      
-      appendRowToTable(userWithdrawalsList);
-    } catch (error) {      
-      console.error("An error occurred:", error);
-    }
-  }
+  </script>
+    
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Find the form element by its ID
+          const form = document.getElementById("createWithdrawal");
 
-  fetchUserData();
-  fetchUserWithdrawal();
+          // Add a submit event listener to the form
+          form.addEventListener("submit", function (event) {
+              setElementDisplayByClassName('mini-loader-container', 'flex')            
+              event.preventDefault(); // Prevent the default form submission
 
-    function appendRowToTable(Withdrawals) {
-        const tableBody = document.querySelector("tbody");
+              // Get the form data
+              const formData = new FormData(form);
 
-        for (const withdrawal of Withdrawals) {
-            
-            const row = document.createElement("tr");
+              // Create an object to store the form data
+              const data = {};
+              formData.forEach((value, key) => {
+                  data[key] = value;
+              });
 
-        // Create table cells and populate them with withdrawal data
-        const checkboxCell = document.createElement("td");
-        checkboxCell.className = "slds-cell-shrink";
-        checkboxCell.dataset.label = "Select Row";
-        checkboxCell.innerHTML = `
-        <label class="slds-checkbox">
-            <input type="checkbox" name="options">
-            <span class="slds-checkbox--faux"></span>
-            <span class="slds-assistive-text">Select Row</span>
-        </label>`      
+              // Convert the form data to JSON
+              const jsonData = JSON.stringify(data);
+              console.log(data)
 
-        amount = document.createElement("td");
-        amount.setAttribute("data-withdrawal-id", withdrawal.id);      
-        amount.innerHTML = `$${withdrawal.amount}`
+              // Send the JSON data to the specified endpoint
+              fetch(`${baseUrl}/withdrawals/`, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                      'Authorization': 'Bearer ' + accessToken
+                  },
+                  body: jsonData,
+                  
+              })
+              //.then((response) => response.json())
+              .then((response) => {
+                  if (response.status === 201) {
+                      // Status 201 indicates success (Created)
+                      setElementDisplayByClassName('mini-loader-container', 'none')
+                      setElementDisplayByClassName('w-form-done', 'flex')
+                      setElementDisplayByClassName('w-form-fail', 'none')
+                      toastSuccessNotif("Success")
+                      return response.json();
+                  } else {
+                      // Handle other status codes as needed
+                      setElementDisplayByClassName('mini-loader-container', 'none')
+                      setElementDisplayByClassName('w-form-done', 'none')
+                      setElementDisplayByClassName('w-form-fail', 'flex')
+                      toastErrorNotif("Error")
+                      throw new Error(`Received status code ${response.status}`);
+                  }
+              })
+              .then((result) => {
+                  // Handle the response from the server
+                  console.log(result);
+                  toastInfoNotif("Success")
+                  setElementDisplayByClassName('mini-loader-container', 'none')
+                  setElementDisplayByClassName('w-form-done', 'flex')
+                  setElementDisplayByClassName('w-form-fail', 'none')
+              })
+              .catch((error) => {
+                  // Handle any errors that occur during the fetch
+                  console.error("Error:", error);
+                  toastErrorNotif("Error")
+                  setElementDisplayByClassName('mini-loader-container', 'none')
+                  setElementDisplayByClassName('w-form-done', 'none')
+                  setElementDisplayByClassName('w-form-fail', 'flex')
+              });
+          });
+          setElementDisplayByClassName('mini-loader-container', 'none')
+      });
 
-        // department = document.createElement("td");
-        // department.innerHTML = `${withdrawal.department}`
-
-
-        statusCol = document.createElement("td");
-        statusCol.innerHTML = withdrawal.status
-
-
-        // subject = document.createElement("td");
-        // subject.innerHTML = withdrawal.subject
-
-
-        dateCol = document.createElement("td");
-        dateCol.innerHTML = formatDate(withdrawal.created_at)
-
-
-        // Append cells to the row
-        row.appendChild(checkboxCell);
-        row.appendChild(amount);
-        // row.appendChild(department);
-        row.appendChild(statusCol);
-        // row.appendChild(subject);
-        row.appendChild(dateCol);
-        // ... Append other cells to the row ...
-
-        // Append the row to the table body
-        tableBody.appendChild(row);
-            
+      function setElementDisplayByClassName(className, state) {
+          const elements = document.getElementsByClassName(className);              
+          for (const element of elements) {
+            element.style.display = state;
+          }
         }
 
-        gotoWithdrawalDetail()
-    }
+  </script>
 
+  <script>
+      const paymentForm = document.getElementById("paymentForm");
+      const paymentType = document.getElementById("paymentType");
+      const bankFields = document.getElementById("bankFields");
+      const cryptoFields = document.getElementById("cryptoFields");
 
-    function formatDate(dateString) {
-    const createdAt = new Date(dateString);
-    const formattedDate = createdAt.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-    });
-    return formattedDate;
-    }
+      paymentType.addEventListener("change", function () {
+        if (paymentType.value === "bank-transfer") {
+          bankFields.classList.remove("hidden");
+          cryptoFields.classList.add("hidden");
+        } else if (paymentType.value === "cryptocurrency") {
+          cryptoFields.classList.remove("hidden");
+          bankFields.classList.add("hidden");
+        }
+      });
 
+      paymentForm.addEventListener("submit", function (event) {
+          setElementDisplayByClassName("withdrawal-method-loader", "flex")
+        event.preventDefault();
+        const formData = new FormData(paymentForm);
+        const formObject = {};
 
-    function gotoWithdrawalDetail(){
-    // Get all elements with class 'td' and 'data-withdrawal-id' attribute
-    const elements = document.querySelectorAll('td[data-withdrawal-id]');
+        for (const [key, value] of formData.entries()) {
+          formObject[key] = value;
+        }
 
-    // Add a click event listener to each element
-    elements.forEach(element => {
-        element.addEventListener('click', function() {
-        // Get the value of the 'data-withdrawal-id' attribute
-        const withdrawalId = this.getAttribute('data-withdrawal-id');
+        console.log("Form Data:", formObject);
         
-        // Construct the URL with the withdrawalId as a query parameter
-        const url = `withdrawal-detail.php?withdrawalId=${withdrawalId}`;
         
-        // Redirect to the withdrawalDetail.php page with the query parameter
-        window.location.href = url;
-        });
-    });
-}
+        fetch(`${baseUrl}/withdrawalmethods/`, {
+          method: 'POST',
+          body: JSON.stringify(formObject),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + accessToken
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log("Response:", data);
+            toastSuccessNotif("Success")
+            setElementDisplayByClassName("withdrawal-method-loader", "none")
+            setElementDisplayByClassName('withdrawal-method-done', 'flex')
+              setElementDisplayByClassName('withdrawal-method-fail', 'none')
+          })
+          .catch(error => {
+            console.error("Error:", error);
+            toastErrorNotif("Error")
+            setElementDisplayByClassName("withdrawal-method-loader", "none")
+            setElementDisplayByClassName('withdrawal-method-done', 'none')
+          setElementDisplayByClassName('withdrawal-method-fail', 'flex')
+          });
+      });
+  </script>
 
-</script>
-  
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Find the form element by its ID
-        const form = document.getElementById("createWithdrawal");
-
-        // Add a submit event listener to the form
-        form.addEventListener("submit", function (event) {
-            setElementDisplayByClassName('mini-loader-container', 'flex')            
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get the form data
-            const formData = new FormData(form);
-
-            // Create an object to store the form data
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            // Convert the form data to JSON
-            const jsonData = JSON.stringify(data);
-            console.log(data)
-
-            // Send the JSON data to the specified endpoint
-            fetch(`${baseUrl}/withdrawals/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': 'Bearer ' + accessToken
-                },
-                body: jsonData,
-                
-            })
-            //.then((response) => response.json())
-            .then((response) => {
-                if (response.status === 201) {
-                    // Status 201 indicates success (Created)
-                    setElementDisplayByClassName('mini-loader-container', 'none')
-                    setElementDisplayByClassName('w-form-done', 'flex')
-                    setElementDisplayByClassName('w-form-fail', 'none')
-                    return response.json();
-                } else {
-                    // Handle other status codes as needed
-                    setElementDisplayByClassName('mini-loader-container', 'none')
-                    setElementDisplayByClassName('w-form-done', 'none')
-                    setElementDisplayByClassName('w-form-fail', 'flex')
-                    throw new Error(`Received status code ${response.status}`);
-                }
-            })
-            .then((result) => {
-                // Handle the response from the server
-                console.log(result);
-                setElementDisplayByClassName('mini-loader-container', 'none')
-                setElementDisplayByClassName('w-form-done', 'flex')
-                setElementDisplayByClassName('w-form-fail', 'none')
-            })
-            .catch((error) => {
-                // Handle any errors that occur during the fetch
-                console.error("Error:", error);
-                setElementDisplayByClassName('mini-loader-container', 'none')
-                setElementDisplayByClassName('w-form-done', 'none')
-                setElementDisplayByClassName('w-form-fail', 'flex')
-            });
-        });
-        setElementDisplayByClassName('mini-loader-container', 'none')
-    });
-
-    function setElementDisplayByClassName(className, state) {
-        const elements = document.getElementsByClassName(className);              
-        for (const element of elements) {
-          element.style.display = state;
+  <script>
+      function setElementDisplayByClassName(className, state) {
+          const elements = document.getElementsByClassName(className);              
+          for (const element of elements) {
+            element.style.display = state;
+          }
         }
-      }
-
-</script>
-
-<script>
-    const paymentForm = document.getElementById("paymentForm");
-    const paymentType = document.getElementById("paymentType");
-    const bankFields = document.getElementById("bankFields");
-    const cryptoFields = document.getElementById("cryptoFields");
-
-    paymentType.addEventListener("change", function () {
-      if (paymentType.value === "bank-transfer") {
-        bankFields.classList.remove("hidden");
-        cryptoFields.classList.add("hidden");
-      } else if (paymentType.value === "cryptocurrency") {
-        cryptoFields.classList.remove("hidden");
-        bankFields.classList.add("hidden");
-      }
-    });
-
-    paymentForm.addEventListener("submit", function (event) {
-        setElementDisplayByClassName("withdrawal-method-loader", "flex")
-      event.preventDefault();
-      const formData = new FormData(paymentForm);
-      const formObject = {};
-
-      for (const [key, value] of formData.entries()) {
-        formObject[key] = value;
-      }
-
-      console.log("Form Data:", formObject);
-      
-       
-       fetch(`${baseUrl}/withdrawalmethods/`, {
-         method: 'POST',
-         body: JSON.stringify(formObject),
-         headers: {
-           'Content-Type': 'application/json',
-           'Authorization': 'Bearer ' + accessToken
-         }
-       })
-         .then(response => response.json())
-         .then(data => {
-           console.log("Response:", data);
-           setElementDisplayByClassName("withdrawal-method-loader", "none")
-           setElementDisplayByClassName('withdrawal-method-done', 'flex')
-            setElementDisplayByClassName('withdrawal-method-fail', 'none')
-         })
-         .catch(error => {
-          console.error("Error:", error);
-          setElementDisplayByClassName("withdrawal-method-loader", "none")
-          setElementDisplayByClassName('withdrawal-method-done', 'none')
-        setElementDisplayByClassName('withdrawal-method-fail', 'flex')
-        });
-    });
-</script>
-
-<script>
-    function setElementDisplayByClassName(className, state) {
-        const elements = document.getElementsByClassName(className);              
-        for (const element of elements) {
-          element.style.display = state;
-        }
-      }
-</script>
+  </script>
 
 </body>
 </html>

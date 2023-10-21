@@ -156,6 +156,14 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </style>
 
 
+<style>
+  @media screen and (max-width: 991px) {
+.analyzer-section.dashboard {
+    flex-direction: column;
+    align-items: normal;
+}
+  }
+</style>
 
 </head>
 <body class="dashboard-body">
@@ -277,9 +285,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
           </div> -->
-          <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
-          </div> -->
+          <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
+          </div>
         </div>
         <div class="right-navbar-wrapper last-wrapper">
           <!-- <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
@@ -331,20 +339,14 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                   </th>
                   <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Account type
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
+                      <button class="slds-button slds-button--icon-bare">                          
                           <span class="slds-assistive-text">Sort</span>
                         </button>
                     </div>
                   </th>
                   <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Starting fee
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
+                      <button class="slds-button slds-button--icon-bare">                          
                           <span class="slds-assistive-text">Sort</span>
                         </button>
                     </div>
@@ -352,30 +354,28 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                 
                   <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
+                      <button class="slds-button slds-button--icon-bare">                          
+                          <span class="slds-assistive-text">Sort</span>
+                        </button>
+                    </div>
+                  </th>
+                  <th class="slds-is-sortable" scope="col">
+                    <div class="slds-truncate">Transaction $tatus
+                      <button class="slds-button slds-button--icon-bare">                          
                           <span class="slds-assistive-text">Sort</span>
                         </button>
                     </div>
                   </th>
                   <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Payment method
-                      <button class="slds-button slds-button--icon-bare">
-                          <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg> -->
+                      <button class="slds-button slds-button--icon-bare">                          
                           <span class="slds-assistive-text">Sort</span>
                         </button>
                     </div>
                   </th>             
                   <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Date
-                        <button class="slds-button slds-button--icon-bare">
-                            <!-- <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                            </svg> -->
+                        <button class="slds-button slds-button--icon-bare">                            
                             <span class="slds-assistive-text">Sort</span>
                           </button>
                       </div>
@@ -449,7 +449,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
           accountTypeCol = document.createElement("td");
           accountTypeCol.setAttribute("data-order-id", order.id);      
-          accountTypeCol.innerHTML = `$${order.account_type.amount}`
+          accountTypeCol.innerHTML = `<a href="#">$${order.account_type.amount}</a>`
 
           startingFeeCol = document.createElement("td");
           startingFeeCol.innerHTML = `$${order.account_type.setup_fee}`
@@ -457,7 +457,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
           statusCol = document.createElement("td");
           statusCol.innerHTML = order.status
-
+          
+          
+          TransactionStatusCol = document.createElement("td");
+          TransactionStatusCol.innerHTML = order.transaction.status
 
           paymentMethodCol = document.createElement("td");
           paymentMethodCol.innerHTML = order.payment_method.name
@@ -472,6 +475,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           row.appendChild(accountTypeCol);
           row.appendChild(startingFeeCol);
           row.appendChild(statusCol);
+          row.appendChild(TransactionStatusCol);
           row.appendChild(paymentMethodCol);
           row.appendChild(dateCol);
           // ... Append other cells to the row ...

@@ -433,7 +433,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   
   </style>
 
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="../backend/config/toast.js"></script>
 </head>
 
 
@@ -556,9 +558,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
               <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
             </div> -->
-            <!-- <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
-              <a href="#" class="rl_navbar1_link w-nav-link">Wallet</a>
-            </div> -->
+            <div class="right-navbar-link"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+              <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
+            </div>
           </div>
           <div class="right-navbar-wrapper last-wrapper">
             <!-- <div class="right-navbar-link"><img src="../images/Gear-1.svg" loading="lazy" alt="" class="image-9">
@@ -710,10 +712,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           </div>  
         <div class="modal-header">
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-            <div>Account added successfully!</div>
+            <div>Ticket created successfully!</div>
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-            <div>Account addition failed!</div>
+            <div>Ticket failed!</div>
         </div>        
           <div class="form-header">Create ticket</div>
           <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
@@ -817,7 +819,7 @@ function appendRowToTable(tickets) {
 
       priority = document.createElement("td");
       priority.setAttribute("data-ticket-id", ticket.id);      
-      priority.innerHTML = `${ticket.priority}`
+      priority.innerHTML = `<a href="#">${ticket.priority} </a>`
 
       department = document.createElement("td");
       department.innerHTML = `${ticket.department}`
@@ -921,11 +923,13 @@ function gotoTicketDetail(){
             .then((response) => {
                 if (response.status === 201) {
                     // Status 201 indicates success (Created)
+                    toastSuccessNotif("Success")
                     setElementDisplayByClassName('mini-loader-container', 'none')
                     setElementDisplayByClassName('w-form-done', 'flex')
                     setElementDisplayByClassName('w-form-fail', 'none')
                     return response.json();
                 } else {
+                  toastErrorNotif("Error")
                     // Handle other status codes as needed
                     setElementDisplayByClassName('mini-loader-container', 'none')
                     setElementDisplayByClassName('w-form-done', 'none')

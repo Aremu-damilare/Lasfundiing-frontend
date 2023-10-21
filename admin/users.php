@@ -3,7 +3,7 @@
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
-  <title>Tickets - lasfunding</title>
+  <title>Users - lasfunding</title>
   <meta content="Dashboard" property="og:title">
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -104,7 +104,6 @@
 
 </head>
 <body class="dashboard-body">
-  
 <div class="loader-container">
     <svg id="loader" class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <g>
@@ -125,9 +124,9 @@
     }, 500);
 </script>
 
-<div class="topbar">
+  <div class="topbar">
 	  <div class="logo">
-		  <a href="#"><img src="../images/Lasfund-Logo.svg" alt="Logo"></a>
+		<a href="#"><img src="../images/Lasfund-Logo.svg" alt="Logo"></a>
 	  </div>
     
     <!-- navbar search form -->
@@ -170,7 +169,7 @@
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
-	</div>
+	  </div>
 
 
   <div data-animation="default" class="rl_navbar1_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400">
@@ -187,7 +186,7 @@
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Tickets </a>
+            <a href="./tickets.php"  class="rl_navbar1_link w-nav-link">Tickets </a>
           </div>
           
           <div class="right-navbar-link">
@@ -195,11 +194,11 @@
                 <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>           
-            <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
+            <a href="./orders.php"   class="rl_navbar1_link w-nav-link">Orders </a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./users.php" class="rl_navbar1_link w-nav-link">Users</a>
+            <a href="#" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Users</a>
           </div>
 
           <div class="right-navbar-link">
@@ -243,97 +242,102 @@
     </div>
   </div>
 
+
   <div class="main-section" style="display: none">
     <div class="gradient-header">      
       <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Tickets</span>        
+        <span>Users</span>        
       </div>
       <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
-      
-        
+            
         <div style="overflow-x: auto;">
-          <table class="slds-table slds-table--bordered">
-              <thead>
-                <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select All</span>
-                      </label>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Activity
-                      <button class="slds-button slds-button--icon-bare">                        
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">User
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">                         
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Subject
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                 
-                  <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Date
-                        <button class="slds-button slds-button--icon-bare">                         
+            <table class="slds-table slds-table--bordered">
+                <thead>
+                  <tr class="slds-text-heading--label">
+                    <th class="slds-cell-shrink">
+                      <label class="slds-checkbox">
+                          <input type="checkbox" name="options">
+                          <span class="slds-checkbox--faux"></span>
+                          <span class="slds-assistive-text">Select All</span>
+                        </label>
+                    </th>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Email
+                        <button class="slds-button slds-button--icon-bare">                          
                             <span class="slds-assistive-text">Sort</span>
                           </button>
                       </div>
                     </th>
-                  <th class="slds-cell-shrink"></th>
-                </tr>
-              </thead>
-              <tbody>                
-                
-              </tbody>
-          </table>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Full name
+                        <button class="slds-button slds-button--icon-bare">                            
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">ID
+                        <button class="slds-button slds-button--icon-bare">                            
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>   
+
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Last login
+                        <button class="slds-button slds-button--icon-bare">                            
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Is admin
+                        <button class="slds-button slds-button--icon-bare">                            
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>             
+                    <th class="slds-is-sortable" scope="col">
+                        <div class="slds-truncate">Date joined
+                          <button class="slds-button slds-button--icon-bare">                              
+                              <span class="slds-assistive-text">Sort</span>
+                            </button>
+                        </div>
+                      </th>
+                    <th class="slds-cell-shrink"></th>
+                  </tr>
+                </thead>
+                <tbody>
+              
+                </tbody>
+            </table>
         </div>
         
     </div>
   
   </div>
-
+  
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script src="../backend/admin/config.js"></script>
-  <script src="../backend/admin/getTickets.js"></script>
+  
+  <script src="../backend/admin/getUsers.js"></script>
 
-  <script>
-    async function main() {    
+<script>
+  async function main() {    
 
-    const tickets = await getTickets(baseUrl, accessToken);
+  const users = await getUsers(baseUrl, accessToken);
 
-    if (tickets) {
-      console.log('Tickets:', tickets);
-
-
+  if (users) {
+      console.log('Users:', users);
 
     var tbody = document.querySelector('tbody'); 
 
 
-    tickets.forEach(function(ticket) {
+    users.forEach(function(users) {
       var row = document.createElement('tr');
       
       // Create and append the "Select Row" cell
@@ -353,43 +357,72 @@
       var opportunityCell = document.createElement('th');
       opportunityCell.className = 'slds-truncate';
       opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./ticket.php?id=${ticket.id}"> ${ticket.id}<br> ${ticket.priority} </a>`;
+      opportunityCell.innerHTML = `<a href="./user.php?id=${users.id}"> ${users.email} </a>`;
       row.appendChild(opportunityCell);
 
       var accountCell = document.createElement('td');
       accountCell.className = 'slds-truncate';
       accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${ticket.user.email}`;
+      accountCell.innerHTML = `${users.first_name}  ${users.last_name}`;
       row.appendChild(accountCell);
 
-      var statusCell = document.createElement('td');
-      statusCell.className = '';
-      statusCell.setAttribute('data-label', 'Confidence');
-      statusCell.innerHTML = ticket.status;
-      row.appendChild(statusCell);
+      var setupFeeCell = document.createElement('td');
+      setupFeeCell.className = '';
+      setupFeeCell.setAttribute('data-label', 'setupFee');
+      setupFeeCell.innerHTML = `${users.id}`;
+      row.appendChild(setupFeeCell);
 
       var descriptionCell = document.createElement('td');
       descriptionCell.className = '';
       descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = ticket.subject;
+      descriptionCell.innerHTML = formatDate(users.last_login);
       row.appendChild(descriptionCell);
+
+      var paidCell = document.createElement('td');
+      paidCell.className = '';
+      paidCell.setAttribute('data-label', 'paid');
+      paidCell.innerHTML = users.is_superuser;
+      row.appendChild(paidCell);
 
       var dateCell = document.createElement('td');
       dateCell.className = '';
       dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(ticket.updated_at);
+      dateCell.innerHTML = formatDate(users.date_joined);
       row.appendChild(dateCell);
       
       tbody.appendChild(row);
     });
 
     } else {
-      console.log('Failed to retrieve tickets.');
+      console.log('Failed to retrieve users.');
     }
   }
 
   main();
 
+  </script>
+
+  <script>
+    function formatDate(inputDate) {
+      // Parse the input date string into a Date object
+      const date = new Date(inputDate);
+    
+      // Define options for formatting the date and time
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        timeZoneName: 'short'
+      };
+    
+      // Format the date using the options
+      const formattedDate = date.toLocaleString('en-US', options);
+    
+      return formattedDate;
+    }
   </script>
 
 </body>

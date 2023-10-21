@@ -3,7 +3,7 @@
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
-  <title>Tickets - lasfunding</title>
+  <title>Order detail - lasfunding</title>
   <meta content="Dashboard" property="og:title">
   <meta content="Dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -99,8 +99,12 @@
         width: 90px;
         height: 90px;
     }
-  </style>  
+  </style>    
+  
   <link rel="stylesheet" href="./css/ticket-table.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="../backend/config/toast.js"></script>
 
 </head>
 <body class="dashboard-body">
@@ -187,7 +191,7 @@
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/RreceiptTax.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Tickets </a>
+            <a href="./tickets.php"  class="rl_navbar1_link w-nav-link">Tickets </a>
           </div>
           
           <div class="right-navbar-link">
@@ -195,7 +199,7 @@
                 <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>           
-            <a href="./orders.php"  class="rl_navbar1_link w-nav-link">Orders </a>
+            <a href="./orders.php"  style="color: #E04800;font-style: oblique;" class="rl_navbar1_link w-nav-link">Orders </a>
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/outline.svg" loading="lazy" alt="" class="sign-out-icon">
@@ -219,10 +223,7 @@
           <div class="right-navbar-link"><img src="../images/icons/admin/ChatsTeardrop.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="./kycs.php" class="rl_navbar1_link w-nav-link">KYC</a>
           </div>
-          
-          <!-- <div class="right-navbar-link"><img src="../images/icons/admin/Gear.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="./settings.php class="rl_navbar1_link w-nav-link">Settings</a>
-          </div> -->
+                  
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
             <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
@@ -244,153 +245,191 @@
   </div>
 
   <div class="main-section" style="display: none">
-    <div class="gradient-header">      
-      <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Tickets</span>        
+    <div class="main-section-real">
+      <div class="gradient-header">      
+        <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
+          <span>Order detail #<span id="id"></span> </span>        
+        </div>        
       </div>
-      <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
-    </div>
-    <div class="analyzer-section dashboard wf-section" style="display: block;">
-      
+
+      <div class="analyzer-section dashboard wf-section" style="display: block;">      
+        <div class="info-container">                    
+          <p class="info-block"><span class="info-label">Updated at</span><span id="updated_at"></span></p>
+          <p class="info-block"><span class="info-label">Active</span><span id="active"></span></p>
+          <p class="info-block"><span class="info-label">Account type</span><span id="accountType"></span></p>
+          <p class="info-block"><span class="info-label">Payment method</span><span id="paymentMethod"></span></p>        
+          <p class="info-block"><span class="info-label">Payment details </span><span id="paymentDetail"></span></p>
+          <p class="info-block"><span class="info-label">Status</span><span id="status"></span></p>
+          <p class="info-block"><span class="info-label">Stage</span><span id="stage"></span></p>
+          <p class="info-block"><span class="info-label">Profit</span><span id="profit"></span></p>
+          <p class="info-block"><span class="info-label">Transaction</span><span id="transactionStatus"></span></p>          
+          <p class="info-block"><span class="info-label">User email</span><span id="user"></span> </p>
+          <p class="info-block"><span class="info-label">Created at</span><span id="created_at"></span></p>
+
+          <form method="post" id="adminModelForm">                  
+            <label for="status">Order status</label>
+            <select name="status" id="status" class=" w-input">
+                <option value="pending">Pending</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="success">Success</option>
+                <option value="failed">Failed</option>
+            </select>
+
+            <label for="transactionStatus">Transaction on Order status</label>
+            <select name="transactionStatus" id="transactionStatus" class=" w-input">
+                <option value="pending">Pending</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="success">Success</option>
+                <option value="failed">Failed</option>
+            </select>
+
+            <label for="stage">Stage</label>
+            <select name="stage" id="stage" class=" w-input">
+                <option value="idle">Idle</option>
+                <option value="close">Close</option>
+                <option value="active">Active</option>
+                <option value="phase_2_demo">Phase 2 Demo</option>
+                <option value="phase_1_demo">Phase 1 Demo</option>
+            </select>
+
+            <label for="active" style="place-self: center;">Active</label>
+            <input type="checkbox" name="active" id="active" class=" w-input" value="true">    
+
+            <label for="profit">Profit</label>
+            <input type="number" name="profit" id="profit" step="0.01" value="0.0" class=" w-input">
         
-        <div style="overflow-x: auto;">
-          <table class="slds-table slds-table--bordered">
-              <thead>
-                <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
-                    <label class="slds-checkbox">
-                        <input type="checkbox" name="options" />
-                        <span class="slds-checkbox--faux"></span>
-                        <span class="slds-assistive-text">Select All</span>
-                      </label>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Activity
-                      <button class="slds-button slds-button--icon-bare">                        
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">User
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Status
-                      <button class="slds-button slds-button--icon-bare">                         
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Subject
-                      <button class="slds-button slds-button--icon-bare">                          
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                 
-                  <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Date
-                        <button class="slds-button slds-button--icon-bare">                         
-                            <span class="slds-assistive-text">Sort</span>
-                          </button>
-                      </div>
-                    </th>
-                  <th class="slds-cell-shrink"></th>
-                </tr>
-              </thead>
-              <tbody>                
-                
-              </tbody>
-          </table>
-        </div>
-        
+            <br>
+
+            <input type="submit" value="Submit" class="submit-button w-button">
+      </form>
+      </div>        
+      </div>  
     </div>
-  
   </div>
 
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script src="../backend/admin/config.js"></script>
-  <script src="../backend/admin/getTickets.js"></script>
+  <script src="../backend/admin/getOrders.js"></script>
 
   <script>
-    async function main() {    
 
-    const tickets = await getTickets(baseUrl, accessToken);
+    const idElement = document.querySelector("#id");
+    const createdAtElement = document.querySelector("#created_at");
+    const activeElement = document.querySelector("#active");
+    const accountTypeElement = document.querySelector("#accountType");
+    const paymentMethod = document.querySelector("#paymentMethod");
+    const paymentDetail = document.querySelector("#paymentDetail");
+    const statusElement = document.querySelector("#status");
+    const stageElement = document.querySelector("#stage");
+    const profitElement = document.querySelector("#profit");
+    const transactionStatus = document.querySelector("#transactionStatus");
+    const updatedAtElement = document.querySelector("#updated_at");
+    const userElement = document.querySelector("#user");
 
-    if (tickets) {
-      console.log('Tickets:', tickets);
-
-
-
-    var tbody = document.querySelector('tbody'); 
-
-
-    tickets.forEach(function(ticket) {
-      var row = document.createElement('tr');
-      
-      // Create and append the "Select Row" cell
-      var selectCell = document.createElement('td');
-      selectCell.className = 'slds-cell-shrink';
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = 'options';
-      var checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'slds-checkbox';
-      checkboxLabel.appendChild(checkbox);
-      checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
-      selectCell.appendChild(checkboxLabel);
-      row.appendChild(selectCell);
-
-      
-      var opportunityCell = document.createElement('th');
-      opportunityCell.className = 'slds-truncate';
-      opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./ticket.php?id=${ticket.id}"> ${ticket.id}<br> ${ticket.priority} </a>`;
-      row.appendChild(opportunityCell);
-
-      var accountCell = document.createElement('td');
-      accountCell.className = 'slds-truncate';
-      accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${ticket.user.email}`;
-      row.appendChild(accountCell);
-
-      var statusCell = document.createElement('td');
-      statusCell.className = '';
-      statusCell.setAttribute('data-label', 'Confidence');
-      statusCell.innerHTML = ticket.status;
-      row.appendChild(statusCell);
-
-      var descriptionCell = document.createElement('td');
-      descriptionCell.className = '';
-      descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = ticket.subject;
-      row.appendChild(descriptionCell);
-
-      var dateCell = document.createElement('td');
-      dateCell.className = '';
-      dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(ticket.updated_at);
-      row.appendChild(dateCell);
-      
-      tbody.appendChild(row);
-    });
-
-    } else {
-      console.log('Failed to retrieve tickets.');
+    async function main() {
+      // Get the order ID from the query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get("id");
+    
+      // Check if orderId exists and is an integer
+      if (orderId && !isNaN(orderId) && Number.isInteger(Number(orderId))) {
+        const order = await getOrder(baseUrl, accessToken, parseInt(orderId));
+    
+        if (order) {
+          console.log("order...", order)
+          orderUpdateForm(order.id)
+          idElement.innerHTML = `${order.id}`;
+          activeElement.innerHTML = `${order.active}`;
+          createdAtElement.innerHTML = `${formatDate(order.created_at)}`;
+          accountTypeElement.innerHTML = `${order.account_type.amount}`;
+          paymentMethod.innerHTML = `${order.payment_method.name}`;
+          paymentDetail.innerHTML = `
+                                  <a  href="${order.transaction.payment_details.payment_proof}">
+                                    <img style="height: 40px" src="${order.transaction.payment_details.payment_proof}">
+                                  </a> <br>Gatway: ${order.transaction.payment_details.crypto_gateway}
+                                        <br>Card: ${order.transaction.payment_details.card_type}                                        
+                                  `;
+          statusElement.innerHTML = `${order.status}`;
+          stageElement.innerHTML = `${order.stage}`;
+          profitElement.innerHTML = `${order.profit}`;
+          transactionStatus.innerHTML = `Status: ${order.transaction.status} <br> Fee: ${order.transaction.amount}`;
+          updatedAtElement.innerHTML = `${formatDate(order.updated_at)}`;
+          userElement.innerHTML = `${order.user.email}`;
+        } else {
+          console.log('Failed to retrieve the order.');
+        }
+      } else {
+        console.log('Invalid or missing order ID in the query parameter.');
+      }
     }
-  }
 
-  main();
-
+main();
   </script>
+
+
+  <script>
+
+    async function orderUpdateForm(orderId) {
+      const form = document.getElementById('adminModelForm');
+      form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+  
+          // Extract data from the form fields
+          const formData = new FormData(form);
+          console.log("formData", formData);
+  
+          // Call the updateOrder function and wait for the response
+          const orderUpdate = await updateOrder(baseUrl, accessToken, parseInt(orderId), formData);
+          console.log("orderUpdate", orderUpdate);
+  
+          if (orderUpdate !== false) {
+            console.log("orderUpdate not false", orderUpdate);
+            toastSuccessNotif("Success")
+          } else {
+            console.log("orderUpdate false", orderUpdate);
+            toastErrorNotif("Error")
+          }
+      });
+  }
+  
+</script>
+
+<script>
+  
+  function PaymentProofBase64Converter(paymentProofBase64){
+    console.log(paymentProofBase64)
+    var proofElement = document.getElementById("proof");
+        fileContentString = paymentProofBase64
+        // Create an image or PDF element based on the data
+        if (fileContentString.startsWith("data:image")) {
+            // It's an image
+            var image = new Image();
+            image.src = fileContentString;
+            image.style.display = "block";
+            image.style.height = "246px";
+            image.style.margin = "11px 30px 0";
+            image.style.maxWidth = "100%";
+            image.style.verticalAlign = "top";
+            image.style.width = "226px";
+            proofElement.innerHTML = '';
+            proofElement.appendChild(image);
+        } else if (fileContentString.startsWith("data:application/pdf")) {
+            // It's a PDF
+            var pdfEmbed = document.createElement("embed");
+            pdfEmbed.src = fileContentString;
+            pdfEmbed.type = "application/pdf";
+            pdfEmbed.width = "100%";
+            pdfEmbed.height = "500px"; // Set the desired height for the PDF viewer
+            proofElement.innerHTML = '';
+            proofElement.appendChild(pdfEmbed);
+        } else {
+            // Handle other file types or show an error message
+            proofElement.innerHTML = "Unsupported file type.";
+        }
+}
+</script>
 
 </body>
 </html>

@@ -172,7 +172,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 
   </div>
 
-  
+  <script src="../backend/admin/config.js"></script>
   <script>        
     
     document.getElementById("adminLogin").addEventListener("submit", function(event) {
@@ -186,7 +186,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
         var formFail = document.querySelector(".w-form-fail");
         
         
-        fetch("http://127.0.0.1:8000/custom/admin/login/", {
+        fetch(`${baseUrl}/custom/admin/login/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

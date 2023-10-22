@@ -531,7 +531,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
           console.log("data", data)
           // Send data to the endpoint (you should replace 'your-api-endpoint' with your actual endpoint)
           try {
-              const response = await fetch('http://127.0.0.1:8000/admin/store/create/', {
+              const response = await fetch(`${baseUrl}/admin/store/create/`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -758,9 +758,10 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 </script>
 
 <script src="../backend/admin/manage-plans.js"></script>
+<script src="../backend/admin/config.js"></script>
 <script>
   // Define the URL to make the request to
-const endpointUrl = 'http://127.0.0.1:8000/custom/admin/store/list/';
+const endpointUrl = `${baseUrl}/custom/admin/store/list/`;
 
 // Create headers object with authorization
 const headers = new Headers({
@@ -823,7 +824,7 @@ fetch(request)
                 
                 if (confirmation) {
                     // Send the DELETE request to the delete endpoint
-                    fetch(`http://127.0.0.1:8000/custom/admin/store/delete/${accountId}/`, {
+                    fetch(`${baseUrl}/custom/admin/store/delete/${accountId}/`, {
                         method: "DELETE",
                         headers: {
                           'Authorization': 'Bearer ' + accessToken,

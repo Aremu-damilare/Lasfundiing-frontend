@@ -1,6 +1,7 @@
 const queryParams = new URLSearchParams(window.location.search);
 const email = queryParams.get('email');
-const baseUrl = "http://127.0.0.1:8000"
+// const baseUrl = "http://127.0.0.1:8000"
+const baseUrl = "https://lasfunding.com:8080"
 
 
 // update email element with email value

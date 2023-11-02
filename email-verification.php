@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
@@ -70,8 +77,8 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-
-  <script src="./backend/email-verification.js"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
+    <script src="./backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="./backend/email-verification.js?<?php echo time(); ?>"></script>
 </body>
 </html>

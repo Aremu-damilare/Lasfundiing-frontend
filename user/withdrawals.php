@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
@@ -220,8 +227,8 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     @keyframes clr{0%,         100%{stroke:#F5C1A9;}20%{stroke:#E04800;}40%{stroke:#E04800;}60%{stroke:#F5C1A9;}80%{stroke:#F5C1A9;}}
    </style>
 
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/user/ticket-table.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/user/ticket-table.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
 
   
   <style>
@@ -343,7 +350,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <script src="../backend/config/toast.js"></script>
+  <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 
 </head>
 
@@ -409,7 +416,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       <div class="cart-icon">
         <!-- <i class="fa fa-shopping-cart"></i> -->
         <span class="cart-count">0</span>
-        <a href="./account-type.html" class="w-inline-block">
+        <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
       </div>
       <!-- cart icon end -->
@@ -435,7 +442,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             </div>
             <div class="right-navbar-wrapper">
               <div class="text-block-36">TRANSACTION</div>         
-              <div class="right-navbar-link current-page"><img src="../images/CurrencyCircleDollar-1.svg" loading="lazy" alt="" class="sign-out-icon">
+              <div class="right-navbar-link current-page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="white">
+                <path d="M12 7.69116V9.19116" stroke="#5B5654" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M12 16.6912V18.1912" stroke="#5B5654" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M12 21.9412C16.9706 21.9412 21 17.9117 21 12.9412C21 7.9706 16.9706 3.94116 12 3.94116C7.02944 3.94116 3 7.9706 3 12.9412C3 17.9117 7.02944 21.9412 12 21.9412Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M9.75 16.6912H13.125C13.6223 16.6912 14.0992 16.4936 14.4508 16.142C14.8025 15.7904 15 15.3134 15 14.8162C15 14.3189 14.8025 13.842 14.4508 13.4903C14.0992 13.1387 13.6223 12.9412 13.125 12.9412H10.875C10.3777 12.9412 9.90081 12.7436 9.54917 12.392C9.19754 12.0404 9 11.5634 9 11.0662C9 10.5689 9.19754 10.092 9.54917 9.74034C9.90081 9.38871 10.3777 9.19116 10.875 9.19116H14.25" stroke="#5B5654" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
                 <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
               </div>
             </div>
@@ -482,7 +495,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             <div class="">
               <div class="text-block-37"></div>
               <div class="rect-box">
-                <div class="text-block-38">Go to Help Centre</div>
+                <div class="text-block-38">Help Centre</div>
               </div>
             </div>
           </nav>
@@ -623,37 +636,42 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
   
 
     
   <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
     <div style="opacity: 1; display: flex;" class="form-container  w-container">
-      <div class="form-block w-form" style="overflow-y: auto;height: auto;">
-        <div class="mini-loader-container">
-            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <g>
-                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
-                </g>        
-            </svg>        
-          </div>  
-        <div class="modal-header">
+      <div class="form-block w-form" style="overflow-y: auto;height: auto;">        
+        <div class="">
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-            <div>Withdrawal request added successfully!</div>
+            <div>Withdrawal request sent successfully!</div>
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-            <div>Withdrawal request addition failed!</div>
+            <div>Withdrawal request failed!</div>
         </div>        
-          <div class="form-header">Make withdrawal request</div>
-          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+          <div class="" style="padding: 10px;margin:10px; text-align: center;">Make withdrawal request</div>
+          <div  class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
         </div>
         <form id="createWithdrawal" name="create-withdrawal-form" data-name="create-withdrawal Form" method="post" data-ms-form="" class="form " aria-label="create-withdrawal Form">
+          <div class="w-form">                                          
+                <span >Current active order profit: <span style="color: #e04800;" id="currentOrderProfit">256</span> </span>
+            </div>
             <div class="w-form">                          
                 <input type="number" class=" w-input" maxlength="256" name="amount" placeholder="100" id="amount"  require>
                 <small >Enter amount to withdrawal</small>
             </div>
                              
-          <input type="submit" value="Request" data-wait="Please wait..." class="submit-button w-button">          
+          <button type="submit" value="Request" data-wait="Please wait..." class="submit-button w-button">          
+            Request
+            <span class="mini-loader-container">
+              <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                  <g>
+                    <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                  </g>        
+              </svg>        
+            </span>  
+          </button>
           
           </div>
         </form>        
@@ -664,22 +682,17 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper withdrawal-method">
     <div style="opacity: 1; display: flex;" class="form-container  w-container">
       <div class="form-block w-form" style="overflow-y: auto;height: auto;">
-        <div class="mini-loader-container withdrawal-method-loader">
-            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <g>
-                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
-                </g>        
-            </svg>        
-          </div>  
-        <div class="modal-header">
+         
+        <div class="">
         <div class="w-form-done withdrawal-method-done" tabindex="-1" role="region" style="display: none;">
-            <div>Withdrawal request added successfully!</div>
+            <div>Withdrawal method updated successfully!</div>
         </div>
         <div class="w-form-fail withdrawal-method-fail" tabindex="-1" role="region" style="display: none;">
-            <div>Withdrawal request addition failed!</div>
+            <div>Withdrawal method update failed!</div>
         </div>        
-          <div class="form-header">Update withdrawal method</div>
-          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button withdrawal-method"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+          <div class=""  style="padding: 10px;margin:10px; text-align: center;">Update withdrawal method</div>
+          <div class="close-modal-button withdrawal-method">
+            <img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
         </div>
 
         <form id="paymentForm" class="form">
@@ -714,7 +727,16 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               <input type="text" id="cryptoAddress" name="crypto_address" class="w-input">
             </div>
         
-            <input type="submit" value="Update" data-wait="Please wait..." class="submit-button w-button">          
+            <button type="submit" value="Update" data-wait="Please wait..." class="submit-button w-button"> 
+              Update
+              <span class="mini-loader-container withdrawal-method-loader">
+                <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <g>
+                      <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                    </g>        
+                </svg>        
+              </span>
+            </button>
           </form>                                                          
           </div>
         </form>        
@@ -756,12 +778,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           
   </script>
 
-  <script src="../backend/user/getUserDetails.js"></script>
-  <script src="../backend/user/topBarPlaceholders.js"></script>
-  <script src="../backend/user/pageLoader.js"></script>
-  <script src="../backend/config/_service-worker.js"></script>
-  <script src="../backend/user/logOut.js"></script>  
-  <script src="../backend/user/getUserWithdrawals.js"></script>
+  <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/topBarPlaceholders.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/pageLoader.js?<?php echo time(); ?>"></script>
+  <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>  
+  <script src="../backend/user/getUserWithdrawals.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/getUserOrders.js?<?php echo time(); ?>"></script>
 
   <script>
     async function fetchUserData() {
@@ -1018,5 +1041,38 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         }
   </script>
 
+
+  <script>
+    async function fetchUserOrder() {
+      try {
+        const userOdersList = await userOrders(accessToken);
+        console.log("userOdersList", userOdersList);
+        DisplayToBoxes(userOdersList)        
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+    
+    fetchUserOrder();
+
+    function DisplayToBoxes(OrderList){        
+      var currentOrderProfit = document.getElementById("currentOrderProfit");
+
+        for (var i = 0; i < OrderList.length; i++) {
+          var order = OrderList[i];
+          if (
+              order.active === true &&
+              order.status === "success" &&
+              order.stage === "active"
+          ) {
+              console.log("Matching Object:" , order);            
+              currentOrderProfit.innerHTML = `$${order.profit}`;
+            
+          } else{
+            console.log("No active account")
+          }
+      }
+    }
+  </script>
 </body>
 </html>

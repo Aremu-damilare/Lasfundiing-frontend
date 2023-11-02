@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
@@ -227,7 +234,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   <div class="cart-icon">
     <!-- <i class="fa fa-shopping-cart"></i> -->
     <span class="cart-count">0</span>
-    <a href="./account-type.html" class="w-inline-block">
+    <a href="#" class="w-inline-block">
       <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
   </div>
   <!-- cart icon end -->
@@ -261,8 +268,8 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           <div class="text-block-36">MENU</div>
           <div class="right-navbar-link current-page">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="white">
-                <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19.572 7.69116H4.42195C4.2374 7.69203 4.05949 7.76007 3.92146 7.88257C3.78343 8.00507 3.69473 8.17365 3.67195 8.35679L2.3407 20.3568C2.32886 20.4613 2.33915 20.5672 2.37091 20.6675C2.40267 20.7679 2.45518 20.8604 2.52503 20.9391C2.59488 21.0178 2.68051 21.0809 2.77635 21.1243C2.8722 21.1677 2.9761 21.1905 3.08133 21.1912H20.9126C21.0178 21.1905 21.1217 21.1677 21.2175 21.1243C21.3134 21.0809 21.399 21.0178 21.4689 20.9391C21.5387 20.8604 21.5912 20.7679 21.623 20.6675C21.6547 20.5672 21.665 20.4613 21.6532 20.3568L20.322 8.35679C20.2992 8.17365 20.2105 8.00507 20.0724 7.88257C19.9344 7.76007 19.7565 7.69203 19.572 7.69116V7.69116Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M8.25 10.6912V7.69116C8.25 6.6966 8.64509 5.74277 9.34835 5.03951C10.0516 4.33625 11.0054 3.94116 12 3.94116C12.9946 3.94116 13.9484 4.33625 14.6517 5.03951C15.3549 5.74277 15.75 6.6966 15.75 7.69116V10.6912" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>                  
             <a href="./orders.php" class="rl_navbar1_link w-nav-link">Orders</a>
           </div>
@@ -300,7 +307,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         <div class="">
           <div class="text-block-37"></div>
           <div class="rect-box">
-            <div class="text-block-38">Go to Help Centre</div>
+            <div class="text-block-38">Help Centre</div>
           </div>
         </div>
       </nav>
@@ -393,16 +400,16 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
         
 
-  <script src="../backend/user/getUserDetails.js"></script>
-  <script src="../backend/user/topBarPlaceholders.js"></script>
-  <script src="../backend/user/pageLoader.js"></script>
-  <script src="../backend/config/_service-worker.js"></script>
-  <script src="../backend/user/logOut.js"></script>
+  <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/topBarPlaceholders.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/pageLoader.js?<?php echo time(); ?>"></script>
+  <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>
 
-  <script src="../backend/user/getUserOrders.js"></script>
+  <script src="../backend/user/getUserOrders.js?<?php echo time(); ?>"></script>
 
   <script>
     async function fetchUserData() {

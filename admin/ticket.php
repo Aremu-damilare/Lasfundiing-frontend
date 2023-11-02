@@ -1,3 +1,16 @@
+<?php
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
+?>
+
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
@@ -104,7 +117,7 @@
      
   <link rel="stylesheet" href="./css/ticket-table.css">
   <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
-  <script src="../backend/config/toast.js"></script>
+  <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 
  <style>
     .mini-loader-container {
@@ -279,6 +292,12 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
+  <style>
+    ul.posts {
+      background: #e4ebf3ad;
+  }
+  </style>
+
 </head>
 <body class="dashboard-body">
   
@@ -341,7 +360,7 @@
     <div class="cart-icon">
       <!-- <i class="fa fa-shopping-cart"></i> -->
       <span class="cart-count">0</span>
-      <a href="./account-type.html" class="w-inline-block">
+      <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
     </div>
     <!-- cart icon end -->
@@ -442,19 +461,19 @@
             <form method="post" id="adminModelForm">
   
               <label for="priority">Priority</label>
-              <select name="priority" id="priority" class=" w-input">
+              <select name="priority" id="priorityAdminOptions" class=" w-input">
                   <option value="high">High</option>
                   <option value="normal">Normal</option>
               </select>    
       
               <label for="status">Status</label>
-              <select name="status" id="status" class=" w-input">
+              <select name="status" id="statusAdminOptions" class=" w-input">
                   <option value="open">Open</option>
                   <option value="close">Close</option>
               </select>
     
               <label for="department">Department</label>
-              <select name="department" id="department" class=" w-input">
+              <select name="department" id="departmentAdminOptions" class=" w-input">
                   <option value="account-type">Account Type</option>
                   <option value="enquiry">Enquiry</option>
                   <option value="funding">Funding</option>
@@ -463,12 +482,22 @@
                   <option value="payment-method">Payment Method</option>
               </select>    
               <br>      
-              <input type="submit" value="Submit" class="submit-button w-button">
+              <button type="submit" value="Submit" class="submit-button w-button"> 
+                Update
+                <span class="mini-loader-container ticket-update-loader" style="display: none;">
+                  <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                      <g>
+                          <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                      </g>        
+                  </svg>        
+                </span>
+              </button>
           </form>
           </div>    
           
 
         <div class="comment-section" style="margin: 10%;">
+          <h3>Ticket comments </h3>
           <ul class="posts">
           </ul>
             <form>
@@ -495,10 +524,10 @@
 
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  <script src="../backend/admin/config.js"></script>
-  <script src="../backend/admin/getTickets.js"></script>
-  <script src="../backend/admin/getUserTicketComments.js"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
+  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
+  <script src="../backend/admin/getTickets.js?<?php echo time(); ?>"></script>
+  <script src="../backend/admin/getUserTicketComments.js?<?php echo time(); ?>"></script>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);      
@@ -527,8 +556,35 @@
           idElement.innerHTML = `${ticket.id}`;
           createdAtElement.innerHTML = `${formatDate(ticket.created_at)}`;
           departmentElement.innerHTML = `${ticket.department}`;
+                    // Find the select element by its ID departmentAdminOptions
+                    var departmentAdminOptions = document.getElementById("departmentAdminOptions");
+                    // Loop through the options and set the selected attribute for the matching option
+                    for (var i = 0; i < departmentAdminOptions.options.length; i++) {
+                        if (departmentAdminOptions.options[i].value === ticket.department) {
+                          departmentAdminOptions.options[i].selected = true;
+                            break;
+                        }
+                    }
           priorityElement.innerHTML = `${ticket.priority}`;
+                    // Find the select element by its ID
+                    var priorityAdminOptions = document.getElementById("priorityAdminOptions");
+                    // Loop through the options and set the selected attribute for the matching option
+                    for (var i = 0; i < priorityAdminOptions.options.length; i++) {
+                        if (priorityAdminOptions.options[i].value === ticket.priority) {
+                          priorityAdminOptions.options[i].selected = true;
+                            break;
+                        }
+                    }
           statusElement.innerHTML = `${ticket.status}`;
+                    // Find the select element by its ID
+                    var statusAdminOptions = document.getElementById("statusAdminOptions");
+                    // Loop through the options and set the selected attribute for the matching option
+                    for (var i = 0; i < statusAdminOptions.options.length; i++) {
+                        if (statusAdminOptions.options[i].value === ticket.status) {
+                          statusAdminOptions.options[i].selected = true;
+                            break;
+                        }
+                    }
           subjectElement.innerHTML = `${ticket.subject}`;
           updatedAtElement.innerHTML = `${formatDate(ticket.updated_at)}`;
           userElement.innerHTML = `${ticket.user.email}`;
@@ -541,6 +597,15 @@
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `<small class="comment-user">${ticketComment.user.email} ${formatDate(ticketComment.created_at)} </small> 
                                         <div class="commwnt-content">${ticketComment.content}</div>`;
+
+                  if(ticketComment.user.email.includes("admin") ){
+                    listItem.innerHTML = `<small style="background: white;color: blue" class="comment-user">Admin: ${formatDate(ticketComment.created_at)} </small> 
+                    <div class="commwnt-content">${ticketComment.content}</div>`;
+                  } else  {
+                    listItem.innerHTML = `<small style="background: white;color: gray" class="comment-user">${ticketComment.user.email}: ${formatDate(ticketComment.created_at)} </small> 
+                                      <div class="commwnt-content">${ticketComment.content}</div>`;
+                  }
+
                 commentList.insertBefore(listItem, commentList.firstChild);
             }
 
@@ -612,7 +677,9 @@
 
 async function ticketUpdateForm(ticketId) {
   const form = document.getElementById('adminModelForm');
+  const ticketUpdateLoader = document.querySelector(".ticket-update-loader");
   form.addEventListener('submit', async (event) => {
+    ticketUpdateLoader.style.display = 'block';
       event.preventDefault();
 
       // Extract data from the form fields
@@ -626,9 +693,14 @@ async function ticketUpdateForm(ticketId) {
       if (ticketUpdate !== false) {
         toastSuccessNotif("Sucess")
         console.log("ticketUpdate not false", ticketUpdate);
+        ticketUpdateLoader.style.display = 'none';
+        setTimeout(function() {
+          location.reload();
+      }, 2000);
       } else {
         toastErrorNotif("Error")
         console.log("ticketUpdate false", ticketUpdate);
+        ticketUpdateLoader.style.display = 'none';
       }
   });
 }

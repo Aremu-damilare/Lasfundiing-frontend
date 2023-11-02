@@ -1,36 +1,8 @@
 var userData;
-const accessToken = localStorage.getItem('access_token');
-const analyzerSection  = document.querySelector(".analyzer-section.dashboard.wf-section")
-// const baseUrl = "http://127.0.0.1:8000"
-const baseUrl = "https://lasfunding.com:8080"
-const firstNameElement = document.querySelector('.user-fname');
-
-const profileName = document.querySelector('body > div.topbar > div.profile > div > span.profile-name');
-const profileEmail = document.querySelector('body > div.topbar > div.profile > div > span.profile-email');
-const transactionsTable = document.querySelector('.transaction-table')
-const noTransactionsTable = document.querySelector('.no-transaction-table')
-
-
-// stop page animation
-var topBar = document.querySelector(".topbar");
-var mainSection = document.querySelector("body > div.main-section");
-var navBar = document.querySelector("body > div.rl_navbar1_component.w-nav");
-var loaderContainer = document.querySelector('.loader-container');
-
 topBar.style.display = "none";
 mainSection.style.display = "none";
 navBar.style.display = "none";
 
-// window.addEventListener('load', function() {
-  
-//   setTimeout(function() {
-    // loaderContainer.style.display = 'none';
-
-    // topBar.style.display = "flex"
-    // mainSection.style.display = "block"
-    // navBar.style.display = "block"
-//   }, 3000);      
-// });
 
 if(accessToken){
   getAllUserData()
@@ -70,43 +42,40 @@ function getAllUserData(){
     }
   })
   .then(response => response.json())
-  .then(data => {
-    
+  .then(data => {    
     if(data.length === 0){
       console.log("No transactions", data);
       transactionsTable.style.display = 'none'
       noTransactionsTable.style.display = 'block'
     } else {
       console.log("Transactions", data);
-      transactionsTable.style.display = 'flex'
+      transactionsTable.style.display = 'b'
       noTransactionsTable.style.display = 'none'
 
-      data.forEach(element => {
-        console.log(element)
-        transactionsTable.innerHTML += `
-      <div id="" class="status">
-        <div id="" class="${element.status}"><img src="../images/transactions-status/${element.status}.svg" loading="lazy" alt="" class="status-icon">
-          <div class="text-block-63">${element.status}</div>
+        data.forEach(element => {
+          console.log(element)
+          transactionsTable.innerHTML += `
+          <div id="" class="status">
+          <div id="" class="completed"><img src="../images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
+            <div class="text-block-63">${element.status}</div>
+          </div>
         </div>
-      </div>
-      <div id="" class="payment-type">        
-        <div class="text-block-61">${formatDate(element.updated_at)}</div>
-      </div>
-      <div id="" class="amount">
-        <div class="text-block-64">$${element.amount}</div>
-      </div>
-      <div id="" class="date">
-        <div class="text-block-65">${formatDate(element.created_at)}</div>
-      </div>`
+        <div id="" class="payment-type">              
+          <div class="text-block-61">${element.id} payment</div>
+        </div>
+        <div id="" class="amount">
+          <div class="text-block-64">$${element.amount}</div>
+        </div>
+        <div id="" class="date">
+          <div class="text-block-65">${formatDate(element.updated_at)}</div>
+        </div>`
 
-      });
-    }
-    
+        });
+    }    
   })
   .catch(error => {
     console.error(error);
   });
-
 
   console.log("xxxxxxxxxxxxxxxxxxxxx")
   setDisplay(true)

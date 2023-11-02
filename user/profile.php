@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
@@ -340,7 +347,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-<script src="../backend/config/toast.js"></script>
+<script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 
 </head>
 
@@ -405,7 +412,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 <div class="cart-icon">
   <!-- <i class="fa fa-shopping-cart"></i> -->
   <span class="cart-count">0</span>
-  <a href="./account-type.html" class="w-inline-block">
+  <a href="#" class="w-inline-block">
     <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
 </div>
 <!-- cart icon end -->
@@ -457,7 +464,12 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     </div>
     <div class="right-navbar-wrapper">
       <div class="text-block-36">PERSONAL</div>
-      <div class="right-navbar-link current-page"><img src="../images/UserCircle-1.svg" loading="lazy" alt="" class="image-9">
+      <div class="right-navbar-link current-page">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="white">
+      <path d="M12 21.9414C16.9706 21.9414 21 17.912 21 12.9414C21 7.97084 16.9706 3.94141 12 3.94141C7.02944 3.94141 3 7.97084 3 12.9414C3 17.912 7.02944 21.9414 12 21.9414Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M12 15.9414C14.0711 15.9414 15.75 14.2625 15.75 12.1914C15.75 10.1203 14.0711 8.44141 12 8.44141C9.92893 8.44141 8.25 10.1203 8.25 12.1914C8.25 14.2625 9.92893 15.9414 12 15.9414Z" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M5.98438 19.6357C6.54867 18.5243 7.40971 17.5907 8.47207 16.9387C9.53443 16.2866 10.7566 15.9414 12.0031 15.9414C13.2496 15.9414 14.4718 16.2866 15.5342 16.9387C16.5965 17.5907 17.4576 18.5243 18.0219 19.6357" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
         <a href="./profile.php" class="rl_navbar1_link w-nav-link">Profile</a>
       </div>
       <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
@@ -478,7 +490,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     <div class="">
       <div class="text-block-37"></div>
       <div class="rect-box">
-        <div class="text-block-38">Go to Help Centre</div>
+        <div class="text-block-38">Help Centre</div>
       </div>
     </div>
   </nav>
@@ -497,31 +509,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   <div class="main-section" style="display: none;">
     <div class="profile-section wf-section">      
       <!-- <div class="title">Profile</div> -->
-      <div class="w-form">
-        <!-- <form method="POST" id="profileupdate" class="profile-details-form">
-
-          <div class="name-wrapper display-name-wrapper">
-            <label for="name" class="profile-label">First Name</label>
-            <input type="text" class="fname w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name">
-            <label for="lname" class="lname-label">Last Name</label>
-            <input type="text" class="lname w-input" maxlength="256" name="lname" data-name="Email" placeholder="" id="email" required="">
-          </div>      
-          
-          <div class="email-wrapper">
-            <label for="field-2" class="profile-label">Email <Address></Address></label>
-            <input type="email" class="email w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="" id="field-2" required="">
-            <input type="submit" value="Save Changes" data-wait="Please wait..." class="submit-button-3 w-button">
-          </div>
-
-          <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
-        
-          
-        </form> -->
+      <div class="w-form">      
         
         <form method="POST" id="passwordchange" class="profile-details-form">
         
@@ -531,14 +519,17 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             <input type="password" class="new-pwd-field w-input display-name w-input" maxlength="256" name="new-password" data-name="New Password" placeholder="Enter new password" id="new-password" required="">
             <input type="password" class="confirm-new-pwd w-input display-name w-input" maxlength="256" name="confirm-new-password" data-name="Confirm New Password" placeholder="Confirm new password" id="confirm-new-password" required="">
             
-            <input type="submit" value="Change Password" data-wait="Please wait..." class="submit-button-3 w-button">
-            <div class="mini-loader-container">
-              <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                  <g>
-                      <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
-                  </g>        
-              </svg>        
-          </div>
+            <button type="submit" value="Change Password" data-wait="Please wait..." class="submit-button-3 w-button"> 
+              Change password
+              <span class="mini-loader-container">
+                <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <g>
+                        <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+                    </g>        
+                </svg>        
+              </span>
+            </button>
+           
             <div class="w-form-done">
               <div>Success!</div>
             </div>
@@ -577,13 +568,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
 
-  <script src="../backend/user/getUserDetails.js"></script>
-  <script src="../backend/user/topBarPlaceholders.js"></script>
-  <script src="../backend/user/pageLoader.js"></script>
-  <script src="../backend/config/_service-worker.js"></script>
-  <script src="../backend/user/logOut.js"></script>  
+  <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/topBarPlaceholders.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/pageLoader.js?<?php echo time(); ?>"></script>
+  <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>  
 
 <script>
   async function fetchUserData() {      

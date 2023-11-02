@@ -1,4 +1,4 @@
-const loginForm = document.querySelector('#email-form > input.submit-button.w-button');
+const loginForm = document.querySelector('#email-form > button.submit-button.w-button');
 const miniLoaderContainer = document.querySelector('.mini-loader-container')
 
 loginForm.addEventListener('click', (event) => {
@@ -12,7 +12,7 @@ loginForm.addEventListener('click', (event) => {
   const errorMessage = document.querySelector('.w-form-fail');
   const successMessage = document.querySelector('.w-form-done');
 
-  if (password !== '' && signInCheckBox.checked) {
+  if (password !== '') {
   fetch(`${baseUrl}/login/`, {
     method: 'POST',
     headers: {

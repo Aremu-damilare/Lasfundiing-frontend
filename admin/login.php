@@ -1,3 +1,15 @@
+<?php
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,7 +53,18 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
 .w-checkbox-input{float:left;margin:4px 0 0 -20px;line-height:normal;}
 .w-checkbox-input{float:left;margin:4px 0 0 -20px;line-height:normal;}
 label{margin-bottom:5px;font-weight:bold;display:block;}
-.modal-wrapper{z-index:9999;background-color:rgba(73, 73, 73, .8);flex-direction:row;justify-content:center;align-items:center;display:none;position:fixed;top:0%;bottom:0%;left:0%;right:0%;}
+.modal-wrapper{ z-index:9999; 
+  background-color:white;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  display:none;
+  position:fixed;
+  top:0%;
+  bottom:0%;
+  left:0%;
+  right:0%;
+}
 .email-field{border-radius:8px;margin:14px auto 20px;padding-left:12px;padding-right:12px;}
 .form-container{background-color:#fff;border:1px solid rgba(73, 73, 73, .3);border-radius:24px;position:absolute;}
 .form-container.login{flex-direction:row;display:block;}
@@ -105,6 +128,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 @keyframes rot{0%{transform:rotate(0deg);stroke-dashoffset:157.1;}50%{stroke-dashoffset:0;}100%{transform:rotate(360deg);stroke-dashoffset:-157.1;}}
 @keyframes clr{0%,         100%{stroke:#F5C1A9;}20%{stroke:#E04800;}40%{stroke:#E04800;}60%{stroke:#F5C1A9;}80%{stroke:#F5C1A9;}}
     </style>
+    
 </head>
 <body>
 
@@ -126,19 +150,21 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 <div style="display: flex; opacity: 1;" class="modal-wrapper">
     <div style="opacity: 1; display: flex;" class="form-container login w-container">
       <div class="form-block w-form">
-        <div class="modal-header">
+        <div class="">
         <div id="result"></div>
 
         <div class="w-form-done" tabindex="-1" role="region" aria-label="Email Form success">        
-        <div>Request Successful...!</div>
+        <div>Login credentials valid!</div>
+          
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">        
+          Error logging in!
         </div>
 
 
         <img src="../images/Lasfund-Logo.svg" loading="lazy" alt="" class="rl_navbar2_logo">
-          <div class="form-header">Admin Log in</div>
-          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+          <div class="" style="padding: 10px;margin:10px; text-align: center;">Admin Login</div>
+          <div class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
         </div>
         <form id="adminLogin" name="email-form" data-name="Email Form" method="post" data-ms-form="login" class="form login" aria-label="Email Form">
           <input type="email" class="email-field w-input" maxlength="256" id="email" name="email" data-name="email" placeholder="Enter Email Address" id="email" data-ms-member="email" required="">
@@ -150,11 +176,14 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
             </div> -->
           </div>
           <div class="remember-me-section login"><label class="w-checkbox checkbox-field">
-            <input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input" required="">
+            <input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input" checked>
             <span class="checkbox-label w-form-label" for="checkbox">Remember me</span></label>
             <div class="forgot-password">              
             </div>
-          </div><input type="submit" value="Login" data-wait="Please wait..." class="submit-button w-button">
+          </div>
+          <button type="submit" value="Login" data-wait="Please wait..." class="submit-button w-button"> 
+            Login
+          </button>
           
           </div>
         </form>
@@ -172,7 +201,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 
   </div>
 
-  <script src="../backend/admin/config.js"></script>
+  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
   <script>        
     
     document.getElementById("adminLogin").addEventListener("submit", function(event) {
@@ -181,10 +210,8 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
         // Get the form data
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-
         var formDone = document.querySelector(".w-form-done");
-        var formFail = document.querySelector(".w-form-fail");
-        
+        var formFail = document.querySelector(".w-form-fail");        
         
         fetch(`${baseUrl}/custom/admin/login/`, {
             method: "POST",
@@ -212,9 +239,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 
             }else {
                 formDone.style.display = 'none'
-                formFail.style.display = 'block'
-
-                
+                formFail.style.display = 'block'                
                 formFail.innerHTML = JSON.stringify(data);
             }                
         })

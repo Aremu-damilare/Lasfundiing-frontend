@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -182,6 +189,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         font-size: 20px;        
       }
     </style>
+    <link rel="stylesheet" href="../css/scrollbar.css">
   </head>
   <body class="dashboard-body">
     <div class="loader-container">
@@ -235,7 +243,8 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       <div class="cart-icon">
         <!-- <i class="fa fa-shopping-cart"></i> -->
         <span class="cart-count">0</span>
-        <a href="./account-type.html" class="w-inline-block"> <img src="../images/cart.svg" loading="lazy" alt="" class="image" /></a>
+        <a href="#" class="w-inline-block"> 
+          <img src="../images/cart.svg" loading="lazy" alt="" class="image" /></a>
       </div>
       <!-- cart icon end -->
       <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -257,44 +266,20 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           <div class="text-block-36"></div>
           <div class="right-navbar-wrapper">
             <div class="right-navbar-link current-page">
-              <svg width="34" height="34" viewBox="0 0 34 34" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10.0742 10.8307V14.637C10.0742 15.0512 10.41 15.387 10.8242 15.387H14.6277C15.0419 15.387 15.3777 15.0512 15.3777 14.637V10.8307C15.3777 10.4165 15.0419 10.0807 14.6277 10.0807H10.8242C10.41 10.0807 10.0742 10.4165 10.0742 10.8307Z"
-                  stroke="#8E8B8A"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M18.5625 10.8292V14.6355C18.5625 15.0497 18.8983 15.3855 19.3125 15.3855H23.1159C23.5302 15.3855 23.8659 15.0497 23.8659 14.6355V10.8292C23.8659 10.415 23.5302 10.0792 23.1159 10.0792H19.3125C18.8983 10.0792 18.5625 10.415 18.5625 10.8292Z"
-                  stroke="#8E8B8A"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10.0703 19.3092V23.1155C10.0703 23.5297 10.4061 23.8655 10.8203 23.8655H14.6238C15.038 23.8655 15.3738 23.5297 15.3738 23.1155V19.3092C15.3738 18.895 15.038 18.5592 14.6238 18.5592H10.8203C10.4061 18.5592 10.0703 18.895 10.0703 19.3092Z"
-                  stroke="#8E8B8A"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M18.5586 19.3092V23.1155C18.5586 23.5297 18.8944 23.8655 19.3086 23.8655H23.112C23.5262 23.8655 23.862 23.5297 23.862 23.1155V19.3092C23.862 18.895 23.5262 18.5592 23.112 18.5592H19.3086C18.8944 18.5592 18.5586 18.895 18.5586 19.3092Z"
-                  stroke="#8E8B8A"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0742 10.8307V14.637C10.0742 15.0512 10.41 15.387 10.8242 15.387H14.6277C15.0419 15.387 15.3777 15.0512 15.3777 14.637V10.8307C15.3777 10.4165 15.0419 10.0807 14.6277 10.0807H10.8242C10.41 10.0807 10.0742 10.4165 10.0742 10.8307Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M18.5625 10.8292V14.6355C18.5625 15.0497 18.8983 15.3855 19.3125 15.3855H23.1159C23.5302 15.3855 23.8659 15.0497 23.8659 14.6355V10.8292C23.8659 10.415 23.5302 10.0792 23.1159 10.0792H19.3125C18.8983 10.0792 18.5625 10.415 18.5625 10.8292Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10.0703 19.3092V23.1155C10.0703 23.5297 10.4061 23.8655 10.8203 23.8655H14.6238C15.038 23.8655 15.3738 23.5297 15.3738 23.1155V19.3092C15.3738 18.895 15.038 18.5592 14.6238 18.5592H10.8203C10.4061 18.5592 10.0703 18.895 10.0703 19.3092Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M18.5586 19.3092V23.1155C18.5586 23.5297 18.8944 23.8655 19.3086 23.8655H23.112C23.5262 23.8655 23.862 23.5297 23.862 23.1155V19.3092C23.862 18.895 23.5262 18.5592 23.112 18.5592H19.3086C18.8944 18.5592 18.5586 18.895 18.5586 19.3092Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
-              <a href="./dashboard.php" class="rl_navbar1_link w-nav-link"> Dashboard</a>
+              <a href="./dashboard.php" class="rl_navbar1_link w-nav-link">&nbsp;Dashboard</a>
             </div>
           </div>
           <div class="right-navbar-wrapper">
             <div class="text-block-36">TRANSACTION</div>
             <div class="right-navbar-link">
               <img src="../images/CurrencyCircleDollar-1.svg" loading="lazy" alt="" class="sign-out-icon" />
-              <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link"> Withdrawals</a>
+              <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">&nbsp;Withdrawals</a>
             </div>
           </div>
           <div class="right-navbar-wrapper">
@@ -316,7 +301,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                   stroke-linejoin="round"
                 />
               </svg>
-              <a href="./orders.php" class="rl_navbar1_link w-nav-link"> Orders</a>
+              <a href="./orders.php" class="rl_navbar1_link w-nav-link">&nbsp;Orders</a>
             </div>
             <div class="right-navbar-link">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -328,7 +313,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                   stroke-linejoin="round"
                 ></path>
               </svg>
-              <a href="./tickets.php" class="rl_navbar1_link w-nav-link"> Tickets </a>
+              <a href="./tickets.php" class="rl_navbar1_link w-nav-link">&nbsp;Tickets </a>
             </div>
             <!-- <div class="right-navbar-link">
               <img src="../images/CreditCard.svg" loading="lazy" alt="" class="sign-out-icon" />
@@ -339,7 +324,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             <div class="text-block-36">PERSONAL</div>
             <div class="right-navbar-link">
               <img src="../images/UserCircle-1.svg" loading="lazy" alt="" class="image-9" />
-              <a href="./profile.php" class="rl_navbar1_link w-nav-link"> Profile</a>
+              <a href="./profile.php" class="rl_navbar1_link w-nav-link">&nbsp;Profile</a>
             </div>
             <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
               <a href="#" class="rl_navbar1_link  w-nav-link"> Notification</a>
@@ -354,13 +339,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
               </div> -->
             <div class="right-navbar-link">
               <img src="../images/SignOut-1.svg" loading="lazy" alt="" class="sign-out-icon" />
-              <a href="#" class="rl_navbar1_link w-nav-link"> Sign Out</a>
+              <a href="#" class="rl_navbar1_link w-nav-link">&nbsp;Sign Out</a>
             </div>
           </div>
           <div class="">
             <div class="text-block-37"></div>
             <div class="rect-box">
-              <div class="text-block-38">Go to Help Centre</div>
+              <div class="text-block-38">Help Centre</div>
             </div>
           </div>
         </nav>
@@ -543,13 +528,13 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="../js/webflow.js" type="text/javascript"></script>
-    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-    <script src="../backend/user/getUserDetails.js"></script>
-    <script src="../backend/user/topBarPlaceholders.js"></script>
-    <script src="../backend/user/pageLoader.js"></script>
-    <script src="../backend/config/_service-worker.js"></script>
-    <script src="../backend/user/logOut.js"></script>
-    <script src="../backend/user/getUserOrders.js"></script>
+    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
+    <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>
+    <script src="../backend/user/topBarPlaceholders.js?<?php echo time(); ?>"></script>
+    <script src="../backend/user/pageLoader.js?<?php echo time(); ?>"></script>
+    <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+    <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>
+    <script src="../backend/user/getUserOrders.js?<?php echo time(); ?>"></script>
     <script>
       async function fetchData() {
         try {
@@ -583,7 +568,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           console.log("order", order);
           const elementToAppend = document.createElement("div");
           elementToAppend.className = "transaction-table";
-          elementToAppend.innerHTML = `
+          elementToAppend.innerHTML += `
         <div id="" class="status">
           <div id="" class="completed"><img src="../images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
             <div class="text-block-63">${order.transaction.status}</div>
@@ -613,32 +598,30 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         return formattedDate;
       }
 
-      function DisplayToBoxes(OrderList){
-        
+      function DisplayToBoxes(OrderList){        
         var boxA = document.getElementById("box-a");
         var boxB = document.getElementById("box-b");
         var boxC = document.getElementById("box-c");
         var boxD = document.getElementById("box-d");
 
-
-        for (var i = 0; i < OrderList.length; i++) {
-          var order = OrderList[i];
-          if (
-              order.active === true &&
-              order.status === "success" &&
-              order.stage === "active"
-          ) {
-              console.log("Matching Object:" , order);
+          for (var i = 0; i < OrderList.length; i++) {
+            var order = OrderList[i];
+            if (
+                order.active === true &&
+                order.status === "success" &&
+                order.stage === "active"
+            ) {
+                console.log("Matching Object:" , order);
+                
+                  boxA.innerHTML = `Status:<br> ${order.status} <br><br> Transaction:<br> ${order.transaction.status}`;
+                  boxB.innerHTML = `Stage:<br> ${order.stage}`;
+                  boxC.innerHTML = `Active:<br> ${order.active}`;
+                  boxD.innerHTML = `Profit:<br> ${order.profit}`;
               
-                boxA.innerHTML = `Status:<br> ${order.status} <br><br> Transaction:<br> ${order.transaction.status}`;
-                boxB.innerHTML = `Stage:<br> ${order.stage}`;
-                boxC.innerHTML = `Active:<br> ${order.active}`;
-                boxD.innerHTML = `Profit:<br> ${order.profit}`;
-             
-          } else{
-            console.log("No active account")
-          }
-      }
+            } else{
+              console.log("No active account")
+            }
+        }
       }
 
     </script>

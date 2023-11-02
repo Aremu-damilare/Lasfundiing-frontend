@@ -1,3 +1,15 @@
+<?php
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
+?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
@@ -319,7 +331,7 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <script src="../backend/config/toast.js"></script>
+  <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 </head>
 
 
@@ -385,7 +397,7 @@
       <div class="cart-icon">
         <!-- <i class="fa fa-shopping-cart"></i> -->
         <span class="cart-count">0</span>
-        <a href="./account-type.html" class="w-inline-block">
+        <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
       </div>
       <!-- cart icon end -->
@@ -443,7 +455,10 @@
               <!-- <div class="right-navbar-link"><img src="../images/Bell-1.svg" loading="lazy" alt="" class="sign-out-icon">
                 <a href="#" class="rl_navbar1_link  w-nav-link">Notification</a>
               </div> -->
-              <div class="right-navbar-link current-page"><img src="../images/Vector.svg" loading="lazy" alt="" class="sign-out-icon">
+              <div class="right-navbar-link current-page">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+              <path d="M1.75 2.94141V14.9414C1.75 15.3392 1.90804 15.7208 2.18934 16.0021C2.47064 16.2834 2.85218 16.4414 3.25 16.4414H18.25C18.4489 16.4414 18.6397 16.3624 18.7803 16.2217C18.921 16.0811 19 15.8903 19 15.6914V5.19141C19 4.99249 18.921 4.80173 18.7803 4.66108C18.6397 4.52042 18.4489 4.44141 18.25 4.44141H3.25C2.85218 4.44141 2.47064 4.28337 2.18934 4.00207C1.90804 3.72076 1.75 3.33923 1.75 2.94141ZM1.75 2.94141C1.75 2.54358 1.90804 2.16205 2.18934 1.88075C2.47064 1.59944 2.85218 1.44141 3.25 1.44141H16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
                 <a href="./kyc.php" class="rl_navbar1_link w-nav-link">KYC</a>
               </div>
             </div>
@@ -458,7 +473,7 @@
             <div class="">
               <div class="text-block-37"></div>
               <div class="rect-box">
-                <div class="text-block-38">Go to Help Centre</div>
+                <div class="text-block-38">Help Centre</div>
               </div>
             </div>
           </nav>
@@ -530,27 +545,22 @@
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
   
   <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
     <div style="opacity: 1; display: flex;" class="form-container  w-container">
       <div class="form-block w-form" style="overflow-y: auto;height: auto;">
-        <div class="mini-loader-container">
-            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <g>
-                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
-                </g>        
-            </svg>        
-          </div>  
+       
         <div class="">
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-            <div>KYC request  successful!</div>
+            <div>KYC documents sent successful!</div>
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-            <div>KYC request  failed!</div>
+            <div>Unable to send KYC documents!</div>
         </div>        
-          <div class="">Send KYC documents</div>
+          
           <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+          <div class="" style="padding: 10px;margin:10px; text-align: center;">Send KYC documents</div>
         </div>
 
         <form id="createKYC" name="create-kyc-form" data-name="create-kyc Form" method="POST" data-ms-form="" class="form" aria-label="create-kyc Form">
@@ -574,7 +584,16 @@
 
             <small>At least a file (front) is required</small>
 
-            <input type="submit" value="Send.." data-wait="Please wait..." class="submit-button w-button">
+            <button type="submit" value="Send.." data-wait="Please wait..." class="submit-button w-button">
+              Send
+              <span class="mini-loader-container">
+                <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <g>
+                      <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                    </g>        
+                </svg>        
+              </span>  
+            </button>
         </form>
               
     </div>
@@ -598,11 +617,11 @@
           
   </script>
 
-  <script src="../backend/user/getUserDetails.js"></script>
-  <script src="../backend/user/topBarPlaceholders.js"></script>
-  <script src="../backend/user/pageLoader.js"></script>
-  <script src="../backend/config/_service-worker.js"></script>
-  <script src="../backend/user/logOut.js"></script>  
+  <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/topBarPlaceholders.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/pageLoader.js?<?php echo time(); ?>"></script>
+  <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>  
 
   <script>
       async function fetchData() {
@@ -632,8 +651,14 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const form = document.querySelector('#createKYC');
+    const form = document.querySelector('#createKYC');      
+    const successMessage = document.querySelector('.w-form-done');    
+    const failureMessage = document.querySelector('.w-form-fail');    
+    const miniLoaderContainer = document.querySelector('.mini-loader-container')
+
+
       form.addEventListener('submit', function (event) {
+        miniLoaderContainer.style.display = 'block';
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -651,24 +676,32 @@
             return response.json().then(data => {
               console.log('KYC Data Submitted:', data);
               toastSuccessNotif("Success")
-              // Handle successful submission here
+              failureMessage.style.display = 'none';
+              successMessage.style.display = 'block';   
+              miniLoaderContainer.style.display = 'none';
             });
           } else if (response.status === 400 || response.status === 500) {
             return response.json().then(data => {
               toastErrorNotif("Error")
-              console.error('Error:', data);
-              // Handle errors or display error messages to the user
+              console.error('Error:', data);             
+              failureMessage.style.display = 'block';
+              successMessage.style.display = 'none';     
+              miniLoaderContainer.style.display = 'none';
             });
           } else {
             console.error('Unexpected Status:', response.status);
             toastInfoNotif("Error")
-            // Handle other unexpected status codes
+            failureMessage.style.display = 'block';
+            successMessage.style.display = 'none';   
+            miniLoaderContainer.style.display = 'none'; 
           }
         })
         .catch(error => {
           console.error('Network Error:', error);
           toastErrorNotif("Error")
-          // Handle network errors
+          failureMessage.style.display = 'block';
+          successMessage.style.display = 'none';    
+          miniLoaderContainer.style.display = 'none';
         });
       });
     });

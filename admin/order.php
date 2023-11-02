@@ -1,3 +1,15 @@
+<?php
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
+?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
@@ -104,8 +116,59 @@
   <link rel="stylesheet" href="./css/ticket-table.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <script src="../backend/config/toast.js"></script>
-
+  <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
+  <style>                          
+    .mini-loader-container {
+      display: none;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .mini-loader {
+        /** height: 2256px; **/     
+      width: 40px;
+      stroke-width: 25px;
+      stroke: #fff;
+      fill: transparent;
+      stroke-dasharray: 157.1;
+      stroke-dashoffset: 0;
+      animation: rot 4s infinite linear, clr 9s infinite linear;
+      }
+    
+    @keyframes rot {
+      0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: 157.1;
+      }
+      50% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        transform: rotate(360deg);
+        stroke-dashoffset: -157.1;
+      }
+    }
+    
+    @keyframes clr {
+        0%,
+        100% {
+          stroke: #F5C1A9;
+        }
+        20% {
+          stroke: #E04800;
+        }
+        40% {
+          stroke: #E04800;
+        }
+        
+        60% {
+          stroke: #F5C1A9;
+        }
+        80% {
+          stroke: #F5C1A9;
+        }
+      }               
+  </style>
 </head>
 <body class="dashboard-body">
   
@@ -168,7 +231,7 @@
     <div class="cart-icon">
       <!-- <i class="fa fa-shopping-cart"></i> -->
       <span class="cart-count">0</span>
-      <a href="./account-type.html" class="w-inline-block">
+      <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
     </div>
     <!-- cart icon end -->
@@ -248,7 +311,14 @@
     <div class="main-section-real">
       <div class="gradient-header">      
         <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-          <span>Order detail #<span id="id"></span> </span>        
+          <span>Order detail #<span id="id"></span> </span>    
+          <span class="mini-loader-container">
+          <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <g>
+                <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+              </g>        
+          </svg>        
+        </span>     
         </div>        
       </div>
 
@@ -268,7 +338,7 @@
 
           <form method="post" id="adminModelForm">                  
             <label for="status">Order status</label>
-            <select name="status" id="status" class=" w-input">
+            <select name="status" id="orderStatusAdminOptions" class=" w-input">
                 <option value="pending">Pending</option>
                 <option value="cancelled">Cancelled</option>
                 <option value="success">Success</option>
@@ -276,7 +346,7 @@
             </select>
 
             <label for="transactionStatus">Transaction on Order status</label>
-            <select name="transactionStatus" id="transactionStatus" class=" w-input">
+            <select name="transactionStatus" id="transactionStatusAdminOptions" class=" w-input">
                 <option value="pending">Pending</option>
                 <option value="cancelled">Cancelled</option>
                 <option value="success">Success</option>
@@ -284,7 +354,7 @@
             </select>
 
             <label for="stage">Stage</label>
-            <select name="stage" id="stage" class=" w-input">
+            <select name="stage" id="orderStageAdminOptions" class=" w-input">
                 <option value="idle">Idle</option>
                 <option value="close">Close</option>
                 <option value="active">Active</option>
@@ -293,14 +363,23 @@
             </select>
 
             <label for="active" style="place-self: center;">Active</label>
-            <input type="checkbox" name="active" id="active" class=" w-input" value="true">    
+            <input type="checkbox" name="active" id="activeAdminOption" class=" w-input" value="true" checked>
 
             <label for="profit">Profit</label>
-            <input type="number" name="profit" id="profit" step="0.01" value="0.0" class=" w-input">
+            <input type="number" name="profit" id="profitAdminInput" step="0.01" value="0.0" class=" w-input">
         
             <br>
 
-            <input type="submit" value="Submit" class="submit-button w-button">
+            <button type="submit" value="Submit" class="submit-button w-button"> 
+              Update
+              <span class="mini-loader-container order-update-loader">
+                <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <g>
+                      <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+                    </g>        
+                </svg>        
+              </span>
+            </button>
       </form>
       </div>        
       </div>  
@@ -309,9 +388,9 @@
 
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  <script src="../backend/admin/config.js"></script>
-  <script src="../backend/admin/getOrders.js"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
+  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
+  <script src="../backend/admin/getOrders.js?<?php echo time(); ?>"></script>
 
   <script>
 
@@ -329,6 +408,8 @@
     const userElement = document.querySelector("#user");
 
     async function main() {
+      var miniLoader = document.querySelector(".mini-loader-container");
+      miniLoader.style.display = 'block';
       // Get the order ID from the query parameters
       const urlParams = new URLSearchParams(window.location.search);
       const orderId = urlParams.get("id");
@@ -342,6 +423,13 @@
           orderUpdateForm(order.id)
           idElement.innerHTML = `${order.id}`;
           activeElement.innerHTML = `${order.active}`;
+
+          // Find the checkbox element by its ID
+          var checkboxElement = document.getElementById("activeAdminOption");
+
+          // Set the checked attribute based on the value of the 'active' variable
+          checkboxElement.checked = order.active;
+
           createdAtElement.innerHTML = `${formatDate(order.created_at)}`;
           accountTypeElement.innerHTML = `${order.account_type.amount}`;
           paymentMethod.innerHTML = `${order.payment_method.name}`;
@@ -352,28 +440,68 @@
                                         <br>Card: ${order.transaction.payment_details.card_type}                                        
                                   `;
           statusElement.innerHTML = `${order.status}`;
+
+          // Find the select element by its ID
+          var orderStatusAdminOptions = document.getElementById("orderStatusAdminOptions");
+          // Loop through the options and set the selected attribute for the matching option
+          for (var i = 0; i < orderStatusAdminOptions.options.length; i++) {
+              if (orderStatusAdminOptions.options[i].value === order.status) {
+                orderStatusAdminOptions.options[i].selected = true;
+                  break;
+              }
+          }
+
+
           stageElement.innerHTML = `${order.stage}`;
+          // Find the select element by its ID
+          var orderStageAdminOptions = document.getElementById("orderStageAdminOptions");
+          // Loop through the options and set the selected attribute for the matching option
+          for (var i = 0; i < orderStageAdminOptions.options.length; i++) {
+              if (orderStageAdminOptions.options[i].value === order.stage) {
+                orderStageAdminOptions.options[i].selected = true;
+                  break;
+              }
+          }
+
           profitElement.innerHTML = `${order.profit}`;
+          const profitAdminInput = document.querySelector("#profitAdminInput");
+          profitAdminInput.value = `${order.profit}`;
           transactionStatus.innerHTML = `Status: ${order.transaction.status} <br> Fee: ${order.transaction.amount}`;
+
+          // Find the select element by its ID
+          var selectElement = document.getElementById("transactionStatusAdminOptions");
+          // Loop through the options and set the selected attribute for the matching option
+          for (var i = 0; i < selectElement.options.length; i++) {
+              if (selectElement.options[i].value === order.transaction.status) {
+                  selectElement.options[i].selected = true;
+                  break;
+              }
+          }
+
           updatedAtElement.innerHTML = `${formatDate(order.updated_at)}`;
           userElement.innerHTML = `${order.user.email}`;
+          miniLoader.style.display = 'none';
         } else {
           console.log('Failed to retrieve the order.');
+          miniLoader.style.display = 'none';
         }
       } else {
         console.log('Invalid or missing order ID in the query parameter.');
+        miniLoader.style.display = 'none';
       }
     }
 
-main();
+  main();
   </script>
 
 
   <script>
-
     async function orderUpdateForm(orderId) {
+      const orderUpdateLoader = document.querySelector(".order-update-loader");
+
       const form = document.getElementById('adminModelForm');
       form.addEventListener('submit', async (event) => {
+        orderUpdateLoader.style.display = 'block';
           event.preventDefault();
   
           // Extract data from the form fields
@@ -386,18 +514,24 @@ main();
   
           if (orderUpdate !== false) {
             console.log("orderUpdate not false", orderUpdate);
+            orderUpdateLoader.style.display = 'none';
             toastSuccessNotif("Success")
+            setTimeout(function() {
+              location.reload();
+          }, 2000);
           } else {
             console.log("orderUpdate false", orderUpdate);
             toastErrorNotif("Error")
+            orderUpdateLoader.style.display = 'none';
+            setTimeout(function() {
+              location.reload();
+          }, 2000);
           }
       });
-  }
-  
+  }  
 </script>
 
-<script>
-  
+<script>  
   function PaymentProofBase64Converter(paymentProofBase64){
     console.log(paymentProofBase64)
     var proofElement = document.getElementById("proof");

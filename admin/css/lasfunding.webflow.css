@@ -8025,7 +8025,7 @@ label {
   .rl_menu-icon_line-bottom {
     width: 24px;
     height: 2px;
-    background-color: #000;
+    background-color: rgb(222 74 4);
     padding-bottom: 0;
     padding-right: 0;
   }
@@ -8040,7 +8040,7 @@ label {
   .rl_menu-icon_line-middle {
     width: 24px;
     height: 2px;
-    background-color: #000;
+    background-color: rgb(222 74 4);
     justify-content: center;
     align-items: center;
     margin-top: 6px;
@@ -8053,7 +8053,7 @@ label {
   .rl_menu-icon_line-top {
     width: 24px;
     height: 2px;
-    background-color: #000;
+    background-color: rgb(222 74 4);
     padding-bottom: 0;
     padding-right: 0;
   }
@@ -10275,3 +10275,35 @@ p.info-block {
   padding: 11px;
   flex-direction: column;
 }
+/*! CSS Used from: http://localhost/lasfunding_front/css/normalize.css */
+img{border:0;}
+/*! CSS Used from: http://localhost/lasfunding_front/css/webflow.css */
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+img{max-width:100%;vertical-align:middle;display:inline-block;}
+/*! CSS Used from: http://localhost/lasfunding_front/css/lasfunding.webflow.css */
+.status{grid-column-gap:25px;justify-content:space-between;display:flex;}
+.transaction-table { 
+  grid-column-gap:16px;grid-row-gap:10px;
+  grid-template-columns:1fr 1.75fr 1fr 1fr;
+  grid-auto-columns:1fr;margin-top:10px;padding-left:10px;padding-right:10px;display:grid;overflow-x:auto;}
+.completed{height:24px;color:#0d5e00;background-color:#baf5b0;border-radius:20px;align-items:center;padding:5px 20px 5px 10px;display:flex;}
+.text-block-61{color:#5b5654;}
+.status{align-items:center;}
+.text-block-63{padding-left:0;padding-right:0;}
+.amount{justify-content:center;align-items:center;display:flex;}
+.text-block-64{text-align:center;font-size:16px;font-weight:700;}
+.date{align-items:center;display:flex;}
+.text-block-65{color:#8e8b8a;}
+.status-icon{margin-right:10px;}
+@media screen and (max-width: 767px){
+.status{grid-column-gap:100px;}
+}
+@media screen and (max-width: 479px){
+.text-block-61{font-size:10px;line-height:10px;}
+.text-block-63{font-size:10px;}
+.text-block-64,.text-block-65{font-size:10px;line-height:10px;}
+}
+.payment-type{place-self:center;}
+/*! CSS Used from: http://localhost/lasfunding_front/css/scrollbar.css */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background-color:#e45e1f;}

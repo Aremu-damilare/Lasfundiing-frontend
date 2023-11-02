@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
@@ -29,15 +36,15 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       flex-direction: column;
     }
     
-    .mini-loader {
-      width: 60px;
-      /** height: 2256px; **/
-      stroke-width: 5px;
-      stroke: #fff;
-      fill: transparent;
-      stroke-dasharray: 157.1;
-      stroke-dashoffset: 0;
-      animation: rot 4s infinite linear, clr 9s infinite linear;
+    .mini-loader {    
+    /** height: 2256px; **/     
+    width: 40px;
+    stroke-width: 25px;
+    stroke: #fff;
+    fill: transparent;
+    stroke-dasharray: 157.1;
+    stroke-dashoffset: 0;
+    animation: rot 4s infinite linear, clr 9s infinite linear;
     }
     
     @keyframes rot {
@@ -120,19 +127,23 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             </div> -->
           </div>
           <div class="remember-me-section login"><label class="w-checkbox checkbox-field">
-            <input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input" required />
+            <input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"  />
             <span class="checkbox-label w-form-label" for="checkbox">Remember me</span></label>
             <div class="forgot-password">
               <a href="forgot-password.php" class="forgot-pw-wrapper">Forgot Password?</a>
             </div>
-          </div><input type="submit" value="Login" data-wait="Please wait..." class="submit-button w-button">
-          <div class="mini-loader-container">
-          <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-              <g>
-                <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
-              </g>        
-          </svg>        
-        </div> 
+          </div>
+          <button type="submit" data-wait="Please wait..." class="submit-button w-button"> 
+            Login
+          <span class="mini-loader-container">
+            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <g>
+                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+                </g>        
+            </svg>        
+          </span> 
+          </button>
+          
           <div class="text-block-15">Do not have an account? <a href="#BuyAccount"  class="link">Sign Up</a>
           </div>
         </form>
@@ -140,7 +151,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         
 
         <div class="w-form-done">
-          <div>Thank you! Your submission has been received!</div>
+          <div>Thank you! Login credentials confirmed!</div>
         </div>
         <div class="w-form-fail">
           <div>Oops! Something went wrong while submitting the form.</div>
@@ -993,7 +1004,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
   
   <script>
     // const accessToken = localStorage.getItem('access_token');
@@ -1023,7 +1034,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     // });
   </script>
 
-<script src="./backend/config/_service-worker.js"></script>
+<script src="./backend/config/_service-worker.js?<?php echo time(); ?>"></script>
 
 <script>                            
           // Define the URL to make the request to
@@ -1225,7 +1236,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 </script>
 
 
-<script src="./backend/SignInIfURLId.js"></script>
+<script src="./backend/SignInIfURLId.js?<?php echo time(); ?>"></script>
 <script>   
    const result = SignInIfURLId("signin");
   if (result) {
@@ -1235,7 +1246,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   }
 </script>
 
-<script src="./backend/login.js"></script>
+<script src="./backend/login.js?<?php echo time(); ?>"></script>
 
 </body>
 </html>

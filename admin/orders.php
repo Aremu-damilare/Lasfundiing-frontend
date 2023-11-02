@@ -1,3 +1,15 @@
+<?php
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
+?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
@@ -101,7 +113,58 @@
     }
   </style>  
   <link rel="stylesheet" href="./css/ticket-table.css">
-
+  <style>                          
+    .mini-loader-container {
+      display: none;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .mini-loader {
+        /** height: 2256px; **/     
+      width: 40px;
+      stroke-width: 25px;
+      stroke: #fff;
+      fill: transparent;
+      stroke-dasharray: 157.1;
+      stroke-dashoffset: 0;
+      animation: rot 4s infinite linear, clr 9s infinite linear;
+      }
+    
+    @keyframes rot {
+      0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: 157.1;
+      }
+      50% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        transform: rotate(360deg);
+        stroke-dashoffset: -157.1;
+      }
+    }
+    
+    @keyframes clr {
+        0%,
+        100% {
+          stroke: #F5C1A9;
+        }
+        20% {
+          stroke: #E04800;
+        }
+        40% {
+          stroke: #E04800;
+        }
+        
+        60% {
+          stroke: #F5C1A9;
+        }
+        80% {
+          stroke: #F5C1A9;
+        }
+      }               
+  </style>
 </head>
 <body class="dashboard-body">
 <div class="loader-container">
@@ -163,7 +226,7 @@
     <div class="cart-icon">
       <!-- <i class="fa fa-shopping-cart"></i> -->
       <span class="cart-count">0</span>
-      <a href="./account-type.html" class="w-inline-block">
+      <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
     </div>
     <!-- cart icon end -->
@@ -251,7 +314,13 @@
       <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
-            
+    <span class="mini-loader-container">
+      <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <g>
+            <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+          </g>        
+      </svg>        
+    </span> 
         <div style="overflow-x: auto;">
             <table class="slds-table slds-table--bordered">
                 <thead>
@@ -264,7 +333,7 @@
                         </label>
                     </th>
                     <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">User
+                      <div class="slds-truncate">Orderid, Useremail
                         <button class="slds-button slds-button--icon-bare">                          
                             <span class="slds-assistive-text">Sort</span>
                           </button>
@@ -322,21 +391,23 @@
   
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  <script src="../backend/admin/config.js"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
+  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
   
-  <script src="../backend/admin/getOrders.js"></script>
+  <script src="../backend/admin/getOrders.js?<?php echo time(); ?>"></script>
 
 <script>
   async function main() {    
-
+  var miniLoader = document.querySelector(".mini-loader-container");
+  miniLoader.style.display = 'block';
   const orders = await getOrders(baseUrl, accessToken);
 
   if (orders) {
-      console.log('Orders:', orders);
+    miniLoader.style.display = 'block';
+
+    console.log('Orders:', orders);
 
     var tbody = document.querySelector('tbody'); 
-
 
     orders.forEach(function(orders) {
       var row = document.createElement('tr');
@@ -392,10 +463,12 @@
       row.appendChild(dateCell);
       
       tbody.appendChild(row);
+      miniLoader.style.display = 'none';
     });
 
     } else {
       console.log('Failed to retrieve orders.');
+      miniLoader.style.display = 'none';
     }
   }
 

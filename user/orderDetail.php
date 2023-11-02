@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <html lang="en">
    <head>
@@ -868,7 +875,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script src="../backend/config/toast.js"></script>
+    <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
    </head>
    <body>
           
@@ -883,17 +890,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                      <td class="content-container" style="background: url(https://static-1.gumroad.com/res/gumroad/assets/email/email_body_middle-d6eb6cdbc0581e921c733be0d6ce8a1b.png); padding: 20px 30px; width: 562px">
                         <div class="title" style="text-align: center" align="center">
                            <img alt="Gumroad" id="logo" src="https://lasfunding.com/images/Lasfund-Logo.svg"
-                              style="display: block; margin: 5px auto 0; max-width: 100%; text-align: center">
-                              <div class="mini-loader-container">
-                                  <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                      <g>
-                                          <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
-                                      </g>        
-                                  </svg>        
-                              </div> 
+                              style="display: block; margin: 5px auto 0; max-width: 100%; text-align: center">                             
                         
                         <h4 style="color: #252a2e; font-weight: bold; margin: 10px 0">
-                            Order receipt: <span id="orderId">13hdn1-113c-13cv</span>
+                            Order ID: #<span id="orderId">13hdn1-113c-13cv</span>
                         </h4>
                         <hr style="background: #eee; border: 0; height: 1px; margin: 20px 0; min-height: 1px">
                         <span> <a href="./orders.php"> < Back </a> </span>
@@ -917,13 +917,18 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                             status
                         </p>                      
                         
-                        <p class="mobilecenter" style="color: #797874; font-size: 16px; line-height: 27px; margin: 15px 0; word-wrap: break-word">                           
-                                
-                              <input type="file" name="uploadProof" id="paymentProofHandler" class="button center" href="https://gumroad.com/#login/xxxx"  accept=".png, .jpg, .jpeg, .pdf"
-                              style="background: #36a9ae;/* border-radius: 4px; */border: 1px solid #4a8589;color: #fff !important;display: block;font-size: 16px;font-weight: normal;line-height: 19px;/* padding: 8px 12px; */text-align: center;text-decoration: none;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);word-wrap: break-word;">
-                              <small>upload payment proof</small>
-                              
+                        <p class="mobilecenter" style="color: #797874; font-size: 16px; line-height: 27px; margin: 15px 0; word-wrap: break-word">                                                           
+                            <input type="file" name="uploadProof" id="paymentProofHandler" class="button center" href="https://gumroad.com/#login/xxxx"  accept=".png, .jpg, .jpeg, .pdf"
+                            style="background: #36a9ae;/* border-radius: 4px; */border: 1px solid #4a8589;color: #fff !important;display: block;font-size: 16px;font-weight: normal;line-height: 19px;/* padding: 8px 12px; */text-align: center;text-decoration: none;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);word-wrap: break-word;">
+                            <small>upload payment proof</small>                              
                         </p>
+                        <div class="mini-loader-container">
+                            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                <g>
+                                    <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+                                </g>        
+                            </svg>        
+                        </div> 
                         <hr style="background: #eee; border: 0; height: 1px; margin: 20px 0; min-height: 1px">
                         <p style="color: #797874; font-size: 16px; line-height: 27px; margin: 15px 0; word-wrap: break-word">Your email address is
                            <a href="#" id="email"
@@ -948,21 +953,21 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       </table>
       <div class="centered footer" style="margin: 20px 0; text-align: center" align="center">
          <p style="color: #797874; font-size: 14px; line-height: 27px; margin: 15px 0; padding: 0 15px; word-wrap: break-word">
-            <a href="#" style="color: #666; text-decoration: underline; word-wrap: break-word">Lasfunding</a>, Submit a ticket 
-            <!-- with this receipt -->
-            <a href="./tickets.php"
-               style="color: #666; text-decoration: underline; word-wrap: break-word">Here</a>
+            <a href="#" style="color: #666; text-decoration: underline; word-wrap: break-word">Lasfunding</a>            
+            <br>
+            Submit a ticket with this order
+            <a id="ticketWithOrderId" href="./tickets.php?orderId=" style="color: #666; text-decoration: underline; word-wrap: break-word">Here</a>
          </p>
          <p style="color: #797874; font-size: 14px; line-height: 27px; margin: 15px 0 0; padding: 0 15px; word-wrap: break-word"></p>
       </div>
       <img src="http://email.gumroad.com/wf/open?upn=eR781BFQACH6LPrs5ZZlJcBglOztUzxvrZoHw2hMLO-2BvimZAUakByBRqshPfSMxmio8O1K2slzbGotr6MvK99rN4nD2f2uGqVbgHa-2Bzs7GtsQCta2utcqi3Yz41cyVBoSwvafphDH3fxH4PBIufTzlLyHOabek8CiWXIJeA4ReYUTTfjWUQ1BfAEFY4E4abqLtgyQUEqeyI3YS4iguyyj0Kl6o0iykYy6ylzLVEZYvWU2-2FhaIyWhRTi-2B0sv1tVFwiHaZY1xhtIP8Ibkj2JlcwBL6IHQnQ41vZl7JdehNn0lfqa2-2BrtArAwIIgxCSYKRmzr-2FhWDr-2FvxRPAMjaDqanUZVpl-2B67rj6nP5xnegjjr06xb7PMZxoH4q6ffIwvHOZJo66JhrKst8CVS7EP-2BINBQ1NC22uWGX0jQEPzzgBdFws-3D"
          alt="" width="1" height="1" border="0" style="height:1px !important;width:1px !important;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;"/>
       
-  <script src="../backend/user/getUserDetails.js"></script>    
-  <script src="../backend/config/_service-worker.js"></script>
-  <script src="../backend/user/logOut.js"></script>
+  <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>    
+  <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>
 
-  <script src="../backend/user/getUserOrders.js"></script>
+  <script src="../backend/user/getUserOrders.js?<?php echo time(); ?>"></script>
 
   <script>
     async function fetchUserData() {
@@ -1134,6 +1139,26 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
     }
 
   </script>
+
+  <script>
+    window.addEventListener('load', function() {
+        // Function to get query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    
+        // Get the orderId query parameter from the URL
+        const orderId = getQueryParam('orderId');
+    
+        // Check if orderId is not null and set it in the href attribute
+        if (orderId !== null) {
+            const ticketLink = document.getElementById('ticketWithOrderId');
+            const currentHref = ticketLink.getAttribute('href');
+            ticketLink.setAttribute('href',  './tickets.php?orderId=' + orderId);
+        }
+    });
+    </script>
 
          
    </body>

@@ -75,7 +75,14 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
 .checkbox-field-3{margin-top:15px;}
 .link-5{color:rgba(224, 72, 0, 0.88);text-decoration:none;}
 .link-6{color:rgba(224, 72, 0, 0.88);text-decoration:none;}
-.submit-button-2{width:75%;margin:32px auto 19px;border-radius:14px;background-color:rgba(224, 72, 0, 0.88);font-size:18px;text-align:center;}
+.submit-button-2{ 
+  width:100%;
+  margin:32px auto 19px;
+  border-radius:14px;
+  background-color:rgba(224, 72, 0, 0.88);
+  font-size:18px;
+  text-align:center;
+}
 .form-3{display:flex;margin-top:40px;flex-direction:column;}
 .form-3.right{margin-top:16px;}
 .text-block-21{padding:20px;font-weight:500;}
@@ -286,20 +293,23 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
               <input type="checkbox" id="Order-verify" name="Order-verify" data-name="Order verify" required="" class="w-checkbox-input">
               <span class="w-form-label" for="Order-verify">I have verified my order</span></label>
             
-              <input type="submit" id="submitBtn" value="Place Order..." data-wait="Please wait..." class="submit-button-2 w-button">
+              <button type="submit" id="submitBtn" value="Place Order..." data-wait="Please wait..." class="submit-button-2 w-button"> 
+                Place Order
+                <span class="mini-loader-container">
+                  <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                      <g>
+                        <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+                      </g>        
+                  </svg>        
+                </span>  
+              </button>
                        
           </div>
         </div>
       </div>    
     </div>
   </form>
-  <div class="mini-loader-container">
-    <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <g>
-          <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
-        </g>        
-    </svg>        
-  </div>   
+   
   <div id="success-signup" style="display: none;color: #e24603;background: gainsboro;padding: 10px;margin: 23px;">
 
   </div>
@@ -431,8 +441,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
   createOrderForm.addEventListener('submit', function (event) {
     var paymentMethod = document.querySelector('input[name="payment-method"]:checked');
     miniLoaderContainer.style.display = 'flex';
-    submitBtn.disabled = true;
-    createOrderForm.style.display = "none";
+    submitBtn.disabled = true;    
 
       event.preventDefault(); 
 
@@ -464,7 +473,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
             var notice = toastSuccessNotif(`Order ${response.statusText}`)
             miniLoaderContainer.style.display = 'none'
             submitBtn.disabled = true;
-            createOrderForm.style.display = "none";
+            //createOrderForm.style.display = "none";
             if (notice){
               window.location.href = './orders.php';
             }
@@ -475,15 +484,16 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
             console.log('Data could not be sent', response);
             miniLoaderContainer.style.display = 'none'
             submitBtn.disabled = false;
-            createOrderForm.style.display = "block";
+            //createOrderForm.style.display = "block";
             //successSignup.style.display = "none";
         }
     })
     .catch(function (error) {
         // Handle network or other errors
         console.error('Error:', error);
-        createOrderForm.style.display = "block";
+        //createOrderForm.style.display = "block";
         //successSignup.style.display = "none";
+        miniLoaderContainer.style.display = 'none'
     });
 });
 

@@ -2,6 +2,13 @@
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+$etag = md5_file(__FILE__);
+header("ETag: $etag");
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+    header('HTTP/1.1 304 Not Modified');
+    exit;
+}
 ?>
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
 <!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
@@ -435,7 +442,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <script src="../backend/config/toast.js"></script>
+  <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 </head>
 
 
@@ -500,7 +507,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
       <div class="cart-icon">
         <!-- <i class="fa fa-shopping-cart"></i> -->
         <span class="cart-count">0</span>
-        <a href="./account-type.html" class="w-inline-block">
+        <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
       </div>
       <!-- cart icon end -->
@@ -526,8 +533,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           </div>
           <div class="right-navbar-wrapper">
             <div class="text-block-36">TRANSACTION</div>         
-            <div class="right-navbar-link"><img src="../images/CurrencyCircleDollar-1.svg" loading="lazy" alt="" class="sign-out-icon">
-              <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
+            <div class="right-navbar-link">
+              <img src="../images/CurrencyCircleDollar-1.svg" loading="lazy" alt="" class="sign-out-icon">
+            <a href="./withdrawals.php" class="rl_navbar1_link w-nav-link">Withdrawals</a>
             </div>
           </div>
           <div class="right-navbar-wrapper">
@@ -542,7 +550,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   
              <div class="right-navbar-link current-page">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.91507 13.8682L15.0865 8.26823M9.42938 8.7349H9.43967M14.5722 13.4016H14.5825M19.2008 20.4016V5.46823C19.2008 4.4373 18.2798 3.60156 17.1436 3.60156H6.85792C5.72179 3.60156 4.80078 4.4373 4.80078 5.46823V20.4016L8.40078 18.5349L12.0008 20.4016L15.6008 18.5349L19.2008 20.4016ZM9.94364 8.7349C9.94364 8.99263 9.71338 9.20156 9.42935 9.20156C9.14532 9.20156 8.91507 8.99263 8.91507 8.7349C8.91507 8.47716 9.14532 8.26823 9.42935 8.26823C9.71338 8.26823 9.94364 8.47716 9.94364 8.7349ZM15.0865 13.4016C15.0865 13.6593 14.8562 13.8682 14.5722 13.8682C14.2882 13.8682 14.0579 13.6593 14.0579 13.4016C14.0579 13.1439 14.2882 12.9349 14.5722 12.9349C14.8562 12.9349 15.0865 13.1439 15.0865 13.4016Z" stroke="#8e8b8a" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M8.91507 13.8682L15.0865 8.26823M9.42938 8.7349H9.43967M14.5722 13.4016H14.5825M19.2008 20.4016V5.46823C19.2008 4.4373 18.2798 3.60156 17.1436 3.60156H6.85792C5.72179 3.60156 4.80078 4.4373 4.80078 5.46823V20.4016L8.40078 18.5349L12.0008 20.4016L15.6008 18.5349L19.2008 20.4016ZM9.94364 8.7349C9.94364 8.99263 9.71338 9.20156 9.42935 9.20156C9.14532 9.20156 8.91507 8.99263 8.91507 8.7349C8.91507 8.47716 9.14532 8.26823 9.42935 8.26823C9.71338 8.26823 9.94364 8.47716 9.94364 8.7349ZM15.0865 13.4016C15.0865 13.6593 14.8562 13.8682 14.5722 13.8682C14.2882 13.8682 14.0579 13.6593 14.0579 13.4016C14.0579 13.1439 14.2882 12.9349 14.5722 12.9349C14.8562 12.9349 15.0865 13.1439 15.0865 13.4016Z" stroke="white" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>                  
               <a href="./tickets.php" class="rl_navbar1_link w-nav-link" >Tickets </a>
             </div>
@@ -573,7 +581,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
           <div class="">
             <div class="text-block-37"></div>
             <div class="rect-box">
-              <div class="text-block-38">Go to Help Centre</div>
+              <div class="text-block-38">Help Centre</div>
             </div>
           </div>
         </nav>
@@ -612,7 +620,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                       </label>
                   </th>
                   <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Priority
+                    <div class="slds-truncate">Priority, Id
                       <button class="slds-button slds-button--icon-bare">
                           <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
                             <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
@@ -696,29 +704,23 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
   
 
     
   <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
-    <div style="opacity: 1; display: flex;" class="form-container  w-container">
-      <div class="form-block w-form" style="overflow-y: auto;height: auto;">
-        <div class="mini-loader-container">
-            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <g>
-                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
-                </g>        
-            </svg>        
-          </div>  
-        <div class="modal-header">
+    <div style="opacity: 1; display: flex; width:80%" class="form-container  w-container">
+      <div class="form-block w-form" style="overflow-y: auto;height: auto; width:100%">
+        
+        <div class="">
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
             <div>Ticket created successfully!</div>
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-            <div>Ticket failed!</div>
+            <div>Ticket failed to initiate!</div>
         </div>        
-          <div class="form-header">Create ticket</div>
-          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+          <div class="" style="padding: 10px;margin:10px; text-align: center;">Create ticket</div>
+          <div  class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
         </div>
         <form id="createTicket" name="create-ticket-form" data-name="create-ticket Form" method="post" data-ms-form="" class="form " aria-label="create-ticket Form">
             
@@ -741,7 +743,16 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
                 <option value="payment-method">Payment Method</option>
             </select>
                     
-          <input type="submit" value="Create" data-wait="Please wait..." class="submit-button w-button">          
+          <button type="submit" value="Create" data-wait="Please wait..." class="submit-button w-button">
+            Create
+            <span class="mini-loader-container">
+              <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                  <g>
+                    <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                  </g>        
+              </svg>        
+            </span>  
+          </button>
           
           </div>
         </form>        
@@ -767,12 +778,12 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         
 </script>
 
-  <script src="../backend/user/getUserDetails.js"></script>
-  <script src="../backend/user/topBarPlaceholders.js"></script>
-  <script src="../backend/user/pageLoader.js"></script>
-  <script src="../backend/config/_service-worker.js"></script>
-  <script src="../backend/user/logOut.js"></script>  
-  <script src="../backend/user/getUserTickets.js"></script>
+  <script src="../backend/user/getUserDetails.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/topBarPlaceholders.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/pageLoader.js?<?php echo time(); ?>"></script>
+  <script src="../backend/config/_service-worker.js?<?php echo time(); ?>"></script>
+  <script src="../backend/user/logOut.js?<?php echo time(); ?>"></script>  
+  <script src="../backend/user/getUserTickets.js?<?php echo time(); ?>"></script>
 
   <script>
    async function fetchUserData() {
@@ -819,7 +830,7 @@ function appendRowToTable(tickets) {
 
       priority = document.createElement("td");
       priority.setAttribute("data-ticket-id", ticket.id);      
-      priority.innerHTML = `<a href="#">${ticket.priority} </a>`
+      priority.innerHTML = `<a href="#">${ticket.priority} <br> #${ticket.id}  </a>`
 
       department = document.createElement("td");
       department.innerHTML = `${ticket.department}`
@@ -927,6 +938,9 @@ function gotoTicketDetail(){
                     setElementDisplayByClassName('mini-loader-container', 'none')
                     setElementDisplayByClassName('w-form-done', 'flex')
                     setElementDisplayByClassName('w-form-fail', 'none')
+                    setTimeout(function() {
+                      location.reload();
+                  }, 2000);
                     return response.json();
                 } else {
                   toastErrorNotif("Error")
@@ -963,6 +977,25 @@ function gotoTicketDetail(){
       }
 
 </script>
+
+<script>
+  window.addEventListener('load', function() {
+      // Function to get query parameters from the URL
+      function getQueryParam(name) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(name);
+      }
+  
+      // Get the orderId query parameter from the URL
+      const orderId = getQueryParam('orderId');
+  
+      // Check if orderId is not null and set it as the value of the Subject input
+      if (orderId !== null) {
+          const subjectInput = document.getElementById('Subject');
+          subjectInput.value = 'Order ID: ' + orderId;
+      }
+  });
+  </script>
 
 </body>
 </html>

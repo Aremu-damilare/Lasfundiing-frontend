@@ -13,17 +13,17 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
   <meta content="dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="http://localhost/lasfunding_front/css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="http://localhost/lasfunding_front/css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="http://localhost/lasfunding_front/css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic","Exo:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Poppins:100,200,300,regular,500,600,700,800,900,900italic"]  }});</script>
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="http://localhost/lasfunding_front/images/favicon.png" rel="shortcut icon" type="image/x-icon">
-  <link href="http://localhost/lasfunding_front/images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="../images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
   
   <style>    
 a{background-color:transparent;}
@@ -195,7 +195,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-<link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+<link rel="stylesheet" href="../css/scrollbar.css">
 
 
 </head>
@@ -204,7 +204,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
     <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-no-shadow-container w-nav">
       <div class="container-regular">
         <div class="navbar-wrapper">
-          <a href="#" class="navbar-brand w-nav-brand"><img src="http://localhost/lasfunding_front/images/Lasfund-Logo.svg" loading="lazy" alt="" class="lasfunding-logo"></a><nav role="navigation" class="nav-menu-wrapper w-nav-menu" style="transform: translateY(0px) translateX(0px);">
+          <a href="#" class="navbar-brand w-nav-brand"><img src="../images/Lasfund-Logo.svg" loading="lazy" alt="" class="lasfunding-logo"></a><nav role="navigation" class="nav-menu-wrapper w-nav-menu" style="transform: translateY(0px) translateX(0px);">
             <ul role="list" class="nav-menu w-list-unstyled">            
               <li>
                 <a href="./dashboard.php" class="nav-link-2">Dashboard</a>
@@ -217,7 +217,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
                 <div class="nav-button-wrapper">                  
                   <a href="./index.php" class="button-primary nav-bar w-button">Sign out</a>
                   <!-- <a href="#" class="w-inline-block">
-                    <img src="http://localhost/lasfunding_front/images/cart.svg" loading="lazy" alt="" class="image">
+                    <img src="../images/cart.svg" loading="lazy" alt="" class="image">
                   </a> -->
                 </div>
               </li>
@@ -282,7 +282,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
           <div class="text-block-12">Additional Information</div>
               <input type="text" class="billing-input w-input" maxlength="256" name="Notes" data-name="Notes" placeholder="Additional Notes (Note about your order)" id="Notes">
           <div class="text-block-20" style="overflow: scroll;height: 85px;">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.<br><br>
-            By clicking "Place Order" to register with My Forex Funds, you are agreeing that you understand terms and conditions, including the Risk Management, Consistency and other guidelines on 
+            By clicking "Place Order" to register with Lasfunding, you are agreeing that you understand terms and conditions, including the Risk Management, Consistency and other guidelines on 
             <a href="./index.php" class="link-4">Lasfunding.<br>‍</a><br>You accept that Lasfunding will not issue refund once service (i.e. trading) has started on your account.</div>
           <div class="billing-form w-form">
             
@@ -357,11 +357,11 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
     </div>
   </div> -->
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="http://localhost/lasfunding_front/js/webflow.js" type="text/javascript"></script>
+  <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   
-  <script src="http://localhost/lasfunding_front/backend/config/_service-worker.js"></script>
-  <script src="http://localhost/lasfunding_front/backend/config/toast.js"></script>
+  <script src="../backend/config/_service-worker.js"></script>
+  <script src="../backend/config/toast.js"></script>
   <script src="../backend/user/getUserDetails.js"></script>
   
   

@@ -38,8 +38,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   
   <link rel="stylesheet" href="../css/pageloader.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/user/ticket-table.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/user/ticket-table.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
 
   
   <style>
@@ -181,7 +181,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
         </g>        
     </svg>
-    <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+    <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
     <span class="loading-text">Processing<span id="dots"></span></span>
 </div>
 
@@ -231,12 +231,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <!-- profile end -->
   
   <!-- cart icon -->
-  <div class="cart-icon">
-    <!-- <i class="fa fa-shopping-cart"></i> -->
+  <!-- <div class="cart-icon">
+    <i class="fa fa-shopping-cart"></i>
     <span class="cart-count">0</span>
     <a href="#" class="w-inline-block">
       <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-  </div>
+  </div> -->
   <!-- cart icon end -->
   
   <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -337,13 +337,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <table class="slds-table slds-table--bordered">
               <thead>
                 <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
+                  <!-- <th class="slds-cell-shrink">
                     <label class="slds-checkbox">
                         <input type="checkbox" name="options">
                         <span class="slds-checkbox--faux"></span>
                         <span class="slds-assistive-text">Select All</span>
                       </label>
-                  </th>
+                  </th> -->
                   <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Account type
                       <button class="slds-button slds-button--icon-bare">                          
@@ -436,10 +436,15 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       fetchUserData();
       fetchUserOrder();
 
-    function appendRowToTable(orders) {
+    function appendRowToTable(orders, currentPage = 1, itemsPerPage = 3) {
         const tableBody = document.querySelector("tbody");
+        tableBody.innerHTML = ""; // Clear existing rows
 
-          for (const order of orders) {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentOrders = orders.slice(startIndex, endIndex);
+    
+        for (const order of currentOrders) {
             
             const row = document.createElement("tr");
 
@@ -452,7 +457,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <input type="checkbox" name="options">
             <span class="slds-checkbox--faux"></span>
             <span class="slds-assistive-text">Select Row</span>
-          </label>`      
+          </label>`  ;    
 
           accountTypeCol = document.createElement("td");
           accountTypeCol.setAttribute("data-order-id", order.id);      
@@ -463,11 +468,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 
           statusCol = document.createElement("td");
-          statusCol.innerHTML = order.status
+          statusCol.innerHTML = `<span class="${order.status}">${order.status}</span>`
           
           
           TransactionStatusCol = document.createElement("td");
-          TransactionStatusCol.innerHTML = order.transaction.status
+          TransactionStatusCol.innerHTML = `<span class="${order.transaction.status}">${order.transaction.status}</span>`
 
           paymentMethodCol = document.createElement("td");
           paymentMethodCol.innerHTML = order.payment_method.name
@@ -478,7 +483,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 
           // Append cells to the row
-          row.appendChild(checkboxCell);
+          //row.appendChild(checkboxCell);
           row.appendChild(accountTypeCol);
           row.appendChild(startingFeeCol);
           row.appendChild(statusCol);
@@ -491,6 +496,41 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           tableBody.appendChild(row);
             
           }
+
+                // Calculate total pages
+          const totalPages = Math.ceil(orders.length / itemsPerPage);
+          // ... (inside the function)
+      const paginationContainer = document.createElement("div");
+      paginationContainer.className = "pagination";
+
+      // Previous button
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "Previous";
+      prevButton.addEventListener("click", () => {
+          const prevPage = currentPage > 1 ? currentPage - 1 : 1;
+          appendRowToTable(orders, prevPage, itemsPerPage);
+      });
+
+      // Next button
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "Next";
+      nextButton.addEventListener("click", () => {
+          const nextPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+          appendRowToTable(orders, nextPage, itemsPerPage);
+      });
+
+      // Page number display
+      const pageNumberDisplay = document.createElement("span");
+      pageNumberDisplay.className = "page-number";
+      pageNumberDisplay.textContent = `${currentPage}/${totalPages}`;
+
+      // Append pagination controls
+      paginationContainer.appendChild(prevButton);
+      paginationContainer.appendChild(pageNumberDisplay);
+      paginationContainer.appendChild(nextButton);
+
+      // Append pagination container to the table body
+      tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
 
           gotoOrderDetail()
     }

@@ -39,8 +39,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   
   <link rel="stylesheet" href="../css/pageloader.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/user/ticket-table.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/user/ticket-table.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
 
   
   <style>
@@ -180,6 +180,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   }
   </style>
 
+ 
 </head>
 <body class="dashboard-body">
 
@@ -189,7 +190,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
         </g>        
     </svg>
-    <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+    <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
     <span class="loading-text">Processing<span id="dots"></span></span>
 </div>
 
@@ -239,12 +240,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <!-- profile end -->
   
   <!-- cart icon -->
-  <div class="cart-icon">
-    <!-- <i class="fa fa-shopping-cart"></i> -->
+  <!-- <div class="cart-icon">
+    <i class="fa fa-shopping-cart"></i>
     <span class="cart-count">0</span>
     <a href="#" class="w-inline-block">
       <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-  </div>
+  </div> -->
   <!-- cart icon end -->
   
   <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -695,6 +696,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       .catch(error => console.error("Error fetching data: ", error));
 </script>
 
+
+
 <script>
 function changeAccountType(){          
 
@@ -703,8 +706,19 @@ const changeAccountTypeLinks = document.querySelectorAll(".change-account-type")
 // Add click event listeners to each link
 changeAccountTypeLinks.forEach(link => {
   link.addEventListener("click", function (event) {
+    
+    changeAccountTypeLinks.forEach(otherLink => {
+      otherLink.classList.remove('red', 'blue');
+    });
 
+    // Add the 'blue' class to all links
+    changeAccountTypeLinks.forEach(otherLink => {
+      otherLink.classList.add('blue');
+    });
 
+    // Remove the 'blue' class and add the 'red' class to the clicked element
+    link.classList.remove('blue');
+    link.classList.add('red');
       event.preventDefault();
 
       // Get the value of the data-account-type attribute
@@ -784,6 +798,7 @@ var buyButton = document.getElementById('BuyAccount');
 
 // Add a click event listener to the button
 buyButton.addEventListener('click', function(event) {
+  console.log("xxxxxxxxxxxxxxx")
 // Prevent the default behavior of the anchor tag (preventing the page from reloading)
 event.preventDefault();
 
@@ -800,7 +815,9 @@ if (accountTypeValue !== null) {
 }
 });
 
+
 </script>
+
 
 
 </body>

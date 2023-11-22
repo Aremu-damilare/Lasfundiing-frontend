@@ -116,7 +116,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   </style> 
      
   <link rel="stylesheet" href="./css/ticket-table.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
   <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 
  <style>
@@ -307,7 +307,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
         </g>        
     </svg>
-    <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+    <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
     <span class="loading-text">Processing<span id="dots"></span></span>
 </div>
 

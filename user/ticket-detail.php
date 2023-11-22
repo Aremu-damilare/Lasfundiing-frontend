@@ -113,7 +113,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     }
   </style>  
   
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
 
   <style>
     /* Extra Small Screens (phones, less than 576px) */
@@ -509,7 +509,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 
 
-/*! CSS Used from: https://demo.dashboardpack.com/admindek-html/files/assets/css/font-awesome-n.min.css */
+
 .fas {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
@@ -540,7 +540,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 	font-weight: 900;
 }
 
-/*! CSS Used from: https://demo.dashboardpack.com/admindek-html/files/assets/css/style.css */
+
 *:focus {
 	outline: none;
 }
@@ -592,7 +592,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 	color: #ffb64d;
 }
 
-/*! CSS Used from: https://demo.dashboardpack.com/admindek-html/files/assets/css/widget.css */
+
 .comp-card i {
 	color: #fff;
 	width: 50px;
@@ -672,7 +672,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .container:after,.container:before{display:table;content:" ";}
     .container:after{clear:both;}
     .pull-right{float:right!important;}
-    /*! CSS Used from: Embedded */
+    
     .heading{color:#666666;text-align:center;}
     body{font-family:Arial, sans-serif;color:#404040;background-color:#eee;}
     .container{width:520px;margin-top:20px;}
@@ -774,7 +774,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
             </g>        
         </svg>
-        <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+        <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
         <span class="loading-text">Processing<span id="dots"></span></span>
     </div>
 

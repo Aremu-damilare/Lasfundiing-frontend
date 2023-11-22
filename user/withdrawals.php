@@ -10,8 +10,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     exit;
 }
 ?>
-<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Wed May 03 2023 23:06:33 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html>
 <html data-wf-page="6422ec78a05bb3194102a79b" data-wf-site="63807ab0318db8bd26b06087">
 <head>
   <meta charset="utf-8">
@@ -114,7 +113,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   </style>  
   
     <style>
-    /*! CSS Used from: http://localhost/lasfunding_front/css/normalize.css */
+    
     a{background-color:transparent;}
     a:active,a:hover{outline:0;}
     img{border:0;}
@@ -122,14 +121,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     input{color:inherit;font:inherit;margin:0;}
     input{line-height:normal;}
     input[type='checkbox']{box-sizing:border-box;padding:0;}
-    /*! CSS Used from: http://localhost/lasfunding_front/css/webflow.css */
+    
     *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
     img{max-width:100%;vertical-align:middle;display:inline-block;}
     .w-button{display:inline-block;padding:9px 15px;background-color:#3898EC;color:white;border:0;line-height:inherit;text-decoration:none;cursor:pointer;border-radius:0;}
     input.w-button{-webkit-appearance:button;}
     .w-form{margin:0 0 15px;}
-    .w-form-done{display:block;padding:20px;text-align:center;background-color:#dddddd;}
-    .w-form-fail{display:block;margin-top:10px;padding:10px;background-color:#ffdede;}
+    
     label{display:block;margin-bottom:5px;font-weight:bold;}
     .w-input{display:block;width:100%;height:38px;padding:8px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#333333;vertical-align:middle;background-color:#ffffff;border:1px solid #cccccc;}
     .w-input:focus{border-color:#3898EC;outline:0;}
@@ -143,7 +141,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     @media screen and (max-width: 479px){
     .w-container{max-width:none;}
     }
-    /*! CSS Used from: http://localhost/lasfunding_front/css/lasfunding.webflow.css */
+    
     .w-checkbox{margin-bottom:5px;padding-left:20px;display:block;}
     .w-checkbox:before{content:" ";grid-area:1 / 1 / 2 / 2;display:table;}
     .w-checkbox:after{content:" ";clear:both;grid-area:1 / 1 / 2 / 2;display:table;}
@@ -219,10 +217,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .text-block-15{margin-top:4px;margin-bottom:4px;font-size:12px;}
     .eye{padding:0;top:6px;left:82%;}
     }
-    /*! CSS Used from: Embedded */
+    
     .mini-loader-container{display:none;align-items:center;flex-direction:column;}
     .mini-loader{width:60px;stroke-width:5px;stroke:#fff;fill:transparent;stroke-dasharray:157.1;stroke-dashoffset:0;animation:rot 4s infinite linear, clr 9s infinite linear;}
-    /*! CSS Used keyframes */
+    
     @keyframes rot{0%{transform:rotate(0deg);stroke-dashoffset:157.1;}50%{stroke-dashoffset:0;}100%{transform:rotate(360deg);stroke-dashoffset:-157.1;}}
     @keyframes clr{0%,         100%{stroke:#F5C1A9;}20%{stroke:#E04800;}40%{stroke:#E04800;}60%{stroke:#F5C1A9;}80%{stroke:#F5C1A9;}}
    </style>
@@ -363,7 +361,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
             </g>        
         </svg>
-        <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+        <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
         <span class="loading-text">Processing<span id="dots"></span></span>
     </div>
 
@@ -413,12 +411,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <!-- profile end -->
       
       <!-- cart icon -->
-      <div class="cart-icon">
-        <!-- <i class="fa fa-shopping-cart"></i> -->
+      <!-- <div class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
         <span class="cart-count">0</span>
         <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-      </div>
+      </div> -->
       <!-- cart icon end -->
       
       <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -643,23 +641,23 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
     <div style="opacity: 1; display: flex;" class="form-container  w-container">
       <div class="form-block w-form" style="overflow-y: auto;height: auto;">        
-        <div class="">
-        <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-            <div>Withdrawal request sent successfully!</div>
-        </div>
-        <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-            <div>Withdrawal request failed!</div>
-        </div>        
+        <div class="modal-title">               
           <div class="" style="padding: 10px;margin:10px; text-align: center;">Make withdrawal request</div>
           <div  class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
         </div>
+        <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
+          <div>Withdrawal request sent successfully!</div>
+      </div>
+      <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
+          <div>Withdrawal request failed!</div>
+      </div> 
         <form id="createWithdrawal" name="create-withdrawal-form" data-name="create-withdrawal Form" method="post" data-ms-form="" class="form " aria-label="create-withdrawal Form">
           <div class="w-form">                                          
-                <span >Current active order profit: <span style="color: #e04800;" id="currentOrderProfit">256</span> </span>
+                <span >Current active profit: <span style="color: #e04800;" id="currentOrderProfit">0</span> </span>
             </div>
             <div class="w-form">                          
                 <input type="number" class=" w-input" maxlength="256" name="amount" placeholder="100" id="amount"  require>
-                <small >Enter amount to withdrawal</small>
+                <small >Enter amount to withdraw</small>
             </div>
                              
           <button type="submit" value="Request" data-wait="Please wait..." class="submit-button w-button">          
@@ -683,21 +681,21 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <div style="opacity: 1; display: flex;" class="form-container  w-container">
       <div class="form-block w-form" style="overflow-y: auto;height: auto;">
          
-        <div class="">
+        <div class="modal-title">               
+          <div class=""  style="padding: 10px;margin:10px; text-align: center;">Update withdrawal method</div>
+          <div class="close-modal-button withdrawal-method">
+            <img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
+        </div>
         <div class="w-form-done withdrawal-method-done" tabindex="-1" role="region" style="display: none;">
             <div>Withdrawal method updated successfully!</div>
         </div>
         <div class="w-form-fail withdrawal-method-fail" tabindex="-1" role="region" style="display: none;">
             <div>Withdrawal method update failed!</div>
-        </div>        
-          <div class=""  style="padding: 10px;margin:10px; text-align: center;">Update withdrawal method</div>
-          <div class="close-modal-button withdrawal-method">
-            <img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
-        </div>
+        </div> 
 
-        <form id="paymentForm" class="form">
-            <label for="paymentType">Select Payment Type</label>
+        <form id="paymentForm" class="form">            
             <select id="paymentType" name="payment_method" class="w-input">
+              <option value=" ">Select Payment Type</option>
               <option value="bank-transfer">Bank Transfer</option>
               <option value="cryptocurrency">Cryptocurrency</option>
             </select>
@@ -811,10 +809,15 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     fetchUserData();
     fetchUserWithdrawal();
 
-      function appendRowToTable(Withdrawals) {
+      function appendRowToTable(withdrawals, currentPage = 1, itemsPerPage = 3) {
           const tableBody = document.querySelector("tbody");
+          tableBody.innerHTML = ""; // Clear existing rows
 
-          for (const withdrawal of Withdrawals) {
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          const currentWithdrawals = withdrawals.slice(startIndex, endIndex);
+      
+          for (const withdrawal of currentWithdrawals) {
               
               const row = document.createElement("tr");
 
@@ -838,7 +841,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 
           statusCol = document.createElement("td");
-          statusCol.innerHTML = withdrawal.status
+          statusCol.innerHTML = `<img src="../images/status/${withdrawal.status}.svg"> ${withdrawal.status}`
 
 
           // subject = document.createElement("td");
@@ -865,6 +868,41 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           tableBody.appendChild(row);
               
           }
+
+                // Calculate total pages
+            const totalPages = Math.ceil(withdrawals.length / itemsPerPage);
+            // ... (inside the function)
+        const paginationContainer = document.createElement("div");
+        paginationContainer.className = "pagination";
+
+        // Previous button
+        const prevButton = document.createElement("button");
+        prevButton.textContent = "Previous";
+        prevButton.addEventListener("click", () => {
+            const prevPage = currentPage > 1 ? currentPage - 1 : 1;
+            appendRowToTable(withdrawals, prevPage, itemsPerPage);
+        });
+
+        // Next button
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Next";
+        nextButton.addEventListener("click", () => {
+            const nextPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+            appendRowToTable(withdrawals, nextPage, itemsPerPage);
+        });
+
+        // Page number display
+        const pageNumberDisplay = document.createElement("span");
+        pageNumberDisplay.className = "page-number";
+        pageNumberDisplay.textContent = `${currentPage}/${totalPages}`;
+
+        // Append pagination controls
+        paginationContainer.appendChild(prevButton);
+        paginationContainer.appendChild(pageNumberDisplay);
+        paginationContainer.appendChild(nextButton);
+
+        // Append pagination container to the table body
+        tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
 
           gotoWithdrawalDetail()
       }

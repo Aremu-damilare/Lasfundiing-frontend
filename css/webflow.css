@@ -306,16 +306,20 @@ button,
   margin: 0 0 15px;
 }
 .w-form-done {
-  display: none;
-  padding: 20px;
+  display: none;  
   text-align: center;
-  background-color: #dddddd;
+  color: green;  
+  border: 1px solid green;
+  padding: 3px;
+  border-radius: 15px;
 }
 .w-form-fail {
-  display: none;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #ffdede;
+  display: none;  
+  text-align: center;  
+  color: red;
+  border: 1px solid red;
+  padding: 3px;
+  border-radius: 15px;
 }
 label {
   display: block;

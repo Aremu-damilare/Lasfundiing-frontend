@@ -166,18 +166,23 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       }
     </style>
     <style>
+
+      
       .four-box-container {
-        margin-left: 1%;
+        margin-left: 3%;
         margin-right: 0%;
         width: 24%;
-        height: 530px;
+        height: 215px;
         background-color: #fff;
         display: grid;
-        grid-template-columns: 200% 200%;
+        grid-template-columns: 194% 192%;
         grid-template-rows: auto auto;
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
+        grid-column-gap: 8px;
+        grid-row-gap: 10px;
+
+        
       }
+
       .box {
         padding: 20px;
         border: 1px solid gray;
@@ -187,6 +192,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         align-items: center;
         justify-content: center;
         font-size: 20px;        
+        box-shadow: 0 0 5px #888888; 
+        transition: box-shadow 0.3s ease-in-out; 
+        :hover { box-shadow: 0 0 15px #888888; }
       }
     </style>
     <link rel="stylesheet" href="../css/scrollbar.css">
@@ -198,7 +206,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
         </g>
       </svg>
-      <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo" />
+      <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo" />
       <span class="loading-text">Processing<span id="dots"></span></span>
     </div>
     <script>
@@ -240,12 +248,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       </div>
       <!-- profile end -->
       <!-- cart icon -->
-      <div class="cart-icon">
-        <!-- <i class="fa fa-shopping-cart"></i> -->
+      <!-- <div class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
         <span class="cart-count">0</span>
         <a href="#" class="w-inline-block"> 
           <img src="../images/cart.svg" loading="lazy" alt="" class="image" /></a>
-      </div>
+      </div> -->
       <!-- cart icon end -->
       <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
     </div>
@@ -378,7 +386,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <div class="table-header-wrapper">
               <div class="table-header">Transactions</div>
               <a href="./orders.php" class="link-block w-inline-block">
-                <div class="text-block-58">See All Order with transactions</div>
+                <div class="text-block-58">Orders with transactions</div>
                 <img src="../images/CaretUp.svg" loading="lazy" width="13" alt="" class="image-13" />
               </a>
             </div>
@@ -569,22 +577,25 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           const elementToAppend = document.createElement("div");
           elementToAppend.className = "transaction-table";
           elementToAppend.innerHTML += `
-        <div id="" class="status">
-          <div id="" class="completed"><img src="../images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
-            <div class="text-block-63">${order.transaction.status}</div>
-          </div>
-        </div>
-        <div id="" class="payment-type">              
-          <div class="text-block-61">${order.payment_method.name} payment</div>
-        </div>
-        <div id="" class="amount">
-          <div class="text-block-64">$${order.account_type.setup_fee}</div>
-        </div>
-        <div id="" class="date">
-          <div class="text-block-65">${formatDate(order.updated_at)}</div>
-        </div>
-      `;
+            <div id="" class="status">
+              <div id="" class="${order.status}">
+                <img src="../images/status/${order.status}.svg" loading="lazy" alt="" class="status-icon">
+                <div class="text-block-63">${order.transaction.status}</div>
+              </div>
+            </div>
+            <div id="" class="payment-type">              
+              <div class="text-block-61">${order.payment_method.name} payment</div>
+            </div>
+            <div id="" class="amount">
+              <div class="text-block-64">$${order.account_type.setup_fee}</div>
+            </div>
+            <div id="" class="date">
+              <div class="text-block-65">${formatDate(order.updated_at)}</div>
+            </div>
+          `;
+
           transactionTable.append(elementToAppend);
+
         }
       }
 
@@ -613,10 +624,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             ) {
                 console.log("Matching Object:" , order);
                 
-                  boxA.innerHTML = `Status:<br> ${order.status} <br><br> Transaction:<br> ${order.transaction.status}`;
-                  boxB.innerHTML = `Stage:<br> ${order.stage}`;
-                  boxC.innerHTML = `Active:<br> ${order.active}`;
-                  boxD.innerHTML = `Profit:<br> ${order.profit}`;
+                boxA.innerHTML = `<span class="label">Status&nbsp;<br> <span class="order-status">${order.status}</span>  </span>`;
+                boxB.innerHTML = `<span class="label">Stage&nbsp;<br> <span class="order-stage">${order.stage}</span></span>`;
+                boxC.innerHTML = `<span class="label">Active&nbsp;<br><span class="order-active">${order.active}</span></span>`;
+                boxD.innerHTML = `<span class="label">Profit&nbsp;<br> <span class="order-profit">${order.profit}</span></span> `;
               
             } else{
               console.log("No active account")

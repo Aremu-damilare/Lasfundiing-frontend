@@ -4670,7 +4670,10 @@ label {
   margin-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  display: grid;
+  display: grid;  
+}
+
+#transaction-table {
   overflow-x: auto;
 }
 
@@ -4697,6 +4700,16 @@ label {
 }
 
 .completed {
+  height: 24px;
+  color: #0d5e00;
+  background-color: #baf5b0;
+  border-radius: 20px;
+  align-items: center;
+  padding: 5px 20px 5px 10px;
+  display: flex;
+}
+
+.success {
   height: 24px;
   color: #0d5e00;
   background-color: #baf5b0;
@@ -10237,4 +10250,29 @@ label {
 
 .payment-type {
   place-self: center;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+  background: url('../images/hide.png') no-repeat;
+  width: 20px;
+  height: 20px;  
+}
+
+.label {
+  color: black;
+}
+
+.order-status,
+.transaction-status,
+.order-stage,
+.order-active,
+.order-profit {
+  color: blue;
+  font-weight: bold;
 }

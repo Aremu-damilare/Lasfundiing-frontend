@@ -10275,12 +10275,12 @@ p.info-block {
   padding: 11px;
   flex-direction: column;
 }
-/*! CSS Used from: http://localhost/lasfunding_front/css/normalize.css */
+
 img{border:0;}
-/*! CSS Used from: http://localhost/lasfunding_front/css/webflow.css */
+
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 img{max-width:100%;vertical-align:middle;display:inline-block;}
-/*! CSS Used from: http://localhost/lasfunding_front/css/lasfunding.webflow.css */
+
 .status{grid-column-gap:25px;justify-content:space-between;display:flex;}
 .transaction-table { 
   grid-column-gap:16px;grid-row-gap:10px;
@@ -10304,6 +10304,6 @@ img{max-width:100%;vertical-align:middle;display:inline-block;}
 .text-block-64,.text-block-65{font-size:10px;line-height:10px;}
 }
 .payment-type{place-self:center;}
-/*! CSS Used from: http://localhost/lasfunding_front/css/scrollbar.css */
+
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-thumb{background-color:#e45e1f;}

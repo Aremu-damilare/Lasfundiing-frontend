@@ -113,8 +113,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     }
   </style>  
   
-    <style>
-    /*! CSS Used from: http://localhost/lasfunding_front/css/normalize.css */
+  <style>
+    
     a{background-color:transparent;}
     a:active,a:hover{outline:0;}
     img{border:0;}
@@ -122,14 +122,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     input{color:inherit;font:inherit;margin:0;}
     input{line-height:normal;}
     input[type='checkbox']{box-sizing:border-box;padding:0;}
-    /*! CSS Used from: http://localhost/lasfunding_front/css/webflow.css */
+    
     *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
     img{max-width:100%;vertical-align:middle;display:inline-block;}
     .w-button{display:inline-block;padding:9px 15px;background-color:#3898EC;color:white;border:0;line-height:inherit;text-decoration:none;cursor:pointer;border-radius:0;}
     input.w-button{-webkit-appearance:button;}
     .w-form{margin:0 0 15px;}
-    .w-form-done{display:block;padding:20px;text-align:center;background-color:#dddddd;}
-    .w-form-fail{display:block;margin-top:10px;padding:10px;background-color:#ffdede;}
+    
     label{display:block;margin-bottom:5px;font-weight:bold;}
     .w-input{display:block;width:100%;height:38px;padding:8px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#333333;vertical-align:middle;background-color:#ffffff;border:1px solid #cccccc;}
     .w-input:focus{border-color:#3898EC;outline:0;}
@@ -143,7 +142,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     @media screen and (max-width: 479px){
     .w-container{max-width:none;}
     }
-    /*! CSS Used from: http://localhost/lasfunding_front/css/lasfunding.webflow.css */
+    
     .w-checkbox{margin-bottom:5px;padding-left:20px;display:block;}
     .w-checkbox:before{content:" ";grid-area:1 / 1 / 2 / 2;display:table;}
     .w-checkbox:after{content:" ";clear:both;grid-area:1 / 1 / 2 / 2;display:table;}
@@ -207,7 +206,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .text-block-15{margin-top:4px;margin-bottom:4px;font-size:12px;}
     .eye{padding:0;top:6px;left:82%;}
     }
-    /*! CSS Used from: Embedded */
+    
     .mini-loader-container{display:none;align-items:center;flex-direction:column;}
     .mini-loader{width:60px;stroke-width:5px;stroke:#fff;fill:transparent;stroke-dasharray:157.1;stroke-dashoffset:0;animation:rot 4s infinite linear, clr 9s infinite linear;}
     /*! CSS Used keyframes */
@@ -215,8 +214,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     @keyframes clr{0%,         100%{stroke:#F5C1A9;}20%{stroke:#E04800;}40%{stroke:#E04800;}60%{stroke:#F5C1A9;}80%{stroke:#F5C1A9;}}
    </style>
 
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/user/ticket-table.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/user/ticket-table.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
 
   <style>
     /* Extra Small Screens (phones, less than 576px) */
@@ -454,7 +453,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
             </g>        
         </svg>
-        <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+        <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
         <span class="loading-text">Processing<span id="dots"></span></span>
     </div>
 
@@ -504,12 +503,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <!-- profile end -->
       
       <!-- cart icon -->
-      <div class="cart-icon">
-        <!-- <i class="fa fa-shopping-cart"></i> -->
+      <!-- <div class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
         <span class="cart-count">0</span>
         <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-      </div>
+      </div> -->
       <!-- cart icon end -->
       
       <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -612,13 +611,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <table class="slds-table slds-table--bordered">
               <thead>
                 <tr class="slds-text-heading--label">
-                  <th class="slds-cell-shrink">
+                  <!-- <th class="slds-cell-shrink">
                     <label class="slds-checkbox">
                         <input type="checkbox" name="options" />
                         <span class="slds-checkbox--faux"></span>
                         <span class="slds-assistive-text">Select All</span>
                       </label>
-                  </th>
+                  </th> -->
                   <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Priority, Id
                       <button class="slds-button slds-button--icon-bare">
@@ -640,7 +639,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     </div>
                   </th>
                 
-                  <th class="slds-is-sortable" scope="col">
+                  <th  onclick="sortTable(3)" class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Status
                       <button class="slds-button slds-button--icon-bare">
                           <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
@@ -660,27 +659,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                         </button>
                     </div>
                   </th>
-                  <!-- <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Amount
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th>
-                  <th class="slds-is-sortable" scope="col">
-                    <div class="slds-truncate">Contact
-                      <button class="slds-button slds-button--icon-bare">
-                          <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Sort</span>
-                        </button>
-                    </div>
-                  </th> -->
-                  <th class="slds-is-sortable" scope="col">
+                 
+                  <th  onclick="sortTable(5)" class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Date
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
@@ -712,16 +692,16 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <div style="opacity: 1; display: flex; width:80%" class="form-container  w-container">
       <div class="form-block w-form" style="overflow-y: auto;height: auto; width:100%">
         
-        <div class="">
+        <div class="modal-title">               
+          <div class="" style="padding: 10px;margin:10px; text-align: center;">Create ticket</div>
+          <div  class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
+        </div>
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
             <div>Ticket created successfully!</div>
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
             <div>Ticket failed to initiate!</div>
-        </div>        
-          <div class="" style="padding: 10px;margin:10px; text-align: center;">Create ticket</div>
-          <div  class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
-        </div>
+        </div> 
         <form id="createTicket" name="create-ticket-form" data-name="create-ticket Form" method="post" data-ms-form="" class="form " aria-label="create-ticket Form">
             
          <label for="subject">Subject</label>
@@ -810,13 +790,16 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   fetchUserData();
   fetchUserTicket();
 
-function appendRowToTable(tickets) {
+function appendRowToTable(tickets, currentPage = 1, itemsPerPage = 3) {
     const tableBody = document.querySelector("tbody");
+    tableBody.innerHTML = ""; // Clear existing rows
 
-      for (const ticket of tickets) {
-        
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentTickets = tickets.slice(startIndex, endIndex);
+
+    for (const ticket of currentTickets) {
         const row = document.createElement("tr");
-
       // Create table cells and populate them with ticket data
       const checkboxCell = document.createElement("td");
       checkboxCell.className = "slds-cell-shrink";
@@ -835,34 +818,63 @@ function appendRowToTable(tickets) {
       department = document.createElement("td");
       department.innerHTML = `${ticket.department}`
 
-
       statusCol = document.createElement("td");
-      statusCol.innerHTML = ticket.status
-
+      statusCol.innerHTML = `<img src="../images/status/${ticket.status}.svg"> ${ticket.status}`
 
       subject = document.createElement("td");
       subject.innerHTML = ticket.subject
 
-
       dateCol = document.createElement("td");
       dateCol.innerHTML = formatDate(ticket.created_at)
 
-
       // Append cells to the row
-      row.appendChild(checkboxCell);
+      //row.appendChild(checkboxCell);
       row.appendChild(priority);
       row.appendChild(department);
       row.appendChild(statusCol);
       row.appendChild(subject);
-      row.appendChild(dateCol);
-      // ... Append other cells to the row ...
+      row.appendChild(dateCol);      
 
       // Append the row to the table body
       tableBody.appendChild(row);
         
       }
+      // Calculate total pages
+    const totalPages = Math.ceil(tickets.length / itemsPerPage);
+        // ... (inside the function)
+    const paginationContainer = document.createElement("div");
+    paginationContainer.className = "pagination";
 
-      gotoTicketDetail()
+    // Previous button
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "Previous";
+    prevButton.addEventListener("click", () => {
+        const prevPage = currentPage > 1 ? currentPage - 1 : 1;
+        appendRowToTable(tickets, prevPage, itemsPerPage);
+    });
+
+    // Next button
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "Next";
+    nextButton.addEventListener("click", () => {
+        const nextPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+        appendRowToTable(tickets, nextPage, itemsPerPage);
+    });
+
+    // Page number display
+    const pageNumberDisplay = document.createElement("span");
+    pageNumberDisplay.className = "page-number";
+    pageNumberDisplay.textContent = `${currentPage}/${totalPages}`;
+
+    // Append pagination controls
+    paginationContainer.appendChild(prevButton);
+    paginationContainer.appendChild(pageNumberDisplay);
+    paginationContainer.appendChild(nextButton);
+
+    // Append pagination container to the table body
+    tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
+
+    gotoTicketDetail();
 }
 
 
@@ -996,6 +1008,40 @@ function gotoTicketDetail(){
       }
   });
   </script>
+
+<script>
+  function sortTable(columnIndex) {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.querySelector("table");
+    switching = true;
+
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("td")[columnIndex];
+        y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+        if (columnIndex === 5) { // Date column
+          x = new Date(x.textContent);
+          y = new Date(y.textContent);
+        }
+
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+  }
+</script>
 
 </body>
 </html>

@@ -114,7 +114,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   </style>  
   
     <style>
-    /*! CSS Used from: http://localhost/lasfunding_front/css/normalize.css */
+    
     a{background-color:transparent;}
     a:active,a:hover{outline:0;}
     img{border:0;}
@@ -122,7 +122,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     input{color:inherit;font:inherit;margin:0;}
     input{line-height:normal;}
     input[type='checkbox']{box-sizing:border-box;padding:0;}
-    /*! CSS Used from: http://localhost/lasfunding_front/css/webflow.css */
+    
     *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
     img{max-width:100%;vertical-align:middle;display:inline-block;}
     .w-button{display:inline-block;padding:9px 15px;background-color:#3898EC;color:white;border:0;line-height:inherit;text-decoration:none;cursor:pointer;border-radius:0;}
@@ -143,7 +143,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     @media screen and (max-width: 479px){
     .w-container{max-width:none;}
     }
-    /*! CSS Used from: http://localhost/lasfunding_front/css/lasfunding.webflow.css */
+    
     .w-checkbox{margin-bottom:5px;padding-left:20px;display:block;}
     .w-checkbox:before{content:" ";grid-area:1 / 1 / 2 / 2;display:table;}
     .w-checkbox:after{content:" ";clear:both;grid-area:1 / 1 / 2 / 2;display:table;}
@@ -207,16 +207,16 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .text-block-15{margin-top:4px;margin-bottom:4px;font-size:12px;}
     .eye{padding:0;top:6px;left:82%;}
     }
-    /*! CSS Used from: Embedded */
+    
     .mini-loader-container{display:none;align-items:center;flex-direction:column;}
     .mini-loader{width:60px;stroke-width:5px;stroke:#fff;fill:transparent;stroke-dasharray:157.1;stroke-dashoffset:0;animation:rot 4s infinite linear, clr 9s infinite linear;}
-    /*! CSS Used keyframes */
+    
     @keyframes rot{0%{transform:rotate(0deg);stroke-dashoffset:157.1;}50%{stroke-dashoffset:0;}100%{transform:rotate(360deg);stroke-dashoffset:-157.1;}}
     @keyframes clr{0%,         100%{stroke:#F5C1A9;}20%{stroke:#E04800;}40%{stroke:#E04800;}60%{stroke:#F5C1A9;}80%{stroke:#F5C1A9;}}
    </style>
 
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/user/ticket-table.css">
-  <link rel="stylesheet" href="http://localhost/lasfunding_front/css/scrollbar.css">
+  <link rel="stylesheet" href="../css/user/ticket-table.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
  
   <style>
     /* Extra Small Screens (phones, less than 576px) */
@@ -343,7 +343,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
             </g>        
         </svg>
-        <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+        <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
         <span class="loading-text">Processing<span id="dots"></span></span>
     </div>
 
@@ -394,12 +394,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <!-- profile end -->
       
       <!-- cart icon -->
-      <div class="cart-icon">
-        <!-- <i class="fa fa-shopping-cart"></i> -->
+      <!-- <div class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
         <span class="cart-count">0</span>
         <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-      </div>
+      </div> -->
       <!-- cart icon end -->
       
       <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -559,7 +559,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <div>Unable to send KYC documents!</div>
         </div>        
           
-          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="http://localhost/lasfunding_front/images/Asset-4.svg" loading="lazy" alt=""></div>
+          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
           <div class="" style="padding: 10px;margin:10px; text-align: center;">Send KYC documents</div>
         </div>
 

@@ -19,6 +19,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/custom.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -118,17 +119,26 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button"><img src="images/Asset-4.svg" loading="lazy" alt=""></div>
         </div>
         <form id="email-form" name="email-form" data-name="Email Form" method="get" data-ms-form="login" class="form login">
+          
+          <div class="w-form-done">
+            <div>Login credentials confirmed!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+          
           <input type="email" class="email-field w-input" maxlength="256" name="email" data-name="email" placeholder="Enter Email Address" id="email" data-ms-member="email" required />
           
           <div class="password-input-block login">
             <input type="password" class="password-field w-input" maxlength="256" name="Password" data-name="Password" placeholder="Enter Password" id="Password" data-ms-member="password" required />
-            <!-- <div class="eye login">
+            <!-- <div class="toggle-password" ></div> -->
+            <div class="eye login" onclick="togglePasswordVisibility('Password')">
               <img src="images/hide.png" loading="lazy" alt="" class="eye-icon">
-            </div> -->
+            </div>
           </div>
           <div class="remember-me-section login"><label class="w-checkbox checkbox-field">
             <input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"  />
-            <span class="checkbox-label w-form-label" for="checkbox">Remember me</span></label>
+            <span class="checkbox-label w-form-label" for="checkbox">Remember</span></label>
             <div class="forgot-password">
               <a href="forgot-password.php" class="forgot-pw-wrapper">Forgot Password?</a>
             </div>
@@ -144,18 +154,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </span> 
           </button>
           
-          <div class="text-block-15">Do not have an account? <a href="#BuyAccount"  class="link">Sign Up</a>
+          <div class="text-block-15">Do not have an account? <a href="#BuyAccounts"  class="link">Sign Up</a>
           </div>
-        </form>
+        </form>        
 
-        
-
-        <div class="w-form-done">
-          <div>Thank you! Login credentials confirmed!</div>
-        </div>
-        <div class="w-form-fail">
-          <div>Oops! Something went wrong while submitting the form.</div>
-        </div>
       </div>
     </div>
 
@@ -207,7 +209,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
               <li class="mobile-margin-top-10">
                 <div class="nav-button-wrapper">
                   <a data-w-id="39763524-28b0-34c5-f0e4-c2a338dcd4f5" href="#" class="nav-link-2 sign-in login">Sign In</a>
-                  <a href="#BuyAccount" class="button-primary nav-bar w-button">Join Now</a>
+                  <a href="#BuyAccounts" class="button-primary nav-bar w-button">Join Now</a>
                   <a href="#" class="w-inline-block"><img src="images/cart.svg" loading="lazy" alt="" class="image"></a>
                 </div>
               </li>
@@ -226,7 +228,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         <h1 class="heading">Your <span>strategy</span>, <br>Your way and we <br>take the risks</h1>
         <p class="margin-bottom-24px">Trade up to $50,000 of our company&#x27;s capital and get paid up to 80% of <br>the profit weekly or monthly. No challenges. No risk for you, we take the losses. <br>Join the team of our successful Traders now.</p>
         <div class="hero-buttons">
-          <a href="#BuyAccount" class="button-primary hero-btn w-button">Start Trading</a>
+          <a href="#BuyAccounts" class="button-primary hero-btn w-button">Start Trading</a>
           <a id="signin" data-w-id="c17572d0-cd7a-bcef-110c-67d508e0fe86" href="#" class="button-primary transparent login w-button">Log In</a>
         </div>
       </div>
@@ -314,10 +316,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   </div>
 
   
-
-  <section id="Programs" class="trade-section wf-section">
+  <a id="BuyAccounts" ></a>
+  <section id="Programs" class="trade-section wf-section" >    
     <div class="container-7">
-      <h2 class="centered-heading-3">Sign Up to Start Trading Using Our Funds</h2>
+      <h2 class="centered-heading-3">Sign Up to Start Trading <br>Using Our Funds</h2>
       <p style="text-align:center;">How much fund do you want in your account?</p>
 
       <br><br><br>
@@ -433,7 +435,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             margin-bottom: 20px;
         }
     </style>
-    <div class="account-type-container">      
+    <div class="account-type-container" >      
         <div class='table-switcher'>
             <div class='row'>
               <div class='account-type-column'>
@@ -554,7 +556,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <h3 class="heading-8">Verification</h3>
             <p class="pricing-card-text-2">We provide three account sizes for Traders to start with: $5,000, $10,000, $25,000, $50,000 and $100,000.  Choose your account size, select a broker, and you’ll receive login details within 24 hours of purchase! This is the account you’ll begin trading.</p>
           </div>
-          <a href="#BuyAccount" class="text-link-arrow-2 first w-inline-block">
+          <a href="#BuyAccounts" class="text-link-arrow-2 first w-inline-block">
             <div class="text-block-29">Learn more</div>
             <div class="arrow-embed-2 w-embed"><svg width="12" height="12" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.72 15L16.3472 10.357C16.7732 9.92932 16.7732 9.23603 16.3472 8.80962L11.72 4.16667L10.1776 5.71508L12.9425 8.4889H4.16669V10.6774H12.9425L10.1776 13.4522L11.72 15Z" fill="currentColor"></path>
@@ -567,7 +569,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <h3 class="heading-6">Start trading</h3>
             <p class="pricing-card-text-2">Start your trading journey with us today and take advantage of the many opportunites we offer for the forex market. Open an account now and begin your path to financial success.</p>
           </div>
-          <a href="#BuyAccount" class="text-link-arrow-2 middle w-inline-block">
+          <a href="#BuyAccounts" class="text-link-arrow-2 middle w-inline-block">
             <div class="text-block-30">Learn more</div>
             <div class="arrow-embed-2 w-embed"><svg width="12" height="12" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.72 15L16.3472 10.357C16.7732 9.92932 16.7732 9.23603 16.3472 8.80962L11.72 4.16667L10.1776 5.71508L12.9425 8.4889H4.16669V10.6774H12.9425L10.1776 13.4522L11.72 15Z" fill="currentColor"></path>
@@ -580,7 +582,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <h3 class="heading-7">Get Paid</h3>
             <p class="pricing-card-text-2">Our website offers a range of resources to help you get started, including educational, materials, market analysis and a trading platform. <br>Don&#x27;t wait any longer to take control of your financial future. Sign up and start earning the income you deserve</p>
           </div>
-          <a href="#BuyAccount" class="text-link-arrow-2 third w-inline-block">
+          <a href="#BuyAccounts" class="text-link-arrow-2 third w-inline-block">
             <div class="text-block-31">Learn more</div>
             <div class="arrow-embed-2 w-embed"><svg width="12" height="12" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.72 15L16.3472 10.357C16.7732 9.92932 16.7732 9.23603 16.3472 8.80962L11.72 4.16667L10.1776 5.71508L12.9425 8.4889H4.16669V10.6774H12.9425L10.1776 13.4522L11.72 15Z" fill="currentColor"></path>
@@ -984,7 +986,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
               <div class="rl_footer1_link-list">
                 <div class="rl_footer_column-text">Apply Online</div>
                 <div class="rl_footer1_spacing-block-4"></div>
-                <a data-w-id="a8454ba9-aaca-eaca-df8f-a1abb34ceced" href="#BuyAccount" class="button-2 w-button">Trade Now</a>
+                <a data-w-id="a8454ba9-aaca-eaca-df8f-a1abb34ceced" href="#BuyAccounts" class="button-2 w-button">Trade Now</a>
               </div>
             </div>
           </div>
@@ -1136,7 +1138,19 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     // Add click event listeners to each link
     changeAccountTypeLinks.forEach(link => {
         link.addEventListener("click", function (event) {
-      
+          
+          changeAccountTypeLinks.forEach(otherLink => {
+          otherLink.classList.remove('red', 'blue');
+        });
+
+        // Add the 'blue' class to all links
+        changeAccountTypeLinks.forEach(otherLink => {
+          otherLink.classList.add('blue');
+        });
+
+        // Remove the 'blue' class and add the 'red' class to the clicked element
+        link.classList.remove('blue');
+        link.classList.add('red');
 
             event.preventDefault();
 

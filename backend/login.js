@@ -50,7 +50,8 @@ loginForm.addEventListener('click', (event) => {
           for (const key in data) {
             const errorMessages = data[key];
             for (const errorMessage of errorMessages) {
-              errorHtml += `${key}: ${errorMessage}<br>`;
+              // errorHtml += `${key}: ${errorMessage}<br>`;
+              errorHtml += `${errorMessage}<br>`;
             }
           }
           errorMessage.innerHTML = errorHtml;

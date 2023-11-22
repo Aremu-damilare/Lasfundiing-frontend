@@ -145,7 +145,7 @@
 
 
 
-/*! CSS Used from: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css */
+
 .fa {
 	display: inline-block;
 	font: normal normal normal 14px/1 FontAwesome;
@@ -167,7 +167,7 @@
 	content: "\f0e0";
 }
 
-/*! CSS Used from: file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.css */
+
 /* * {
 	box-sizing: border-box;
 	margin: 0;
@@ -330,7 +330,7 @@ span.navbar-item-notification {
     color: #fff;
 }
 
-/*! CSS Used from: Embedded */
+
 /* * {
 	box-sizing: border-box;
 	margin: 0;
@@ -370,3 +370,50 @@ img {
 	display: inline-block;
 } */
 
+/* Add this CSS to your existing styles or create a new style tag in your HTML */
+
+/* Pagination styles */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.pagination button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #45a049;
+}
+
+.page-number {
+  font-size: 14px;
+  margin: 0 10px;
+  place-self: center;
+}
+
+.modal-title {
+  color: black;
+  background: #8080801c;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+
+
+
+.red {
+  color: red !important;
+  border: 2px solid tan !important;
+}
+
+.blue {
+  color: blue !important;
+  border: 2px solid tan !important;
+}

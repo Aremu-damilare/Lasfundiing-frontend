@@ -33,13 +33,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <link href="./images/webclip.png" rel="apple-touch-icon"><!--  Memberstack webflow package  -->
   
   <style>
-    /*! CSS Used from: http://127.0.0.1:5500/css/normalize.css */
+    
     a{background-color:transparent;}
     a:active,a:hover{outline:0;}
     input{color:inherit;font:inherit;margin:0;}
     input{line-height:normal;}
     input[type='checkbox'],input[type='radio']{box-sizing:border-box;padding:0;}
-    /*! CSS Used from: http://127.0.0.1:5500/css/webflow.css */
+    
     *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
     input.w-button{
       -webkit-appearance:button;
@@ -64,7 +64,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     @media screen and (max-width: 479px){
     .w-col{width:100%;}
     }
-    /*! CSS Used from: http://127.0.0.1:5500/css/lasfunding.webflow.css */
+    
     .w-checkbox{display:block;margin-bottom:5px;padding-left:20px;}
     .w-checkbox::before{content:' ';display:table;-ms-grid-column-span:1;grid-column-end:2;-ms-grid-column:1;grid-column-start:1;-ms-grid-row-span:1;grid-row-end:2;-ms-grid-row:1;grid-row-start:1;}
     .w-checkbox::after{content:' ';display:table;-ms-grid-column-span:1;grid-column-end:2;-ms-grid-column:1;grid-column-start:1;-ms-grid-row-span:1;grid-row-end:2;-ms-grid-row:1;grid-row-start:1;clear:both;}
@@ -245,8 +245,16 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
               <input type="text" class="billing-input w-input" maxlength="256" name="First-Name" data-name="First Name" placeholder="Enter First Name" id="First-Name" data-ms-member="first-name" required="">
               <input type="text" class="billing-input w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Enter Last Name" id="Last-Name" data-ms-member="last-name" required="">
               <input type="email" class="billing-input w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email Address" id="Email" data-ms-member="email" required="">
-              <input type="password" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Enter Password" id="Password" data-ms-member="password" required="">
+
+              <div class="password-input-block login">
+                <input type="password" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Enter Password" id="Password" data-ms-member="password" required="">
+                <div class="eye login" onclick="togglePasswordVisibility('Password')">
+                  <img src="images/hide.png" loading="lazy" alt="" class="eye-icon">
+                </div>
+              </div>
+
               <input type="password" class="billing-input w-input" maxlength="256" name="Password" data-name="Password" placeholder="Confirm Password" id="Password-2" data-ms-member="password" required="">
+              
               <input type="tel" class="billing-input w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Phone Number" id="Phone" data-ms-member="phone-number" required="">
               <input type="text" class="billing-input w-input" maxlength="256" name="Home-Address" data-name="Home Address" placeholder="Enter Home Address" id="Home-Address" data-ms-member="address" required="">
               <div class="text-block-12">Additional Information</div>
@@ -296,7 +304,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </div>
         
           <div class="text-block-20" style="overflow: scroll;height: 85px;">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.<br><br>
-            By clicking "Place Order" to register with My Forex Funds, you are agreeing that you understand terms and conditions, including the Risk Management, Consistency and other guidelines on 
+            By clicking "Place Order" to register with Lasfunding, you are agreeing that you understand terms and conditions, including the Risk Management, Consistency and other guidelines on 
             <a href="./index.php" class="link-4">Lasfunding.<br>‍</a><br>You accept that Lasfunding will not issue refund once service (i.e. trading) has started on your account.</div>
           <div class="billing-form w-form">
             

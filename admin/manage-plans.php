@@ -114,7 +114,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   </style>    
 
 <style>
-     /*! CSS Used from: http://localhost/lasfunding_front/css/normalize.css */
+     
 a{background-color:transparent;}
 a:active,a:hover{outline:0;}
 img{border:0;}
@@ -122,7 +122,7 @@ svg:not(:root){overflow:hidden;}
 input{color:inherit;font:inherit;margin:0;}
 input{line-height:normal;}
 input[type='checkbox']{box-sizing:border-box;padding:0;}
-/*! CSS Used from: http://localhost/lasfunding_front/css/webflow.css */
+
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 img{max-width:100%;vertical-align:middle;display:inline-block;}
 .w-button{display:inline-block;padding:9px 15px;background-color:#3898EC;color:white;border:0;line-height:inherit;text-decoration:none;cursor:pointer;border-radius:0;}
@@ -143,7 +143,7 @@ label{display:block;margin-bottom:5px;font-weight:bold;}
 @media screen and (max-width: 479px){
 .w-container{max-width:none;}
 }
-/*! CSS Used from: http://localhost/lasfunding_front/css/lasfunding.webflow.css */
+
 .w-checkbox{margin-bottom:5px;padding-left:20px;display:block;}
 .w-checkbox:before{content:" ";grid-area:1 / 1 / 2 / 2;display:table;}
 .w-checkbox:after{content:" ";clear:both;grid-area:1 / 1 / 2 / 2;display:table;}
@@ -207,7 +207,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 .text-block-15{margin-top:4px;margin-bottom:4px;font-size:12px;}
 .eye{padding:0;top:6px;left:82%;}
 }
-/*! CSS Used from: Embedded */
+
 .mini-loader-container{display:none;align-items:center;flex-direction:column;}
 .mini-loader{width:60px;stroke-width:5px;stroke:#fff;fill:transparent;stroke-dasharray:157.1;stroke-dashoffset:0;animation:rot 4s infinite linear, clr 9s infinite linear;}
 /*! CSS Used keyframes */
@@ -234,7 +234,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
           <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
         </g>        
     </svg>
-    <img class="logo-image" src="http://lasfunding.com/Lasfund-Logo.png" alt="Logo">
+    <img class="logo-image" src="https://lasfunding.com/Lasfund-Logo.png" alt="Logo">
     <span class="loading-text">Processing<span id="dots"></span></span>
 </div>
 

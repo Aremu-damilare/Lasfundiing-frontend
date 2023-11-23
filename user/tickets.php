@@ -169,7 +169,16 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .text-block-15{margin-top:16px;margin-bottom:16px;}
     .close-modal-button{width:30px;float:none;clear:none;cursor:pointer;margin-right:5px;padding:9px;position:absolute;top:0%;bottom:auto;left:auto;right:0%;}
     .forgot-password{display:flex;}
-    .eye-icon{width:20px;cursor:pointer;position:static;top:237px;bottom:0%;left:0%;right:0%;}
+    
+    .eye-icon{ 
+      width:20px; 
+      cursor:pointer; 
+      position:static;
+      top:237px;
+      bottom:0%;
+      left:0%;
+      right:0%;
+    }
     .eye{position:absolute;top:6px;left:90%;}
     .eye.confirm{top:6px;}
     .password-input-block{width:48%;height:auto;position:relative;}
@@ -442,6 +451,42 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
+
+
+  <style>
+    .filter-container {
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+
+    .filter-container label {
+      margin-right: 10px;
+    }
+
+    .filter-container select,
+    .filter-container input[type="datetime-local"],
+    .filter-container button {
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    .filter-container button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .filter-container button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 
 
@@ -606,9 +651,30 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         </div>
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
-              
-        <div style="overflow-x: auto;">
-          <table class="slds-table slds-table--bordered">
+      <div class="filter-container">
+        <i class="fa fa-random" aria-hidden="true"></i> Sort
+        <br>
+        <select id="StatusSort" onchange="sortTableByStatus()">            
+          <option value="open">Status (Open)</option>
+          <option value="close">Status (Close)</option>
+        </select>
+        
+        <select id="DateSort" onchange="sortTableByDate(event)">
+          <option value="newest">Date (Latest)</option>
+          <option value="oldest">Date (Oldest)</option>          
+        </select>
+        <br>          
+        <p for="department">Start time</p>
+        <input type="datetime-local" name="startTime" id="StartTimeSort">
+        <br>
+        <p for="department">End time</p>
+        <input type="datetime-local" name="endTime" id="EndTimeSort">
+        <br>
+        <button type="button" onclick="sortTableByDateRange(event)">Sort by date range</button>
+      </div>
+        <div class="table-container" style="overflow-x: auto;">                
+          <table class="slds-table slds-table--bordered" id="myTable">
+                        
               <thead>
                 <tr class="slds-text-heading--label">
                   <!-- <th class="slds-cell-shrink">
@@ -639,7 +705,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     </div>
                   </th>
                 
-                  <th  onclick="sortTable(3)" class="slds-is-sortable" scope="col">
+                  <th class="slds-is-sortable" scope="col">
                     <div class="slds-truncate">Status
                       <button class="slds-button slds-button--icon-bare">
                           <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
@@ -659,8 +725,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                         </button>
                     </div>
                   </th>
-                 
-                  <th  onclick="sortTable(5)" class="slds-is-sortable" scope="col">
+               
+                  <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Date
                         <button class="slds-button slds-button--icon-bare">
                             <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
@@ -670,6 +736,18 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                           </button>
                       </div>
                     </th>
+
+                    <th class="slds-is-sortable" scope="col">
+                      <div class="slds-truncate">Date Updated
+                        <button class="slds-button slds-button--icon-bare">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                              <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use> -->
+                            </svg>
+                            <span class="slds-assistive-text">Sort</span>
+                          </button>
+                      </div>
+                    </th>
+
                   <th class="slds-cell-shrink"></th>
                 </tr>
               </thead>
@@ -690,7 +768,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     
   <div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
     <div style="opacity: 1; display: flex; width:80%" class="form-container  w-container">
-      <div class="form-block w-form" style="overflow-y: auto;height: auto; width:100%">
+      <div class="form-block w-form" style="overflow-y: auto;height: auto; ">
         
         <div class="modal-title">               
           <div class="" style="padding: 10px;margin:10px; text-align: center;">Create ticket</div>
@@ -706,6 +784,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             
          <label for="subject">Subject</label>
           <input type="text" class="w-input"  id="Subject" name="subject" data-name="subject" placeholder="Enter subject"  required>
+
+          <label for="content">Message</label>
+          <textarea name="content" id="Content" cols="35" rows="10">
+
+          </textarea>
+
           
             <label for="priority">Priority</label>
             <select id="priority" name="priority"  class="w-input">
@@ -790,7 +874,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   fetchUserData();
   fetchUserTicket();
 
-function appendRowToTable(tickets, currentPage = 1, itemsPerPage = 3) {
+function appendRowToTable(tickets, currentPage = 1, itemsPerPage = 5) {
     const tableBody = document.querySelector("tbody");
     tableBody.innerHTML = ""; // Clear existing rows
 
@@ -825,7 +909,10 @@ function appendRowToTable(tickets, currentPage = 1, itemsPerPage = 3) {
       subject.innerHTML = ticket.subject
 
       dateCol = document.createElement("td");
-      dateCol.innerHTML = formatDate(ticket.created_at)
+      dateCol.innerHTML = formatDateTime(ticket.created_at)
+
+      dateUpdatedCol = document.createElement("td");
+      dateUpdatedCol.innerHTML = formatDateTime(ticket.updated_at)
 
       // Append cells to the row
       //row.appendChild(checkboxCell);
@@ -833,7 +920,8 @@ function appendRowToTable(tickets, currentPage = 1, itemsPerPage = 3) {
       row.appendChild(department);
       row.appendChild(statusCol);
       row.appendChild(subject);
-      row.appendChild(dateCol);      
+      row.appendChild(dateCol);     
+      row.appendChild(dateUpdatedCol);    
 
       // Append the row to the table body
       tableBody.appendChild(row);
@@ -887,6 +975,11 @@ function formatDate(dateString) {
   });
   return formattedDate;
 }
+
+
+
+
+
 
 
 function gotoTicketDetail(){
@@ -991,54 +1084,68 @@ function gotoTicketDetail(){
 </script>
 
 <script>
-  window.addEventListener('load', function() {
-      // Function to get query parameters from the URL
-      function getQueryParam(name) {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(name);
+window.addEventListener('load', function() {
+    // Function to get query parameters from the URL
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Get the orderId query parameter from the URL
+    const orderId = getQueryParam('orderId');
+
+    // Check if orderId is not null and set it as the value of the Subject input
+    if (orderId !== null) {
+        const subjectInput = document.getElementById('Subject');
+        subjectInput.value = 'Order ID: ' + orderId;
+    }
+});
+</script>
+
+<script>      
+      async function sortTableByStatus() {
+        try {
+          var selectedValue = document.querySelector("#StatusSort");
+          console.log("sortTableByStatus", selectedValue.value );
+          setElementDisplayByClassName('mini-loader-container', 'block')
+          const userTicketsList = await userTicketsSortStatus(accessToken, status=`${selectedValue.value}`);
+          setElementDisplayByClassName('mini-loader-container', 'none');
+          appendRowToTable(userTicketsList);
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
       }
-  
-      // Get the orderId query parameter from the URL
-      const orderId = getQueryParam('orderId');
-  
-      // Check if orderId is not null and set it as the value of the Subject input
-      if (orderId !== null) {
-          const subjectInput = document.getElementById('Subject');
-          subjectInput.value = 'Order ID: ' + orderId;
-      }
-  });
-  </script>
+</script>
 
 <script>
-  function sortTable(columnIndex) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.querySelector("table");
-    switching = true;
-
-    while (switching) {
-      switching = false;
-      rows = table.rows;
-
-      for (i = 1; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementsByTagName("td")[columnIndex];
-        y = rows[i + 1].getElementsByTagName("td")[columnIndex];
-
-        if (columnIndex === 5) { // Date column
-          x = new Date(x.textContent);
-          y = new Date(y.textContent);
-        }
-
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        }
+    async function sortTableByDate() {
+      try {
+        var selectedValue = document.querySelector("#DateSort");
+        setElementDisplayByClassName('mini-loader-container', 'block')
+        const userTicketsList = await userTicketsSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
+        setElementDisplayByClassName('mini-loader-container', 'none');
+        console.log("userTicketsList", userTicketsList, );
+        appendRowToTable(userTicketsList);
+      } catch (error) {      
+        console.error("An error occurred:", error);
       }
+    }
+</script>
 
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
+<script>
+  async function sortTableByDateRange() {
+    try {
+      var EndTimeSortValue = document.querySelector("#EndTimeSort").value;
+      var StartTimeSortValue = document.querySelector("#StartTimeSort").value;
+
+      console.log("EndTimeSortValue", EndTimeSortValue, "StartTimeSortValue", StartTimeSortValue)
+      setElementDisplayByClassName('mini-loader-container', 'block')
+      const userTicketsList = await userTicketsSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Order="newest" );
+      setElementDisplayByClassName('mini-loader-container', 'none');
+      console.log("userTicketsList", userTicketsList);
+      appendRowToTable(userTicketsList);
+    } catch (error) {      
+      console.error("An error occurred:", error);
     }
   }
 </script>

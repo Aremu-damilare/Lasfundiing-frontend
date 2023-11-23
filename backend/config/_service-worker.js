@@ -16,3 +16,29 @@ function togglePasswordVisibility(passwordFieldId) {
       passwordField.type = 'password';
     }
   }
+
+
+  function formatDateTime(dateString) {
+    // Parse the input date string
+    const date = new Date(dateString);
+  
+    // Format the date
+    const formattedDate = `${date.toLocaleDateString('en-US')} | ${formatTime(date)}`;
+  
+    return formattedDate;
+  }
+  
+  // Helper function to format time
+  function formatTime(date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+  
+    return `${formattedHours}:${padZero(minutes)}:${padZero(date.getSeconds())}.${date.getMilliseconds()}${ampm}`;
+  }
+  
+  // Helper function to pad single-digit numbers with a leading zero
+  function padZero(number) {
+    return number < 10 ? `0${number}` : number;
+  }

@@ -662,13 +662,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .btn:active{background-image:none;outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125);}
     .btn.disabled{cursor:not-allowed;filter:alpha(opacity=65);-webkit-box-shadow:none;box-shadow:none;opacity:.65;}
     a.btn.disabled{pointer-events:none;}
-    .btn-primary{color:#fff;background-color:#337ab7;border-color:#2e6da4;}
-    .btn-primary:focus{color:#fff;background-color:#286090;border-color:#122b40;}
-    .btn-primary:hover{color:#fff;background-color:#286090;border-color:#204d74;}
-    .btn-primary:active{color:#fff;background-color:#286090;border-color:#204d74;}
-    .btn-primary:active:focus,.btn-primary:active:hover{color:#fff;background-color:#204d74;border-color:#122b40;}
-    .btn-primary:active{background-image:none;}
-    .btn-primary.disabled:focus,.btn-primary.disabled:hover{background-color:#337ab7;border-color:#2e6da4;}
+    .btn-success{color:#fff;background-color:green;border-color:#2e6da4;}
+    .btn-success:focus{color:#fff;background-color:green;border-color:#122b40;}
+    .btn-success:hover{color:#fff;background-color:green;border-color:#204d74;}
+    .btn-success:active{color:#fff;background-color:green;border-color:#204d74;}
+    .btn-success:active:focus,.btn-success:active:hover{color:#fff;background-color:#204d74;border-color:#122b40;}
+    .btn-success:active{background-image:none;}
+    .btn-success.disabled:focus,.btn-success.disabled:hover{background-color:green;border-color:#2e6da4;}
     .container:after,.container:before{display:table;content:" ";}
     .container:after{clear:both;}
     .pull-right{float:right!important;}
@@ -679,7 +679,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     .button-group{margin-bottom:20px;}
     .counter{display:inline;margin-top:0;margin-bottom:0;margin-right:10px;}
     .posts{clear:both;list-style:none;padding-left:0;width:100%;text-align:left;}
-    .btn-primary{color:#fff;background-color:#337ab7;border-color:#2e6da4;}
+    .btn-success{color:#fff;background-color:green;border-color:#2e6da4;}
 </style>
 
 <style>
@@ -723,20 +723,24 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       min-height: 42px;
       /*box-shadow:8px 8px 5px #888888; */
     }
-    .btn-primary {
+    .btn-success {
         color: #fff;
-        background-color: #337ab7;
-        border-color: #2e6da4;
+        background-color: green;
+        border-color: green;
     }
     
 </style>
 
 <style>
   span.info-label {
-    color: #e04800;
+    color: #fff;
     font-weight: bold;
     margin: 10px;
     font-size: 15px;
+}
+
+.info-value {
+  color: #fff;
 }
 </style>
 
@@ -749,9 +753,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 }
 .commwnt-content {
   margin-top: 1em;
-  /* border: 1px solid gray; */
+  border: 5px solid #edf1f7;
+  background: #edf1f7;
   border-radius: 9px;
-  padding: 5px;
+  padding: 12px;
+  font-size: 15px;
 }
 </style>
 
@@ -760,7 +766,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 <script src="../backend/config/toast.js?<?php echo time(); ?>"></script>
 <style>
   ul.posts {
-    background: #e4ebf3ad;
+    background: #ffffffad;
 }
 </style>
 </head>
@@ -824,12 +830,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <!-- profile end -->
       
       <!-- cart icon -->
-      <div class="cart-icon">
-        <!-- <i class="fa fa-shopping-cart"></i> -->
+      <!-- <div class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
         <span class="cart-count">0</span>
         <a href="#" class="w-inline-block">
           <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-      </div>
+      </div> -->
       <!-- cart icon end -->
       
       <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -934,52 +940,63 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                   <g>
                       <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
                   </g>        
-              </svg>        
-          </div>            
+              </svg>
+          </div>
                                   
-          <div class="col-md-12 col-xl-4">      
+          <div class="">
               <div class="card comp-card">
-                <div class="card-body">
+                <div class="card-body" style="background-color: #e04800;padding: 1px">
                     <div class="align-items-center">
+
                           <div class="">
-                            <span class="info-label">#</span> 
-                            <span id="ticketId"></span>
+                            <span class="info-label" style="font-size: 18px;display: block;text-align-last: center;"># <span  class="info-value" id="ticketId"></span></span>                            
                           </div>
-                          <div> 
-                            <span class="info-label">Priority</span> 
-                            <span id="ticketPriority"></span> </div>
-                          <div class="">
-                            <span class="info-label">Subject</span>
-                            <span id="ticketSubject"></span>
+
+                          <div class="info-block">
+                            <span class="info-label"><i class="fa fa-thermometer-full" aria-hidden="true"></i>Priority </span> 
+                            <span class="info-value" id="ticketPriority"></span> </div>
+
+                          <div class="info-block">
+                            <span class="info-label"><i class="fa fa-anchor" aria-hidden="true"></i> Subject</span>
+                            <span class="info-value" id="ticketSubject"></span>
                           </div>
-                          <div class="">
-                            <span class="info-label">Status</span>
-                            <span id="ticketStatus"></span>
+
+                          <div class="info-block">
+                            <span class="info-label"><i class="fa fa-hourglass-start" aria-hidden="true"></i> Status</span>
+                            <span  class="info-value" id="ticketStatus"></span>
                           </div>
-                          <div class="">
-                            <span class="info-label">Department</span>
-                            <span id="ticketDept"></span>
+
+                          <div class="info-block">
+                            <span class="info-label"><i class="fa fa-building-o" aria-hidden="true"></i> Department</span>
+                            <span class="info-value" id="ticketDept"></span>
                           </div>
-                          <p class="m-b-0"><span class="info-label">Date: </span>
-                            <span id="ticketDate"></span> 
-                            </p>
+
+                          <d<div class="info-block">
+                            <span class="info-label"><i class="fa fa-calendar" aria-hidden="true"></i> Created</span>
+                            <span class="info-value" id="ticketDate"></span> 
+                          </div>
+
+                          <div class="info-block">
+                            <span class="info-label"><i class="fa fa-calendar" aria-hidden="true"></i> Updated</span>
+                            <span class="info-value" id="ticketDateUpdated"></span> 
+                          </div>
+
                       </div>                                      
                 </div>
               </div>
           </div>
         
-        <div class="">
-          <h3>Ticket comments </h3>
-          <ul class="posts">
-          </ul>
-          <form>
-            <div class="form-group">
-              <textarea class="form-control status-box" rows="3" placeholder="Enter your comment here..."></textarea>
-            </div>
-          </form>
+        <div class="analyzer-section dashboard wf-section" style="padding: 5px;display:flex;flex-direction: column;">
+          <div style="width: 100%;">
+            <form>
+              <div class="form-group">
+                <textarea class="form-control status-box" rows="3" placeholder="Enter your message here..."></textarea>
+              </div>
+            </form>
+          </div>
           <div class="button-group pull-right">
             <p class="counter">250</p>
-            <a href="#" class="btn btn-primary">Post comment</a>
+            <a href="#" class="btn btn-success">Post message <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
               <div class="mini-loader-container comment-loader" style="display: block;">
                 <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                     <g>
@@ -988,10 +1005,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                 </svg>        
               </div>
           </div>
-        
-        </div>
-      
-
+          <br><br>
+          <div style="width: 100%;">
+              <h3 style="text-align: center; color: blue;text-align: center;color: blue;text-wrap: nowrap;">All Messages (User/Admin)</h3>
+              <ul class="posts">
+              </ul>
+          </div>               
+        </div>      
       </div>
     
     </div>
@@ -1039,6 +1059,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             const ticketSubject = document.querySelector('#ticketSubject');
             const ticketPriority = document.querySelector('#ticketPriority');
             const ticketDate = document.querySelector('#ticketDate');
+            const ticketDateUpdated = document.querySelector('#ticketDateUpdated');
 
             const commentList = document.querySelector(".posts")
             
@@ -1047,11 +1068,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             if (ticketDetail) {
                 // Set the values of the HTML elements                
                 ticketIdElement.textContent = ticketDetail.id 
-                ticketStatus.textContent = ticketDetail.status
+                ticketStatus.innerHTML = `<img src="../images/status/${ticketDetail.status}.svg"> ${ticketDetail.status}`
                 ticketDept.textContent = ticketDetail.department
                 ticketSubject.textContent = ticketDetail.subject
                 ticketPriority.textContent = ticketDetail.priority            
-                ticketDate.textContent = formatDate(ticketDetail.updated_at )
+                ticketDate.textContent = formatDateTime(ticketDetail.updated_at )
+                ticketDateUpdated.textContent = formatDateTime(ticketDetail.created_at )
 
                 let ticketComments = await userTicketComments(accessToken, ticketId)
                 
@@ -1061,10 +1083,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     
                     if(userEmail ===ticketComment.user.email ){
                       listItem.innerHTML = `<small style="background: white;color: gray" class="comment-user">Me: ${formatDate(ticketComment.created_at)} </small> 
-                      <div class="commwnt-content">${ticketComment.content}</div>`;
+                      <div class="commwnt-content"><i class="fa fa-comment" aria-hidden="true"></i> ${ticketComment.content}</div>`;
                     } else  {
-                      listItem.innerHTML = `<small style="background: white;color: blue" class="comment-user">Admin: ${formatDate(ticketComment.created_at)} </small> 
-                                        <div class="commwnt-content">${ticketComment.content}</div>`;
+                      listItem.innerHTML = `<small style="background: white;color: blue" class="comment-user">Admin <i class="fa fa-user" aria-hidden="true"></i>   ${formatDate(ticketComment.created_at)} </small> 
+                                        <div class="commwnt-content commwnt-content-admin"><i class="fa fa-reply" aria-hidden="true"></i> ${ticketComment.content}</div>`;
                     }
                                         
                     commentList.insertBefore(listItem, commentList.firstChild);

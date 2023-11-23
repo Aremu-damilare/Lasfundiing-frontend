@@ -1,7 +1,7 @@
 const accessToken = localStorage.getItem('access_token');
 const analyzerSection  = document.querySelector(".analyzer-section.dashboard.wf-section")
-const baseUrl = "http://127.0.0.1:8000"
-// const baseUrl = "https://lasfunding.com:8080"
+// const baseUrl = "http://127.0.0.1:8000"
+const baseUrl = "https://lasfunding.com:8080"
 const firstNameElement = document.querySelector('.user-fname');
 
 const profileName = document.querySelector('body > div.topbar > div.profile > div > span.profile-name');

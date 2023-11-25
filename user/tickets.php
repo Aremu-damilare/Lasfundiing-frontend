@@ -619,7 +619,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                   <path d="M9.75 12.9414H20.25" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M9.75 21.1914H4.5C4.30109 21.1914 4.11032 21.1124 3.96967 20.9717C3.82902 20.8311 3.75 20.6403 3.75 20.4414V5.44141C3.75 5.24249 3.82902 5.05173 3.96967 4.91108C4.11032 4.77042 4.30109 4.69141 4.5 4.69141H9.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span>Sign Out</span>              
+                <span id="SignOut">Sign Out</span>              
               </a>
           </div>
         </div>
@@ -988,10 +988,6 @@ function formatDate(dateString) {
 
 
 
-
-
-
-
 function gotoTicketDetail(){
     // Get all elements with class 'td' and 'data-ticket-id' attribute
     const elements = document.querySelectorAll('td[data-ticket-id]');
@@ -1014,13 +1010,12 @@ function gotoTicketDetail(){
   
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Find the form element by its ID
         const form = document.getElementById("createTicket");
-
-        // Add a submit event listener to the form
-        form.addEventListener("submit", function (event) {
+        
+        form.addEventListener("submit", function (event) {          
             setElementDisplayByClassName('mini-loader-container', 'flex')            
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); 
+            
 
             // Get the form data
             const formData = new FormData(form);
@@ -1035,6 +1030,7 @@ function gotoTicketDetail(){
             const jsonData = JSON.stringify(data);
             console.log(data)
 
+
             // Send the JSON data to the specified endpoint
             fetch(`${baseUrl}/tickets/`, {
                 method: "POST",
@@ -1047,12 +1043,14 @@ function gotoTicketDetail(){
             })
             //.then((response) => response.json())
             .then((response) => {
+                console.log("Response", response);
                 if (response.status === 201) {
                     // Status 201 indicates success (Created)
                     toastSuccessNotif("Success")
                     setElementDisplayByClassName('mini-loader-container', 'none')
                     setElementDisplayByClassName('w-form-done', 'flex')
-                    setElementDisplayByClassName('w-form-fail', 'none')
+                    setElementDisplayByClassName('w-form-fail', 'none');
+                    console.log("11111111111111");
                     setTimeout(function() {
                       location.reload();
                   }, 2000);
@@ -1063,6 +1061,7 @@ function gotoTicketDetail(){
                     setElementDisplayByClassName('mini-loader-container', 'none')
                     setElementDisplayByClassName('w-form-done', 'none')
                     setElementDisplayByClassName('w-form-fail', 'flex')
+                    console.log("222222222222222");
                     throw new Error(`Received status code ${response.status}`);
                 }
             })
@@ -1072,6 +1071,7 @@ function gotoTicketDetail(){
                 setElementDisplayByClassName('mini-loader-container', 'none')
                 setElementDisplayByClassName('w-form-done', 'flex')
                 setElementDisplayByClassName('w-form-fail', 'none')
+                console.log("333333333333333");
             })
             .catch((error) => {
                 // Handle any errors that occur during the fetch
@@ -1079,17 +1079,13 @@ function gotoTicketDetail(){
                 setElementDisplayByClassName('mini-loader-container', 'none')
                 setElementDisplayByClassName('w-form-done', 'none')
                 setElementDisplayByClassName('w-form-fail', 'flex')
+                console.log("4444444444444");
             });
         });
         setElementDisplayByClassName('mini-loader-container', 'none')
     });
 
-    function setElementDisplayByClassName(className, state) {
-        const elements = document.getElementsByClassName(className);              
-        for (const element of elements) {
-          element.style.display = state;
-        }
-      }
+    
 
 </script>
 

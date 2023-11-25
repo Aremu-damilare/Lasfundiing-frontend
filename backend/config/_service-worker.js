@@ -43,3 +43,24 @@ function togglePasswordVisibility(passwordFieldId) {
   function padZero(number) {
     return number < 10 ? `0${number}` : number;
   }
+
+
+  function setElementDisplayByClassName(className, state) {
+    const elements = document.getElementsByClassName(className);              
+    for (const element of elements) {
+      element.style.display = state;
+    }
+  }
+
+   
+  
+    var signOutElement = document.getElementById('SignOut');
+    // Add a click event listener to the element
+    signOutElement.addEventListener('click', function() {
+      // Delete access_token from local storage if available
+      if (localStorage.getItem('access_token')) {
+        localStorage.removeItem('access_token');
+      } 
+      // Redirect to lasfunding.com/#/signin
+      window.location.href = 'https://lasfunding.com/#/#signin/';
+    });      

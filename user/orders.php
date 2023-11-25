@@ -304,7 +304,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                 <path d="M9.75 12.9414H20.25" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M9.75 21.1914H4.5C4.30109 21.1914 4.11032 21.1124 3.96967 20.9717C3.82902 20.8311 3.75 20.6403 3.75 20.4414V5.44141C3.75 5.24249 3.82902 5.05173 3.96967 4.91108C4.11032 4.77042 4.30109 4.69141 4.5 4.69141H9.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Sign Out</span>              
+              <span id="SignOut">Sign Out</span>              
             </a>
         </div>
       </div>
@@ -343,8 +343,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <br>
           <select id="StatusSort" onchange="sortTableByStatus()">            
             <option value="">Status</option>
-            <option value="open">Status (Open)</option>
-            <option value="close">Status (Close)</option>
+            <option value="pending">Status (Pending)</option>
+            <option value="failed">Status (Failed)</option>
+            <option value="cancelled">Status (Cancelled)</option>
+            <option value="success">Status (Success)</option>
           </select>
           
           <select id="DateSort" onchange="sortTableByDate(event)">
@@ -365,6 +367,13 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <div class="analyzer-section dashboard wf-section" >
       <div style="overflow-x: scroll;">
           <table class="slds-table slds-table--bordered">
+          <span class="mini-loader-container table-loader" style="text-align: center;">
+              <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                  <g>
+                    <ellipse id="ellipse" cx="70" cy="70" rx="55" ry="55"></ellipse>
+                  </g>        
+              </svg>        
+            </span>
               <thead>
                 <tr class="slds-text-heading--label">
                   <!-- <th class="slds-cell-shrink">
@@ -475,6 +484,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     fetchUserOrder();
 
   function appendRowToTable(orders, currentPage = 1, itemsPerPage = 3) {
+    setElementDisplayByClassName('table-loader', 'flex')    
       const tableBody = document.querySelector("tbody");
       tableBody.innerHTML = ""; // Clear existing rows
 
@@ -573,7 +583,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
     // Append pagination container to the table body
     tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
-
+        setElementDisplayByClassName('table-loader', 'none')
         gotoOrderDetail()
   }
 
@@ -615,9 +625,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         var selectedValue = document.querySelector("#StatusSort");
         console.log("sortTableByStatus", selectedValue.value );
         setElementDisplayByClassName('mini-loader-container', 'block')
-        const userTicketsList = await userTicketsSortStatus(accessToken, status=`${selectedValue.value}`);
+        const userOrdersList = await userOrdersSortStatus(accessToken, status=`${selectedValue.value}`);
         setElementDisplayByClassName('mini-loader-container', 'none');
-        appendRowToTable(userTicketsList);
+        appendRowToTable(userOrdersList);
       } catch (error) {
         console.error("An error occurred:", error);
       }
@@ -629,10 +639,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     try {
       var selectedValue = document.querySelector("#DateSort");
       setElementDisplayByClassName('mini-loader-container', 'block')
-      const userTicketsList = await userTicketsSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
+      const userOrdersList = await userOrdersSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
       setElementDisplayByClassName('mini-loader-container', 'none');
-      console.log("userTicketsList", userTicketsList, );
-      appendRowToTable(userTicketsList);
+      console.log("userOrdersList", userOrdersList, );
+      appendRowToTable(userOrdersList);
     } catch (error) {      
       console.error("An error occurred:", error);
     }
@@ -647,10 +657,10 @@ async function sortTableByDateRange() {
 
     console.log("EndTimeSortValue", EndTimeSortValue, "StartTimeSortValue", StartTimeSortValue)
     setElementDisplayByClassName('mini-loader-container', 'block')
-    const userTicketsList = await userTicketsSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Order="newest" );
+    const userOrdersList = await userOrdersSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Order="newest" );
     setElementDisplayByClassName('mini-loader-container', 'none');
-    console.log("userTicketsList", userTicketsList);
-    appendRowToTable(userTicketsList);
+    console.log("userOrdersList", userOrdersList);
+    appendRowToTable(userOrdersList);
   } catch (error) {      
     console.error("An error occurred:", error);
   }

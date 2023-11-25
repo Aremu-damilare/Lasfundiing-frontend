@@ -467,7 +467,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                   <path d="M9.75 12.9414H20.25" stroke="#8E8B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M9.75 21.1914H4.5C4.30109 21.1914 4.11032 21.1124 3.96967 20.9717C3.82902 20.8311 3.75 20.6403 3.75 20.4414V5.44141C3.75 5.24249 3.82902 5.05173 3.96967 4.91108C4.11032 4.77042 4.30109 4.69141 4.5 4.69141H9.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span>Sign Out</span>              
+                <span id="SignOut">Sign Out</span>              
               </a>
           </div>
         </div>
@@ -527,7 +527,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             }
             .card.mb-3{margin-bottom:30px!important;}
             </style>
-            <div class="col-md-6 col-xl-4">
+            <div class="">
                 <div class="card mb-3 widget-content bg-midnight-bloom">
                     <div class="widget-content-wrapper text-white">
                         <div class="widget-content-left">
@@ -552,7 +552,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <div style="opacity: 1; display: flex;" class="form-container  w-container">
       <div class="form-block w-form" style="overflow-y: auto;height: auto;">
        
-        <div class="">
+        <div class="modal-title">
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
             <div>KYC documents sent successful!</div>
         </div>

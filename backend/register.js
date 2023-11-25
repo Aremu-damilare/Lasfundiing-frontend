@@ -1,6 +1,6 @@
 const RegisterForm = document.querySelector('#email-form > input.submit-button.w-button');
 const miniLoaderContainer = document.querySelector('.mini-loader-container')
-const baseUrl = "http://lasfunding.com:8000"
+const baseUrl = "https://lasfunding.com:8000"
 
 
 RegisterForm.addEventListener('click', (event) => {

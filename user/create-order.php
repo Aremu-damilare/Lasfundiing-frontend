@@ -402,10 +402,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             
             }       
             .row {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                width: 100%;
+              display: flex;
+              flex-wrap: nowrap;
+              width: 100%;
+              flex-direction: column;
             }
             
             .account-type-column {
@@ -472,7 +472,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                             flex-wrap: wrap;
                             flex-direction: row;
                             height: 80%;
-                            overflow-y: scroll;
+                            
                         }
                         </style>
                         <div class="start-balance">                                                                                  

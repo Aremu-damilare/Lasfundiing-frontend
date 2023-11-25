@@ -18,10 +18,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <title>Lasfunding</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="css/custom.css" rel="stylesheet" type="text/css">
-  <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/normalize.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="css/custom.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="css/lasfunding.webflow.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -107,12 +107,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 }
 </style>
 
-<link rel="stylesheet" href="./css/scrollbar.css">
+<link rel="stylesheet" href="./css/scrollbar.css?<?php echo time(); ?>">
 
 </head>
 <body class="body-7">
-  <div style="display:none;opacity:0" class="modal-wrapper">
-    <div style="opacity:0" class="form-container login w-container">
+  <div style="display:none;opacity:0;" class="modal-wrapper">
+    <div style="opacity:0;width: 90%;" class="form-container login w-container">
       <div class="form-block w-form">
         <div class="modal-header">
           <div class="form-header">Log in</div>

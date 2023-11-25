@@ -22,9 +22,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <meta content="Dashboard" property="twitter:title" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="../css/webflow.css" rel="stylesheet" type="text/css" />
-    <link href="../css/lasfunding.webflow.css" rel="stylesheet" type="text/css" />
+    <link href="../css/normalize.css?<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="../css/webflow.css?<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="../css/lasfunding.webflow.css?<?php echo time(); ?>" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -50,9 +50,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon" />
     <link href="../images/webclip.png" rel="apple-touch-icon" />
     <!--  -->
-    <link rel="stylesheet" href="../css/custom.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/pageloader.css" />
+    <link rel="stylesheet" href="../css/custom.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" href="../css/pageloader.css?<?php echo time(); ?>" />
     <style>
       .left-block {
         width: 100%;
@@ -197,7 +197,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         :hover { box-shadow: 0 0 15px #888888; }
       }
     </style>
-    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../css/scrollbar.css?<?php echo time(); ?>">
   </head>
   <body class="dashboard-body">
     <div class="loader-container">

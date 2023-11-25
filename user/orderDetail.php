@@ -15,7 +15,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Order detail - Lasfunding</title>
-
+      <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
       <style type="text/css">
         @-webkit-keyframes spinner {
         }
@@ -45,9 +45,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         body table {
         border-collapse: separate; border-spacing: 0; width: 100%;
         }
-        body img {
-        display: block; max-width: 100%;
-        }
+       
         body img.top-stripes {
         height: 12px; margin: 0 auto; width: 562px;
         }
@@ -409,9 +407,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         body table {
         border-collapse: separate; border-spacing: 0; width: 100%;
         }
-        body img {
-        display: block; max-width: 100%;
-        }
+      
         body img.top-stripes {
         height: 12px; margin: 0 auto; width: 562px;
         }
@@ -915,6 +911,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                         </p>
                         <p id="status" class="mobilecenter" style="color: #797874; font-size: 16px; line-height: 27px; margin: 15px 0; word-wrap: break-word">
                             status
+                        </p>
+                        <p id="DateTime" class="mobilecenter" style="color: #797874; font-size: 16px; line-height: 27px; margin: 15px 0; word-wrap: break-word">
+                          Date
                         </p>                      
                         
                         <p class="mobilecenter" style="color: #797874; font-size: 16px; line-height: 27px; margin: 15px 0; word-wrap: break-word">                                                           
@@ -993,6 +992,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         console.log("userOderDetail", userOderDetail);     
 
         const orderIdElement = document.querySelector('#orderId');
+        const orderDateElement = document.querySelector('#DateTime');
         const accountTypeElement = document.querySelector('#accountType');
         const paymentMethodElement = document.querySelector('#paymentMethod');
         const feeElement = document.querySelector('#fee');
@@ -1004,11 +1004,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         if (userOderDetail) {
             // Set the values of the HTML elements
             const paymentDetailsObject = userOderDetail.transaction.payment_details;
-            orderIdElement.textContent = userOderDetail.id 
-            accountTypeElement.textContent = userOderDetail.account_type.amount 
-            paymentMethodElement.textContent = userOderDetail.payment_method.name 
-            feeElement.textContent = `$${userOderDetail.account_type.setup_fee}`
-            statusElement.textContent = userOderDetail.status            
+            orderIdElement.textContent = userOderDetail.id;
+            orderDateElement.innerHTML = `${formatDateTime(userOderDetail.created_at)}`;
+            accountTypeElement.textContent = userOderDetail.account_type.amount;
+            paymentMethodElement.textContent = userOderDetail.payment_method.name; 
+            feeElement.textContent = `$${userOderDetail.account_type.setup_fee}`;
+            statusElement.innerHTML = `<span class="${userOderDetail.status}"> <img src="../images/status/${userOderDetail.status}.svg"> ${userOderDetail.status}</span>`;
             
             const keysToDisplay = ["card_type", "card_last_4_digits", "bank_last_4_digits", "crypto_gateway"];
             // Iterate through the object and create HTML elements
@@ -1132,10 +1133,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                 pdfEmbed.height = "500px"; // Set the desired height for the PDF viewer
                 proofElement.innerHTML = '';
                 proofElement.appendChild(pdfEmbed);
-            } else {
+            } 
+            //else {
                 // Handle other file types or show an error message
-                proofElement.innerHTML = "Unsupported file type.";
-            }
+              //  proofElement.innerHTML = "Unsupported file type.";
+           // }
     }
 
   </script>

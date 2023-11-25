@@ -20,9 +20,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <meta content="dashboard" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="./css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="./css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="./css/lasfunding.webflow.css" rel="stylesheet" type="text/css">
+  <link href="./css/normalize.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="./css/webflow.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="./css/lasfunding.webflow.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -195,9 +195,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   </style>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css?<?php echo time(); ?>">
 
-<link rel="stylesheet" href="./css/scrollbar.css">
+<link rel="stylesheet" href="./css/scrollbar.css?<?php echo time(); ?>">
 
 
 </head>

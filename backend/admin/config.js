@@ -79,3 +79,56 @@ function formatDate(dateString) {
     });
     return formattedDate;
   }
+
+  function formatDateTime(dateString) {
+    // Parse the input date string
+    const date = new Date(dateString);
+  
+    // Format the date
+    const formattedDate = `${date.toLocaleDateString('en-US')} | ${formatTime(date)}`;
+  
+    return formattedDate;
+  }
+  
+  // Helper function to format time
+  function formatTime(date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+  
+    // return `${formattedHours}:${padZero(minutes)}:${padZero(date.getSeconds())}.${date.getMilliseconds()}${ampm}`;
+    return `${formattedHours}:${padZero(minutes)}${ampm}`;
+  }
+  
+  // Helper function to pad single-digit numbers with a leading zero
+  function padZero(number) {
+    return number < 10 ? `0${number}` : number;
+  }
+
+
+  function setElementDisplayByClassName(className, state) {
+    const elements = document.getElementsByClassName(className);              
+    for (const element of elements) {
+      element.style.display = state;
+    }
+  }
+
+   
+
+
+  function createList(values, IdValue) {
+    // Check if values is an array
+    if (!Array.isArray(values)) {
+        // If it's not an array, convert it to an array with a single element
+        values = [values];
+    }
+
+    // Create the HTML string
+    const htmlString = `
+        <ul class="admin-account-type-list" id="${IdValue}">
+            ${values.map(val => `<li  class="admin-account-type-list" >${val}</li>`).join('\n')}
+        </ul>`;
+
+    return htmlString;
+}

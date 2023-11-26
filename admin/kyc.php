@@ -168,7 +168,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 	  <!-- profile  -->
     <div class="profile">
-      <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50">
+      <!-- <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50"> -->
       <div class="profile-emails">
         <span class="profile-name">Chinadu Toluwaloper</span>
         <span class="profile-email">Toluwaloper@email.com</span>
@@ -177,12 +177,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <!-- profile end -->
 
     <!-- cart icon -->
-    <div class="cart-icon">
-      <!-- <i class="fa fa-shopping-cart"></i> -->
+    <!-- <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
       <span class="cart-count">0</span>
       <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-    </div>
+    </div> -->
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->

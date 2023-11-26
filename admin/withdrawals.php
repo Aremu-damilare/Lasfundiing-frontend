@@ -163,7 +163,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 	  <!-- profile  -->
     <div class="profile">
-      <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50">
+      <!-- <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50"> -->
       <div class="profile-emails">
         <span class="profile-name">Chinadu Toluwaloper</span>
         <span class="profile-email">Toluwaloper@email.com</span>
@@ -172,12 +172,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <!-- profile end -->
 
     <!-- cart icon -->
-    <div class="cart-icon">
-      <!-- <i class="fa fa-shopping-cart"></i> -->
+    <!-- <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
       <span class="cart-count">0</span>
       <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-    </div>
+    </div> -->
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -263,18 +263,49 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
+    <div class="filter-container">
+          <i class="fa fa-random" aria-hidden="true"></i> Sort
+          <br>
+          <select id="StatusSort" onchange="sortTableByStatus()">            
+            <option value="">Status</option>
+            <option value="open">Status (Open)</option>
+            <option value="close">Status (Close)</option>
+          </select>
+          
+          <select id="DateSort" onchange="sortTableByDate(event)">
+            <option value="">Date</option>
+            <option value="newest">Date (Latest)</option>
+            <option value="oldest">Date (Oldest)</option>          
+          </select>
+          <br>          
+          <p for="department">Start time</p>
+          <input type="datetime-local" name="startTime" id="StartTimeSort">
+          <br>
+          <p for="department">End time</p>
+          <input type="datetime-local" name="endTime" id="EndTimeSort">
+          <br>
+          <button type="button" onclick="sortTableByDateRange(event)">Sort by date range</button>
+      </div>
+      
+      <span class="mini-loader-container table-loader">
+        <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <g>
+              <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+            </g>        
+        </svg>        
+      </span> 
             
         <div style="overflow-x: auto;">
             <table class="slds-table slds-table--bordered">
                 <thead>
                   <tr class="slds-text-heading--label">
-                    <th class="slds-cell-shrink">
+                    <!-- <th class="slds-cell-shrink">
                       <label class="slds-checkbox">
                           <input type="checkbox" name="options">
                           <span class="slds-checkbox--faux"></span>
                           <span class="slds-assistive-text">Select All</span>
                         </label>
-                    </th>
+                    </th> -->
                     <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">User
                         <button class="slds-button slds-button--icon-bare">                          
@@ -299,7 +330,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     </th>   
 
                     <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Last updated
+                      <div class="slds-truncate">Updated
                         <button class="slds-button slds-button--icon-bare">                            
                             <span class="slds-assistive-text">Sort</span>
                           </button>
@@ -307,7 +338,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     </th>
                                
                     <th class="slds-is-sortable" scope="col">
-                        <div class="slds-truncate">Date created
+                        <div class="slds-truncate">Created
                           <button class="slds-button slds-button--icon-bare">                              
                               <span class="slds-assistive-text">Sort</span>
                             </button>
@@ -340,60 +371,60 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   if (withdrawals) {
       console.log('Withdrawals:', withdrawals);
+      appendRowToTable(withdrawals);
 
-    var tbody = document.querySelector('tbody'); 
-
-
-    withdrawals.forEach(function(withdrawals) {
-      var row = document.createElement('tr');
-      
-      // Create and append the "Select Row" cell
-      var selectCell = document.createElement('td');
-      selectCell.className = 'slds-cell-shrink';
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = 'options';
-      var checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'slds-checkbox';
-      checkboxLabel.appendChild(checkbox);
-      checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
-      selectCell.appendChild(checkboxLabel);
-      row.appendChild(selectCell);
-
-      
-      var opportunityCell = document.createElement('th');
-      opportunityCell.className = 'slds-truncate';
-      opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./withdrawal.php?id=${withdrawals.id}"> ${withdrawals.user} </a>`;
-      row.appendChild(opportunityCell);
-
-      var accountCell = document.createElement('td');
-      accountCell.className = 'slds-truncate';
-      accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${withdrawals.amount}  `;
-      row.appendChild(accountCell);
-
-      var setupFeeCell = document.createElement('td');
-      setupFeeCell.className = '';
-      setupFeeCell.setAttribute('data-label', 'setupFee');
-      setupFeeCell.innerHTML = `${withdrawals.status}`;
-      row.appendChild(setupFeeCell);
-
-      var descriptionCell = document.createElement('td');
-      descriptionCell.className = '';
-      descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = formatDate(withdrawals.updated_at);
-      row.appendChild(descriptionCell);
+      // var tbody = document.querySelector('tbody'); 
 
 
-      var dateCell = document.createElement('td');
-      dateCell.className = '';
-      dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(withdrawals.created_at);
-      row.appendChild(dateCell);
-      
-      tbody.appendChild(row);
-    });
+      // withdrawals.forEach(function(withdrawals) {
+      //   var row = document.createElement('tr');
+        
+      //   // Create and append the "Select Row" cell
+      //   var selectCell = document.createElement('td');
+      //   selectCell.className = 'slds-cell-shrink';
+      //   var checkbox = document.createElement('input');
+      //   checkbox.type = 'checkbox';
+      //   checkbox.name = 'options';
+      //   var checkboxLabel = document.createElement('label');
+      //   checkboxLabel.className = 'slds-checkbox';
+      //   checkboxLabel.appendChild(checkbox);
+      //   checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';      
+        
+      //   var opportunityCell = document.createElement('th');
+      //   opportunityCell.className = 'slds-truncate';
+      //   opportunityCell.setAttribute('data-label', 'Opportunity Name');
+      //   opportunityCell.innerHTML = `<a href="./withdrawal.php?id=${withdrawals.id}"> ${withdrawals.user} </a>`;      
+
+      //   var accountCell = document.createElement('td');
+      //   accountCell.className = 'slds-truncate';
+      //   accountCell.setAttribute('data-label', 'Account Name');
+      //   accountCell.innerHTML = `${withdrawals.amount}  `;
+        
+      //   var setupFeeCell = document.createElement('td');
+      //   setupFeeCell.className = '';
+      //   setupFeeCell.setAttribute('data-label', 'setupFee');
+      //   setupFeeCell.innerHTML = `${withdrawals.status}`;      
+
+      //   var descriptionCell = document.createElement('td');
+      //   descriptionCell.className = '';
+      //   descriptionCell.setAttribute('data-label', 'Confidence');
+      //   descriptionCell.innerHTML = formatDate(withdrawals.updated_at);
+        
+      //   var dateCell = document.createElement('td');
+      //   dateCell.className = '';
+      //   dateCell.setAttribute('data-label', 'Close Date');
+      //   dateCell.innerHTML = formatDateTime(withdrawals.created_at);
+
+      //   selectCell.appendChild(checkboxLabel);
+      //   row.appendChild(selectCell);
+      //   row.appendChild(opportunityCell);
+      //   row.appendChild(accountCell);
+      //   row.appendChild(setupFeeCell);
+      //   row.appendChild(descriptionCell);
+      //   row.appendChild(dateCell);
+        
+      //   tbody.appendChild(row);
+    // });
 
     } else {
       console.log('Failed to retrieve withdrawals.');
@@ -403,6 +434,109 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   main();
 
   </script>
+
+
+<script>
+  function appendRowToTable(withdrawals, currentPage = 1, itemsPerPage = 5) {
+
+      const tableBody = document.querySelector("tbody");
+      tableBody.innerHTML = ""; // Clear existing rows
+  
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentTickets = withdrawals.slice(startIndex, endIndex);
+  
+      for (const withdrawals of currentTickets) {
+        setElementDisplayByClassName('table-loader', 'flex');
+        
+        var row = document.createElement('tr');
+        
+        // Create and append the "Select Row" cell
+        var selectCell = document.createElement('td');
+        selectCell.className = 'slds-cell-shrink';
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.name = 'options';
+        var checkboxLabel = document.createElement('label');
+        checkboxLabel.className = 'slds-checkbox';
+        checkboxLabel.appendChild(checkbox);
+        checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';      
+        
+        var opportunityCell = document.createElement('th');
+        opportunityCell.className = 'slds-truncate';
+        opportunityCell.setAttribute('data-label', 'Opportunity Name');
+        opportunityCell.innerHTML = `<a href="./withdrawal.php?id=${withdrawals.id}"> ${withdrawals.user.email} </a>`;      
+
+        var accountCell = document.createElement('td');
+        accountCell.className = 'slds-truncate';
+        accountCell.setAttribute('data-label', 'Account Name');
+        accountCell.innerHTML = `${withdrawals.amount}  `;
+        
+        var setupFeeCell = document.createElement('td');
+        setupFeeCell.className = '';
+        setupFeeCell.setAttribute('data-label', 'setupFee');
+        setupFeeCell.innerHTML = `<span class="${withdrawals.status}"> <img src="../images/status/${withdrawals.status}.svg"> ${withdrawals.status}`;      
+
+        var descriptionCell = document.createElement('td');
+        descriptionCell.className = '';
+        descriptionCell.setAttribute('data-label', 'Confidence');
+        descriptionCell.innerHTML = formatDateTime(withdrawals.updated_at);
+        
+        var dateCell = document.createElement('td');
+        dateCell.className = '';
+        dateCell.setAttribute('data-label', 'Close Date');
+        dateCell.innerHTML = formatDateTime(withdrawals.created_at);
+
+        // selectCell.appendChild(checkboxLabel);
+        // row.appendChild(selectCell);
+        row.appendChild(opportunityCell);
+        row.appendChild(accountCell);
+        row.appendChild(setupFeeCell);
+        row.appendChild(descriptionCell);
+        row.appendChild(dateCell);
+
+        tableBody.appendChild(row);
+          
+      }
+        // Calculate total pages
+      const totalPages = Math.ceil(withdrawals.length / itemsPerPage);
+          // ... (inside the function)
+      const paginationContainer = document.createElement("div");
+      paginationContainer.className = "pagination";
+  
+      // Previous button
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "Previous";
+      prevButton.addEventListener("click", () => {
+          const prevPage = currentPage > 1 ? currentPage - 1 : 1;
+          appendRowToTable(withdrawals, prevPage, itemsPerPage);
+      });
+  
+      // Next button
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "Next";
+      nextButton.addEventListener("click", () => {
+          const nextPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+          appendRowToTable(withdrawals, nextPage, itemsPerPage);
+      });
+  
+      // Page number display
+      const pageNumberDisplay = document.createElement("span");
+      pageNumberDisplay.className = "page-number";
+      pageNumberDisplay.textContent = `${currentPage}/${totalPages}`;
+  
+      // Append pagination controls
+      paginationContainer.appendChild(prevButton);
+      paginationContainer.appendChild(pageNumberDisplay);
+      paginationContainer.appendChild(nextButton);
+  
+      // Append pagination container to the table body
+      tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
+      setElementDisplayByClassName('table-loader', 'none')          
+  }
+
+  </script>
+
 
 
 </body>

@@ -169,7 +169,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 	  <!-- profile  -->
     <div class="profile">
-      <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50">
+      <!-- <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50"> -->
       <div class="profile-emails">
         <span class="profile-name">Chinadu Toluwaloper</span>
         <span class="profile-email">Toluwaloper@email.com</span>
@@ -178,12 +178,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <!-- profile end -->
 
     <!-- cart icon -->
-    <div class="cart-icon">
-      <!-- <i class="fa fa-shopping-cart"></i> -->
+    <!-- <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
       <span class="cart-count">0</span>
       <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-    </div>
+    </div> -->
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -271,11 +271,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         <p class="info-block"><span class="info-label">Address</span><span id="address"></span></p>
         <p class="info-block"><span class="info-label">City</span><span id="city"></span></p>
         <p class="info-block"><span class="info-label">Country</span><span id="country"></span></p>
-        <p class "info-block"><span class="info-label">Currency</span><span id="currency"></span></p>
+        <!-- <p class "info-block"><span class="info-label">Currency</span><span id="currency"></span></p> -->
         <p class="info-block"><span class="info-label">Date Joined</span><span id="date_joined"></span></p>
         <p class="info-block"><span class="info-label">Email</span><span id="email"></span></p>
         <p class="info-block"><span class="info-label">First Name</span><span id="first_name"></span></p>
-        <p class="info-block"><span class="info-label">ID</span><span id="id"></span></p>
+        <!-- <p class="info-block"><span class="info-label">ID</span><span id="id"></span></p> -->
         <p class="info-block"><span class="info-label">Is Active</span><span id="is_active"></span></p>
         <!-- <p class="info-block"><span class="info-label">Is Staff</span><span id="is_staff"></span></p>
         <p class="info-block"><span class="info-label">Is Superuser</span><span id="is_superuser"></span></p> -->
@@ -346,11 +346,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     const address = document.querySelector("#address");
     const city = document.querySelector("#city");
     const country = document.querySelector("#country");
-    const currency = document.querySelector("#currency");
+    // const currency = document.querySelector("#currency");
     const date_joined = document.querySelector("#date_joined");
     const email = document.querySelector("#email");
     const first_name = document.querySelector("#first_name");
-    const id = document.querySelector("#id");
+    // const id = document.querySelector("#id");
     const is_active = document.querySelector("#is_active");
     // const is_staff = document.querySelector("#is_staff");
     // const is_superuser = document.querySelector("#is_superuser");
@@ -376,20 +376,19 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           userUpdateForm(user.id)
           console.log("user...", user)
           idElement.innerHTML = `${user.id}`;
-
           
           address.innerHTML = `${user.address}`;
           city.innerHTML = `${user.city}`;
           country.innerHTML = `${user.country}`;
-          currency.innerHTML = `${user.currency}`;
-          date_joined.innerHTML = `${formatDate(user.date_joined)}`;
+          // currency.innerHTML = `${user.currency}`;
+          date_joined.innerHTML = `${formatDateTime(user.date_joined)}`;
           email.innerHTML = `${user.email}`;
           first_name.innerHTML = `${user.first_name}`;
           id.innerHTML = `${user.id}`;
           is_active.innerHTML = `${user.is_active}`;
           // is_staff.innerHTML = `${user.is_staff}`;
           // is_superuser.innerHTML = `${user.is_superuser}`;
-          last_login.innerHTML = `${formatDate(user.last_login)}`;
+          last_login.innerHTML = `${formatDateTime(user.last_login)}`;
           last_name.innerHTML = `${user.last_name}`;
           // password.innerHTML = `${user.password}`;
           phone.innerHTML = `${user.phone}`;
@@ -406,31 +405,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       }
     }
 
-main();
+  main();
   </script>
 
-  <script>
-      function formatDate(inputDate) {
-        // Parse the input date string into a Date object
-        const date = new Date(inputDate);
-      
-        // Define options for formatting the date and time
-        const options = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          timeZoneName: 'short'
-        };
-      
-        // Format the date using the options
-        const formattedDate = date.toLocaleString('en-US', options);
-      
-        return formattedDate;
-      }
-  </script>
+
 
   <script>
     async function userUpdateForm(userId) {

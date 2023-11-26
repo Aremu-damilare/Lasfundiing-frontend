@@ -258,23 +258,54 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <div class="main-section" style="display: none">
     <div class="gradient-header">      
       <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Users</span>        
+        <span>Users</span>
       </div>
       <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
+        <div class="filter-container">
+          <i class="fa fa-random" aria-hidden="true"></i> Sort
+          <br>
+          <select id="StatusSort" onchange="sortTableByStatus()">            
+            <option value="">Status</option>
+            <option value="open">Status (Open)</option>
+            <option value="close">Status (Close)</option>
+          </select>
+          
+          <select id="DateSort" onchange="sortTableByDate(event)">
+            <option value="">Date</option>
+            <option value="newest">Date (Latest)</option>
+            <option value="oldest">Date (Oldest)</option>          
+          </select>
+          <br>          
+          <p for="department">Start time</p>
+          <input type="datetime-local" name="startTime" id="StartTimeSort">
+          <br>
+          <p for="department">End time</p>
+          <input type="datetime-local" name="endTime" id="EndTimeSort">
+          <br>
+          <button type="button" onclick="sortTableByDateRange(event)">Sort by date range</button>
+      </div>
+      
+      <span class="mini-loader-container table-loader">
+        <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <g>
+              <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25" />
+            </g>        
+        </svg>        
+      </span> 
             
         <div style="overflow-x: auto;">
             <table class="slds-table slds-table--bordered">
                 <thead>
                   <tr class="slds-text-heading--label">
-                    <th class="slds-cell-shrink">
+                    <!-- <th class="slds-cell-shrink">
                       <label class="slds-checkbox">
                           <input type="checkbox" name="options">
                           <span class="slds-checkbox--faux"></span>
                           <span class="slds-assistive-text">Select All</span>
                         </label>
-                    </th>
+                    </th> -->
                     <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">Email
                         <button class="slds-button slds-button--icon-bare">                          
@@ -345,12 +376,89 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   if (users) {
       console.log('Users:', users);
+      appendRowToTable(users);
+      var tbody = document.querySelector('tbody'); 
 
-    var tbody = document.querySelector('tbody'); 
+
+    // users.forEach(function(users) {
+    //   var row = document.createElement('tr');
+      
+    //   // Create and append the "Select Row" cell
+    //   var selectCell = document.createElement('td');
+    //   selectCell.className = 'slds-cell-shrink';
+    //   var checkbox = document.createElement('input');
+    //   checkbox.type = 'checkbox';
+    //   checkbox.name = 'options';
+    //   var checkboxLabel = document.createElement('label');
+    //   checkboxLabel.className = 'slds-checkbox';
+    //   checkboxLabel.appendChild(checkbox);
+    //   checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
+            
+    //   var opportunityCell = document.createElement('th');
+    //   opportunityCell.className = 'slds-truncate';
+    //   opportunityCell.setAttribute('data-label', 'Opportunity Name');
+    //   opportunityCell.innerHTML = `<a href="./user.php?id=${users.id}"> ${users.email} </a>`;     
+
+    //   var accountCell = document.createElement('td');
+    //   accountCell.className = 'slds-truncate';
+    //   accountCell.setAttribute('data-label', 'Account Name');
+    //   accountCell.innerHTML = `${users.first_name}  ${users.last_name}`;      
+
+    //   var setupFeeCell = document.createElement('td');
+    //   setupFeeCell.className = '';
+    //   setupFeeCell.setAttribute('data-label', 'setupFee');
+    //   setupFeeCell.innerHTML = `${users.id}`;
+     
+    //   var descriptionCell = document.createElement('td');
+    //   descriptionCell.className = '';
+    //   descriptionCell.setAttribute('data-label', 'Confidence');
+    //   descriptionCell.innerHTML = formatDate(users.last_login);      
+
+    //   var paidCell = document.createElement('td');
+    //   paidCell.className = '';
+    //   paidCell.setAttribute('data-label', 'paid');
+    //   paidCell.innerHTML = users.is_superuser;
+
+    //   var dateCell = document.createElement('td');
+    //   dateCell.className = '';
+    //   dateCell.setAttribute('data-label', 'Close Date');
+    //   dateCell.innerHTML = formatDate(users.date_joined);
 
 
-    users.forEach(function(users) {
-      var row = document.createElement('tr');
+      
+    //   row.appendChild(setupFeeCell);
+    //   selectCell.appendChild(checkboxLabel);
+    //   row.appendChild(selectCell);
+    //   row.appendChild(opportunityCell);
+    //   row.appendChild(accountCell);
+    //   row.appendChild(descriptionCell);
+    //   row.appendChild(paidCell);
+    //   row.appendChild(dateCell);
+      
+    //   // tbody.appendChild(row);
+    // });
+
+    } else {
+      console.log('Failed to retrieve users.');
+    }
+  }
+
+  main();
+
+  </script>
+
+<script>
+  function appendRowToTable(users, currentPage = 1, itemsPerPage = 5) {
+    setElementDisplayByClassName('table-loader', 'flex')    
+      const tableBody = document.querySelector("tbody");
+      tableBody.innerHTML = ""; // Clear existing rows
+  
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentTickets = users.slice(startIndex, endIndex);
+  
+      for (const users of currentTickets) {
+        var row = document.createElement('tr');
       
       // Create and append the "Select Row" cell
       var selectCell = document.createElement('td');
@@ -362,80 +470,89 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       checkboxLabel.className = 'slds-checkbox';
       checkboxLabel.appendChild(checkbox);
       checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
-      selectCell.appendChild(checkboxLabel);
-      row.appendChild(selectCell);
+            
+      var emailCell = document.createElement('th');
+      emailCell.className = 'slds-truncate';
+      emailCell.setAttribute('data-label', 'Opportunity Name');
+      emailCell.innerHTML = `<a href="./user.php?id=${users.id}"> ${users.email} </a>`;     
 
+      var fullNameCell = document.createElement('td');
+      fullNameCell.className = 'slds-truncate';
+      fullNameCell.setAttribute('data-label', 'Account Name');
+      fullNameCell.innerHTML = `${users.first_name}  ${users.last_name}`;      
+
+      var idCell = document.createElement('td');
+      idCell.className = '';
+      idCell.setAttribute('data-label', 'setupFee');
+      idCell.innerHTML = `${users.id}`;
+     
+      var lastLoginCell = document.createElement('td');
+      lastLoginCell.className = '';
+      lastLoginCell.setAttribute('data-label', 'Confidence');
+      lastLoginCell.innerHTML = formatDateTime(users.last_login);      
+
+      var superUserCell = document.createElement('td');
+      superUserCell.className = '';
+      superUserCell.setAttribute('data-label', 'paid');
+      superUserCell.innerHTML = users.is_superuser;
       
-      var opportunityCell = document.createElement('th');
-      opportunityCell.className = 'slds-truncate';
-      opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./user.php?id=${users.id}"> ${users.email} </a>`;
-      row.appendChild(opportunityCell);
-
-      var accountCell = document.createElement('td');
-      accountCell.className = 'slds-truncate';
-      accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${users.first_name}  ${users.last_name}`;
-      row.appendChild(accountCell);
-
-      var setupFeeCell = document.createElement('td');
-      setupFeeCell.className = '';
-      setupFeeCell.setAttribute('data-label', 'setupFee');
-      setupFeeCell.innerHTML = `${users.id}`;
-      row.appendChild(setupFeeCell);
-
-      var descriptionCell = document.createElement('td');
-      descriptionCell.className = '';
-      descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = formatDate(users.last_login);
-      row.appendChild(descriptionCell);
-
-      var paidCell = document.createElement('td');
-      paidCell.className = '';
-      paidCell.setAttribute('data-label', 'paid');
-      paidCell.innerHTML = users.is_superuser;
-      row.appendChild(paidCell);
 
       var dateCell = document.createElement('td');
       dateCell.className = '';
       dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(users.date_joined);
-      row.appendChild(dateCell);
+      dateCell.innerHTML = formatDateTime(users.date_joined);
+    
+      // selectCell.appendChild(checkboxLabel);
+      // row.appendChild(selectCell);
+      row.appendChild(emailCell);
+      row.appendChild(fullNameCell);
+      row.appendChild(idCell);
+      row.appendChild(lastLoginCell);
+      row.appendChild(superUserCell);                    
       
-      tbody.appendChild(row);
-    });
-
-    } else {
-      console.log('Failed to retrieve users.');
-    }
+      row.appendChild(dateCell);        
+      tableBody.appendChild(row);
+          
+      }
+        // Calculate total pages
+      const totalPages = Math.ceil(users.length / itemsPerPage);
+          // ... (inside the function)
+      const paginationContainer = document.createElement("div");
+      paginationContainer.className = "pagination";
+  
+      // Previous button
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "Previous";
+      prevButton.addEventListener("click", () => {
+          const prevPage = currentPage > 1 ? currentPage - 1 : 1;
+          appendRowToTable(users, prevPage, itemsPerPage);
+      });
+  
+      // Next button
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "Next";
+      nextButton.addEventListener("click", () => {
+          const nextPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+          appendRowToTable(users, nextPage, itemsPerPage);
+      });
+  
+      // Page number display
+      const pageNumberDisplay = document.createElement("span");
+      pageNumberDisplay.className = "page-number";
+      pageNumberDisplay.textContent = `${currentPage}/${totalPages}`;
+  
+      // Append pagination controls
+      paginationContainer.appendChild(prevButton);
+      paginationContainer.appendChild(pageNumberDisplay);
+      paginationContainer.appendChild(nextButton);
+  
+      // Append pagination container to the table body
+      tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
+      setElementDisplayByClassName('table-loader', 'none')          
   }
 
-  main();
-
   </script>
 
-  <script>
-    function formatDate(inputDate) {
-      // Parse the input date string into a Date object
-      const date = new Date(inputDate);
-    
-      // Define options for formatting the date and time
-      const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        timeZoneName: 'short'
-      };
-    
-      // Format the date using the options
-      const formattedDate = date.toLocaleString('en-US', options);
-    
-      return formattedDate;
-    }
-  </script>
 
 </body>
 </html>

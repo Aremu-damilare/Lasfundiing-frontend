@@ -34,6 +34,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   <!--  -->
   <link rel="stylesheet" href="../css/custom.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const accountId = urlParams.get("id");   
+  </script>
   <style>       
     .loader-container {
       background-size: cover;
@@ -111,6 +116,14 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         width: 90px;
         height: 90px;
     }
+
+    button.add-to-list {
+      color: white;
+      background: #e04800;
+      margin: 0px 30px;
+      padding: 2px 2px;
+      border-radius: 20px;
+  }
   </style>    
 
 <style>
@@ -164,7 +177,15 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 .checkbox-field{margin-bottom:0;margin-left:0;margin-right:0;}
 .forgot-pw-wrapper{color:rgba(224, 72, 0, .88);white-space:nowrap;font-weight:400;text-decoration:none;}
 .remember-me-section{width:100%;grid-column-gap:200px;grid-row-gap:200px;flex-flow:row;justify-content:flex-start;align-items:center;margin-left:0;margin-right:0;display:flex;}
-.form{width:100%;border-bottom:1px #8e8b8a;flex-direction:column;align-items:center;margin-top:0;margin-left:0;margin-right:0;padding:20px 10px;display:flex;}
+.form{
+  width: 100%;
+  border-bottom: 1px #8e8b8a;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 20px 10px;
+  display: block;
+}
 .form.login{margin-top:0;margin-bottom:20px;}
 .link{color:rgba(224, 72, 0, .88);text-decoration:none;}
 .text-block-15{margin-top:16px;margin-bottom:16px;}
@@ -203,7 +224,7 @@ label{margin-bottom:5px;font-weight:bold;display:block;}
 .password-field{height:auto;}
 .submit-button{width:auto;margin:13px 24px 12px;padding:9px 50px;font-size:14px;line-height:16px;}
 .remember-me-section{grid-column-gap:10px;grid-row-gap:10px;font-size:12px;}
-.form{width:100%;margin-left:0;margin-right:0;padding:0 30px;}
+.form{width:auto;margin-left:0;margin-right:0;padding:0 30px;}
 .text-block-15{margin-top:4px;margin-bottom:4px;font-size:12px;}
 .eye{padding:0;top:6px;left:82%;}
 }
@@ -272,6 +293,20 @@ a.admin-delete-btn.delete-account-type {
 
 a.admin-edit-btn.edit-account-type {
   cursor: pointer;
+}
+</style>
+
+<style>
+  .w-button {
+    display: block;
+    padding: 9px 15px;
+    background-color: #008000b3;
+    color: white;
+    border: 0;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 20px;
 }
 </style>
 
@@ -422,9 +457,9 @@ a.admin-edit-btn.edit-account-type {
     <div class="gradient-header">
       <!-- <div class="text-block-56">Dashboard</div> -->
       <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
-        <span>Manage plans</span>        
+        <a href="./manage-plans.php"><span>Manage plans</span></a>
       </div>
-      <div id="addAccountBtn"><span style="color: #E04800;float: right;">+ Add</span></div>
+      <div id="addAccountBtn"><span style="color: #E04800;float: right;">* Edit</span></div>
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
       
@@ -434,13 +469,11 @@ a.admin-edit-btn.edit-account-type {
             flex-wrap: wrap;
             justify-content: space-between;
             max-width: 1000px;
-            }
+                }
 
         .card {
           display: flex;
-          width: 90%;
-          height: 65vh;
-          overflow-y: scroll;
+          /* width: calc(33.33% - 20px); */
           margin: 10px;
           background-color: white;
           border: 1px solid #ddd;
@@ -453,9 +486,7 @@ a.admin-edit-btn.edit-account-type {
 
         @media (max-width: 768px) {
             .card {
-              width: 90%;
-              height: 65vh;
-              overflow-y: scroll;
+                width: calc(100% - 20px);
             }
         }
 
@@ -483,76 +514,44 @@ a.admin-edit-btn.edit-account-type {
             </g>        
         </svg>        
       </div> 
-      <div class="card-container">                
-      </div>
-    </div>  
-</div>
 
-  
-<div style="overflow: auto;display: none; opacity: 0;" class="modal-wrapper">
-    <div style="opacity: 1; display: flex;    width: 100%;" class="form-container  w-container">
-      <div class="form-block w-form" style="overflow-y: auto;height: 80vh;    width: 100%;">
-        <div class="modal-header">
-
-        <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-          <div>Account added successfully!</div>
-        </div>
-        <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-        <div>Account addition failed!</div>
-        </div>
         
-          <div class="form-header">Add account types</div>
-          <div data-w-id="c0277bb6-3121-4cad-bcc9-21686fabc09e" class="close-modal-button">
-            <img src="../images/Asset-4.svg" loading="lazy" alt=""></div>
-        </div>
-        <form id="addAccountForm" name="account-type-form" data-name="account-type Form" method="post" data-ms-form="" class="form " aria-label="account-type Form">
-         
-          <input type="text" class="w-input"  id="Description" name="description" data-name="description" placeholder="Enter description" required>
-          <input type="number" class="w-input"  id="Amount" name="number" data-name="amount" placeholder="Enter amount"  required>
 
-          <input type="number" class="w-input"  id="setupFee" name="setupFee" data-name="setupFee" placeholder="Enter setup fee"  required>
-          <input type="number" class="w-input"  id="startingMonthlyFee" name="startingMonthlyFee" data-name="startingMonthlyFee" placeholder="Enter starting monthly fee"  required>
-          <input type="number" class="w-input"  id="startingBalance" name="startingBalance" data-name="startingBalance" placeholder="Enter starting balance"  required>
-          
-
-          <input type="text" class="w-input"   id="BalanceInputField" placeholder="Enter balance"> 
-          <button type="button" onclick="addToBalanceList()">Add to Balance steps</button>
-          <ul class="admin-account-type-list" id="BalanceList"></ul>
-
-          <input type="text" class="w-input"   id="ProfitTargetInputField" placeholder="Enter profit target">
-          <button type="button" onclick="addToProfitTargetList()">Add to Profit Target steps</button>
-          <ul class="admin-account-type-list" id="ProfitTargetList"></ul>
-          
-          <input type="text" class="w-input"  id="ProfitShareInputField" placeholder="Enter profit share">
-          <button type="button" onclick="addToProfitShareList()">Add to Profit Share steps</button>
-          <ul class="admin-account-type-list" id="ProfitShareList"></ul>
-
-          <input type="text" class="w-input"  id="NextStepTargetInputField" placeholder="Enter next step target">
-          <button type="button" onclick="addToNextStepTargetList()">Add to Next Step Target steps</button>
-          <ul class="admin-account-type-list" id="NextStepTargetList"></ul>
-
-          <input type="text" class="w-input"  id="AccountFeeInputField" placeholder="Enter account fee">
-          <button type="button" onclick="addToAccountFeeList()">Add to Account Fee steps</button>
-          <ul class="admin-account-type-list" id="AccountFeeList"></ul>
-                              
-          <button type="submit" class="submit-button-2 w-button">
-            Add
-            <span class="mini-loader-container">
-              <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                  <g>
-                    <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
-                  </g>        
-              </svg>        
-            </span>  
-          </button>
-
-          <input type="reset" id="resetButton" value="Reset" class="reset-button w-button" style="background-color: red;color:white">
-          
+      <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
+        <div>Account added successfully!</div>
+      </div>
+      <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
+      <div>Account addition failed!</div>
+      </div>
+      
+       
+      <form id="addAccountForm" name="account-type-form" data-name="account-type Form" method="post" data-ms-form="" class="form " aria-label="account-type Form">
+       
+         <div class="card-container">                
           </div>
-        </form>
-                 
+                            
+        <button type="submit" class="submit-button-2 w-button">
+          Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+          <span class="mini-loader-container">
+            <svg id="mini-loader" class="mini-loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <g>
+                  <ellipse id="ellipse" cx="50" cy="50" rx="25" ry="25"></ellipse>
+                </g>        
+            </svg>        
+          </span>  
+        </button>
+
+        <!-- <input type="reset" id="resetButton" value="Reset" class="reset-button w-button"> -->
+        
+        </div>
+      </form>
+ 
+     
     </div>
+  
   </div>
+
+
 
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -565,7 +564,6 @@ a.admin-edit-btn.edit-account-type {
 
       form.addEventListener("submit", async (e) => {
           e.preventDefault(); 
-          setElementDisplayByClassName('mini-loader-container', 'flex')
 
             // Gather input values
             const description = document.getElementById("Description").value;
@@ -576,13 +574,17 @@ a.admin-edit-btn.edit-account-type {
             const startingBalance = document.getElementById("startingBalance").value;
             
             // Gather list values
+            console.log(BalanceList)
+            console.log(ProfitTargetList)
+            console.log(ProfitShareList)
+            
             const balanceList = BalanceList;
             const profitTargetList = ProfitTargetList;
             const profitShareList = ProfitShareList;
             const nextStepTargetList = NextStepTargetList;
             const accountFeeList = AccountFeeList;
 
-          // Prepare data for sending to the endpoint (you can modify this as needed)
+          // Prepare data for sending 
           const data = {
               description: description,
               setup_fee: setupFee,
@@ -596,11 +598,10 @@ a.admin-edit-btn.edit-account-type {
               account_fee: accountFeeList,
           };
 
-          console.log("data", data)
-          // Send data to the endpoint (you should replace 'your-api-endpoint' with your actual endpoint)
+          console.log("data", data)          
           try {
-              const response = await fetch(`${baseUrl}/custom/admin/store/create/`, {
-                  method: 'POST',
+              const response = await fetch(`${baseUrl}/custom/admin/store/update/${accountId}/`, {
+                  method: 'PUT',
                   headers: {
                       'Content-Type': 'application/json',
                       'Authorization': 'Bearer ' + accessToken
@@ -613,7 +614,7 @@ a.admin-edit-btn.edit-account-type {
                   // Display success message
                   successMessage.style.display = "block";
                   failMessage.style.display = "none";
-                  //document.querySelector("#resetButton").click()
+                  //document.querySelector("#resetButton").click();
                   setElementDisplayByClassName('mini-loader-container', 'none')
                   toastSuccessNotif("Success")
                   setTimeout(function() {
@@ -624,8 +625,6 @@ a.admin-edit-btn.edit-account-type {
                   successMessage.style.display = "none";
                   failMessage.style.display = "block";
                   alert("Error")
-                  setElementDisplayByClassName('mini-loader-container', 'none')
-                  toastErrorNotif("Error")
               }
           } catch (error) {
               // Handle any network or request errors here
@@ -633,367 +632,339 @@ a.admin-edit-btn.edit-account-type {
               // Display fail message
               successMessage.style.display = "none";
               failMessage.style.display = "block";
-              setElementDisplayByClassName('mini-loader-container', 'none')
-              toastErrorNotif("Error")
           }
       });
   </script>
 
 
-<script>
-  let BalanceList = [];
+  <script>
+    let BalanceList = [];
 
-  function addToBalanceList() {
-      const BalanceInputField = document.getElementById("BalanceInputField");
-      const inputValue = BalanceInputField.value.trim();
+    function addToBalanceList() {
+        const BalanceInputField = document.getElementById("BalanceInputField");
+        const inputValue = BalanceInputField.value.trim();
 
-      successMessage.style.display = "none";
-      failMessage.style.display = "none";
-      if (inputValue !== "") {
-          BalanceList.push(inputValue);
-          BalanceInputField.value = "";
-          updateList();
-      }
-  }
+        successMessage.style.display = "none";
+        failMessage.style.display = "none";
+        if (inputValue !== "") {
+            BalanceList.push(inputValue);
+            BalanceInputField.value = "";
+            updateList();
+        }
+    }
 
-  function updateList() {
-      const BalanceListElement = document.getElementById("BalanceList");
-      BalanceListElement.innerHTML = "";
+    function updateList() {
+        const BalanceListElement = document.getElementById("BalanceList");
+        //BalanceListElement.innerHTML = BalanceListElement.innerHTML;
 
-      BalanceList.forEach((str) => {
-          const li = document.createElement("li");
-          li.textContent = str;
-          li.className  = "admin-account-type-list";
-          BalanceListElement.appendChild(li);
-      });
-  }
-
-</script>
-
-<script>
-  let ProfitTargetList = [];
-
-  function addToProfitTargetList() {
-      const ProfitTargetInputField = document.getElementById("ProfitTargetInputField");
-      const inputValue = ProfitTargetInputField.value.trim();
-
-      if (inputValue !== "") {
-          ProfitTargetList.push(inputValue);
-          ProfitTargetInputField.value = "";
-          updateProfitTargetList();
-      }
-  }
-
-  function updateProfitTargetList() {
-      const ProfitTargetListElement = document.getElementById("ProfitTargetList");
-      ProfitTargetListElement.innerHTML = "";
-
-      ProfitTargetList.forEach((str) => {
-          const li = document.createElement("li");
-          li.textContent = str;
-          li.className  = "admin-account-type-list";
-          ProfitTargetListElement.appendChild(li);
-      });
-  }
-
-</script>
-
-<script>
-  let ProfitShareList = [];
-
-  function addToProfitShareList() {
-      const ProfitShareInputField = document.getElementById("ProfitShareInputField");
-      const inputValue = ProfitShareInputField.value.trim();
-
-      if (inputValue !== "") {
-          ProfitShareList.push(inputValue);
-          ProfitShareInputField.value = "";
-          updateProfitShareList();
-      }
-  }
-
-  function updateProfitShareList() {
-      const ProfitShareListElement = document.getElementById("ProfitShareList");
-      ProfitShareListElement.innerHTML = "";
-
-      ProfitShareList.forEach((str) => {
-          const li = document.createElement("li");
-          li.textContent = str;
-          li.className  = "admin-account-type-list";
-          ProfitShareListElement.appendChild(li);
-      });
-  }
-</script>
-
-<script>
-  let NextStepTargetList = [];
-
-  function addToNextStepTargetList() {
-      const NextStepTargetInputField = document.getElementById("NextStepTargetInputField");
-      const inputValue = NextStepTargetInputField.value.trim();
-
-      if (inputValue !== "") {
-          NextStepTargetList.push(inputValue);
-          NextStepTargetInputField.value = "";
-          updateNextStepTargetList();
-      }
-  }
-
-  function updateNextStepTargetList() {
-      const NextStepTargetListElement = document.getElementById("NextStepTargetList");
-      NextStepTargetListElement.innerHTML = "";
-
-      NextStepTargetList.forEach((str) => {
-          const li = document.createElement("li");
-          li.textContent = str;
-          li.className  = "admin-account-type-list";
-          NextStepTargetListElement.appendChild(li);
-      });
-  }
-
-</script>
-
-<script>
-  let AccountFeeList = [];
-
-  function addToAccountFeeList() {
-      const AccountFeeInputField = document.getElementById("AccountFeeInputField");
-      const inputValue = AccountFeeInputField.value.trim();
-
-      if (inputValue !== "") {
-          AccountFeeList.push(inputValue);
-          AccountFeeInputField.value = "";
-          updateAccountFeeList();
-      }
-  }
-
-  function updateAccountFeeList() {
-      const AccountFeeListElement = document.getElementById("AccountFeeList");
-      AccountFeeListElement.innerHTML = "";
-
-      AccountFeeList.forEach((str) => {
-          const li = document.createElement("li");
-          li.textContent = str;
-          li.className  = "admin-account-type-list";
-          AccountFeeListElement.appendChild(li);
-      });
-  }
-
-</script>
-
-
- <script>                
-      const closeModalButton = document.querySelector(".close-modal-button");
-      const modalWrapper = document.querySelector(".modal-wrapper");
-      const addAccountBtn = document.querySelector("#addAccountBtn");
-
-      closeModalButton.addEventListener("click", function () {
-          modalWrapper.style.display = "none";
-      });        
-
-      addAccountBtn.addEventListener("click", function () {
-                modalWrapper.style.display = "flex";
-                modalWrapper.style.opacity = 1;
-            });    
-</script>
-
-<script>
-    document.querySelector("#resetButton").addEventListener("click", function () {
-        // Reset all input field values and lists
-        document.querySelector("#addAccountForm").reset();
-
-        // Clear the lists (assuming you have functions to clear them)
-        clearBalanceList();
-        clearProfitTargetList();
-        clearProfitShareList();
-        clearNextStepTargetList();
-        clearAccountFeeList();
-
-        // Get all <ul> elements
-        const ulElements = document.querySelectorAll("ul");
-
-        // Delete each <ul> element
-        ulElements.forEach((ul) => {
-            ul.innerHTML = ``;
+        BalanceList.forEach((str) => {
+            const li = document.createElement("li");
+            li.textContent = str;
+            li.className  = "admin-account-type-list";
+            BalanceListElement.appendChild(li);
         });
-    });
-
-    function clearBalanceList() {
-        BalanceList.length = 0;        
     }
 
-    function clearProfitTargetList() {
-        ProfitTargetList.length = 0;       
+  </script>
+
+  <script>
+    let ProfitTargetList = [];
+
+    function addToProfitTargetList() {
+        const ProfitTargetInputField = document.getElementById("ProfitTargetInputField");
+        const inputValue = ProfitTargetInputField.value.trim();
+
+        if (inputValue !== "") {
+            ProfitTargetList.push(inputValue);
+            ProfitTargetInputField.value = "";
+            updateProfitTargetList();
+        }
     }
 
-    function clearProfitShareList() {
-        ProfitShareList.length = 0;       
-    }
+    function updateProfitTargetList() {
+        const ProfitTargetListElement = document.getElementById("ProfitTargetList");
+        //ProfitTargetListElement.innerHTML = ProfitTargetListElement.innerHTML;
 
-    function clearNextStepTargetList() {
-        NextStepTargetList.length = 0;       
-    }
-
-    function clearAccountFeeList() {
-        AccountFeeList.length = 0;       
-    }
-</script>
-
-<script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
-<script src="../backend/admin/manage-plans.js?<?php echo time(); ?>"></script>
-
-<script>
-  // Define the URL to make the request to
-const endpointUrl = `${baseUrl}/custom/admin/store/list/`;
-
-// Create headers object with authorization
-const headers = new Headers({
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + accessToken
-});
-
-// Create a request object with the headers
-const request = new Request(endpointUrl, {
-    method: 'GET', // You can adjust the HTTP method as needed (e.g., GET, POST)
-    headers: headers
-});
-
-// Fetch data from the endpoint
-fetch(request)
-    .then(response => response.json())
-    .then(data => {
-        // Loop through the response data
-        data.forEach(item => {
-          setElementDisplayByClassName('admin-account-list-loader', 'flex') 
-            console.log("item", item)
-            // Create a new card element
-            const card = document.createElement('div');
-            card.classList.add('card');
-
-            // Populate the card with data
-            card.innerHTML = `                                
-                <p class="admin-account-type-card card-label">Starting Fee</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">$${item.amount.toFixed(2)}</p>
-                <br>
-                <p class="admin-account-type-card card-label">Setup Fee</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">$${item.setup_fee.toFixed(2)}</p>
-
-                <p class="admin-account-type-card card-label">Account Fee</p>                
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${createList(item.account_fee, "account_fee")}</p>
-                
-                <p class="admin-account-type-card card-label">Amount</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${item.amount}</p>
-
-
-                <p class="admin-account-type-card card-label">Description</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${item.description}</p>
-
-                <p class="admin-account-type-card card-label">ID</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${item.id}</p>
-
-
-
-                <p class="admin-account-type-card card-label">Balance</p>                
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${createList(item.balance, "balance")}</p>
-
-                <p class="admin-account-type-card card-label">Next Step Target</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${createList(item.next_step_target, "nextstep")}</p>
-
-                <p class="admin-account-type-card card-label">Profit Share</p>                
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${createList(item.profit_share, "profit_share")}</p>
-
-                <p class="admin-account-type-card card-label">Profit Target</p>                
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${createList(item.profit_target, "profit_target")}</p>
-
-
-                <p class="admin-account-type-card card-label">Starting Balance</p>                
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${item.starting_balance}</p>
-
-                <p class="admin-account-type-card card-label">Starting Monthly Fee</p>
-                <p class="admin-account-type-card card-value" data-id="${item.id}">${item.starting_monthly_fee}</p>
-
-
-
-                <div class="admin-account-type-actions">
-                  <a class="admin-delete-btn delete-account-type" data-id="${item.id}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>                
-                  <a href="./manage-plan.php?id=${item.id}" class="admin-edit-btn edit-account-type" data-id="${item.id}"><i class="fa fa-cog" aria-hidden="true"></i> Edit</a>
-                </div>                
-            `;
-
-            // Append the card to the card container
-            const cardContainer = document.querySelector('.card-container');
-            cardContainer.appendChild(card);
-            setElementDisplayByClassName('admin-account-list-loader', 'none') 
+        ProfitTargetList.forEach((str) => {
+            const li = document.createElement("li");
+            li.textContent = str;
+            li.className  = "admin-account-type-list";
+            ProfitTargetListElement.appendChild(li);
         });
-        deleteAccountType()
-        editAccountType()
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    }
 
-</script>
+  </script>
 
-<script>
-  function deleteAccountType(){
+  <script>
+    let ProfitShareList = [];
 
-    const deleteButtons = document.querySelectorAll(".delete-account-type");
-    
-    deleteButtons.forEach(button => {
-        button.addEventListener("click", function(event) {
-            const accountId = event.target.getAttribute("data-id");
-            
-            if (accountId) {
-                const confirmation = confirm("Are you sure you want to delete this account type?");
-                
-                if (confirmation) {
-                    // Send the DELETE request to the delete endpoint
-                    fetch(`${baseUrl}/custom/admin/store/delete/${accountId}/`, {
-                        method: "DELETE",
-                        headers: {
-                          'Authorization': 'Bearer ' + accessToken,
-                            "Content-Type": "application/json",
-                        },
-                    })
-                    .then(response => {
-                        if (response.status === 204) {
-                            // Successful deletion
-                            toastSuccessNotif("Account type deleted successfully.");                            
-                            event.target.parentElement.remove();
-                            location.reload();
-                        } else {
-                            // Handle errors
-                            toastErrorNotif("Error deleting account type.");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                    });
-                }
-            }
+    function addToProfitShareList() {
+        const ProfitShareInputField = document.getElementById("ProfitShareInputField");
+        const inputValue = ProfitShareInputField.value.trim();
+
+        if (inputValue !== "") {
+            ProfitShareList.push(inputValue);
+            ProfitShareInputField.value = "";
+            updateProfitShareList();
+        }
+    }
+
+    function updateProfitShareList() {
+        const ProfitShareListElement = document.getElementById("ProfitShareList");
+        //ProfitShareListElement.innerHTML = ProfitShareListElement.innerHTML;
+
+        ProfitShareList.forEach((str) => {
+            const li = document.createElement("li");
+            li.textContent = str;
+            li.className  = "admin-account-type-list";
+            ProfitShareListElement.appendChild(li);
         });
-    }); 
-  }
-</script>
+    }
+  </script>
 
+  <script>
+    let NextStepTargetList = [];
 
-<script>
-  function editAccountType(){
+    function addToNextStepTargetList() {
+        const NextStepTargetInputField = document.getElementById("NextStepTargetInputField");
+        const inputValue = NextStepTargetInputField.value.trim();
 
-    const editButtons = document.querySelectorAll(".edit-account-type");
-    
-    editButtons.forEach(button => {
-        button.addEventListener("click", function(event) {
-            const accountId = event.target.getAttribute("data-id");
-            
-            if (accountId) {
-                //const confirmation = confirm("Are you sure you want to edit this account type?");                                
-            }
+        if (inputValue !== "") {
+            NextStepTargetList.push(inputValue);
+            NextStepTargetInputField.value = "";
+            updateNextStepTargetList();
+        }
+    }
+
+    function updateNextStepTargetList() {
+        const NextStepTargetListElement = document.getElementById("NextStepTargetList");
+        //NextStepTargetListElement.innerHTML = NextStepTargetListElement.innerHTML;
+
+        NextStepTargetList.forEach((str) => {
+            const li = document.createElement("li");
+            li.textContent = str;
+            li.className  = "admin-account-type-list";
+            NextStepTargetListElement.appendChild(li);
         });
-    }); 
-  }
-</script>
+    }
 
+  </script>
+
+  <script>
+    let AccountFeeList = [];
+
+    function addToAccountFeeList() {
+        const AccountFeeInputField = document.getElementById("AccountFeeInputField");
+        const inputValue = AccountFeeInputField.value.trim();
+
+        if (inputValue !== "") {
+            AccountFeeList.push(inputValue);
+            AccountFeeInputField.value = "";
+            updateAccountFeeList();
+        }
+    }
+
+    function updateAccountFeeList() {
+        const AccountFeeListElement = document.getElementById("AccountFeeList");
+        //AccountFeeListElement.innerHTML = AccountFeeListElement.innerHTML;
+
+        AccountFeeList.forEach((str) => {
+            const li = document.createElement("li");
+            li.textContent = str;
+            li.className  = "admin-account-type-list";
+            AccountFeeListElement.appendChild(li);
+        });
+    }
+
+  </script>
+
+
+  <script>                
+        const closeModalButton = document.querySelector(".close-modal-button");
+        const modalWrapper = document.querySelector(".modal-wrapper");
+        const addAccountBtn = document.querySelector("#addAccountBtn");
+
+        //closeModalButton.addEventListener("click", function () {
+        //    modalWrapper.style.display = "none";
+        //});        
+
+        addAccountBtn.addEventListener("click", function () {
+                  modalWrapper.style.display = "flex";
+                  modalWrapper.style.opacity = 1;
+              });    
+  </script>
+
+  <!-- <script>
+      document.querySelector("#resetButton").addEventListener("click", function () {
+          // Reset all input field values and lists
+          document.querySelector("#addAccountForm").reset();
+
+          // Clear the lists (assuming you have functions to clear them)
+          clearBalanceList();
+          clearProfitTargetList();
+          clearProfitShareList();
+          clearNextStepTargetList();
+          clearAccountFeeList();
+
+          // Get all <ul> elements
+          const ulElements = document.querySelectorAll("ul");
+
+          // Delete each <ul> element
+          ulElements.forEach((ul) => {
+              ul.innerHTML = ``;
+          });
+      });
+
+      function clearBalanceList() {
+          BalanceList.length = 0;        
+      }
+
+      function clearProfitTargetList() {
+          ProfitTargetList.length = 0;       
+      }
+
+      function clearProfitShareList() {
+          ProfitShareList.length = 0;       
+      }
+
+      function clearNextStepTargetList() {
+          NextStepTargetList.length = 0;       
+      }
+
+      function clearAccountFeeList() {
+          AccountFeeList.length = 0;       
+      }
+  </script> -->
+
+  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
+  <script src="../backend/admin/manage-plans.js?<?php echo time(); ?>"></script>
+
+  <script>  
+ 
+
+  const endpointUrl = `${baseUrl}/custom/admin/store/detail/${accountId}/`;
+  const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + accessToken
+  });
+  const request = new Request(endpointUrl, {
+      method: 'GET', 
+      headers: headers
+  });
+
+  fetch(request)
+      .then(response => response.json())
+      .then(data => {
+          console.log("data", data)
+            item = data
+            setElementDisplayByClassName('admin-account-list-loader', 'flex') 
+              console.log("item", item)                          
+
+              const card = document.createElement('div');
+              card.classList.add('card');            
+              card.innerHTML = `
+              <label for="">Description</label>
+              <input type="text" value="${item.description}" class="w-input"  id="Description" name="description" data-name="description" placeholder="Enter description" required>
+
+              <label for="">Amount</label>
+              <input type="text" value="${item.amount}" class="w-input"  id="Amount" name="number" data-name="amount" placeholder="Enter amount"  required>
+
+              <label for="">Setup fee</label>
+              <input type="text" value="${item.setup_fee}"  class="w-input"  id="setupFee" name="setupFee" data-name="setupFee" placeholder="Enter setup fee"  required>
+
+              <label for="">Starting monthly fee</label>
+              <input type="text" value="${item.starting_monthly_fee}"  class="w-input"  id="startingMonthlyFee" name="startingMonthlyFee" data-name="startingMonthlyFee" placeholder="Enter starting monthly fee"  required>
+
+              <label for="">Starting balance</label>
+              <input type="text" value="${item.starting_balance}"  class="w-input"  id="startingBalance" name="startingBalance" data-name="startingBalance" placeholder="Enter starting balance"  required>
+              
+
+              <input type="text" class="w-input"   id="BalanceInputField" placeholder="Enter balance"> 
+              <button class="add-to-list" type="button" onclick="addToBalanceList()">Add to Balance steps</button>
+              
+              ${createList(item.balance, "BalanceList")}
+
+              <input type="text" class="w-input"   id="ProfitTargetInputField" placeholder="Enter profit target">
+              <button class="add-to-list" type="button" onclick="addToProfitTargetList()">Add to Profit Target steps</button>
+              
+              ${createList(item.profit_target, "ProfitTargetList")}
+              
+              <input type="text" class="w-input"  id="ProfitShareInputField" placeholder="Enter profit share">
+              <button class="add-to-list" type="button" onclick="addToProfitShareList()">Add to Profit Share steps</button>
+              
+              ${createList(item.profit_share, "ProfitShareList")}
+
+              <input type="text" class="w-input"  id="NextStepTargetInputField" placeholder="Enter next step target">
+              <button class="add-to-list"  type="button" onclick="addToNextStepTargetList()">Add to Next Step Target steps</button>
+              
+              ${createList(item.next_step_target, "NextStepTargetList")}
+
+              <input type="text" class="w-input"  id="AccountFeeInputField" placeholder="Enter account fee">
+              <button class="add-to-list" type="button" onclick="addToAccountFeeList()">Add to Account Fee steps</button>
+              
+              ${createList(item.account_fee, "AccountFeeList")}
+
+                  <div class="admin-account-type-actions">
+                    <a class="admin-delete-btn delete-account-type" data-id="${item.id}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>                                  
+                  </div>                
+              `;
+
+              // Append the card to html
+              const cardContainer = document.querySelector('.card-container');
+              cardContainer.appendChild(card);
+              
+              setElementDisplayByClassName('admin-account-list-loader', 'none') 
+          
+          deleteAccountType()
+  //        editAccountType()
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+
+  </script>
+
+  <script>
+    function deleteAccountType(){
+
+      const deleteButtons = document.querySelectorAll(".delete-account-type");
+      
+      deleteButtons.forEach(button => {
+          button.addEventListener("click", function(event) {
+              const accountId = event.target.getAttribute("data-id");
+              
+              if (accountId) {
+                  const confirmation = confirm("Are you sure you want to delete this account type?");
+                  
+                  if (confirmation) {
+                      // Send the DELETE request to the delete endpoint
+                      fetch(`${baseUrl}/custom/admin/store/delete/${accountId}/`, {
+                          method: "DELETE",
+                          headers: {
+                            'Authorization': 'Bearer ' + accessToken,
+                              "Content-Type": "application/json",
+                          },
+                      })
+                      .then(response => {
+                          if (response.status === 204) {
+                              // Successful deletion
+                              alert("Account type deleted successfully.");
+                              // Optionally, you can remove the item from the DOM
+                              // event.target.parentElement.remove();
+                          } else {
+                              // Handle errors
+                              alert("Error deleting account type.");
+                          }
+                      })
+                      .catch(error => {
+                          console.error("Error:", error);
+                      });
+                  }
+              }
+          });
+      }); 
+    }
+  </script>
 
 </body>
 </html>

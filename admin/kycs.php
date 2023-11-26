@@ -163,7 +163,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 	  <!-- profile  -->
     <div class="profile">
-      <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50">
+      <!-- <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50"> -->
       <div class="profile-emails">
         <span class="profile-name">Chinadu Toluwaloper</span>
         <span class="profile-email">Toluwaloper@email.com</span>
@@ -172,12 +172,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <!-- profile end -->
 
     <!-- cart icon -->
-    <div class="cart-icon">
-      <!-- <i class="fa fa-shopping-cart"></i> -->
+    <!-- <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
       <span class="cart-count">0</span>
       <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-    </div>
+    </div> -->
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -263,18 +263,43 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <!-- <div><span style="color: #E04800;float: right;"><img src="./images/icons/Copy.svg" alt=""> Copy link</span></div> -->
     </div>
     <div class="analyzer-section dashboard wf-section" style="display: block;">
+
+       
+    <div class="filter-container">
+        <i class="fa fa-random" aria-hidden="true"></i> Sort
+        <br>
+        <select id="StatusSort" onchange="sortTableByStatus()">            
+          <option value="">Status</option>
+          <option value="open">Status (Open)</option>
+          <option value="close">Status (Close)</option>
+        </select>
+        
+        <select id="DateSort" onchange="sortTableByDate(event)">
+          <option value="">Date</option>
+          <option value="newest">Date (Latest)</option>
+          <option value="oldest">Date (Oldest)</option>          
+        </select>
+        <br>          
+        <p for="department">Start time</p>
+        <input type="datetime-local" name="startTime" id="StartTimeSort">
+        <br>
+        <p for="department">End time</p>
+        <input type="datetime-local" name="endTime" id="EndTimeSort">
+        <br>
+        <button type="button" onclick="sortTableByDateRange(event)">Sort by date range</button>
+    </div>
             
         <div style="overflow-x: auto;">
             <table class="slds-table slds-table--bordered">
                 <thead>
                   <tr class="slds-text-heading--label">
-                    <th class="slds-cell-shrink">
+                    <!-- <th class="slds-cell-shrink">
                       <label class="slds-checkbox">
                           <input type="checkbox" name="options">
                           <span class="slds-checkbox--faux"></span>
                           <span class="slds-assistive-text">Select All</span>
                         </label>
-                    </th>
+                    </th> -->
                     <th class="slds-is-sortable" scope="col">
                       <div class="slds-truncate">User
                         <button class="slds-button slds-button--icon-bare">                          
@@ -315,7 +340,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     </th>   
 
                     <th class="slds-is-sortable" scope="col">
-                      <div class="slds-truncate">Last updated
+                      <div class="slds-truncate">Updated
                         <button class="slds-button slds-button--icon-bare">                            
                             <span class="slds-assistive-text">Sort</span>
                           </button>
@@ -323,7 +348,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
                     </th>
                                
                     <th class="slds-is-sortable" scope="col">
-                        <div class="slds-truncate">Date created
+                        <div class="slds-truncate">Created
                           <button class="slds-button slds-button--icon-bare">                              
                               <span class="slds-assistive-text">Sort</span>
                             </button>
@@ -356,74 +381,71 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   if (kycs) {
       console.log('KYCs:', kycs);
+      appendRowToTable(kycs);
 
-    var tbody = document.querySelector('tbody'); 
+    // var tbody = document.querySelector('tbody'); 
 
-
-    kycs.forEach(function(kycs) {
-      var row = document.createElement('tr');
+    // kycs.forEach(function(kycs) {
+    //   var row = document.createElement('tr');
       
-      // Create and append the "Select Row" cell
-      var selectCell = document.createElement('td');
-      selectCell.className = 'slds-cell-shrink';
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = 'options';
-      var checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'slds-checkbox';
-      checkboxLabel.appendChild(checkbox);
-      checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
-      selectCell.appendChild(checkboxLabel);
-      row.appendChild(selectCell);
-
+    //   // Create and append the "Select Row" cell
+    //   var selectCell = document.createElement('td');
+    //   selectCell.className = 'slds-cell-shrink';
+    //   var checkbox = document.createElement('input');
+    //   checkbox.type = 'checkbox';
+    //   checkbox.name = 'options';
+    //   var checkboxLabel = document.createElement('label');
+    //   checkboxLabel.className = 'slds-checkbox';
+    //   checkboxLabel.appendChild(checkbox);
+    //   checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
+            
+    //   var opportunityCell = document.createElement('th');
+    //   opportunityCell.className = 'slds-truncate';
+    //   opportunityCell.setAttribute('data-label', 'Opportunity Name');
+    //   opportunityCell.innerHTML = `<a href="./kyc.php?id=${kycs.id}"> ${kycs.user} </a>`;
       
-      var opportunityCell = document.createElement('th');
-      opportunityCell.className = 'slds-truncate';
-      opportunityCell.setAttribute('data-label', 'Opportunity Name');
-      opportunityCell.innerHTML = `<a href="./kyc.php?id=${kycs.id}"> ${kycs.user} </a>`;
-      row.appendChild(opportunityCell);
+    //   var accountCell = document.createElement('td');
+    //   accountCell.className = 'slds-truncate';
+    //   accountCell.setAttribute('data-label', 'Account Name');
+    //   accountCell.innerHTML = `${kycs.type}  `;     
 
-      var accountCell = document.createElement('td');
-      accountCell.className = 'slds-truncate';
-      accountCell.setAttribute('data-label', 'Account Name');
-      accountCell.innerHTML = `${kycs.type}  `;
-      row.appendChild(accountCell);
-
+    //   var file1Cell = document.createElement('td');
+    //   file1Cell.className = '';
+    //   file1Cell.setAttribute('data-label', 'file1Cell');
+    //   file1Cell.innerHTML = `${kycs.file1}`;
      
+    //   var file2Cell = document.createElement('td');
+    //   file2Cell.className = '';
+    //   file2Cell.setAttribute('data-label', 'file2Cell');
+    //   file2Cell.innerHTML = `${kycs.file2}`;
 
-      var file1Cell = document.createElement('td');
-      file1Cell.className = '';
-      file1Cell.setAttribute('data-label', 'file1Cell');
-      file1Cell.innerHTML = `${kycs.file1}`;
-      row.appendChild(file1Cell);
+    //   var setupFeeCell = document.createElement('td');
+    //   setupFeeCell.className = '';
+    //   setupFeeCell.setAttribute('data-label', 'setupFee');
+    //   setupFeeCell.innerHTML = `${kycs.status}`;
 
-      var file2Cell = document.createElement('td');
-      file2Cell.className = '';
-      file2Cell.setAttribute('data-label', 'file2Cell');
-      file2Cell.innerHTML = `${kycs.file2}`;
-      row.appendChild(file2Cell);
+    //   var descriptionCell = document.createElement('td');
+    //   descriptionCell.className = '';
+    //   descriptionCell.setAttribute('data-label', 'Confidence');
+    //   descriptionCell.innerHTML = formatDate(kycs.updated_at);      
 
-      var setupFeeCell = document.createElement('td');
-      setupFeeCell.className = '';
-      setupFeeCell.setAttribute('data-label', 'setupFee');
-      setupFeeCell.innerHTML = `${kycs.status}`;
-      row.appendChild(setupFeeCell);
+    //   var dateCell = document.createElement('td');
+    //   dateCell.className = '';
+    //   dateCell.setAttribute('data-label', 'Close Date');
+    //   dateCell.innerHTML = formatDate(kycs.created_at);
 
-      var descriptionCell = document.createElement('td');
-      descriptionCell.className = '';
-      descriptionCell.setAttribute('data-label', 'Confidence');
-      descriptionCell.innerHTML = formatDate(kycs.updated_at);
-      row.appendChild(descriptionCell);
-
-
-      var dateCell = document.createElement('td');
-      dateCell.className = '';
-      dateCell.setAttribute('data-label', 'Close Date');
-      dateCell.innerHTML = formatDate(kycs.created_at);
-      row.appendChild(dateCell);
+    //   // selectCell.appendChild(checkboxLabel);
+    //   // row.appendChild(selectCell);
+    //   row.appendChild(opportunityCell);
+    //   row.appendChild(descriptionCell);      
+    //   row.appendChild(accountCell);
+    //   row.appendChild(file1Cell);
+    //   row.appendChild(file2Cell);
+    //   row.appendChild(setupFeeCell);
+    //   row.appendChild(dateCell);
       
-      tbody.appendChild(row);
-    });
+    //   tbody.appendChild(row);
+    // });
 
     } else {
       console.log('Failed to retrieve kycs.');
@@ -432,8 +454,168 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   main();
 
+</script>
+
+<script>
+  function appendRowToTable(kycs, currentPage = 1, itemsPerPage = 5) {
+    setElementDisplayByClassName('table-loader', 'flex')    
+      const tableBody = document.querySelector("tbody");
+      tableBody.innerHTML = ""; // Clear existing rows
+  
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentKycs = kycs.slice(startIndex, endIndex);
+  
+      for (const kycs of currentKycs) {
+          var row = document.createElement('tr');
+          
+          // Create and append the "Select Row" cell
+          var selectCell = document.createElement('td');
+          selectCell.className = 'slds-cell-shrink';
+          var checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.name = 'options';
+          var checkboxLabel = document.createElement('label');
+          checkboxLabel.className = 'slds-checkbox';
+          checkboxLabel.appendChild(checkbox);
+          checkboxLabel.innerHTML += '<span class="slds-checkbox--faux"></span><span class="slds-assistive-text">Select Row</span>';
+                
+          var opportunityCell = document.createElement('th');
+          opportunityCell.className = 'slds-truncate';
+          opportunityCell.setAttribute('data-label', 'Opportunity Name');
+          opportunityCell.innerHTML = `<a href="./kyc.php?id=${kycs.id}"> ${kycs.user} </a>`;
+          
+          var accountCell = document.createElement('td');
+          accountCell.className = 'slds-truncate';
+          accountCell.setAttribute('data-label', 'Account Name');
+          accountCell.innerHTML = `${kycs.type}  `;     
+
+          var file1Cell = document.createElement('td');
+          file1Cell.className = '';
+          file1Cell.setAttribute('data-label', 'file1Cell');
+          file1Cell.innerHTML = `${kycs.file1}`;
+        
+          var file2Cell = document.createElement('td');
+          file2Cell.className = '';
+          file2Cell.setAttribute('data-label', 'file2Cell');
+          file2Cell.innerHTML = `${kycs.file2}`;
+
+          var setupFeeCell = document.createElement('td');
+          setupFeeCell.className = '';
+          setupFeeCell.setAttribute('data-label', 'setupFee');
+          setupFeeCell.innerHTML = `<span class="${kycs.status}"> <img src="../images/status/${kycs.status}.svg"> ${kycs.status}</span>`;
+           
+
+          var dateUpdatedCell = document.createElement('td');
+          dateUpdatedCell.className = '';
+          dateUpdatedCell.setAttribute('data-label', 'Close Date');
+          dateUpdatedCell.innerHTML = formatDate(kycs.updated_at);
+
+          var dateCell = document.createElement('td');
+          dateCell.className = '';
+          dateCell.setAttribute('data-label', 'Close Date');
+          dateCell.innerHTML = formatDate(kycs.created_at);
+
+          // selectCell.appendChild(checkboxLabel);
+          // row.appendChild(selectCell);
+          row.appendChild(opportunityCell);          
+          row.appendChild(accountCell);
+          row.appendChild(file1Cell);
+          row.appendChild(file2Cell);
+          row.appendChild(setupFeeCell);
+          row.appendChild(dateUpdatedCell);
+          row.appendChild(dateCell);
+  
+        // Append the row to the table body
+        tableBody.appendChild(row);
+          
+        }
+        // Calculate total pages
+      const totalPages = Math.ceil(kycs.length / itemsPerPage);
+          // ... (inside the function)
+      const paginationContainer = document.createElement("div");
+      paginationContainer.className = "pagination";
+  
+      // Previous button
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "Previous";
+      prevButton.addEventListener("click", () => {
+          const prevPage = currentPage > 1 ? currentPage - 1 : 1;
+          appendRowToTable(kycs, prevPage, itemsPerPage);
+      });
+  
+      // Next button
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "Next";
+      nextButton.addEventListener("click", () => {
+          const nextPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+          appendRowToTable(kycs, nextPage, itemsPerPage);
+      });
+  
+      // Page number display
+      const pageNumberDisplay = document.createElement("span");
+      pageNumberDisplay.className = "page-number";
+      pageNumberDisplay.textContent = `${currentPage}/${totalPages}`;
+  
+      // Append pagination controls
+      paginationContainer.appendChild(prevButton);
+      paginationContainer.appendChild(pageNumberDisplay);
+      paginationContainer.appendChild(nextButton);
+  
+      // Append pagination container to the table body
+      tableBody.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(paginationContainer)));
+      setElementDisplayByClassName('table-loader', 'none')          
+  }
+
   </script>
 
+  <script>      
+    async function sortTableByStatus() {
+      try {
+        var selectedValue = document.querySelector("#StatusSort");
+        console.log("sortTableByStatus", selectedValue.value );
+        setElementDisplayByClassName('mini-loader-container', 'block')
+        const userKycsList = await userKycsSortStatus(accessToken, status=`${selectedValue.value}`);
+        setElementDisplayByClassName('mini-loader-container', 'none');
+        appendRowToTable(userKycsList);
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+</script>
+
+<script>
+  async function sortTableByDate() {
+    try {
+      var selectedValue = document.querySelector("#DateSort");
+      setElementDisplayByClassName('mini-loader-container', 'block')
+      const userKycsList = await userKycsSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
+      setElementDisplayByClassName('mini-loader-container', 'none');
+      console.log("userKycsList", userKycsList, );
+      appendRowToTable(userKycsList);
+    } catch (error) {      
+      console.error("An error occurred:", error);
+    }
+  }
+</script>
+
+<script>
+async function sortTableByDateRange() {
+  try {
+    var EndTimeSortValue = document.querySelector("#EndTimeSort").value;
+    var StartTimeSortValue = document.querySelector("#StartTimeSort").value;
+
+    console.log("EndTimeSortValue", EndTimeSortValue, "StartTimeSortValue", StartTimeSortValue)
+    setElementDisplayByClassName('mini-loader-container', 'block')
+    const userKycsList = await userKycsSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Order="newest" );
+    setElementDisplayByClassName('mini-loader-container', 'none');
+    console.log("userKycsList", userKycsList);
+    appendRowToTable(userKycsList);
+  } catch (error) {      
+    console.error("An error occurred:", error);
+  }
+}
+</script>
 
 </body>
 </html>

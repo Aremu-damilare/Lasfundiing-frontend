@@ -55,10 +55,10 @@ function getAllUserData(){
         data.forEach(element => {
           console.log(element)
           transactionsTable.innerHTML += `
-          <div id="" class="status">
-          <div id="" class="completed"><img src="../images/Ellipse-8.svg" loading="lazy" alt="" class="status-icon">
-            <div class="text-block-63">${element.status}</div>
-          </div>
+        <div id="" class="status">
+          <span id="" class="${element.status}"><img src="../images/status/${element.status}.svg" loading="lazy" alt="" class="status-icon">
+            <span class="text-block-63">${element.status}</span>
+          </span>
         </div>
         <div id="" class="payment-type">              
           <div class="text-block-61">${element.id} payment</div>

@@ -55,19 +55,19 @@ function getAllUserData(){
         data.forEach(element => {
           console.log(element)
           transactionsTable.innerHTML += `
+        <div id="" class="payment-type">              
+          <div class="text-block-61">#${element.id}</div>
+        </div>
         <div id="" class="status">
-          <span id="" class="${element.status}"><img src="../images/status/${element.status}.svg" loading="lazy" alt="" class="status-icon">
+          <span id="" class="${element.status}">
             <span class="text-block-63">${element.status}</span>
           </span>
-        </div>
-        <div id="" class="payment-type">              
-          <div class="text-block-61">${element.id} payment</div>
-        </div>
+        </div>        
         <div id="" class="amount">
           <div class="text-block-64">$${element.amount}</div>
         </div>
         <div id="" class="date">
-          <div class="text-block-65">${formatDate(element.updated_at)}</div>
+          <div class="text-block-65">${formatDateTime(element.updated_at)}</div>
         </div>`
 
         });
@@ -99,12 +99,44 @@ function setDisplay(state){
   }
 }
 
-function formatDate(dateString) {
-  const createdAt = new Date(dateString);
-  const formattedDate = createdAt.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  });
+function setElementDisplayByClassName(className, state) {
+  const elements = document.getElementsByClassName(className);              
+  for (const element of elements) {
+    element.style.display = state;
+  }
+}
+
+function setElementDisplayByClassName(className, state) {
+  const elements = document.getElementsByClassName(className);              
+  for (const element of elements) {
+    element.style.display = state;
+  }
+}
+
+function formatDateTime(dateString) {
+  // Parse the input date string
+  const date = new Date(dateString);
+
+  // Format the date
+  const formattedDate = `${date.toLocaleDateString('en-US')} | ${formatTime(date)}`;
+
   return formattedDate;
 }
+
+// Helper function to format time
+function formatTime(date) {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+
+  // return `${formattedHours}:${padZero(minutes)}:${padZero(date.getSeconds())}.${date.getMilliseconds()}${ampm}`;
+  return `${formattedHours}:${padZero(minutes)}${ampm}`;
+}
+
+// Helper function to pad single-digit numbers with a leading zero
+function padZero(number) {
+  return number < 10 ? `0${number}` : number;
+}    
+
+ 

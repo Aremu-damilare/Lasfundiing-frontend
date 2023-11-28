@@ -1,6 +1,5 @@
 async function getTickets(baseUrl, access_token) {
-    const url = `${baseUrl}/custom/admin/ticket/tickets`;
-  
+    const url = `${baseUrl}/custom/admin/ticket/tickets`;  
     try {
       const response = await fetch(url, {
         method: 'GET',
@@ -19,10 +18,10 @@ async function getTickets(baseUrl, access_token) {
       console.error('Error:', error);
       return false;
     }
-  }
+}
 
 
-  async function getTicket(baseUrl, access_token, ticket_id) {
+async function getTicket(baseUrl, access_token, ticket_id) {
     const url = `${baseUrl}/custom/admin/ticket/ticket/${ticket_id}`;
   
     try {
@@ -43,11 +42,11 @@ async function getTickets(baseUrl, access_token) {
       console.error('Error:', error);
       return false;
     }
-  }
+}
 
-  async function updateTicket(baseUrl, access_token, ticket_id, formData) {
-    const url = `${baseUrl}/custom/admin/ticket/ticket/${ticket_id}/`;
-  
+
+async function updateTicket(baseUrl, access_token, ticket_id, formData) {
+    const url = `${baseUrl}/custom/admin/ticket/ticket/${ticket_id}/`;  
     try {
       const response = await fetch(url, {
         method: 'PUT',
@@ -68,7 +67,7 @@ async function getTickets(baseUrl, access_token) {
       console.error('Error:', error);
       return false;
     }
-  }
+}
 
 
   
@@ -86,9 +85,7 @@ function userTicketsSortStatus(access_token, status) {
       }
       return response.json();
     })
-    .then(data => {
-
-      
+    .then(data => {      
         const ticketData = data        
         // Filter the array based on the 'status' variable
         const filteredData = ticketData.filter(ticket => ticket.status === status);
@@ -97,9 +94,7 @@ function userTicketsSortStatus(access_token, status) {
         console.log("Filtered Ticket Data:", filteredData);
         
         // Resolve with the filtered data
-        resolve(filteredData);
-      
-      
+        resolve(filteredData);            
     })
     .catch(error => {
       console.error(error);

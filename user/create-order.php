@@ -310,7 +310,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
             <a href="#" class="rl_navbar1_link w-nav-link">Settings</a>
           </div> -->
           <div class="right-navbar-link"><img src="../images/SignOut-1.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign Out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
         </div>
         <div class="">

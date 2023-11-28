@@ -1,7 +1,7 @@
 const accessToken = localStorage.getItem('access_token');
 const analyzerSection  = document.querySelector(".analyzer-section.dashboard.wf-section")
-const baseUrl = "http://127.0.0.1:8000"
-// const baseUrl = "https://lasfunding.com:8080"
+// const baseUrl = "http://127.0.0.1:8000"
+const baseUrl = "https://lasfunding.com:8080"
 const firstNameElement = document.querySelector('.user-fname');
 
 const profileName = document.querySelector('body > div.topbar > div.profile > div > span.profile-name');
@@ -127,8 +127,19 @@ function formatDate(dateString) {
     // Create the HTML string
     const htmlString = `
         <ul class="admin-account-type-list" id="${IdValue}">
-            ${values.map(val => `<li  class="admin-account-type-list" >${val}</li>`).join('\n')}
+            ${values.map(val => `<li data-list-type="${IdValue}" data-value="${val}" ondblclick="deleteElement(this)" class="admin-account-type-list" >${val}</li>`).join('\n')}
         </ul>`;
 
     return htmlString;
 }
+
+var signOutElement = document.getElementById('SignOut');
+// Add a click event listener to the element
+signOutElement.addEventListener('click', function() {
+  // Delete access_token from local storage if available
+  if (localStorage.getItem('access_token')) {
+    localStorage.removeItem('access_token');
+  } 
+  // Redirect to lasfunding.com/#/signin
+  window.location.href = 'https://lasfunding.com/admin/';
+});      

@@ -236,11 +236,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </div> -->
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
-
-        </div>
-                       
+        </div>                       
       </nav>
       <div data-w-id="dfef91ae-55b8-ac9f-51eb-883e879e4cf4" class="rl_navbar1_menu-button w-nav-button">
         <div class="rl_menu-icon">
@@ -270,8 +268,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         <br>
         <select id="StatusSort" onchange="sortTableByStatus()">            
           <option value="">Status</option>
-          <option value="open">Status (Open)</option>
-          <option value="close">Status (Close)</option>
+          <option value="pending">Status (Pending)</option>
+          <option value="rejected">Status (Rejected)</option>
+          <option value="approved">Status (Approved)</option>
         </select>
         
         <select id="DateSort" onchange="sortTableByDate(event)">

@@ -287,7 +287,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </div> -->
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -319,8 +319,10 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         <br>
         <select id="StatusSort" onchange="sortTableByStatus()">            
           <option value="">Status</option>
-          <option value="open">Status (Open)</option>
-          <option value="close">Status (Close)</option>
+          <option value="pending">Status (Pending)</option>
+          <option value="success">Status (Success)</option>
+          <option value="cancelled">Status (Cancelled)</option>
+          <option value="failed">Status (Failed)</option>
         </select>
         
         <select id="DateSort" onchange="sortTableByDate(event)">
@@ -459,9 +461,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const currentTickets = orders.slice(startIndex, endIndex);
+      const currentOrders = orders.slice(startIndex, endIndex);
   
-      for (const orders of currentTickets) {
+      for (const orders of currentOrders) {
           var row = document.createElement('tr');
         
           // Create and append the "Select Row" cell
@@ -561,5 +563,54 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   }
 
   </script>
+
+
+<script>      
+    async function sortTableByStatus() {
+      try {
+        var selectedValue = document.querySelector("#StatusSort");
+        console.log("sortTableByStatus", selectedValue.value );
+        setElementDisplayByClassName('mini-loader-container', 'block')
+        const userOrdersList = await userOrdersSortStatus(accessToken, status=`${selectedValue.value}`);
+        setElementDisplayByClassName('mini-loader-container', 'none');
+        appendRowToTable(userOrdersList);
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+</script>
+
+<script>
+  async function sortTableByDate() {
+    try {
+      var selectedValue = document.querySelector("#DateSort");
+      setElementDisplayByClassName('mini-loader-container', 'block')
+      const userOrdersList = await userOrdersSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
+      setElementDisplayByClassName('mini-loader-container', 'none');
+      console.log("userOrdersList", userOrdersList, );
+      appendRowToTable(userOrdersList);
+    } catch (error) {      
+      console.error("An error occurred:", error);
+    }
+  }
+</script>
+
+<script>
+async function sortTableByDateRange() {
+  try {
+    var EndTimeSortValue = document.querySelector("#EndTimeSort").value;
+    var StartTimeSortValue = document.querySelector("#StartTimeSort").value;
+
+    console.log("EndTimeSortValue", EndTimeSortValue, "StartTimeSortValue", StartTimeSortValue)
+    setElementDisplayByClassName('mini-loader-container', 'block')
+    const userOrdersList = await userOrdersSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Order="newest" );
+    setElementDisplayByClassName('mini-loader-container', 'none');
+    console.log("userOrdersList", userOrdersList);
+    appendRowToTable(userOrdersList);
+  } catch (error) {      
+    console.error("An error occurred:", error);
+  }
+}
+</script>
 </body>
 </html>

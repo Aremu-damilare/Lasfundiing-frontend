@@ -164,7 +164,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 	  <!-- profile  -->
     <div class="profile">
-      <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50">
+      <!-- <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50"> -->
       <div class="profile-emails">
         <span class="profile-name">Chinadu Toluwaloper</span>
         <span class="profile-email">Toluwaloper@email.com</span>
@@ -239,7 +239,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </div> -->
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -264,7 +264,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
       <div style="color: #E04800;font-style: oblique;"  class="text-block-57">
         <span>Dashboard</span>        
       </div>
-      <div><span style="color: #E04800;float: right;">Sign Out</span></div>
+      <!-- <div><span style="color: #E04800;float: right;">Sign Out</span></div> -->
     </div>
 
     <div class="analyzer-section dashboard wf-section" style="display: block;">

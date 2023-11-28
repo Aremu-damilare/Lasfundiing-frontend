@@ -163,7 +163,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
 	  <!-- profile  -->
     <div class="profile">
-      <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50">
+      <!-- <img src="../images/Ellipse336.png" alt="Profile Avatar" width="50" height="50"> -->
       <div class="profile-emails">
         <span class="profile-name">Chinadu Toluwaloper</span>
         <span class="profile-email">Toluwaloper@email.com</span>
@@ -172,12 +172,12 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
     <!-- profile end -->
 
     <!-- cart icon -->
-    <div class="cart-icon">
-      <!-- <i class="fa fa-shopping-cart"></i> -->
+    <!-- <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
       <span class="cart-count">0</span>
       <a href="#" class="w-inline-block">
         <img src="../images/cart.svg" loading="lazy" alt="" class="image"></a>
-    </div>
+    </div> -->
     <!-- cart icon end -->
 
 	  <!-- <button class="sidebar-toggle"><img src="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/images/icons/hamburger.svg" alt="" srcset="file:///C:/Users/Aremu_damilare/JS_projects/lasfunding/final_frontend/user/user/dashboard.html "></button> -->
@@ -236,7 +236,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </div> -->
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -266,11 +266,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
         <div class="filter-container">
           <i class="fa fa-random" aria-hidden="true"></i> Sort
           <br>
-          <select id="StatusSort" onchange="sortTableByStatus()">            
+          <!-- <select id="StatusSort" onchange="sortTableByStatus()">            
             <option value="">Status</option>
             <option value="open">Status (Open)</option>
             <option value="close">Status (Close)</option>
-          </select>
+          </select> -->
           
           <select id="DateSort" onchange="sortTableByDate(event)">
             <option value="">Date</option>
@@ -553,6 +553,53 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
 
   </script>
 
+<script>      
+    async function sortTableByStatus() {
+      try {
+        var selectedValue = document.querySelector("#StatusSort");
+        console.log("sortTableByStatus", selectedValue.value );
+        setElementDisplayByClassName('mini-loader-container', 'block')
+        const userUsersList = await userUsersSortStatus(accessToken, status=`${selectedValue.value}`);
+        setElementDisplayByClassName('mini-loader-container', 'none');
+        appendRowToTable(userUsersList);
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+</script>
+
+<script>
+  async function sortTableByDate() {
+    try {
+      var selectedValue = document.querySelector("#DateSort");
+      setElementDisplayByClassName('mini-loader-container', 'block')
+      const userUsersList = await userUsersSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
+      setElementDisplayByClassName('mini-loader-container', 'none');
+      console.log("userUsersList", userUsersList, );
+      appendRowToTable(userUsersList);
+    } catch (error) {      
+      console.error("An error occurred:", error);
+    }
+  }
+</script>
+
+<script>
+async function sortTableByDateRange() {
+  try {
+    var EndTimeSortValue = document.querySelector("#EndTimeSort").value;
+    var StartTimeSortValue = document.querySelector("#StartTimeSort").value;
+
+    console.log("EndTimeSortValue", EndTimeSortValue, "StartTimeSortValue", StartTimeSortValue)
+    setElementDisplayByClassName('mini-loader-container', 'block')
+    const userUsersList = await userUsersSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Order="newest" );
+    setElementDisplayByClassName('mini-loader-container', 'none');
+    console.log("userUsersList", userUsersList);
+    appendRowToTable(userUsersList);
+  } catch (error) {      
+    console.error("An error occurred:", error);
+  }
+}
+</script>
 
 </body>
 </html>

@@ -128,8 +128,8 @@ img{max-width:100%;vertical-align:middle;display:inline-block;}
 .w-button{display:inline-block;padding:9px 15px;background-color:#3898EC;color:white;border:0;line-height:inherit;text-decoration:none;cursor:pointer;border-radius:0;}
 input.w-button{-webkit-appearance:button;}
 .w-form{margin:0 0 15px;}
-.w-form-done{display:block;padding:20px;text-align:center;background-color:#dddddd;}
-.w-form-fail{display:block;margin-top:10px;padding:10px;background-color:#ffdede;}
+
+
 label{display:block;margin-bottom:5px;font-weight:bold;}
 .w-input{display:block;width:100%;height:38px;padding:8px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#333333;vertical-align:middle;background-color:#ffffff;border:1px solid #cccccc;}
 .w-input:focus{border-color:#3898EC;outline:0;}
@@ -401,7 +401,7 @@ a.admin-edit-btn.edit-account-type {
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -430,10 +430,11 @@ a.admin-edit-btn.edit-account-type {
       
       <style>       
         .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1000px;
+          display: flex;
+          justify-content: center;
+          max-width: 1000px;
+          flex-wrap: wrap;
+          align-content: flex-start;
             }
 
         .card {
@@ -442,11 +443,11 @@ a.admin-edit-btn.edit-account-type {
           height: 65vh;
           overflow-y: scroll;
           margin: 10px;
-          background-color: white;
+          background-color: #fff;
           border: 1px solid #ddd;
           padding: 20px;
           box-sizing: border-box;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 0 6px #0a030047;
           flex-direction: column;
           align-items: stretch;
         }
@@ -495,10 +496,10 @@ a.admin-edit-btn.edit-account-type {
         <div class="modal-header">
 
         <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-          <div>Account added successfully!</div>
+          <div>Account type added successfully!</div>
         </div>
         <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-        <div>Account addition failed!</div>
+        <div>Account type Could not be added!</div>
         </div>
         
           <div class="form-header">Add account types</div>

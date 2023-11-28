@@ -236,7 +236,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           </div> -->
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -268,8 +268,9 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           <br>
           <select id="StatusSort" onchange="sortTableByStatus()">            
             <option value="">Status</option>
-            <option value="open">Status (Open)</option>
-            <option value="close">Status (Close)</option>
+            <option value="sent">Status (Sent)</option>
+            <option value="denied">Status (Denied)</option>
+            <option value="pending">Status (Pending)</option>
           </select>
           
           <select id="DateSort" onchange="sortTableByDate(event)">
@@ -499,8 +500,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
           
       }
         // Calculate total pages
-      const totalPages = Math.ceil(withdrawals.length / itemsPerPage);
-          // ... (inside the function)
+      const totalPages = Math.ceil(withdrawals.length / itemsPerPage);          
       const paginationContainer = document.createElement("div");
       paginationContainer.className = "pagination";
   
@@ -536,6 +536,54 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $
   }
 
   </script>
+
+<script>      
+    async function sortTableByStatus() {
+      try {
+        var selectedValue = document.querySelector("#StatusSort");
+        console.log("sortTableByStatus", selectedValue.value );
+        setElementDisplayByClassName('mini-loader-container', 'block')
+        const userWithdrawalsList = await userWithdrawalsSortStatus(accessToken, status=`${selectedValue.value}`);
+        setElementDisplayByClassName('mini-loader-container', 'none');
+        appendRowToTable(userWithdrawalsList);
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+</script>
+
+<script>
+  async function sortTableByDate() {
+    try {
+      var selectedValue = document.querySelector("#DateSort");
+      setElementDisplayByClassName('mini-loader-container', 'block')
+      const userWithdrawalsList = await userWithdrawalsSortDate(accessToken, status=null,  dateSort=`${selectedValue.value}`);
+      setElementDisplayByClassName('mini-loader-container', 'none');
+      console.log("userWithdrawalsList", userWithdrawalsList, );
+      appendRowToTable(userWithdrawalsList);
+    } catch (error) {      
+      console.error("An error occurred:", error);
+    }
+  }
+</script>
+
+<script>
+async function sortTableByDateRange() {
+  try {
+    var EndTimeSortValue = document.querySelector("#EndTimeSort").value;
+    var StartTimeSortValue = document.querySelector("#StartTimeSort").value;
+
+    console.log("EndTimeSortValue", EndTimeSortValue, "StartTimeSortValue", StartTimeSortValue)
+    setElementDisplayByClassName('mini-loader-container', 'block')
+    const userWithdrawalsList = await userWithdrawalsSortDateRange(accessToken,  EndTimeSortValue=`${EndTimeSortValue}`, StartTimeSortValue=`${StartTimeSortValue}`, Withdrawal="newest" );
+    setElementDisplayByClassName('mini-loader-container', 'none');
+    console.log("userWithdrawalsList", userWithdrawalsList);
+    appendRowToTable(userWithdrawalsList);
+  } catch (error) {      
+    console.error("An error occurred:", error);
+  }
+}
+</script>
 
 
 

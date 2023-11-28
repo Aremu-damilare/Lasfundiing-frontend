@@ -10729,3 +10729,9 @@ img {
   stroke-dashoffset: 0;
   animation: rot 4s infinite linear, clr 9s infinite linear;
 }
+
+li::before {
+  font-family: 'Font Awesome 4 Free';
+  content: '•';
+  margin-right: 8px;
+}

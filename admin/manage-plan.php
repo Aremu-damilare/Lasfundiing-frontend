@@ -141,8 +141,7 @@ img{max-width:100%;vertical-align:middle;display:inline-block;}
 .w-button{display:inline-block;padding:9px 15px;background-color:#3898EC;color:white;border:0;line-height:inherit;text-decoration:none;cursor:pointer;border-radius:0;}
 input.w-button{-webkit-appearance:button;}
 .w-form{margin:0 0 15px;}
-.w-form-done{display:block;padding:20px;text-align:center;background-color:#dddddd;}
-.w-form-fail{display:block;margin-top:10px;padding:10px;background-color:#ffdede;}
+
 label{display:block;margin-bottom:5px;font-weight:bold;}
 .w-input{display:block;width:100%;height:38px;padding:8px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#333333;vertical-align:middle;background-color:#ffffff;border:1px solid #cccccc;}
 .w-input:focus{border-color:#3898EC;outline:0;}
@@ -436,7 +435,7 @@ a.admin-edit-btn.edit-account-type {
           </div>
 
           <div class="right-navbar-link"><img src="../images/icons/admin/SignOut.svg" loading="lazy" alt="" class="sign-out-icon">
-            <a href="#" class="rl_navbar1_link w-nav-link">Sign out</a>
+            <a href="#"  id="SignOut" class="rl_navbar1_link w-nav-link">Sign out</a>
           </div>
 
         </div>
@@ -514,14 +513,13 @@ a.admin-edit-btn.edit-account-type {
             </g>        
         </svg>        
       </div> 
-
         
 
       <div class="w-form-done" tabindex="-1" role="region" style="display: none;">
-        <div>Account added successfully!</div>
+        <div>Account type edited successfully!</div>
       </div>
       <div class="w-form-fail" tabindex="-1" role="region" style="display: none;">
-      <div>Account addition failed!</div>
+      <div>Account Type failed to update!</div>
       </div>
       
        
@@ -540,6 +538,7 @@ a.admin-edit-btn.edit-account-type {
             </svg>        
           </span>  
         </button>
+        <small>* Double click on steps value to remove</small>
 
         <!-- <input type="reset" id="resetButton" value="Reset" class="reset-button w-button"> -->
         
@@ -557,6 +556,9 @@ a.admin-edit-btn.edit-account-type {
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63807ab0318db8bd26b06087" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js?<?php echo time(); ?>"></script><![endif] -->
+  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
+  <script src="../backend/admin/manage-plans.js?<?php echo time(); ?>"></script>
+
   <script>
       const form = document.querySelector("#addAccountForm");
       const successMessage = document.querySelector(".w-form-done");
@@ -573,11 +575,7 @@ a.admin-edit-btn.edit-account-type {
             const startingMonthlyFee = document.getElementById("startingMonthlyFee").value;
             const startingBalance = document.getElementById("startingBalance").value;
             
-            // Gather list values
-            console.log(BalanceList)
-            console.log(ProfitTargetList)
-            console.log(ProfitShareList)
-            
+            // Gather list values          
             const balanceList = BalanceList;
             const profitTargetList = ProfitTargetList;
             const profitShareList = ProfitShareList;
@@ -637,9 +635,7 @@ a.admin-edit-btn.edit-account-type {
   </script>
 
 
-  <script>
-    let BalanceList = [];
-
+  <script>    
     function addToBalanceList() {
         const BalanceInputField = document.getElementById("BalanceInputField");
         const inputValue = BalanceInputField.value.trim();
@@ -655,7 +651,7 @@ a.admin-edit-btn.edit-account-type {
 
     function updateList() {
         const BalanceListElement = document.getElementById("BalanceList");
-        //BalanceListElement.innerHTML = BalanceListElement.innerHTML;
+        BalanceListElement.innerHTML = "";
 
         BalanceList.forEach((str) => {
             const li = document.createElement("li");
@@ -668,8 +664,6 @@ a.admin-edit-btn.edit-account-type {
   </script>
 
   <script>
-    let ProfitTargetList = [];
-
     function addToProfitTargetList() {
         const ProfitTargetInputField = document.getElementById("ProfitTargetInputField");
         const inputValue = ProfitTargetInputField.value.trim();
@@ -683,7 +677,7 @@ a.admin-edit-btn.edit-account-type {
 
     function updateProfitTargetList() {
         const ProfitTargetListElement = document.getElementById("ProfitTargetList");
-        //ProfitTargetListElement.innerHTML = ProfitTargetListElement.innerHTML;
+        ProfitTargetListElement.innerHTML = "";
 
         ProfitTargetList.forEach((str) => {
             const li = document.createElement("li");
@@ -695,9 +689,8 @@ a.admin-edit-btn.edit-account-type {
 
   </script>
 
-  <script>
-    let ProfitShareList = [];
 
+  <script>    
     function addToProfitShareList() {
         const ProfitShareInputField = document.getElementById("ProfitShareInputField");
         const inputValue = ProfitShareInputField.value.trim();
@@ -711,7 +704,7 @@ a.admin-edit-btn.edit-account-type {
 
     function updateProfitShareList() {
         const ProfitShareListElement = document.getElementById("ProfitShareList");
-        //ProfitShareListElement.innerHTML = ProfitShareListElement.innerHTML;
+        ProfitShareListElement.innerHTML = "";
 
         ProfitShareList.forEach((str) => {
             const li = document.createElement("li");
@@ -722,9 +715,7 @@ a.admin-edit-btn.edit-account-type {
     }
   </script>
 
-  <script>
-    let NextStepTargetList = [];
-
+  <script>    
     function addToNextStepTargetList() {
         const NextStepTargetInputField = document.getElementById("NextStepTargetInputField");
         const inputValue = NextStepTargetInputField.value.trim();
@@ -738,7 +729,7 @@ a.admin-edit-btn.edit-account-type {
 
     function updateNextStepTargetList() {
         const NextStepTargetListElement = document.getElementById("NextStepTargetList");
-        //NextStepTargetListElement.innerHTML = NextStepTargetListElement.innerHTML;
+        NextStepTargetListElement.innerHTML = "";
 
         NextStepTargetList.forEach((str) => {
             const li = document.createElement("li");
@@ -751,9 +742,7 @@ a.admin-edit-btn.edit-account-type {
   </script>
 
   <script>
-    let AccountFeeList = [];
-
-    function addToAccountFeeList() {
+        function addToAccountFeeList() {
         const AccountFeeInputField = document.getElementById("AccountFeeInputField");
         const inputValue = AccountFeeInputField.value.trim();
 
@@ -766,7 +755,7 @@ a.admin-edit-btn.edit-account-type {
 
     function updateAccountFeeList() {
         const AccountFeeListElement = document.getElementById("AccountFeeList");
-        //AccountFeeListElement.innerHTML = AccountFeeListElement.innerHTML;
+        AccountFeeListElement.innerHTML = "";
 
         AccountFeeList.forEach((str) => {
             const li = document.createElement("li");
@@ -775,7 +764,6 @@ a.admin-edit-btn.edit-account-type {
             AccountFeeListElement.appendChild(li);
         });
     }
-
   </script>
 
 
@@ -794,54 +782,8 @@ a.admin-edit-btn.edit-account-type {
               });    
   </script>
 
-  <!-- <script>
-      document.querySelector("#resetButton").addEventListener("click", function () {
-          // Reset all input field values and lists
-          document.querySelector("#addAccountForm").reset();
 
-          // Clear the lists (assuming you have functions to clear them)
-          clearBalanceList();
-          clearProfitTargetList();
-          clearProfitShareList();
-          clearNextStepTargetList();
-          clearAccountFeeList();
-
-          // Get all <ul> elements
-          const ulElements = document.querySelectorAll("ul");
-
-          // Delete each <ul> element
-          ulElements.forEach((ul) => {
-              ul.innerHTML = ``;
-          });
-      });
-
-      function clearBalanceList() {
-          BalanceList.length = 0;        
-      }
-
-      function clearProfitTargetList() {
-          ProfitTargetList.length = 0;       
-      }
-
-      function clearProfitShareList() {
-          ProfitShareList.length = 0;       
-      }
-
-      function clearNextStepTargetList() {
-          NextStepTargetList.length = 0;       
-      }
-
-      function clearAccountFeeList() {
-          AccountFeeList.length = 0;       
-      }
-  </script> -->
-
-  <script src="../backend/admin/config.js?<?php echo time(); ?>"></script>
-  <script src="../backend/admin/manage-plans.js?<?php echo time(); ?>"></script>
-
-  <script>  
- 
-
+  <script>   
   const endpointUrl = `${baseUrl}/custom/admin/store/detail/${accountId}/`;
   const headers = new Headers({
       'Content-Type': 'application/json',
@@ -880,27 +822,27 @@ a.admin-edit-btn.edit-account-type {
               
 
               <input type="text" class="w-input"   id="BalanceInputField" placeholder="Enter balance"> 
-              <button class="add-to-list" type="button" onclick="addToBalanceList()">Add to Balance steps</button>
+              <button class="add-to-list" type="button" onclick="addToBalanceList()"><i class="fa fa-plus" aria-hidden="true"></i> Balance steps</button>
               
               ${createList(item.balance, "BalanceList")}
 
               <input type="text" class="w-input"   id="ProfitTargetInputField" placeholder="Enter profit target">
-              <button class="add-to-list" type="button" onclick="addToProfitTargetList()">Add to Profit Target steps</button>
+              <button class="add-to-list" type="button" onclick="addToProfitTargetList()"><i class="fa fa-plus" aria-hidden="true"></i> Profit Target steps</button>
               
               ${createList(item.profit_target, "ProfitTargetList")}
               
               <input type="text" class="w-input"  id="ProfitShareInputField" placeholder="Enter profit share">
-              <button class="add-to-list" type="button" onclick="addToProfitShareList()">Add to Profit Share steps</button>
+              <button class="add-to-list" type="button" onclick="addToProfitShareList()"><i class="fa fa-plus" aria-hidden="true"></i> Profit Share steps</button>
               
               ${createList(item.profit_share, "ProfitShareList")}
 
               <input type="text" class="w-input"  id="NextStepTargetInputField" placeholder="Enter next step target">
-              <button class="add-to-list"  type="button" onclick="addToNextStepTargetList()">Add to Next Step Target steps</button>
+              <button class="add-to-list"  type="button" onclick="addToNextStepTargetList()"><i class="fa fa-plus" aria-hidden="true"></i> Next Step Target steps</button>
               
               ${createList(item.next_step_target, "NextStepTargetList")}
 
               <input type="text" class="w-input"  id="AccountFeeInputField" placeholder="Enter account fee">
-              <button class="add-to-list" type="button" onclick="addToAccountFeeList()">Add to Account Fee steps</button>
+              <button class="add-to-list" type="button" onclick="addToAccountFeeList()"><i class="fa fa-plus" aria-hidden="true"></i> Account Fee steps</button>
               
               ${createList(item.account_fee, "AccountFeeList")}
 
@@ -916,7 +858,21 @@ a.admin-edit-btn.edit-account-type {
               setElementDisplayByClassName('admin-account-list-loader', 'none') 
           
           deleteAccountType()
-  //        editAccountType()
+          
+           // Call the function for each list
+          extractValuesAndUpdateArray('BalanceList', BalanceList);
+          extractValuesAndUpdateArray('ProfitTargetList', ProfitTargetList);
+          extractValuesAndUpdateArray('ProfitShareList', ProfitShareList);
+          extractValuesAndUpdateArray('NextStepTargetList', NextStepTargetList);
+          extractValuesAndUpdateArray('AccountFeeList', AccountFeeList);
+
+          // Log the arrays to the console (you can remove this in production)
+          console.log('BalanceList:', BalanceList);
+          console.log('ProfitTargetList:', ProfitTargetList);
+          console.log('ProfitShareList:', ProfitShareList);
+          console.log('NextStepTargetList:', NextStepTargetList);
+          console.log('AccountFeeList:', AccountFeeList);
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -951,6 +907,9 @@ a.admin-edit-btn.edit-account-type {
                               alert("Account type deleted successfully.");
                               // Optionally, you can remove the item from the DOM
                               // event.target.parentElement.remove();
+                              setTimeout(function() {
+                                location.reload();
+                            }, 2000);
                           } else {
                               // Handle errors
                               alert("Error deleting account type.");
@@ -966,5 +925,57 @@ a.admin-edit-btn.edit-account-type {
     }
   </script>
 
+  <script>
+    // Initialize arrays
+    var BalanceList = [];
+    var ProfitTargetList = [];
+    var ProfitShareList = [];
+    var NextStepTargetList = [];
+    var AccountFeeList = [];
+
+    // Function to extract values from list items and populate arrays
+    function extractValuesAndUpdateArray(listId, arrayToUpdate) {
+      var list = document.getElementById(listId);
+      if (list) {
+        var listItems = list.getElementsByClassName('admin-account-type-list');
+        for (var i = 0; i < listItems.length; i++) {
+          var value = listItems[i].innerText.trim();
+          arrayToUpdate.push(value);
+        }
+      }
+    }
+   
+  </script>
+
+  <script>
+     // Function to delete the clicked element
+     function deleteElement(element) {
+      // Check if the element has data-list-type and data-value attributes
+      var listType = element.getAttribute('data-list-type');
+      var valueToRemove = element.getAttribute('data-value');
+
+      if (listType && valueToRemove) {
+          // Attempt to find the array with the specified name
+          var listArray = window[listType];
+
+          // If the array exists, remove the value
+          if (Array.isArray(listArray)) {
+              var index = listArray.indexOf(valueToRemove);
+              if (index !== -1) {
+                  listArray.splice(index, 1);
+                  console.log('Value removed:', valueToRemove);
+              }
+          }
+      }
+
+      // Confirm deletion with the user (you can customize this part)
+      var confirmDeletion = confirm("Are you sure you want to delete this element?");
+
+      // If the user confirms, remove the element
+      if (confirmDeletion) {
+          element.remove();
+      }
+  }
+</script>
 </body>
 </html>
